@@ -1,0 +1,2299 @@
+html {
+	background: #f2f2f2 url(../images/verticalBg.png) center top repeat-y;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	/*background: url(../images/verticalBg.png) center top repeat-y;*/
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 75%;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow-y: scroll;
+}
+
+p,div,h1,h2,h3,h4,ul,li,form,button {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover,a:visited {
+	text-decoration: none;
+}
+
+input.required_qty {
+	text-align: right;
+	width: 60px;
+	height: 16px;
+	margin: -8px -6px -6px -5px;
+}
+label:focus {
+	border: dotted 1px red;
+}
+
+ul li {
+	list-style: none;
+}
+
+ul.orderList {
+	padding-left: 15px;
+	margin-top: 5px;
+}
+
+ul.orderList li {
+	list-style: disc;
+	margin-top: 2px;
+}
+
+h2 {
+	font-size: 1.333em; /* 16px */
+}
+
+h3 {
+	display: inline-block;
+	font-size: 1.083em; /* 13px */
+	font-weight: normal;
+}
+
+h4 {
+	font-size: 1.167em; /* 14px */
+	font-weight: normal;
+}
+
+.centreAlign {
+	text-align: center;
+}
+
+.mainWrapper {
+	width: 980px;
+	margin: 0 auto;
+	height: auto;
+}
+
+.headWrapper {
+	background: #fff;
+}
+
+.headWrapper .header {
+	height: 105px;
+}
+
+.headWrapper .header .logoWrapper {
+	float: left;
+}
+
+.headWrapper .header .globalLinksWrapper {
+	float: right;
+	font-size: 1.083em; /* 13px */
+	padding-right: 20px;
+	padding-top: 25px;
+}
+
+.headWrapper .header .globalLinksWrapper .globalLinkLabel {
+	font-size: 1em; /* 12px */
+}
+
+.headWrapper .header .globalLinksWrapper .userProfile {
+	padding-left: 5px;
+}
+
+.headWrapper .header .globalLinksWrapper .globalLinkAccountName {
+	font-weight: bold;
+	padding: 5px 22px 10px 7px;
+	background-position: 94% 44%;
+	background-repeat: no-repeat;
+}
+
+.headWrapper .header .globalLinksWrapper .userProfile .ui-widget-content .ui-icon
+	{
+	display: none;
+}
+
+.headWrapper .header .globalLinksWrapper .store {
+	border-radius: 5px;
+	clear: both;
+	font-size: 1em; /* 12px */
+	padding: 3px 5px 3px 7px;
+	margin-right: 2px;
+}
+
+.headWrapper .header .globalLinksWrapper .store  .globalLinkLabel {
+	font-size: 1em; /* 12px */
+}
+
+/* styles modified for alignment - Haresh 1st July 2013 */
+.userProfile .ui-menu {
+	border: 0;
+	z-index: 500;
+	text-align: right;
+	float: right;
+}
+
+.userProfile .ui-menu ul li {
+	text-align: left;
+}
+
+.userProfile .ui-menu a,.userProfile .ui-menu a:hover {
+	border: 0;
+}
+
+.userProfile .ui-menu .ui-menu-item a {
+	display: inline;
+}
+
+.userProfile  .ui-menu .ui-menu-item { /*width:200px;	*/
+	
+}
+
+.userProfile  .ui-menu .ui-menu-item a.ui-state-focus,.userProfile  .ui-menu .ui-menu-item a.ui-state-active
+	{
+	margin: 0;
+}
+
+.userProfile  .ui-menu  a.globalLinkAccountName {
+	padding: 0;
+}
+
+.headWrapper .header .globalLinksWrapper .ui-state-active {
+	background-repeat: no-repeat;
+	color: #fff;
+}
+
+.userProfile .ui-menu ul {
+	border-radius: 3px 0 3px 3px;
+	background: #fff;
+	padding: 0;
+	min-width: 150px;
+}
+
+.userProfile .ui-menu ul.ui-menu li.lastMenuItem {
+	border-bottom: 0;
+}
+
+.userProfile .ui-menu ul.ui-menu li a {
+	display: block;
+	font-size: 0.917em; /* 11px */
+	line-height: 30px;
+	width: 100%;
+	padding-left: 8px;
+}
+
+.headWrapper .navWrapper {
+	clear: both;
+	height: 59px;
+	padding-top: 1px;
+}
+
+.headWrapper .navWrapper .sf-menu ul { /*margin-top:1px;*/
+	
+}
+
+.headWrapper  .breadcrumbWrapper {
+	height: 40px;
+}
+
+.headWrapper  .breadcrumbWrapper .breadcrumbs {
+	float: left;
+	padding: 11px 0 0 20px;
+}
+
+.breadcrumbWrapper .breadcrumbs ul {
+	display: inline;
+}
+
+.breadcrumbWrapper .breadcrumbs ul li {
+	display: inline;
+	list-style-type: none;
+	padding: 0 15px 0 7px;
+}
+
+.breadcrumbWrapper .breadcrumbs .breadcrumbLabel {
+	font-weight: bold;
+	padding-right: 0;
+}
+
+.breadcrumbWrapper .breadcrumbs ul li.currentPage {
+	background: none;
+}
+
+.headWrapper  .breadcrumbWrapper .statusWrapper {
+	float: right;
+	padding-right: 20px;
+	padding-top: 12px;
+}
+
+.headWrapper  .breadcrumbWrapper .statusWrapper label.loading {
+	padding-left: 23px;
+	background: url(../images/loading.gif) left top no-repeat;
+	color: #00501f;
+}
+
+.headWrapper  .breadcrumbWrapper .statusWrapper .secondaryActionBtn {
+	margin-left: 10px;
+}
+
+.headWrapper  .breadcrumbWrapper .statusWrapper label.secondaryActionBtn
+	{
+	
+}
+
+.contentWrapper {
+	padding: 20px 20px 65px 20px;
+	overflow: auto;
+	/*background:red url(../images/verticalBg.png) center top repeat-y;	*/
+	height: auto;
+}
+
+.articleHead {
+	width: 920px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 10px 8px 10px 10px;
+	overflow: auto;
+}
+
+.articleHead .articleHeaderWrapper {
+	float: left;
+}
+
+.articleHead .articleHeaderWrapper .articleTitle {
+	font-size: 1.333em; /* 16px */
+}
+
+.articleHead .articleHeaderWrapper p {
+	font-size: 1.083em; /* 13px */
+	line-height: 15px;
+	padding-top: 5px;
+}
+
+.articleHead .articleHeaderWrapper p label.articlePriceLabel {
+	padding-right: 6px;
+}
+
+.articleHead .articleActionBtns {
+	margin-top: 20px;
+	float: right;
+}
+
+/* Page title */
+.pageTitleWrapper {
+	clear: both;
+}
+
+.pageTitleWrapper h2.pageTitle {
+	font-size: 1.333em; /* 16px */
+}
+
+.pageTitleWrapper h2.homeTitle {
+	text-align: center;
+}
+
+.articleRangedValue {
+	
+}
+
+.articleRangedLabel {
+	
+}
+
+.actionBtn,.secondaryActionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.actionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn
+	{
+	color: white;
+	border-radius: 3px;
+	padding: 5px 9px;
+	font-family: arial;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 1em; /* 12px */
+	margin-left: 3px;
+}
+
+button.actionBtn,button.secondaryActionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown button.actionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown button.secondaryActionBtn
+	{
+	font-family: arial;
+	padding: 4px 8px 6px;
+}
+
+.actionBtn label {
+	cursor: pointer;
+}
+
+.secondaryActionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown button.secondaryActionBtn
+	{
+	font-weight: normal;
+}
+
+/* Style for buttons with icons */
+label.nearbyBtn {
+	background: url(../images/iconNearby.png) left 1px no-repeat;
+	padding-left: 19px;
+}
+
+label.editBtn {
+	background: url(../images/iconEdit.png) 1px 3px no-repeat;
+	padding-left: 19px;
+}
+
+label.notepad {
+	background: url(../images/iconPadTick.png) left 1px no-repeat;
+	padding-left: 18px;
+}
+
+label.notepadCross {
+	background: url(../images/iconPadCross.png) left 1px no-repeat;
+	padding-left: 18px;
+}
+
+label.thumbUp {
+	background: url(../images/iconThumbUp.png) left 1px no-repeat;
+	padding-left: 18px;
+}
+
+label.print {
+	background: url(../images/iconPrint.png) left 2px no-repeat;
+	padding-left: 22px;
+}
+
+label.positiveStatus {
+	padding-left: 20px;
+	padding-right: 7px;
+	padding-bottom: 2px;
+	background: url(../images/iconTickCircle.png) left -1px no-repeat;
+	/*img change*/
+	color: #222222;
+	margin-left: 3px;
+}
+
+label.negativeStatus {
+	padding-left: 16px;
+	padding-right: 7px;
+	padding-bottom: 2px;
+	margin-left: 3px;
+	background: url(../images/iconDeleteCircle.png) left 2px no-repeat;
+	/*img change*/
+	color: #df0b0b;
+}
+
+label.positiveFlag {
+	padding-left: 17px;
+	padding-right: 7px;
+	margin-right: 5px;
+	background: url(../images/iconTick.png) left 3px no-repeat;
+}
+
+label.negativeFlag {
+	padding-left: 15px;
+	padding-right: 7px;
+	margin-right: 5px;
+	background: url(../images/iconCross.png) left 4px no-repeat;
+}
+
+label.orderStatus {
+	background-color: #77c250;
+	color: #fff;
+	padding: 3px 6px;
+	border-radius: 3px 3px 3px 3px;
+	margin-left: 3px;
+}
+
+label.highlightStatus {
+	background-color: #ff6766;
+	border: solid 1px #ff4c4b;
+	color: #fff;
+	font-weight: bold;
+	padding: 3px 6px;
+	border-radius: 3px 3px 3px 3px;
+	margin-left: 3px;
+}
+
+label.createBtn {
+	background: url(../images/iconCreate.png) 1px 4px no-repeat;
+	padding-left: 16px;
+}
+
+.contentWrapper .articleContent {
+	border-radius: 0 0 4px 4px;
+	clear: both;
+	padding: 8px 8px 9px 8px;
+	overflow: auto;
+	border-top: 0;
+}
+
+.articleContentInner {
+	background: url(../images/contentDivider.gif) right top repeat-y;
+	float: left;
+	padding-right: 9px;
+	margin-right: 6px;
+	overflow: auto;
+	position: relative;
+}
+
+.articleContentInner .articleDetails {
+	border-radius: 4px;
+	background: #FFFFFF;
+	overflow: auto;
+}
+
+.articleContentInner .articleImg {
+	background: #fff;
+	margin-top: 25px;
+	text-align: left;
+	overflow: auto;
+}
+
+.articleContentInner .articleImg img {
+	
+}
+
+.articleContentInner .articleInfoTop {
+	width: 202px;
+	height: auto;
+	padding: 6px;
+	position: absolute;
+	border-radius: 4px 4px 0px 0px;
+	padding-left: 5px;
+	opacity: 0.7;
+}
+
+.articleContentInner .articleInfoBottom {
+	position: absolute;
+	bottom: 0;
+	width: 202px;
+	height: auto;
+	padding: 6px;
+	border-radius: 0 0 4px 4px;
+	opacity: 0.7;
+}
+
+.articleContentInner .articleInfoBottom .articleLocation {
+	
+}
+
+.articleContentInner .articleInfoTop .articleName {
+	color: white;
+}
+
+.articleContentInner .articleInfoBottom .articleLocation {
+	color: white;
+}
+
+.articleContentInner .articleInfo {
+	padding: 6px 0;
+	background: #464d57;
+	border-radius: 0 0 4px 4px;
+}
+
+.articleContentInner .articleInfo .articleLocation {
+	display: none;
+}
+
+.articleContentInner .articleInfo .articleName {
+	color: white;
+	padding-left: 3px;
+}
+
+.articleContentInner .articleDetails .ContentTable {
+	width: 218px;
+}
+
+.articleContentInner .articleDetails tr th {
+	padding: 8px 0 8px 10px;
+	text-align: left;
+}
+
+.articleContentInner .articleDetails tr td {
+	font-size: 1em; /* 12px */
+	padding: 8px 3px 8px 10px;
+}
+
+.articleContentInner .articleDetails tr td.keyInfo {
+	white-space: nowrap;
+	vertical-align: top;
+}
+
+.articleContentInner .articleDetails tr td.valueInfo {
+	font-weight: bold;
+}
+
+.articleContentInner .articleDetails tr th label.history {
+	float: right;
+	font-size: 1em;
+	font-weight: normal;
+	margin-right: 10px;
+}
+
+.articleContentInnerLast {
+	padding-right: 0;
+	margin-right: 0;
+}
+
+.contentWrapper .articleAdditionalInfo {
+	
+}
+
+span.summaryInfo {
+	font-size: 1em; /* 12px */
+	float: right;
+	padding-right: 8px;
+}
+
+.contentWrapper .articleAdditionalInfo .ui-widget-content {
+	border-top: 0;
+}
+
+.contentWrapper .articleAdditionalInfo .ui-widget-content .ui-widget-content,.reportWrapper .articleAdditionalInfo .ui-tabs
+	{
+	border: 0;
+	background: white;
+}
+
+.contentWrapper .articleAdditionalInfo .ui-widget-content .ui-tabs {
+	padding-top: 8px;
+}
+
+.contentWrapper .articleAdditionalInfo .ui-widget-content li.ui-tabs-active,.contentWrapper .articleAdditionalInfo .ui-widget-content li.ui-tabs-active:hover
+	{
+	color: white;
+}
+
+.contentWrapper .articleAdditionalInfo .ui-widget-content .ui-tabs-nav li a
+	{
+	padding: 5px 10px;
+	margin-right: 4px;
+}
+
+.contentWrapper .articleAdditionalInfo .ui-widget-content .ui-tabs-nav li.ui-tabs-active a
+	{
+	color: white;
+}
+
+.contentWrapper .articleAdditionalInfo .ui-tabs .ui-tabs-nav,.reportWrapper .ui-tabs .ui-widget-content .ui-tabs .ui-tabs-nav
+	{
+	border-radius: 0;
+}
+
+/* style for order details page */
+.contentWrapper .orderDetails {
+	
+}
+
+.contentWrapper .orderDetails .articleContentInner {
+	background: none;
+	float: none;
+	margin-right: 0;
+	padding-right: 0;
+}
+
+.contentWrapper .orderDetails .articleContentInner .articleDetails .ContentTable
+	{
+	width: 100%;
+}
+
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td
+	{
+	border-right: 1px solid #F5F5F0;
+}
+
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.valueInfo
+	{
+	border-right: 5px solid #F5F5F0
+}
+
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.lastColumn
+	{
+	border-right: none !important;
+}
+
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.valueInfo label.history
+	{
+	float: right;
+	font-weight: normal;
+}
+
+/* Styles for order pages */
+.order {
+	padding-top: 0;
+}
+
+.order .lookupWrapper .lookupParamWrapper .advancedParam .parameter input.textbox
+	{
+	width: 205px;
+}
+
+.order .lookupWrapper .lookupParamWrapper .advancedParam .parameter input.inputDate
+	{
+	width: 88px;
+}
+
+/* ---------------------- */
+
+/* Styles for Footer */
+.footerWrapper {
+	background-color: #d3d3d3;
+	color: #494949;
+	overflow: auto;
+	position: fixed;
+	bottom: 0;
+	width: 980px;
+	height: 45px;
+}
+
+.footer {
+	padding: 15px 20px;
+	overflow: visible;
+}
+
+.footer .copyrightsInfo {
+	float: left;
+}
+
+.footer .policyInfo {
+	float: right;
+}
+
+.footer .policyInfo a {
+	color: #494949;
+}
+
+.footer .policyInfo a:hover {
+	color: #619d1c;
+}
+
+.footer .policyInfo label.divider {
+	padding: 0 5px;
+}
+
+/* Style for Home page */
+.homeLinksWrapper {
+	display: none;
+}
+
+.homeLinkBoxes {
+	margin-top: 10px;
+	overflow: auto;
+}
+
+.homeLinkBox {
+	background: url("../images/home_Vertical_divider.png") no-repeat scroll
+		right top transparent;
+	cursor: pointer;
+	float: left;
+	height: 165px;
+	margin: 0;
+	padding: 0;
+	width: 308px;
+}
+
+.borderBottom {
+	background: url("../images/home_Vertical_divider.png") no-repeat scroll
+		right bottom transparent;
+}
+
+.borderLast {
+	background: none repeat scroll 0 0 transparent;
+	border: medium none;
+}
+
+.homeLinkTextWrapper {
+	padding-top: 30px;
+}
+
+.homeLinkText {
+	font-size: 1.333em; /* 16px */
+	font-weight: bold;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.homeContentWelcomeTitle {
+	font-size: 1.333em; /* 16px */
+	padding-bottom: 25px;
+	text-align: center;
+}
+
+.homeBorderHorz {
+	clear: both;
+	height: 2px;
+	margin: -11px auto auto;
+	width: auto;
+}
+
+.homeImgSize {
+	display: block;
+	height: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100px;
+}
+
+/* -------------------- */
+
+/* Styles for Lookup Page */
+.lookup {
+	padding-top: 0;
+}
+
+.lookupWrapper {
+	border-top: 0;
+	border-radius: 0 0 4px 4px;
+	clear: both;
+	overflow: auto;
+	padding: 20px 20px 15px 20px;
+	width: 535px;
+	margin: 0 auto;
+}
+
+.lookupWrapper .lookupTitleWrapper {
+	float: left;
+	padding-right: 15px;
+	padding-top: 3px;
+	width: 55px;
+}
+
+.lookupWrapper .lookupParamWrapper {
+	float: left;
+}
+
+.lookupWrapper .lookupParamWrapper .searchByOptions {
+	padding-top: 5px;
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox {
+	background: #fff;
+	border-radius: 3px 3px 3px 3px;
+	display: inline-block;
+	height: 26px;
+	width: 290px;
+	margin-bottom: 1px;
+	vertical-align: middle;
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox span {
+	/*padding-left:3px;*/
+	
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox input.textbox {
+	border: none;
+	width: 278px;
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox select.selectOptions {
+	background: none;
+	border-width: 0 3px 0 0;
+	width: 160px;
+	border: 0;
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox input.inputDate {
+	border-radius: 0;
+	padding-left: 8px;
+	width: 105px;
+}
+
+.lookupWrapper .lookupParamWrapper .searchByOptions label {
+	cursor: pointer;
+	padding-right: 5px;
+}
+
+.lookupWrapper .lookupParamWrapper .searchByOptions input[type="radio"],.lookupWrapper .lookupParamWrapper .advancedParam .parameter  input[type="radio"]
+	{
+	vertical-align: sub;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam {
+	padding-top: 15px;
+	padding-left: 6px;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter {
+	padding-bottom: 10px;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter h3 {
+	width: 107px;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter span {
+	line-height: 32px;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter input.textbox
+	{
+	width: 204px;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter input.inputDate
+	{
+	background-position: 96% 5px;
+	width: 105px;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter label {
+	line-height: 22px;
+	cursor: pointer;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .actionBtn {
+	margin-left: 0;
+}
+
+.lookupWrapper .lookupActionWrapper {
+	float: right;
+	padding-top: 6px;
+}
+
+.advancedSearchFormat {
+	z-index: 1;
+	position: fixed;
+	display: block;
+	/*height: 150px;*/
+}
+
+.advancedSearchFormatWrapper { /*z-index:18;*/
+	position: fixed;
+	display: block;
+	height: 150px;
+	float: left;
+	border-top: 0;
+	border-radius: 0 0 4px 4px;
+	overflow: auto;
+	margin-top: 60px;
+	margin-left: -21px;
+	width: 575px;
+}
+
+.lookupParamWrapper .parameter .supplyDrop {
+	min-width: 219px;
+}
+
+/* -------------------- */
+
+/* style for reports */
+.reportWrapper {
+	
+}
+
+.reportWrapper .ContentTableWrapper {
+	overflow-y: auto;
+}
+
+.reportWrapper .ui-accordion .ui-accordion-header {
+	font-size: 1.167em;
+	margin-top: 0;
+}
+
+.reportWrapper .formWrapper .parameter {
+	float: left;
+	width: 48%;
+}
+
+.reportWrapper .formWrapper .parameter .reportRadio {
+	padding-left: 25%;
+	padding-top: 5px;
+}
+
+.reportWrapper .formWrapper .parameter label {
+	width: 25%;
+}
+
+.reportWrapper .formWrapper .parameter .reportRadio label {
+	width: auto;
+}
+
+.reportWrapper .formWrapper .parameter  input.textbox {
+	width: 50%;
+}
+
+.reportWrapper .formWrapper .supplierSource input.textbox {
+	width: 150px;
+}
+
+.reportWrapper .formWrapper .parameter select.selectOptions {
+	width: 54%;
+}
+
+.reportWrapper .formWrapper .parameter input.inputDate,.reportWrapper .formWrapper .parameter input.numberBox
+	{
+	width: 120px;
+}
+
+.reportWrapper .formWrapper .formActions {
+	clear: both;
+	float: right;
+	padding-bottom: 5px;
+	padding-top: 10px;
+}
+
+.DGMSDepartmentOptions {
+	width: 40%;
+}
+
+/* -------------------- */
+
+/* Generic style */
+.hideBlock {
+	display: none;
+}
+
+.clearfix {
+	clear: both;
+}
+
+input.textbox {
+	border: 1px solid #d9d9d9;
+	color: #000;
+	font-size: 1em; /* 12px */
+	border-radius: 3px;
+	height: 18px;
+	padding: 2px 6px 5px;
+	vertical-align: middle;
+}
+
+input.textboxDefaultText {
+	/*color:#858585; Commented as tech team is using placeholders for input boxes */
+	
+}
+
+input.inputDate {
+	border: 1px solid #d9d9d9;
+	border-radius: 3px;
+	vertical-align: middle;
+	width: 105px;
+}
+
+input.editNumCell {
+	text-align: right;
+	width: 60px;
+	height: 16px;
+	margin: -8px -6px -6px -5px;
+}
+
+input.editDateCell {
+	border-radius: 3px;
+	vertical-align: middle;
+	margin: -8px -6px -6px -5px;
+	width: 75px;
+}
+
+select.editSelectCell {
+	margin: -8px -6px -6px -5px;
+}
+
+select.selectOptions {
+	background: #fff;
+	border-radius: 3px;
+	color: #000000;
+	font-size: 1em; /* 12px */
+	/*height: 22px;*/
+	padding: 4px;
+	border: 1px solid #D9D9D9;
+	vertical-align: middle;
+}
+
+select.selectOptions option {
+	padding-right: 4px;
+}
+
+label.linkBtn {
+	cursor: pointer;
+	font-size: 1em; /* 12px */
+	font-weight: bold;
+}
+
+label.linkBtn label {
+	cursor: pointer;
+}
+
+label.linkBtn .advancedSearch {
+	padding-left: 15px;
+}
+
+label.linkBtn .closeWindow {
+	padding-left: 12px;
+}
+
+label.selectItem {
+	padding-right: 12px;
+}
+
+label.addRow {
+	padding-left: 13px;
+}
+
+label.filter {
+	padding-left: 15px;
+}
+
+label.editRecord {
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-indent: -999999px;
+	cursor: pointer;
+	padding-bottom: 1px;
+}
+
+label.deleteRecord {
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-indent: -999999px;
+	cursor: pointer;
+	padding-bottom: 1px;
+}
+
+label.saveRecord {
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-indent: -999999px;
+	cursor: pointer;
+	padding-bottom: 1px;
+}
+
+label.changePassword,label.deactivateUser {
+	display: inline-block;
+	width: 20px;
+	text-indent: -999999px;
+	cursor: pointer;
+	padding-bottom: 5px;
+}
+
+label.mandatory {
+	background: url(../images/iconMandatory.png) 2px top no-repeat;
+	color: #626161;
+	font-size: 0.917em; /* 11px */
+	padding-left: 10px;
+}
+
+label.loading {
+	background: url(../images/ajax-loader.gif) left top no-repeat;
+	color: #00501f;
+	padding-left: 23px;
+}
+
+label.history {
+	cursor: pointer;
+	padding-left: 18px;
+}
+
+label.notpadLink {
+	cursor: pointer;
+	padding-left: 18px;
+}
+
+input.errorField,div input.errorField,select.errorField,div select.errorField
+	{
+	border: solid 1px red;
+}
+
+.errorDiv {
+	font-size: 1em;
+	color: red;
+}
+
+.errorDiv h4 {
+	background: url(../images/iconError.png) 0 2px no-repeat;
+	padding-left: 18px;
+	color: red;
+}
+
+.errorDiv label,.formWrapper div.errorDiv label {
+	background: url(../images/iconError.png) 0 2px no-repeat;
+	padding-left: 18px;
+	color: red;
+}
+
+.errorDiv .closeMessage {
+	background: url(../images/ui-icons_888888_256x240.png) -32px -193px
+		no-repeat;
+	cursor: pointer;
+	padding-left: 15px;
+	opacity: 0.3;
+}
+
+.errorDiv .closeMessage:hover {
+	background: url(../images/ui-icons_888888_256x240.png) -32px -193px
+		no-repeat;
+	cursor: pointer;
+	padding-left: 15px;
+	opacity: 1;
+}
+
+.ContentTableWrapper {
+	background: #fff;
+	overflow-y: auto;
+}
+
+.ContentTableWrapper .ContentTable {
+	border: solid 1px #c0c5ca;
+	border-radius: 3px;
+	clear: both;
+	width: 100%;
+}
+
+.ContentTableWrapper .ContentTable tr th {
+	background: #c0c5ca;
+	border-right: solid 1px #d2d2d2;
+	border-bottom: solid 1px #e4e4e4;
+	color: #2d2d2d;
+	font-size: 1em; /* 12px */
+	padding: 8px 10px;
+	text-align: left;
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+.ContentTableWrapper .ContentTable tr.subHeader th {
+	background: #d3d5d8;
+	border-right: solid 1px #e4e4e4;
+}
+
+.ContentTableWrapper .ContentTable tr td {
+	border-bottom: solid 1px #dddddc;
+	border-right: solid 1px #eee;
+	color: #222222;
+	font-size: 1em; /* 12px */
+	padding: 8px 10px;
+}
+
+.ContentTableWrapper .actionRows tr td,.ContentTableWrapper .actionRows tr th
+	{
+	cursor: pointer;
+}
+
+.ContentTableWrapper .actionRows tr th {
+	background-image: url(../images/tableArrows.png);
+	background-position: 100% 10px;
+	background-repeat: no-repeat;
+	padding-right: 20px;
+}
+
+.ContentTableWrapper .actionRows tr th.noSort {
+	background-image: none;
+	padding-right: 10px;
+	cursor: default;
+}
+
+.ContentTableWrapper .ContentTable tr.lastRow td {
+	border-bottom: 0;
+}
+
+.ContentTableWrapper .ContentTable tr td.lastColumn,.ContentTableWrapper .ContentTable tr th.lastColumn
+	{
+	border-right: 0;
+}
+
+.ContentTableWrapper .ContentTable tr td.valueInfo {
+	font-weight: bold;
+}
+
+.ContentTableWrapper .ContentTable tr td.numberColumn,.ContentTableWrapper .ContentTable tr th.numberColumn
+	{
+	text-align: right;
+}
+
+.ContentTableWrapper .ContentTable tr td.centerValue,.ContentTableWrapper .ContentTable tr th.centerValue
+	{
+	text-align: center;
+}
+
+.ContentTableWrapper .ContentTable tr td.columnDivider,.ContentTableWrapper .ContentTable tr th.columnDivider
+	{
+	border-right-width: 3px;
+}
+
+.ContentTableWrapper .ContentTable tr td.rightAligned,.ContentTableWrapper .ContentTable tr th.rightAligned
+	{
+	text-align: right;
+}
+
+.ContentTableWrapper .ContentTable tr td.cellHighlight {
+	/*background-color:#F6F6F6;*/
+	Font-weight: bold;
+}
+
+.ContentTableWrapper .ContentTable tr.total td {
+	background-color: #D3D5D8;
+	font-weight: bold;
+	border-right-color: #E4E4E4;
+}
+
+.ContentTableWrapper .actionRows tr th.sorted {
+	background-color: #acb0b4;
+	color: #292929;
+	padding-right: 20px;
+}
+
+.ContentTableWrapper .actionRows tr th.ascending {
+	background-image: url(../images/tableArrowDown.png);
+	background-position: 100% 12px;
+	background-repeat: no-repeat;
+}
+
+.ContentTableWrapper .actionRows tr th.descending {
+	background-image: url(../images/tableArrowUp.png);
+	background-position: 100% 12px;
+	background-repeat: no-repeat;
+}
+
+.ContentTableWrapper .actionRows tr td.sorted,.popupWrapper .ContentTableWrapper .ContentTable tr td.sorted
+	{
+	background-color: #f6f6f6;
+	color: #292929;
+}
+
+.ContentTableWrapper .ContentTable tr td label.positiveStatus,.ContentTableWrapper .ContentTable tr td label.negativeStatus
+	{
+	padding-right: 0;
+}
+
+.ContentTableWrapper .ContentTable tr td label.positiveStatus {
+	padding-left: 20px;
+	background-position: center -1px;
+	color: white;
+	padding-top: 12px;
+	font-size: 1px;
+}
+
+.ContentTableWrapper .ContentTable tr td label.negativeStatus {
+	padding-left: 20px;
+	background-position: center 2px;
+	color: white;
+	padding-top: 12px;
+	font-size: 1px;
+}
+
+/* Style for non sortable tables */
+.ContentTableWrapper .noTableSort tr th {
+	background-image: none;
+	padding-right: 10px;
+	cursor: default;
+}
+
+.ContentTableWrapper .noTableSort tr th.sorted {
+	background: #C0C5CA;
+}
+
+.ContentTableWrapper .noTableSort tr td.sorted {
+	background: #fff;
+}
+
+/* Style for table which has editable columns */
+.ContentTableWrapper .tableInfo {
+	overflow: auto;
+}
+
+.ContentTableWrapper>.tableInfo {
+	padding-top: 35px;
+}
+
+.ContentTableWrapper .tableInfo .tableTitle {
+	float: left;
+	padding-bottom: 10px;
+}
+
+.ContentTableWrapper .tableInfo .nodataMessage h4,.warningMessage h4 {
+	background: url(../images/iconWarning.png) 0 1px no-repeat;
+	padding-left: 22px;
+}
+
+.ContentTableWrapper .tableInfo .nodataMessage h4 .searchString {
+	color: #292929;
+}
+
+.ContentTableWrapper .tableInfo h4.sectionTitle {
+	font-weight: bold;
+}
+
+.ContentTableWrapper .tableInfo .instructionalText {
+	float: right;
+}
+
+.ContentTableWrapper .tableInfo .instructionalText label {
+	background: url(../images/iconInfo.gif) 0 1px no-repeat;
+	color: #0e36a9;
+	padding-left: 15px;
+}
+
+.ContentTableWrapper .tableInfo .tableTitle h4>select {
+	margin-left: 5px;
+}
+
+.ContentTableWrapper .tableInfo .tableTitle h4 label.secondaryText {
+	font-size: 0.85em;
+	color: #777;
+	padding-left: 5px;
+}
+
+.reportWrapper .formWrapper .parameter  label.secondaryText {
+	font-size: 1em;
+	color: #777;
+	padding-left: 27%;
+	padding-top: 7px;
+	width: auto;
+}
+
+.accordionWrapper .ContentTableWrapper .tableInfo {
+	padding-top: 15px;
+	color: #00501F;
+}
+
+.accordionWrapper .ContentTableWrapper .firstSection {
+	padding-top: 0;
+}
+
+.accordionWrapper .ContentTableWrapper .tableInfo h4.sectionTitle {
+	font-size: 1em;
+}
+
+.contentWrapper .articleAdditionalInfo .ContentTableWrapper .ContentTable tr td.valueInfo
+	{
+	background-color: #F6F6F6;
+}
+
+/* Style changed for Order Details page */
+.orderDetails .ContentTableWrapper .tableInfo,.adminWrapper .ContentTableWrapper .tableInfo
+	{
+	padding-top: 0px;
+}
+
+.ContentTableWrapper  .innerTable {
+	width: auto;
+	border: 0;
+}
+
+.ContentTableWrapper  .innerTable tr td {
+	border: 0;
+	padding: 2px 5px;
+}
+
+/* style for herarchy */
+.contentWrapper .hierarchyWrapper {
+	background: #F9F9F3;
+	border: solid 1px #E3E2E1;
+	border-radius: 4px;
+	overflow: auto;
+	padding: 8px;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent {
+	background: #fff;
+	border: solid 1px #e0e0e0;
+	border-radius: 4px;
+	float: left;
+	margin-right: 0.63%;
+	width: 24.3%;
+}
+
+.contentWrapper .hierarchyWrapper .lastContent {
+	margin-right: 0;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyTitle {
+	background: #c5cad1 url(../images/iconArrowPointer.png) 97% center
+		no-repeat;
+	padding: 6px 10px;
+}
+
+.contentWrapper .hierarchyWrapper .lastContent .hierarchyTitle {
+	background-image: none;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyTitle h3 {
+	color: #2d2d2d;
+	font-weight: bold;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList {
+	padding: 6px;
+	height: 220px;
+	overflow: auto;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li
+	{
+	clear: both;
+	padding-bottom: 5px;
+	overflow: auto;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li input[type="radio"]
+	{
+	float: left;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li label
+	{
+	padding-left: 4px;
+	padding-top: 2px;
+	cursor: pointer;
+	float: left;
+	display: inline;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList .noSelection
+	{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .heirachyBottom {
+	background: #f2f2f2;
+	clear: both;
+	overflow: hidden;
+	padding: 2px 4px 2px 8px;
+	height: 30px;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .heirachyBottom span.totalCount
+	{
+	float: left;
+	padding-top: 7px;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .heirachyBottom span.heirachyAction
+	{
+	float: right;
+	line-height: 31px;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .heirachyBottom span.totalCount strong
+	{
+	padding-left: 3px;
+}
+
+/* style for replishment screens */
+.directContent  .ContentTableWrapper>.tableInfo {
+	padding-top: 0;
+}
+
+.directContent .articleAdditionalInfo .ui-widget-content {
+	border: none;
+}
+
+/* style for Admin screens */
+.tableActionsWrapper .formWrapper .parameter .storeSource  span {
+	padding-left: 55px;
+}
+
+.tableActionsWrapper .formWrapper .parameter .storeSource .multipleStore ul.storeList
+	{
+	padding-left: 55px;
+	padding-top: 7px;
+}
+
+.tableActionsWrapper .formWrapper .parameter .storeSource .multipleStore ul.storeList li
+	{
+	margin-bottom: 3px;
+}
+
+.tableActionsWrapper .formWrapper .parameter .storeSource .multipleStore ul.storeList li label
+	{
+	padding-right: 0;
+}
+
+.tableActionsWrapper .formWrapper .parameter .storeSource .multipleStore ul.storeList li label:nth-of-type(1)
+	{
+	padding: 3px;
+	background: #F6F6F6;
+	border-radius: 3px;
+	border: 1px solid #DDDDDC;
+}
+
+.tableActionsWrapper .formWrapper .parameter .storeSource .multipleStore ul.storeList li label.closeMessage
+	{
+	background: url("../images/ui-icons_888888_256x240.png") no-repeat
+		scroll -32px -192px;
+	cursor: pointer;
+	opacity: 0.3;
+	padding-left: 10px;
+}
+
+/* style for table action for entire table */
+.ContentTableWrapper  .tableActionBtns {
+	float: right;
+}
+
+.ContentTableWrapper .ui-widget-content .tableActionBtns {
+	margin-top: 5px;
+}
+
+.ContentTableWrapper  .tableActionBtns label {
+	font-size: 0.98em;
+}
+
+/*table actions for receive order*/
+.tableActionsBtnsWrapper {
+	background: #f6f6f6;
+	border: solid #dddddc 1px;
+	padding: 7px 10px;
+	border-radius: 4px 4px 0 0;
+}
+
+.tableActionsWrapper {
+	background: #ffffee;
+	border: solid #dddddc 1px;
+	padding: 10px;
+	overflow: auto;
+}
+
+.articleContent .tableActionsWrapper {
+	background: none;
+	border: none;
+}
+
+.tableActionsWrapper .formWrapper .parameter {
+	float: left;
+	padding-right: 30px;
+}
+
+.tableActionsWrapper .formWrapper .parameter label {
+	width: auto;
+	padding-right: 5px;
+}
+
+.tableActionsWrapper .formWrapper .parameter label.advancedSearch {
+	font-size: 1em;
+}
+
+.tableActionsWrapper .formWrapper .parameter input.textbox {
+	width: auto;
+}
+
+.tableActionsWrapper .formWrapper .parameter input.articleSearchText {
+	width: 205px;
+}
+
+.tableActionsWrapper .formWrapper .parameter input.numberBox {
+	width: 60px;
+}
+
+.tableActionsWrapper .formWrapper .parameter .searchByOptions {
+	padding-left: 50px;
+	padding-top: 5px;
+}
+
+.tableActionsWrapper .formWrapper .parameter .userOptions {
+	padding-left: 40px;
+	padding-top: 5px;
+}
+
+.tableActionsWrapper .formWrapper .parameter .supplierSource input.textbox
+	{ /*margin-left: 55px;*/
+	
+}
+
+.tableActionsWrapper .formWrapper .parameter  .parameter,.reportWrapper  .formWrapper .parameter  .parameter
+	{
+	clear: both;
+	float: none;
+	padding-top: 5px;
+	padding-right: 0;
+}
+
+.reportWrapper .formWrapper .parameter  .parameter {
+	width: 100%;
+	height: 30px;
+}
+
+.reportWrapper .formWrapper .parameter  .parameter label {
+	width: auto;
+}
+
+.reportWrapper .formWrapper .parameter  .supplierSource input.textbox {
+	width: 150px;
+}
+
+.tableActionsWrapper .formWrapper .parameter  .IBTSource {
+	/*width:270px;*/
+	
+}
+
+.tableActionsWrapper .formWrapper .parameter  .IBTSource  span {
+	padding-left: 65px;
+	float: left;
+	height: 28px;
+}
+
+.tableActionsWrapper .formWrapper .parameter  .IBTSource select {
+	min-width: 200px;
+}
+
+.tableActionsWrapper .formWrapper .parameter  .IBTSource input.textbox {
+	min-width: 150px;
+}
+
+.tableActionsWrapper .formWrapper .parameter  .supplierSource  span,.reportWrapper .formWrapper .parameter  .supplierSource  span
+	{
+	padding-left: 118px;
+}
+
+.tableActionsWrapper .formWrapper .parameter  .supplierSource  span input.textbox,.tableActionsWrapper .formWrapper .parameter  .IBTSource  span input.textbox,.reportWrapper .formWrapper .parameter  .supplierSource  span input.textbox,.reportWrapper .formWrapper .parameter  .IBTSource  span input.textbox
+	{
+	margin-top: 2px;
+}
+
+@
+-moz-document url-prefix () { .tableActionsWrapper .formWrapper
+	.parameter .supplierSource span input.textbox, .tableActionsWrapper
+	.formWrapper .parameter .IBTSource span input.textbox, .reportWrapper
+	.formWrapper .parameter .supplierSource span input.textbox,
+	.reportWrapper .formWrapper .parameter .IBTSource span input.textbox{
+	margin-top:0;
+	
+}
+
+}
+.articleContent  .tableActionsWrapper .formWrapper h4.sectionTitle {
+	clear: both;
+	font-weight: bold;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	border-bottom: 1px dotted #D9D9D9;
+	padding-top: 10px;
+	/*background-color:#F6F6F6;*/
+}
+
+.articleContent  .tableActionsWrapper .formWrapper h4.sectionTitle:nth-of-type(1)
+	{
+	padding-top: 3px;
+}
+
+.articleContent  .tableActionsWrapper .formWrapper .staticInfo {
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.tableActionsWrapper .formWrapper .formActions {
+	clear: both;
+	float: right;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.tableActionsBtnsWrapper .errorDiv,.reportWrapper h3 .errorDiv {
+	float: right;
+}
+
+.reportWrapper h3 .errorDiv label {
+	font-size: 12px;
+}
+
+.rowHighlight {
+	background-color: #ffffee;
+}
+
+.paginationWrapper {
+	float: right;
+}
+
+.ContentTableWrapper .bottomPagination {
+	margin-top: 5px;
+}
+
+/* Style for tree table */
+table.treetable { /* margin: 0.6em 0 1.8em;    */
+	
+}
+
+table.treetable caption {
+	font-weight: bold;
+	margin-bottom: 0.2em;
+}
+
+table.treetable span {
+	background-position: left center;
+	background-repeat: no-repeat;
+	padding: 0.2em 0 0.2em 1.5em;
+}
+
+table.treetable tr.collapsed span.indenter a {
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 10px;
+}
+
+table.treetable tr.expanded span.indenter a {
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 10px;
+}
+
+table.treetable tr.selected {
+	color: #FFFFFF;
+}
+
+table.treetable tr.collapsed.selected span.indenter a {
+	padding-left: 20px;
+}
+
+table.treetable tr.expanded.selected span.indenter a {
+	padding-left: 20px;
+}
+
+table.treetable tr.accept {
+	color: #FFFFFF;
+}
+
+.ContentTableWrapper .treetable tr td {
+	font-weight: bold;
+}
+
+/* Style for drill down table */
+table.drilldownTable {
+	
+}
+
+table.drilldownTable caption {
+	font-weight: bold;
+	margin-bottom: 0.2em;
+}
+
+table.drilldownTable span {
+	background-position: left center;
+	background-repeat: no-repeat;
+	padding: 0;
+}
+
+table.drilldownTable  tr.expanded td {
+	border-bottom-color: #EEEEEE;
+}
+
+table.drilldownTable  tr.rowHighlight td {
+	background-color: #FFFFEE;
+}
+
+table.drilldownTable  tr.expanded+tr {
+	background-color: #F9F9F3;
+	border-bottom-color: #C0C5CA;
+}
+
+table.drilldownTable  tr.expanded+tr td {
+	border-bottom-color: #C0C5CA;
+}
+
+table.drilldownTable tr.collapsed span.indenter a {
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 14px;
+}
+
+table.drilldownTable tr.expanded span.indenter a {
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 14px;
+}
+
+table.drilldownTable  table.ContentTable {
+	background-color: #fff;
+	margin-top: -15px;
+}
+
+table.drilldownTable  table.ContentTable tr td.valueInfo {
+	/*background-color: #F6F6F6;*/
+	
+}
+
+.ContentTableWrapper .drilldownTable tr td {
+	font-weight: normal;
+	color: #222222;
+}
+
+/* End of drill down table */
+
+/* Style for page actions */
+.contentWrapper  .pageActions {
+	text-align: right;
+	padding-top: 15px;
+}
+
+/* Style for Forms */
+.formWrapper {
+	
+}
+
+.formWrapper .parameter {
+	padding-bottom: 10px;
+}
+
+.formWrapper .parameter label {
+	display: inline-block;
+	font-size: 1.083em;
+	width: 41%;
+}
+
+.formWrapper .parameter label.valueInfo {
+	color: #222222;
+	/*font-weight:bold;*/
+}
+
+.formWrapper .parameter input.textbox {
+	width: 50%;
+}
+
+.formWrapper .parameter input.textbox {
+	width: 88px;
+}
+
+.formWrapper .parameter label.mandatory {
+	/*background-position:top right;
+				padding-left:0;
+				padding-right: 10px;*/
+	
+}
+
+/* Style for multi select option menu */
+
+/*CheckBox dropdown*/
+.selectDropdown { /* Size and position */
+	/* position: absolute;*/
+	display: inline-block;
+	width: 170px;
+	margin: 0 auto;
+	padding: 2px 2px 2px 5px;
+	/* Styles */
+	cursor: pointer;
+	outline: none;
+	background: #fff url(../images/iconSelectDropdown.gif) 97% no-repeat;
+	border: 1px solid #D9D9D9;
+	border-radius: 3px 3px 3px 3px;
+	color: #000000;
+	font-size: 1em;
+	padding: 4px;
+	vertical-align: middle;
+}
+
+.ui-dialog .selectDropdown,.popupWrapper .selectDropdown {
+	position: relative;
+}
+
+.selectDropdown  .selectLabel {
+	display: block;
+	cursor: pointer;
+}
+
+.selectDropdown .dropdown { /* Size & position */
+	position: absolute;
+	/*top: 100%;*/
+	margin-left: -5px;
+	margin-top: 3px; /* border of wrapper */
+	/* left: -1px;
+    right: -1px;*/
+	/* Styles */
+	background: white;
+	border: 1px solid silver;
+	list-style: none;
+	transition: all 0.3s ease-out;
+	/* Hiding */
+	opacity: 0;
+	width: 178px;
+}
+
+.selectDropdown .dropdown li {
+	position: relative; /* Enable absolute positioning for checkboxes */
+}
+
+.selectDropdown .dropdown li label {
+	cursor: pointer;
+	color: #222;
+	display: block;
+	padding: 5px; /* Same padding as the button */
+}
+
+.tableActionsWrapper .formWrapper .parameter .selectDropdown .dropdown li label.dropdownLabel
+	{
+	padding-right: 15px;
+}
+
+.selectDropdown .dropdown li label.actionBtn,.selectDropdown .dropdown li label.secondaryActionBtn
+	{
+	display: inline-block;
+	width: auto;
+}
+
+.selectDropdown .dropdown li:last-of-type label {
+	border: none;
+}
+
+.selectDropdown .dropdown li input /* Checkboxes */ {
+	position: absolute;
+	display: block;
+	right: 3px;
+	top: 50%;
+	margin-top: -8px;
+}
+
+.selectDropdown .dropdown li input.checkbox {
+	cursor: pointer;
+}
+
+.articleHead .selectDropdown {
+	background: none;
+	border: none;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+	/*position:inherit;*/
+}
+
+.articleHead .selectDropdown .dropdown {
+	z-index: 100;
+	width: 110px;
+	margin-left: 3px;
+	margin-top: 5px;
+}
+
+.articleHead .selectDropdown  label.actionBtn label {
+	background-image: url("../images/iconButtonActions.png");
+	background-position: 100% center;
+	padding-left: 5px;
+	padding-right: 23px;
+}
+
+/* Checked state */
+.selectDropdown .dropdown li input:checked  ~ label {
+	color: grey;
+}
+
+/* Active state */
+.selectDropdown.active:after {
+	color: 0 6px 6px 6px;
+}
+
+.selectDropdown.active .dropdown {
+	opacity: 1;
+}
+
+.dropdownAlign {
+	width: 250px;
+}
+
+.dropdownAlign>label {
+	padding-top: 4px;
+}
+
+.selectDropdown .dropdownActions {
+	margin: 4px;
+	width: 15px;
+	float: right;
+}
+
+.tableActionsWrapper .formWrapper .parameter .selectDropdown label.selectLabel
+	{
+	cursor: pointer;
+	display: block;
+	height: 17px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 170px;
+}
+
+/* Style for popups */
+.popupWrapper {
+	background: #fff;
+	padding: 0;
+	box-shadow: 1px 1px 5px #888;
+}
+
+.popupWrapper .ui-dialog-titlebar {
+	border: 0;
+	border-radius: 3px 3px 0 0;
+	color: #fff;
+	font-size: 1.083em; /* 13px */
+	padding-bottom: 7px;
+}
+
+.popupWrapper .ui-dialog-titlebar .ui-dialog-title {
+	font-size: 1.083em; /* 13px */
+}
+
+.popupWrapper .ui-dialog-titlebar .ui-button {
+	background: none;
+	border: none;
+}
+
+.popupWrapper .ui-dialog-titlebar .ui-button .ui-icon-closethick {
+	background: url(../images/iconPopupClose.png) center 3px no-repeat;
+}
+
+.popupWrapper .ui-dialog-titlebar .ui-button .ui-button-text {
+	text-indent: -999999px;
+}
+
+.popupWrapper  .ui-dialog-content .popupContent .alertText {
+	padding-bottom: 15px;
+}
+
+.popupWrapper  .ui-dialog-content .popupContent .tableTitle {
+	padding: 30px 0 10px;
+}
+
+.popupWrapper  .ui-dialog-content {
+	padding: 12px;
+}
+
+.popupWrapper  .ui-dialog-content .popupSearchWrapper input.textbox {
+	width: 250px;
+}
+
+.popupWrapper  .ui-dialog-content .popupContent .ContentTableWrapper {
+	max-height: 400px;
+	overflow: auto;
+}
+
+.popupWrapper  .ui-dialog-content .popupContent .popupActionsWrapper {
+	padding: 14px 10px;
+	margin-top: 5px;
+	overflow: auto;
+}
+
+.popupWrapper  .ui-dialog-content .popupContent .popupActions {
+	text-align: right;
+	float: right;
+}
+
+.popupWrapper  .formWrapper {
+	overflow: visible;
+}
+
+.popupWrapper  .formWrapper .ContentTable {
+	border: none;
+}
+
+.popupWrapper  .formWrapper .ContentTable tr td {
+	border: none;
+	padding: 5px;
+}
+
+.popupWrapper  .formWrapper .ContentTable tr td input.textbox {
+	width: 95%;
+}
+
+.popupWrapper  .formWrapper .ContentTable tr.formActions td {
+	padding-top: 15px;
+	padding-left: 3px;
+}
+
+.popupWrapper  .formWrapper .ContentTable tr.formActions td.valueInfo {
+	padding-right: 0;
+}
+
+.popMessage {
+	font-size: 1.083em;
+	font-weight: Bold;
+	text-align: center;
+	padding: 30px;
+}
+
+.popMessageBtnWrapper {
+	display: block;
+	text-align: center;
+}
+
+.popMessageBtn {
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+.popupWrapper .formWrapper .formQuestion {
+	padding-top: 10px;
+}
+
+.popupWrapper .formWrapper .formQuestion p.question {
+	background: #F5F6F6;
+	border-radius: 3px;
+	padding: 5px 7px;
+	margin-bottom: 3px;
+}
+
+.popupWrapper .formWrapper .formQuestion label {
+	width: auto;
+}
+
+/* -------------------- */
+
+/* Style for Date picker */
+.ui-datepicker {
+	background: #fff;
+	z-index: 50;
+}
+
+.ui-datepicker .ui-datepicker-header {
+	color: white;
+}
+
+/* -------------------- */
+
+/* Styles to override jQuery UI css */
+.ui-widget {
+	font-size: 1em;
+}
+
+.ui-tabs-nav li.highlightTab {
+	float: right;
+	margin-right: 0;
+}
+
+/* Style to override jquery wizard */
+.jw-widget .jw-header {
+	display: none;
+}
+
+.jw-widget.jw-hasmenu .jw-menu-wrap {
+	float: none;
+	margin: 0;
+	width: auto;
+}
+
+.jw-menu li {
+	display: inline-block;
+}
+
+.jw-widget.jw-hasmenu .jw-steps-wrap {
+	margin-left: 0;
+}
+
+.wizardContent .jw-widget.jw-hasmenu .jw-steps-wrap {
+	height: auto;
+	min-height: 20em;
+	/*padding-bottom: 10px;*/
+}
+
+.jw-widget .jw-steps-wrap {
+	overflow: visible;
+	padding: 0;
+}
+
+.jw-widget .jw-content {
+	padding: 0;
+	border: 0;
+}
+
+.wizardContent .ui-widget-content {
+	border: none;
+}
+
+.wizardContent .ui-widget-content .ui-menu .ui-menu-item {
+	width: auto;
+	display: inline-block;
+	/*white-space: nowrap;*/
+}
+
+.wizardContent .jw-widget .jw-footer .jw-buttons .jw-button-next,.wizardContent .jw-widget .jw-footer .jw-buttons .jw-button-finish
+	{
+	float: none;
+}
+
+.wizardContent .jw-widget .jw-footer {
+	padding: 0;
+	text-align: right;
+}
+
+.wizardContent .ui-widget-header {
+	border: none;
+}
+
+.wizardContent .ui-button-text-only .ui-button-text {
+	padding: 0;
+}
+
+.wizardContent .jw-buttons .actionBtn {
+	font-weight: bold;
+}
+
+.wizardContent .jw-widget .jw-steps-wrap {
+	
+}
+
+.wizardContent  .jw-menu {
+	padding: 0;
+}
+
+.wizardContent .ui-menu .ui-menu-item {
+	border-radius: 3px;
+	font-size: 1.08em;
+	padding: 5px 4px;
+	border: none;
+}
+
+.wizardContent .ui-menu .ui-menu-item a {
+	color: #828282;
+}
+
+.wizardContent .ui-menu .ui-menu-item a:hover,.wizardContent .ui-menu .ui-menu-item a:focus,.wizardContent .ui-menu .ui-menu-item a:visited
+	{
+	text-decoration: none;
+}
+
+.wizardContent .ui-widget-content .ui-state-disabled {
+	opacity: 1;
+	margin: 0;
+}
+
+.wizardContent .ui-widget-content .ui-state-disabled a {
+	color: #5c5c5c;
+}
+
+.wizardContent .formWrapper {
+	padding: 10px 7px;
+}
+
+.wizardContent .formWrapper h2.wizardTitle {
+	font-size: 1.15em;
+	padding-bottom: 15px;
+	padding-top: 5px;
+}
+
+.wizardContent .formWrapper .warningMessage h4 {
+	font-size: 1.1em;
+}
+
+.wizardContent .formWrapper .parameter .selectOptions {
+	display: inline;
+	line-height: 25px;
+	padding-left: 7px;
+}
+
+.wizardContent .formWrapper .parameter .selectOptions label {
+	width: auto;
+}
+
+.popupWrapper .ui-dialog-content .wizardContent .popupActionsWrapper {
+	padding: 7px 10px;
+}
+
+.ContentTableWrapper  .tableFooter {
+	height: 30px;
+}
+
+.tableFooter .legend {
+	float: left;
+	padding-top: 5px;
+}
+
+.formWrapper .parameter .linkBtn label {
+	font-size: 0.9em;
+}
+
+/* Style for scroll to top */
+.scrollup {
+	background: #494848;
+	color: white;
+	font-weight: bold;
+	padding: 3px 8px;
+	position: fixed;
+	bottom: 45px;
+	right: 0;
+	display: none;
+}

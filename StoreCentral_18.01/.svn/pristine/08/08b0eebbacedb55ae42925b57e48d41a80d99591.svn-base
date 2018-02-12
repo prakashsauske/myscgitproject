@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DepartmentSalesTaxFuel" language="groovy" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="04aa4db1-4376-4777-90ac-7e8768acc8a1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.wrap.text" value="true"/>
+	<parameter name="FromDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["01/12/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ToDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["02/02/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="StoreNo" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="StoreName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Test Store 1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="groupCount" class="java.lang.String"/>
+	<parameter name="transCount" class="java.lang.String"/>
+	<parameter name="msg" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="avgArticlePrice" class="java.lang.String">
+		<fieldDescription><![CDATA[avgArticlePrice]]></fieldDescription>
+	</field>
+	<field name="avgTransactionPurchase" class="java.lang.String">
+		<fieldDescription><![CDATA[avgTransactionPurchase]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="countSiteDayDept" class="java.lang.String">
+		<fieldDescription><![CDATA[countSiteDayDept]]></fieldDescription>
+	</field>
+	<field name="deferedLoyalty" class="java.lang.String">
+		<fieldDescription><![CDATA[deferedLoyalty]]></fieldDescription>
+	</field>
+	<field name="department" class="java.lang.String">
+		<fieldDescription><![CDATA[department]]></fieldDescription>
+	</field>
+	<field name="departmentNo" class="java.lang.String">
+		<fieldDescription><![CDATA[departmentNo]]></fieldDescription>
+	</field>
+	<field name="groupNo" class="java.lang.String">
+		<fieldDescription><![CDATA[groupNo]]></fieldDescription>
+	</field>
+	<field name="litersSold" class="java.lang.String">
+		<fieldDescription><![CDATA[litersSold]]></fieldDescription>
+	</field>
+	<field name="netSalesExlTax" class="java.lang.String">
+		<fieldDescription><![CDATA[netSalesExlTax]]></fieldDescription>
+	</field>
+	<field name="noDataFound" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFound]]></fieldDescription>
+	</field>
+	<field name="noOfReceiptItems" class="java.lang.String">
+		<fieldDescription><![CDATA[noOfReceiptItems]]></fieldDescription>
+	</field>
+	<field name="regularSalesTXNC" class="java.lang.String">
+		<fieldDescription><![CDATA[regularSalesTXNC]]></fieldDescription>
+	</field>
+	<field name="salesTaxRetailIncl" class="java.lang.String">
+		<fieldDescription><![CDATA[salesTaxRetailIncl]]></fieldDescription>
+	</field>
+	<field name="tValue" class="java.lang.String">
+		<fieldDescription><![CDATA[tValue]]></fieldDescription>
+	</field>
+	<field name="totalTaxAmount" class="java.lang.String">
+		<fieldDescription><![CDATA[totalTaxAmount]]></fieldDescription>
+	</field>
+	<field name="subGroupNo" class="java.lang.String">
+		<fieldDescription><![CDATA[subGroupNo]]></fieldDescription>
+	</field>
+	<field name="onlineSales" class="java.lang.String">
+		<fieldDescription><![CDATA[onlineSales
+]]></fieldDescription>
+	</field>
+	<variable name="groupCount" class="java.lang.Integer" incrementType="Group" incrementGroup="NonTradeGrp" calculation="Count">
+		<variableExpression><![CDATA[new Integer(0)]]></variableExpression>
+	</variable>
+	<variable name="transCount" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{countSiteDayDept}==null?"0.0":$F{countSiteDayDept})]]></variableExpression>
+	</variable>
+	<variable name="articleSold" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{noOfReceiptItems}==null?"0.0":$F{noOfReceiptItems})]]></variableExpression>
+	</variable>
+	<variable name="netSales" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{netSalesExlTax})]]></variableExpression>
+	</variable>
+	<variable name="litersSold" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{litersSold}==null?"0.0":$F{litersSold})]]></variableExpression>
+	</variable>
+	<variable name="avgArticlePrice" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{litersSold}==0.0 && $V{articleSold}==0.0)?0.0:($V{articleSold}==0.0?($V{netSales}/$V{litersSold}):($V{netSales}/$V{articleSold}))]]></variableExpression>
+	</variable>
+	<variable name="avgTransPurchase" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{avgTransactionPurchase}==null?"0.0":$F{avgTransactionPurchase})]]></variableExpression>
+	</variable>
+	<variable name="sales" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{salesTaxRetailIncl}==null?"0.0":$F{salesTaxRetailIncl})]]></variableExpression>
+	</variable>
+	<variable name="gstAmount" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{totalTaxAmount}==null?"0.0":$F{totalTaxAmount})]]></variableExpression>
+	</variable>
+	<variable name="deferedLoyalty" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{deferedLoyalty})]]></variableExpression>
+	</variable>
+	<variable name="netSaleAftrDfrdLylty" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{netSales} - $V{deferedLoyalty}]]></variableExpression>
+	</variable>
+	<variable name="notAssignedLegend" class="java.lang.Boolean">
+		<variableExpression><![CDATA[$V{notAssignedLegend}==false?(Integer.parseInt($F{subGroupNo})==2):$V{notAssignedLegend}]]></variableExpression>
+		<initialValueExpression><![CDATA[false]]></initialValueExpression>
+	</variable>
+	<variable name="sumNetSales" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{netSales}]]></variableExpression>
+	</variable>
+	<variable name="sumArticleSold" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{articleSold}]]></variableExpression>
+	</variable>
+	<variable name="sumAvgArticlePrice" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{avgArticlePrice})]]></variableExpression>
+	</variable>
+	<variable name="sumSales" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{sales}]]></variableExpression>
+	</variable>
+	<variable name="sumGstAmt" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{gstAmount}]]></variableExpression>
+	</variable>
+	<variable name="sumDeferedSale" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{deferedLoyalty}]]></variableExpression>
+	</variable>
+	<variable name="sumNetSaleAftrDfrdSale" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{netSaleAftrDfrdLylty}]]></variableExpression>
+	</variable>
+	<variable name="sumLitersSold" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{litersSold}]]></variableExpression>
+	</variable>
+	<variable name="sumOnlineSales" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{onlineSales}]]></variableExpression>
+	</variable>
+	<variable name="onlineSales" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{onlineSales}==null?"0.00":$F{onlineSales})]]></variableExpression>
+	</variable>
+	<group name="NonTradeGrp">
+		<groupExpression><![CDATA[$F{groupNo}]]></groupExpression>
+		<groupFooter>
+			<band height="20" splitType="Prevent">
+				<frame>
+					<reportElement x="0" y="0" width="802" height="20" uuid="35fbaf2a-d9eb-4e6e-83d0-30af6d2592eb"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+				</frame>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="107" height="20" uuid="deed85ac-e881-4291-8554-cc7b3d1d84e8"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($V{groupCount}.intValue()==Integer.parseInt($P{groupCount}))?"Store Total":"Store Sales Total"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="NonTradeGrp" pattern="###0" isBlankWhenNull="true">
+					<reportElement x="109" y="0" width="50" height="20" uuid="18299137-a1c6-4aab-a2a7-8c1829b935d1"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($V{groupCount}.intValue()==Integer.parseInt($P{groupCount}))?new Double($P{transCount}):null]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0" isBlankWhenNull="true">
+					<reportElement x="162" y="0" width="38" height="20" uuid="93a14735-d7af-438a-b584-4bb6115474b4"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumArticleSold}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="279" y="0" width="70" height="20" uuid="e3b5d62b-b511-4bc9-ac46-09914cb4d331"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($V{groupCount}.intValue()==Integer.parseInt($P{groupCount}))?new Double(Double.parseDouble($P{transCount})==0.0?0.0:($V{sumNetSales}.doubleValue()/Double.parseDouble($P{transCount}))):null]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="354" y="0" width="70" height="20" uuid="e42c3bec-a00a-4e84-a27d-6a08f15d59e2"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumSales}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="429" y="0" width="70" height="20" uuid="fe8ddd36-865d-44b7-a38d-d1af7e7d28a6"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumGstAmt}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="502" y="0" width="59" height="20" uuid="4225128d-93c2-439d-8139-3b698b72dc2e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumNetSales}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.000" isBlankWhenNull="true">
+					<reportElement x="569" y="0" width="54" height="20" uuid="f8b07cd7-715c-43e3-809a-6bffddf50f57"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumLitersSold}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="697" y="0" width="60" height="20" uuid="497307f4-6b71-4855-b06c-958f0ef9746f"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumNetSaleAftrDfrdSale}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="760" y="0" width="39" height="20" uuid="0304fdd3-e9b4-4ba4-a3b2-db802e9d2a59"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumOnlineSales} == null ? "0.00" : $V{sumOnlineSales}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="626" y="0" width="63" height="20" uuid="63e4f0fc-3379-462c-91a8-21d08d3fcc21"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumDeferedSale}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="72" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="38" width="334" height="15" uuid="b7b623e3-76b5-4f38-9ec3-83fd8c53d24f"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reported for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="54" width="334" height="15" uuid="bde0f39b-d01b-41a5-965d-52eb6064831f"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["From Date: "+$P{FromDate}+"  |  To Date: "+ $P{ToDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="1" width="377" height="20" uuid="a9b92edc-1656-4be7-9f8f-0fa310917e50"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="1" width="334" height="20" uuid="4f078a89-4bbb-4d9c-a6cb-03c8c68fcc08"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Department Sales and Tax Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="22" width="334" height="15" uuid="95262465-7ba2-4350-b6dc-ac72dadf0af2"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Prevent">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="30" uuid="97eb37c4-e7cb-4315-8010-0dbfb506c67d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<staticText>
+					<reportElement mode="Transparent" x="626" y="0" width="63" height="30" uuid="e3de8040-ca56-47d1-ab6e-402c111c3c45"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Deferred
+Loyalty ($)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="694" y="0" width="63" height="30" uuid="c500c283-197c-4936-b9a6-03b2a8ca0c0b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Net Sales after deferred loyalty]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="760" y="0" width="39" height="30" uuid="8f1ebf5a-a309-4154-aa46-a35af60cea00"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Online
+Net Sales]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="107" height="30" uuid="663d49bf-ae0f-4d7a-b1a7-6ee0b9ecea23"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="162" y="0" width="39" height="30" uuid="9f2e6697-5175-4aef-a35e-515c4288a8b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Articles Sold]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="206" y="0" width="70" height="30" uuid="ce1e59e1-f1ef-43c9-b05b-46aa097b787f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Avg. Article Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="280" y="0" width="70" height="30" uuid="c7dae4c7-104e-4aa9-995d-9a7b4d8fc79b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Avg. Transaction Purchase]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="354" y="0" width="70" height="30" uuid="36a04280-0cbf-4cd6-b478-c586d1356bcc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="429" y="0" width="70" height="30" uuid="29fec1bb-6026-4130-a474-cf611271e303"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GST Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="502" y="0" width="59" height="30" uuid="2bf48901-a831-44c1-b3b2-d92cfdc8706a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net Sales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="109" y="0" width="50" height="30" uuid="42e16e1c-eed9-4743-846d-92e6b8e43c99"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transaction Count]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="569" y="0" width="54" height="30" uuid="1d0ef875-5268-401a-b643-20bb6ab38c6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Litres Sold]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="107" height="20" uuid="c23eebf3-b53c-4244-b471-2afc1fba9918"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{department}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0" isBlankWhenNull="true">
+				<reportElement x="109" y="0" width="50" height="20" uuid="c62a75b8-3c51-4c96-9035-6be108e0cc77"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{transCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0" isBlankWhenNull="true">
+				<reportElement x="162" y="0" width="39" height="20" uuid="a0b5e836-0def-4c01-abf1-1f818cdb8e56"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{articleSold}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="206" y="0" width="70" height="20" uuid="3d75cf27-3c79-43f8-88fe-192463b4ffbb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{avgArticlePrice}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="502" y="0" width="59" height="20" uuid="71cd7b97-ca5b-4cdc-b6d3-c65ad4fd5416"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{netSales}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="280" y="0" width="70" height="20" uuid="f1313f38-83f2-4e98-94fb-ccc8a26b632d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{avgTransPurchase}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="354" y="0" width="70" height="20" uuid="40853382-1ceb-41ce-b013-eebe678a6d9d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sales}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="429" y="0" width="70" height="20" uuid="36a61d53-a11c-4495-bd0c-de27aa2a702d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{gstAmount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.000" isBlankWhenNull="true">
+				<reportElement x="569" y="0" width="54" height="20" uuid="b32395a3-58b3-4431-9b20-98c8d53dd045"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{litersSold}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="761" y="-1" width="38" height="20" uuid="0bf58db8-9292-4460-aabe-542a99cfa81d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{onlineSales}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="627" y="-1" width="62" height="20" uuid="9589053e-49c4-49a5-b9df-baa063ea150b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{deferedLoyalty}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="695" y="-1" width="62" height="20" uuid="b53d71bf-3248-4ee2-a410-eb853fa00122"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{netSaleAftrDfrdLylty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="18" width="45" height="12" uuid="c0269a55-6a95-4d2f-9d9c-165550437095"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="45" y="18" width="289" height="12" uuid="58483d84-fafd-43d7-93cf-01e8def4f4bd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement x="786" y="18" width="16" height="12" uuid="3d6cca83-5003-42ad-ab1e-4ff5846d7b33"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="f2ae2b12-7b83-4d48-bbfa-af6a86f87a5f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="30">
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="c4563552-7ec9-4864-a756-f07b53ef6fda"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="18" width="45" height="12" uuid="3de68886-71f7-48f4-a99f-e201af516809"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="45" y="18" width="289" height="12" uuid="cac7f3ff-5581-4b34-8c2e-d319ee514858"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="334" height="12" uuid="6c917f14-6bc6-4fad-9319-ea78e79d0dbf">
+					<printWhenExpression><![CDATA[$V{notAssignedLegend}==true]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["* Not Assigned represents any items sold not linked to a valid trading department."]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement x="786" y="18" width="16" height="12" uuid="7a8069a3-4899-4879-bd88-3cbc49a6a283"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<noData>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="50" uuid="c0790c41-1e0b-4661-857c-fd1e80a657b5"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{msg}!=null && !"".equals($P{msg}.trim()))?$P{msg}:"Either no data found or Techincal Problem"]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

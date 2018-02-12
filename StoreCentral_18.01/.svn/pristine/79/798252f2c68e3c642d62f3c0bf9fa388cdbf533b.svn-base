@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VoidTransaction" language="groovy" pageWidth="250" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="250" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="bbe44daa-2d99-4b4d-b2cb-ba0eac585254">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="noOfRecords" class="java.lang.Integer"/>
+	<parameter name="displayHeading" class="java.lang.Boolean"/>
+	<parameter name="msg" class="java.lang.String"/>
+	<parameter name="totRecords" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="cashName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashName]]></fieldDescription>
+	</field>
+	<field name="cashierFirstName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierFirstName]]></fieldDescription>
+	</field>
+	<field name="cashierLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierLastName]]></fieldDescription>
+	</field>
+	<field name="cashierNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierNumber]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="noDataFound" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFound]]></fieldDescription>
+	</field>
+	<field name="salesQuantitiy" class="java.lang.String">
+		<fieldDescription><![CDATA[salesQuantitiy]]></fieldDescription>
+	</field>
+	<field name="tValue" class="java.lang.String">
+		<fieldDescription><![CDATA[tValue]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.String">
+		<fieldDescription><![CDATA[total]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="249" height="20" uuid="83b8bad7-047c-4d69-a506-56303578b6df"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="0" width="249" height="20" uuid="8479b0e2-ac46-4e98-9700-14fe21b69bed"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Void Transactions]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="0" y="20" width="115" height="20" uuid="03506895-5e0f-4391-be31-1828fef39324"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="2" y="0" width="112" height="20" uuid="2e36e790-137f-4934-83dc-0d66cbbf7621"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[POS Operator Name]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="115" y="20" width="95" height="20" uuid="2cb2783d-048b-424e-9941-f8ae5b366903"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="1" y="0" width="92" height="20" uuid="317887d6-7e32-41e4-8743-9ac90314e67a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="210" y="20" width="39" height="20" uuid="adae3af0-b0f6-4487-934a-ad9756cda90b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="1" y="0" width="36" height="20" uuid="5bab018a-7749-4e3c-b545-e577650ea6de"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[QTY]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}<=($P{noOfRecords}==null?5:$P{noOfRecords})]]></printWhenExpression>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="115" height="20" uuid="ea9cd6f6-a486-4024-915c-c71a7baeb369"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="2" y="0" width="112" height="20" uuid="4cd5f5c7-3d7c-4698-9ae4-9edba5ba224e"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cashName}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="115" y="0" width="95" height="20" uuid="726e298c-38ec-4cf3-bba7-89d4d9b26418"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="1" y="0" width="92" height="20" uuid="25928cf3-1958-4b6a-b60e-3c0fb21ebe75"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new Double($F{total})]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="210" y="0" width="39" height="20" uuid="50e281d1-f3c1-4784-80e1-fcb09b2bc14d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" pattern="###0" isBlankWhenNull="true">
+					<reportElement x="1" y="0" width="36" height="20" uuid="3aed0416-176c-49bb-9751-ad7c032dedd9"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new Double($F{salesQuantitiy})]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<noData>
+		<band height="20">
+			<frame>
+				<reportElement x="0" y="0" width="250" height="20" uuid="5653eaac-3909-4e0f-b409-ed5f5dbb5ef6"/>
+				<textField>
+					<reportElement x="1" y="0" width="248" height="20" uuid="5996d2e1-680a-4eda-9fb9-ff88f797775c"/>
+					<textFieldExpression><![CDATA["Voids Transaction : "+(($P{msg}!=null && !"".equals($P{msg}.trim()))?$P{msg}:"Either no data found or Technical problem")]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</noData>
+</jasperReport>

@@ -1,0 +1,55 @@
+html {
+	background: #fff;
+}
+
+body {
+	font-size: 50%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.text-color a {
+	font-size: 12px;
+}
+
+.mainWrapper {
+	width: 800px;
+	min-width: 800px;
+}
+
+.homeLinkBox {
+	height: 140px;
+	width: 250px;
+}
+
+.homeLinkBox div {
+	background-size: 40% 72%;
+	height: 50px;
+}
+
+.headWrapper .header {
+	height: 85px;
+	display: none;
+}
+
+.headWrapper .header .logoWrapper .logoImg {
+	background-size: 75% 40%;
+	height: 85px;
+	width: 200px;
+}
+
+.sf-menu li.home a {
+	background-size:25% 35%;
+	background-position: 22px 14px !important;
+}
+
+.contentWrapper {
+	padding-bottom: 20px;
+}
+
+.footerWrapper {
+	display: none;
+}
+.iframe-nav-bar a{
+	padding: 14px 17px !important;
+}

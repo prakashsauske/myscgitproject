@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StarStoreRpt" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0eab1121-7b6c-427a-ab9f-79db886e7e97">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\EclipseMcr\\workspace_1POS\\JasperJavaBean\\jasperReports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="storeNoOfRecords" class="java.lang.Integer"/>
+	<parameter name="dateFrom" class="java.lang.String"/>
+	<parameter name="dateTo" class="java.lang.String"/>
+	<parameter name="storeNo" class="java.lang.String"/>
+	<parameter name="storeName" class="java.lang.String"/>
+	<parameter name="type" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="leftSideTable" class="au.com.woolworths.portal.pos.model.StarStoreIndividualBean">
+		<fieldDescription><![CDATA[leftSideTable]]></fieldDescription>
+	</field>
+	<field name="rightSideTable" class="au.com.woolworths.portal.pos.model.StarStoreIndividualBean">
+		<fieldDescription><![CDATA[rightSideTable]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="86">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="339" y="0" width="216" height="20" uuid="e0726d28-882a-4728-88f6-c1fe383c1d6f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{storeNo}+"  |  "+$P{storeName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="37" width="320" height="15" uuid="c9078158-fe10-4862-bcda-268569d4c4a1"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reported for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="21" width="320" height="15" uuid="e6c4021d-a89b-4a09-9f08-fdc17282051e"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="53" width="320" height="15" uuid="66a492ae-87d5-4577-ad84-973bb7f73f6d"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["From Date: "+$P{dateFrom}+"  |  To Date: "+ $P{dateTo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="320" height="20" uuid="ce14bb51-0ef7-4507-ae20-dd139a3e5afb"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[STAR Report - Sales and Transactions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="69" width="320" height="15" uuid="a236bcf5-55a8-48a1-8efb-aba9568ce80a"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sales and Transactions]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}==1]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="250" height="20" uuid="b3634c0f-62a1-4f58-b46a-6cad5d3c3eac"/>
+				<subreportParameter name="noOfRecords">
+					<subreportParameterExpression><![CDATA[$P{storeNoOfRecords}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="displayHeading">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.isDisplayHeading()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totRecords">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.getReportData()==null?0:$F{leftSideTable}.getReportData().size()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.getMsg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{leftSideTable}.getReportData())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "PriceOverrideRpt.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="305" y="0" width="250" height="20" uuid="3a005601-b4b1-454f-9670-dd531174b5a1"/>
+				<subreportParameter name="displayHeading">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.isDisplayHeading()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="noOfRecords">
+					<subreportParameterExpression><![CDATA[$P{storeNoOfRecords}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totRecords">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.getReportData()==null?0:$F{rightSideTable}.getReportData().size()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.getMsg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{rightSideTable}.getReportData())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "UnrecallSavedTrans.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}==2]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="250" height="20" uuid="c74558a6-7ed0-441c-98f6-4e376b2b6507"/>
+				<subreportParameter name="displayHeading">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.isDisplayHeading()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="noOfRecords">
+					<subreportParameterExpression><![CDATA[$P{storeNoOfRecords}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totRecords">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.getReportData()==null?0:$F{leftSideTable}.getReportData().size()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.getMsg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{leftSideTable}.getReportData())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "VoidTransaction.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="305" y="0" width="250" height="20" uuid="7b4a7d0c-43da-40a0-8154-523255d1d2a5"/>
+				<subreportParameter name="displayHeading">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.isDisplayHeading()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="noOfRecords">
+					<subreportParameterExpression><![CDATA[$P{storeNoOfRecords}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totRecords">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.getReportData()==null?0:$F{rightSideTable}.getReportData().size()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.getMsg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{rightSideTable}.getReportData())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "VoidArticle.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}==3]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="250" height="20" uuid="49ac696e-c3c5-44f4-9c63-1ba2c4b13455"/>
+				<subreportParameter name="displayHeading">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.isDisplayHeading()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="noOfRecords">
+					<subreportParameterExpression><![CDATA[$P{storeNoOfRecords}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totRecords">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.getReportData()==null?0:$F{leftSideTable}.getReportData().size()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.getMsg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{leftSideTable}.getReportData())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "NoSales.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="305" y="0" width="250" height="20" uuid="45e3e693-fadf-4e9b-919f-b27de432adc8"/>
+				<subreportParameter name="displayHeading">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.isDisplayHeading()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="noOfRecords">
+					<subreportParameterExpression><![CDATA[$P{storeNoOfRecords}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totRecords">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.getReportData()==null?0:$F{rightSideTable}.getReportData().size()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.getMsg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{rightSideTable}.getReportData())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Refunds.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}==4]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="250" height="20" uuid="ea28ac69-7fd8-4106-89ea-d7ca7b5b0f5c"/>
+				<subreportParameter name="displayHeading">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.isDisplayHeading()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="noOfRecords">
+					<subreportParameterExpression><![CDATA[$P{storeNoOfRecords}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totRecords">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.getReportData()==null?0:$F{leftSideTable}.getReportData().size()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.getMsg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{leftSideTable}.getReportData())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ArticleSoldByDept.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="305" y="0" width="250" height="20" uuid="15525abd-0f68-4a6a-9baa-41167a69316d"/>
+				<subreportParameter name="displayHeading">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.isDisplayHeading()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="noOfRecords">
+					<subreportParameterExpression><![CDATA[$P{storeNoOfRecords}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totRecords">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.getReportData()==null?0:$F{rightSideTable}.getReportData().size()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.getMsg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{rightSideTable}.getReportData())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "StaffDiscount.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}==5]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="250" height="20" uuid="30bfc795-1670-4c30-8e86-7f637dcf2ff9"/>
+				<subreportParameter name="displayHeading">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.isDisplayHeading()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="noOfRecords">
+					<subreportParameterExpression><![CDATA[$P{storeNoOfRecords}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totRecords">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.getReportData()==null?0:$F{leftSideTable}.getReportData().size()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$F{leftSideTable}.getMsg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{leftSideTable}.getReportData())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "PriceInquiry.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="305" y="0" width="250" height="20" uuid="89ed83bf-486a-4081-8665-6631bc503002"/>
+				<subreportParameter name="noOfRecords">
+					<subreportParameterExpression><![CDATA[$P{storeNoOfRecords}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="displayHeading">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.isDisplayHeading()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totRecords">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.getReportData()==null?0:$F{rightSideTable}.getReportData().size()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$F{rightSideTable}.getMsg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{rightSideTable}.getReportData())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OneCard.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}==6]]></printWhenExpression>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement key="textFieldDynaPage" x="455" y="0" width="100" height="20" uuid="88b01ea9-09e6-4e12-a364-bf4914690ebd"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+			</textField>
+			<textField>
+				<reportElement x="45" y="8" width="289" height="12" uuid="1d660d7a-2f22-4d31-a9a1-be25df4b9d8c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="8" width="45" height="12" uuid="2defe84d-f056-47d5-9325-8d4db2ae7f29"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

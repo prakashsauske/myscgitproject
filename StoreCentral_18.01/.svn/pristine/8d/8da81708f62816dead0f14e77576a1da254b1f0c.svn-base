@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OperatorHistory" language="groovy" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="04aa4db1-4376-4777-90ac-7e8768acc8a1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<scriptlet name="MYSCRIPTLET" class="au.com.woolworths.portal.reports.ScriptletUtil"/>
+	<parameter name="FromDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["01/12/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ToDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["02/02/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="StoreNo" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="StoreName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Test Store 1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="calendarDayTo" class="java.lang.String">
+		<defaultValueExpression><![CDATA["01/12/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cashierSignInTime" class="java.lang.String">
+		<defaultValueExpression><![CDATA["02/02/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="calendarDayToEnd" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cashierSignOutTime" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Test Store 1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="posNumber" class="java.lang.String">
+		<defaultValueExpression><![CDATA["01/12/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cashierName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["02/02/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="startEndTrans" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="msg" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="calendarDayFrom" class="java.lang.String">
+		<fieldDescription><![CDATA[calendarDayFrom]]></fieldDescription>
+	</field>
+	<field name="calendarDayTo" class="java.lang.String">
+		<fieldDescription><![CDATA[calendarDayTo]]></fieldDescription>
+	</field>
+	<field name="cashierFirstName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierFirstName]]></fieldDescription>
+	</field>
+	<field name="cashierLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierLastName]]></fieldDescription>
+	</field>
+	<field name="cashierNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierNumber]]></fieldDescription>
+	</field>
+	<field name="cashierSignInTime" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierSignInTime]]></fieldDescription>
+	</field>
+	<field name="cashierSignOffType" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierSignOffType]]></fieldDescription>
+	</field>
+	<field name="cashierSignOutTime" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierSignOutTime]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="endOfTransaction" class="java.lang.String">
+		<fieldDescription><![CDATA[endOfTransaction]]></fieldDescription>
+	</field>
+	<field name="noDataFound" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFound]]></fieldDescription>
+	</field>
+	<field name="posNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[posNumber]]></fieldDescription>
+	</field>
+	<field name="startOfTransaction" class="java.lang.String">
+		<fieldDescription><![CDATA[startOfTransaction]]></fieldDescription>
+	</field>
+	<variable name="startDateFmt" class="java.lang.String">
+		<variableExpression><![CDATA[$F{calendarDayTo}!=null?new SimpleDateFormat("dd/MM/yyyy").format(new Date(Long.parseLong($F{calendarDayTo}.replaceAll("\\D+","")))):null]]></variableExpression>
+	</variable>
+	<variable name="startTime" class="java.lang.String">
+		<variableExpression><![CDATA[($F{cashierSignInTime}!=null && !"#".equals($F{cashierSignInTime}))?new StringBuilder(new DecimalFormat("00':'0000").format(Integer.parseInt($F{cashierSignInTime})).substring(0,5)).insert(2,':').substring(0,5):("#".equals($F{cashierSignInTime})?"#":null)]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="endDateFmt" class="java.lang.String">
+		<variableExpression><![CDATA[$F{calendarDayTo}!=null?new SimpleDateFormat("dd/MM/yyyy").format(new Date(Long.parseLong($F{calendarDayTo}.replaceAll("\\D+","")))):null]]></variableExpression>
+	</variable>
+	<variable name="endTime" class="java.lang.String">
+		<variableExpression><![CDATA[($F{cashierSignOutTime}!=null && !"#".equals($F{cashierSignOutTime}))?new StringBuilder(new DecimalFormat("000000").format(Integer.parseInt($F{cashierSignOutTime})).substring(0,5)).insert(2,':').substring(0,5):("#".equals($F{cashierSignOutTime})?"#":null)]]></variableExpression>
+	</variable>
+	<variable name="cashierName" class="java.lang.String">
+		<variableExpression><![CDATA[($F{cashierFirstName}==null?"":$F{cashierFirstName}+" ")+($F{cashierLastName}==null?"":$F{cashierLastName})]]></variableExpression>
+	</variable>
+	<variable name="transNoRange" class="java.lang.String">
+		<variableExpression><![CDATA[($F{startOfTransaction}!=null?$F{startOfTransaction}+" - ":"")+($F{endOfTransaction}!=null?$F{endOfTransaction}:"")]]></variableExpression>
+	</variable>
+	<variable name="evalFilterVars" class="java.lang.Boolean">
+		<variableExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.containsCaseInsensitiveVarArgs(
+    $V{startDateFmt}, $P{calendarDayTo},
+$V{startTime}, $P{cashierSignInTime},
+$V{endDateFmt}, $P{calendarDayToEnd},
+$V{endTime}, $P{cashierSignOutTime},
+$F{posNumber}, $P{posNumber},
+$V{cashierName}, $P{cashierName},
+$V{transNoRange}, $P{startEndTrans}
+)]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Prevent"/>
+	</background>
+	<pageHeader>
+		<band height="73" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="0" width="286" height="20" uuid="a2445476-f141-4e3f-ba35-d6237e92614c"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Operator and Location History Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="21" width="286" height="15" uuid="b53c94ac-2851-4dd6-b64a-46b585f4cbf4"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="37" width="286" height="15" uuid="60de1451-8b21-45ed-9e4d-29ad24a12eda"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reported for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="53" width="286" height="15" uuid="e6f4a9e2-cc8b-4d22-aaf6-e9b0b0bbd1a9"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["From Date: "+$P{FromDate}+"  |  To Date: "+ $P{ToDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="351" height="20" uuid="8973c37e-be46-4fbf-ac3a-dfd5117f11ab"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Prevent">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="30" uuid="07238cbc-2d48-4117-b95b-1bf7b881adec"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="50" height="30" backcolor="#FFFFFF" uuid="663d49bf-ae0f-4d7a-b1a7-6ee0b9ecea23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Start Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="83" y="0" width="50" height="30" backcolor="#FFFFFF" uuid="7189928c-a577-4f18-b7f4-f7d9f73b181d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Start Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="166" y="0" width="50" height="30" backcolor="#FFFFFF" uuid="df72196f-9d0a-4729-94a3-93268afe7f81"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[End Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="249" y="0" width="50" height="30" backcolor="#FFFFFF" uuid="09626e9f-1f1d-49a9-a14d-8e862e3f58f0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[End Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="332" y="0" width="50" height="30" backcolor="#FFFFFF" uuid="2a3e5657-4ff0-4c5a-a1d8-b493376cb8bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[POS ID #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="415" y="0" width="159" height="30" backcolor="#FFFFFF" uuid="a59d2d3e-a7c4-49db-aba3-90d82a4c289c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[POS Operator Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="610" y="0" width="192" height="30" backcolor="#FFFFFF" uuid="1b057871-bcbd-4cc8-9de1-c2ec8cff54be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transaction Number Range]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{evalFilterVars}]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="50" height="20" uuid="ed621031-db79-4682-804a-222d77d0e589"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{startDateFmt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="83" y="0" width="50" height="20" uuid="16c1ae37-8a8e-4b52-8241-850cbe3a8550"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{startTime}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="166" y="0" width="50" height="20" uuid="581b6b69-f293-4cd7-b66f-00f38976c57a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{endDateFmt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="249" y="0" width="50" height="20" uuid="fa69fc9f-23df-44a4-94c3-34c2bc76638c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{endTime}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="332" y="0" width="50" height="20" uuid="b74091eb-c7d1-4eb5-8135-9ef7569e1450"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{posNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="415" y="0" width="159" height="20" uuid="8ca8d006-4c6f-416a-84fe-92e59ea12102"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cashierName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="610" y="0" width="192" height="20" uuid="aeb0b8a4-f994-41cf-9494-9351eadec68b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{transNoRange}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="17" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="5" width="43" height="12" uuid="c0269a55-6a95-4d2f-9d9c-165550437095"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="43" y="5" width="289" height="12" uuid="58483d84-fafd-43d7-93cf-01e8def4f4bd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="634" y="5" width="152" height="12" uuid="0b7d10f8-7ca6-4a02-b973-08922f3363f6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="5" width="16" height="12" uuid="f0e39257-d033-41e6-9de7-58397b2859f2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<noData>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="50" uuid="6f7fdd10-141f-4f3c-901c-b0b7776e5642"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.isNotNullNotEmptyNotWhiteSpace($P{msg})?$P{msg}:"Either no data found or Techincal Problem"]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

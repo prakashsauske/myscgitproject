@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="StoreCentral" default="generateear" basedir="." xmlns:props="antlib:org.apache.ant.props">
+	<typedef uri="antlib:org.apache.ant.props" resource="org/apache/ant/props/antlib.xml" classpath="antLib.jar"/>
+	<description>
+		Ant Simple Sample File
+	</description>
+	<!-- set global properties for this build -->
+	<propertyhelper>
+	  <props:nested />
+	</propertyhelper>
+	<!-- set properties  -->
+	<property file="build.dir.properties"/>
+	<!-- set ear file names for the input parameters passed -->
+	<property file="build.ear.conf.properties"/>
+	<property name="ant.build.javac.source" value="1.6"/>
+	<property name="ant.build.javac.target" value="1.6"/>
+	
+	<path id="project.classpath">
+		<pathelement location="${build}" />
+		<pathelement location="${lib}" />
+	</path>
+	<!-- create a property containing all .jar files, prefix lib/, and seperated with a space -->
+	<pathconvert property="libs.project" pathsep=" ">
+		<mapper>
+			<chainedmapper>
+				<!-- remove absolute path -->
+				<flattenmapper />
+				<!-- add lib/ prefix -->
+				<globmapper from="*" to="lib/*" />
+			</chainedmapper>
+		</mapper>
+		<path>
+			<!-- lib contains all jar files, in several subdirectories -->
+			<fileset dir="${lib}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+	</pathconvert>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create directories if needed -->
+		<mkdir dir="${src}" />
+		<!-- mkdir dir="${test}" / -->
+		<mkdir dir="${dist}" />
+		<!-- <mkdir dir="${reportsbin}" /> -->
+		<mkdir dir="${build}" />
+	</target>
+	<path id="lib.path.ref">
+		<fileset dir="${wslib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	<path id="master-classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement location="${build}" />
+	</path>
+	<target name="jaspercompile" depends="compile">
+	      <taskdef name="jrc"
+	         classname="net.sf.jasperreports.ant.JRAntCompileTask">
+	         <classpath refid="master-classpath" />
+	      </taskdef>
+	      <jrc destdir="${build}">
+	         <src>
+	            <fileset dir="${reportssrc}">
+	            <include name="*.jrxml" />
+	            </fileset>
+	         </src>
+	         <classpath refid="master-classpath" />
+	      </jrc>
+	</target>
+
+	<target name="compile" depends="clean,init" description="compile the source ">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac includeantruntime="false" srcdir="${src}" destdir="${build}" encoding="iso-8859-1" debug="on">
+			<compilerarg value="-Xbootclasspath/p:${toString:lib.path.ref}" />
+			<!-- Copy files from ${src} into ${build} -->
+			<classpath refid="master-classpath" />
+		</javac>
+		<copy todir="${build}">
+			<fileset dir="${src}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compiletest" depends="jaspercompile" description="compile the tests ">
+		<javac includeantruntime="false" debug="true" srcdir="${test}" destdir="${build}" classpathref="project.classpath" encoding="iso-8859-1" />
+	</target>
+
+	<target name="dist" depends="jaspercompile" description="generate the distribution">
+		<!-- Create the distribution directory -->
+
+		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+		<war destfile="${dist}/${ear.name}.war" webxml="${webinf}/web.xml">
+			<zipfileset dir="WebContent/images" includes="**/*.*" prefix="images" />
+			<zipfileset dir="WebContent/scripts" includes="**/*.*" prefix="scripts" />
+			<zipfileset dir="WebContent/sounds" includes="**/*.*" prefix="sounds" />
+			<zipfileset dir="WebContent/styles" includes="**/*.*" prefix="styles" />
+			<zipfileset dir="WebContent/wsdl" includes="**/*.*" prefix="wsdl" />
+			<zipfileset dir="WebContent/jasperreports" includes="**/*.*" prefix="jasperreports" />
+			<fileset dir="WebContent" includes="**/login.jsp" />
+
+
+			<webinf dir="${webinf}" includes="**/applicationContext.xml">
+			</webinf>
+			<webinf dir="${webinf}" includes="**/mvcDispatcher-servlet.xml">
+			</webinf>
+			<webinf dir="${webinf}" includes="**/server-config.wsdd">
+			</webinf>
+			<webinf dir="${webinf}" includes="**/jboss-deployment-structure.xml">
+			</webinf>
+			<zipfileset dir="${webinf}/error-pages" includes="**/*.*" prefix="WEB-INF/error-pages" />
+			<zipfileset dir="${webinf}/LoginServiceImplService" includes="**/*.*" prefix="WEB-INF/LoginServiceImplService" />
+			<zipfileset dir="${webinf}/pages" includes="**/*.*" prefix="WEB-INF/pages" />
+
+			<lib dir="${lib}">
+				<include name="*.jar" />
+			</lib>
+			<classes dir="${build}" />
+
+		</war>
+	    <jar destfile="${dist}/${ear.name}.ear">
+	      <fileset dir="${dist}" includes="${ear.name}.war"/>
+	    </jar>
+		<!-- <copy file="${dist}/${jarname}-${DSTAMP}.jar" tofile="./${jarname}.jar"
+			overwrite="true" /> -->
+	</target>
+
+	<target name="generateear" depends="getearfilename">
+		<echo>EAR ${ear.name}.ear generated</echo>
+	</target>
+	<target name="acceptinput">
+		<echo>Refer build.ear.conf.properties file in the root directory of the application repository for ear build details</echo>
+		<echo>1 For ${project.1}</echo>
+		<echo>2 For ${project.2}</echo>
+		<echo>3 For ${project.3}</echo>
+		<echo>4 For ${project.4}</echo>
+		<!--<input message="choose the appropriate value to build" addproperty="project-choice" validargs="1,2,3" />-->
+		<fail unless="project-choice" message="Usage : ant -Dproject-choice={application configured code}, for Ex. ant -Dproject-choice=1"/>
+		<property name="ear.name" value="${project.${project-choice}}"/>
+		<echo>Generating ear file for the application ${ear.name}....</echo>
+	</target>
+	<target name="getearfilename" depends="acceptinput,dist">
+		<echo>ear name ${ear.name} generated.</echo>
+	</target>
+	<!-- Run application -->
+	<target name="run">
+		<java jar="${jar.dir}/${app.name}-${app.version}.jar" fork="true">
+		</java>
+	</target>
+
+	<target name="clean" description="clean up">
+		<delete dir="${dist}" />
+		<delete includeEmptyDirs="true">
+		    <fileset dir="${build}" includes="**/au/"/>
+		    <fileset dir="${build}" includes="**/prop/"/>
+		    <fileset dir="${build}" includes="**/*.*"/>
+		    <!-- <fileset dir="${reportsbin}" includes="**/*.*"/> -->
+		</delete>
+	</target>
+</project>

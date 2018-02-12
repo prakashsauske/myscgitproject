@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StorePerformanceRpt" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="3c4d8f67-c705-404d-a868-c8bdae095ff0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<scriptlet name="MYSCRIPTLET" class="au.com.woolworths.portal.pos.model.StorePerformanceScriptlet"/>
+	<parameter name="dateFrom" class="java.lang.String"/>
+	<parameter name="fromTime" class="java.lang.String"/>
+	<parameter name="dateTo" class="java.lang.String"/>
+	<parameter name="toTime" class="java.lang.String"/>
+	<parameter name="storeNo" class="java.lang.String"/>
+	<parameter name="storeName" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="activePOSTerminal" class="java.lang.String">
+		<fieldDescription><![CDATA[activePOSTerminal]]></fieldDescription>
+	</field>
+	<field name="activePOSTerminalFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[activePOSTerminalFormatted]]></fieldDescription>
+	</field>
+	<field name="articlesScannedPerRegPerMin" class="java.lang.String">
+		<fieldDescription><![CDATA[articlesScannedPerRegPerMin]]></fieldDescription>
+	</field>
+	<field name="calendarDay" class="java.util.Date">
+		<fieldDescription><![CDATA[calendarDay]]></fieldDescription>
+	</field>
+	<field name="calendarDayFrom" class="java.lang.String">
+		<fieldDescription><![CDATA[calendarDayFrom]]></fieldDescription>
+	</field>
+	<field name="calendarDayTo" class="java.lang.String">
+		<fieldDescription><![CDATA[calendarDayTo]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="idleTimeFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[idleTimeFormatted]]></fieldDescription>
+	</field>
+	<field name="itemScannedCount" class="java.lang.String">
+		<fieldDescription><![CDATA[itemScannedCount]]></fieldDescription>
+	</field>
+	<field name="noDataFound" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFound]]></fieldDescription>
+	</field>
+	<field name="salesRetailincT" class="java.lang.String">
+		<fieldDescription><![CDATA[salesRetailincT]]></fieldDescription>
+	</field>
+	<field name="sercureTimeFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[sercureTimeFormatted]]></fieldDescription>
+	</field>
+	<field name="tValue" class="java.lang.String">
+		<fieldDescription><![CDATA[tValue]]></fieldDescription>
+	</field>
+	<field name="tenderP_CustFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[tenderP_CustFormatted]]></fieldDescription>
+	</field>
+	<field name="timeField" class="java.lang.String">
+		<fieldDescription><![CDATA[timeField]]></fieldDescription>
+	</field>
+	<field name="transCount" class="java.lang.String">
+		<fieldDescription><![CDATA[transCount]]></fieldDescription>
+	</field>
+	<variable name="time" class="java.lang.String">
+		<variableExpression><![CDATA[$F{timeField}==null||"#".equals($F{timeField})?"0000-0000":new DecimalFormat("00").format(Integer.parseInt($F{timeField}))+"00-"+new DecimalFormat("00").format(Integer.parseInt($F{timeField})+1)+"00"]]></variableExpression>
+	</variable>
+	<variable name="noOfActivePos" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{activePOSTerminal}==null?"0.0":$F{activePOSTerminal})]]></variableExpression>
+	</variable>
+	<variable name="totalValue" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{salesRetailincT}==null?"0.0":$F{salesRetailincT})]]></variableExpression>
+	</variable>
+	<variable name="articlePerMin" class="java.lang.String">
+		<variableExpression><![CDATA[new DecimalFormat("###0.00").format(new Double($F{articlesScannedPerRegPerMin}==null?"0.0":$F{articlesScannedPerRegPerMin}))]]></variableExpression>
+	</variable>
+	<variable name="trans" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{transCount}==null?"0.0":$F{transCount})]]></variableExpression>
+	</variable>
+	<variable name="articles" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{itemScannedCount}==null?"0.0":$F{itemScannedCount})]]></variableExpression>
+	</variable>
+	<variable name="aggrTotalValue" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{salesRetailincT}==null?"0.0":$F{salesRetailincT})]]></variableExpression>
+	</variable>
+	<variable name="aggrArticlePerMin" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($V{articlePerMin}==null?"0.0":$V{articlePerMin})]]></variableExpression>
+	</variable>
+	<variable name="aggrTrans" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{transCount}==null?"0.0":$F{transCount})]]></variableExpression>
+	</variable>
+	<variable name="aggrArticles" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{itemScannedCount}==null?"0.0":$F{itemScannedCount})]]></variableExpression>
+	</variable>
+	<variable name="avgTransPriceCalc" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{trans}==null||$V{trans}==0.0?0.0:($V{totalValue}/$V{trans}))]]></variableExpression>
+	</variable>
+	<variable name="avgPriceCalc" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{articles}==null||$V{articles}==0.0?0.0:($V{totalValue}/$V{articles}))]]></variableExpression>
+	</variable>
+	<variable name="aggrAvgTrans" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{aggrTrans}==null||$V{aggrTrans}==0.0?0.0:($V{aggrTotalValue}/$V{aggrTrans}))]]></variableExpression>
+	</variable>
+	<variable name="aggrAvgPrice" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{aggrArticles}==null||$V{aggrArticles}==0.0?0.0:($V{aggrTotalValue}/$V{aggrArticles}))]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<textField>
+				<reportElement x="520" y="0" width="282" height="20" uuid="5fd528ec-167e-41bb-b3ba-9800e4902c53"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{storeNo}+"  |  "+$P{storeName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="448" height="20" uuid="1b9568bf-6e12-480c-87a6-ade31c6ce0b5"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Store Performance Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="37" width="448" height="15" uuid="c0a82e73-856d-4415-8e30-6761e21fb1c5"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reported for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="53" width="448" height="15" uuid="3020819e-07ef-4969-ab25-8c21d256dbde"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["From Date: "+$P{dateFrom} +" "+$P{fromTime}+"  |  To Date: "+ $P{dateTo}+" "+$P{toTime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="21" width="448" height="15" uuid="fd5b6622-77ce-4e36-bd93-10fc711b6a9f"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="12" uuid="b0dca3a7-013b-47c5-bdf3-8f81a20e33ce"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement x="61" y="0" width="236" height="12" uuid="348eb1aa-2d7b-4701-9053-5d830f3adae1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="0" width="192" height="12" uuid="0325e804-78fb-42c4-b5ce-0aafaf16e4e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Performance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="523" y="0" width="279" height="12" uuid="4e4268b1-7873-4091-a3db-b334c6811074"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Counts]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="0" y="12" width="802" height="20" uuid="c5c92455-9247-4cf8-aace-c3d42eb471b1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="12" width="44" height="20" uuid="1f114230-b3b2-44a8-a90b-e25735d4a87b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="12" width="54" height="20" uuid="cc107203-7763-46da-aa6d-4bd31b5e3c2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[# of Active POS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="12" width="74" height="20" uuid="d6e42ea6-6c8b-4eef-a7ae-304ec8f10545"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total
+Value ($)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="12" width="74" height="20" uuid="a91654e9-5c93-4534-8bef-4f058834167e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Avg.
+Transaction ($)***]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="12" width="68" height="20" uuid="0ebf2b2d-98c0-40a6-915a-c57f39f17b8f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Articles
+P/Reg. P/min ***]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="12" width="45" height="20" uuid="2f6888b4-15c4-47fd-a2e7-66fc0c1229ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tender
+P/Cust ***]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="461" y="12" width="45" height="20" uuid="928c325a-0cf2-4ccf-80ed-4463ec2387fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Idle
+P/Cust ***]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="523" y="12" width="45" height="20" uuid="a59468e4-8ac0-4553-800c-25117a8422c1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Secure]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="585" y="12" width="55" height="20" uuid="4637b540-5a5f-4f65-a007-21c27c8e02d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transaction *]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="657" y="12" width="51" height="20" uuid="76899b3f-2312-4303-b292-6c8830ab23cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Articles **]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="734" y="12" width="68" height="20" uuid="03dd16f5-98f0-4cdd-959c-ead46d8d52a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Avg.
+Price ***]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="44" height="20" uuid="b0ae6c02-c161-4a74-b6d1-3520fb2e637d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{time}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement x="61" y="0" width="54" height="20" uuid="3f876851-efdb-49ef-8642-f383a20de090"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{noOfActivePos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="132" y="0" width="74" height="20" uuid="3b1cf0cd-2f48-4d9a-a25b-a85a27f62d6e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalValue}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="223" y="0" width="74" height="20" uuid="e2c1f3fd-12f2-44c7-9681-48b5100b25ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{avgTransPriceCalc}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="314" y="0" width="68" height="20" uuid="6d2d54cf-3f25-41f3-ab46-1d6e8839ea3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{articlePerMin}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="399" y="0" width="45" height="20" uuid="c7891b12-e22a-40ae-b5ed-0a7302569e1a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenderP_CustFormatted}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="461" y="0" width="45" height="20" uuid="33b18d32-c3b2-45f0-b6d2-a27b2547042d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idleTimeFormatted}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="523" y="0" width="45" height="20" uuid="5e5e9a9a-a933-457d-81f6-04eecf37c6e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sercureTimeFormatted}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement x="585" y="0" width="55" height="20" uuid="607b3a56-99fa-4d87-8acd-225b62019fa4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{trans}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement x="657" y="0" width="51" height="20" uuid="6adc6f6d-937f-45ef-af3f-19b39a5d80fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{articles}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="734" y="0" width="68" height="20" uuid="f399a62d-cdb6-4a01-9501-2ed1bb5e91c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{avgPriceCalc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="57" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="12" uuid="a317ca98-7073-41dc-b339-2710d71d8b76"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="0" width="44" height="12" uuid="1b88a83e-026a-4bd4-ab92-d98b7bfbb090"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="399" y="0" width="45" height="12" uuid="6a8865f4-d4ec-4f8f-ae33-af2ac0c08825"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.getSumTenderPerCust()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="461" y="0" width="45" height="12" uuid="df5ecf8b-ec2b-4e46-98ca-58dfa0030341"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.getSumIdlePerCust()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="523" y="0" width="45" height="12" uuid="71e8a19e-3f85-4d48-b341-dba83425b985"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.getSumTotalSecure()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="132" y="0" width="74" height="12" uuid="fdff5312-970a-4197-9b39-b988d6b410bd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{aggrTotalValue}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="223" y="0" width="74" height="12" uuid="6dee0c04-ae9a-485b-b27f-eeca907b6b13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{aggrAvgTrans}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="314" y="0" width="68" height="12" uuid="db65b31c-092a-4de1-9367-fa454aaa3528"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{aggrArticlePerMin}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0" isBlankWhenNull="true">
+				<reportElement x="585" y="0" width="55" height="12" uuid="47354287-d1e7-4a67-812a-e6e56987134b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{aggrTrans}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0" isBlankWhenNull="true">
+				<reportElement x="657" y="0" width="51" height="12" uuid="5dcd0ae5-30f9-465c-946d-4423b371d112"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{aggrArticles}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="734" y="0" width="68" height="12" uuid="854f6159-6a90-455b-b3ad-2e52a964215d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{aggrAvgPrice}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="15" width="289" height="12" uuid="15fc5846-c6bd-47ac-a50a-b7546f954e0a"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[* INCLUDES VOIDED TRANSACTIONS.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="393" height="12" uuid="527f06c1-fbda-4549-b5dd-28d35aa61d09"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[** INCLUDES VOIDED, SUBTRACTED AND CANCELLED ARTICLES.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="45" width="289" height="12" uuid="d39702b7-e727-4f15-86b0-6f22900b1b5f"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[*** Average is reflective of the activity within the specific time period.
+]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13">
+			<staticText>
+				<reportElement x="0" y="1" width="47" height="12" uuid="a8269b18-ea07-4e53-a3dd-0d192f2d1037"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="47" y="1" width="289" height="12" uuid="fa29468f-2f51-41a8-bf48-2293189e0dff"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="1" width="16" height="12" uuid="a57f1508-6dd1-474c-81e0-58aa76583e41"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="1" width="80" height="12" uuid="c321b182-b03b-48e9-a107-b6e51c0d9565"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

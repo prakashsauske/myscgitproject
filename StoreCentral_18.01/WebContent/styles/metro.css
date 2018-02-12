@@ -1,0 +1,881 @@
+h2 {
+	color: #00501F; /*color change*/
+}
+
+h3 {
+	color: #00501F; /*color change*/
+}
+
+a.moreNumber,.ui-widget-content a {
+	color: #009A3D;
+}
+
+h4 {
+	color: #292929;
+}
+
+h4 .searchString {
+	color: #00501f; /*color change*/
+}
+
+.headWrapper .header .logoWrapper .logoImg{
+	width: 310px;
+	height: 65px;
+	background: url(../images/metro/logo.jpg) 20px 0px no-repeat;	
+	background-size:55%;
+}
+
+.headWrapper .header .globalLinksWrapper .globalLinkAccountName {
+	background-image: url(../images/metro/profileArrowDown.png);
+	color: #009a3d;
+}
+
+.headWrapper .header .globalLinksWrapper .store {
+	background-color: #f4f4f4;
+	border: solid 1px #ececec;
+}
+
+.headWrapper .header .globalLinksWrapper .ui-state-active {
+	background-color: #43b248;
+	color: #fff;
+	background-image: url(../images/metro/profileArrowUp.png);
+}
+
+.userProfile .ui-menu ul {
+	border: solid 1px #c8f369;
+}
+
+.userProfile .ui-menu ul.ui-menu li {
+	border-bottom: solid 1px #c8f369;
+}
+
+.userProfile .ui-menu ul.ui-menu li:hover {
+	background: #f6fde7;
+}
+
+.userProfile .ui-menu ul.ui-menu li:hover a {
+	color: #494949;
+}
+
+.userProfile .ui-menu ul.ui-menu li a {
+	color: #079950;
+}
+
+.headWrapper{
+	background:#fff url(../images/metro/headerBg.gif) left top repeat-x;
+}
+
+.headWrapper .navWrapper{
+	/*background:#3b3b3b url(../images/navBg.gif) left top repeat-x; full screen */
+	color: #77c250; 	
+}
+
+.headWrapper  .breadcrumbWrapper {
+	background-color: #d3d3d3;
+}
+
+.headWrapper  .breadcrumbWrapper .breadcrumbs {
+	color: #2d2d2d;
+}
+
+.breadcrumbWrapper .breadcrumbs ul li {
+	background: url(../images/breadcrumbArrow.gif) right 2px no-repeat;
+}
+
+.breadcrumbWrapper .breadcrumbs ul li a {
+	color: #2d2d2d;
+}
+
+	.breadcrumbWrapper .breadcrumbs ul li.cursor-pointer:hover{
+		color:#619d1c;
+	}
+	
+.breadcrumbWrapper .breadcrumbs ul li a:hover {
+	color: #619d1c;
+}
+
+.articleHead {
+	background-color: #f6fde7; /* edit */
+	border: solid 1px #C8F369; /*  77c250 - for lighter theme */
+}
+
+.articleHead .articleHeaderWrapper .articleTitle,.ui-tabs-vertical .ui-tabs-panel .sectionTitle
+	{
+	color: #00501f;
+}
+
+.articleHead .articleHeaderWrapper .articleTitle span {
+	color: #088D3C;
+}
+
+.articleHead .articleHeaderWrapper p {
+	color: #00501f;
+}
+
+.articleDate {
+	color: #088d3c;
+}
+
+/* Page title */
+.pageTitleWrapper h2.pageTitle {
+	color: #00501F;
+}
+
+.actionBtn,.secondaryActionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.actionBtn,.wizardContent .jw-buttons .actionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn,.selectDropdown .dropdown li:hover label.actionBtn
+	{
+	background: #1a9f49;
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#51b848),
+		to(#119a49) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #51b848, #119a49);
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #51b848, #119a49);
+	border: solid 1px #1a9f49;
+	color: #fff;
+}
+
+.actionBtn:hover,.wizardContent .jw-buttons .actionBtn:hover,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.actionBtn:hover,.selectDropdown .dropdown li label.actionBtn:hover
+	{
+	background: #1a9f49;
+}
+
+.secondaryActionBtn,.wizardContent .jw-buttons .secondaryActionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn,.selectDropdown .dropdown li:hover label.secondaryActionBtn
+	{
+	background: #999999;
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999),
+		to(#666666) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #999999, #666666);
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #999999, #666666);
+	border: solid 1px #666666;
+	color: #fff;
+}
+
+.secondaryActionBtn:hover,.wizardContent .jw-buttons .secondaryActionBtn:hover,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn:hover,.selectDropdown .dropdown li label.secondaryActionBtn:hover
+	{
+	background: #666666;
+}
+
+.selectDropdown.buttonMenu .actionBtn {
+	background: #1a9f49;
+	/* Safari 4-5, Chrome 1-9 */
+	background-image: url("../images/iconButtonActions.png"),
+		-webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999), to(#666666) );
+	/* Safari 5.1, Chrome 10+ */
+	background-image: url("../images/iconButtonActions.png"),
+		-webkit-linear-gradient(top, #51b848, #119a49);
+	/* Firefox 3.6+ */
+	background-image: url("../images/iconButtonActions.png"),
+		-moz-linear-gradient(top, #51b848, #119a49);
+	background-position: 90% center;
+	background-repeat: no-repeat;
+	padding-right: 30px;
+}
+
+.selectDropdown.buttonMenu .actionBtn :hover {
+	
+}
+
+.contentWrapper .articleContent,.contentWrapper .detailsSections .articleHead
+	{
+	background-color: #f9f9f3; /* F9F9F3 - for lighter theme */
+	border: solid 1px #E3E2E1; /* d4cbc0 - for lighter theme */
+	border-top: none;
+}
+
+.contentWrapper .detailsSections .articleHead {
+	background: #fff;
+}
+
+.articleContentInner .articleDetails {
+	border: solid 1px #e0e0e0;
+}
+
+.articleContentInner .articleInfoTop {
+	background: #464d57;
+}
+
+.articleContentInner .articleInfoBottom {
+	background: #464d57;
+}
+
+.articleContentInner .articleInfo {
+	background: #464d57;
+}
+
+.articleContentInner .articleDetails tr th,.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.subTitle
+	{
+	background: #c0c5ca;
+	color: #2d2d2d;
+}
+
+.articleContentInner .articleDetails tr td {
+	border-bottom: solid 1px #f5f5f0;
+	color: #222222;
+}
+
+.articleContentInner .articleDetails tr th label.history {
+	color: #00501f;
+}
+
+span.summaryInfo {
+	color: #00501f;
+}
+
+.contentWrapper .articleAdditionalInfo h3 {
+	background: #efefef;
+}
+
+.contentWrapper .articleAdditionalInfo h3.ui-accordion-header-active {
+	background: #f6fde7;
+	border: solid 1px #C8F369; /* 77C250 - Lighter theme */
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li,.popupWrapper  .ui-widget-content .ui-tabs-nav li
+	{
+	background: #EFEFEF;
+	border: solid 1px #EDEDED;
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li:hover,.popupWrapper  .ui-widget-content .ui-tabs-nav li:hover
+	{
+	background: #F6FDE7;
+	border: 1px solid #C8F369;
+}
+
+.contentWrapper  .ui-widget-content li.ui-tabs-active,.contentWrapper  .ui-widget-content li.ui-tabs-active:hover
+	{
+	background: #1a9f49;
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#51b848),
+		to(#119a49) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #51b848, #119a49);
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #51b848, #119a49);
+	border: solid 1px #1a9f49;
+	color: white;
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li a {
+	color: #00501F;
+}
+
+.contentWrapper  .ui-tabs .ui-tabs-nav,.reportWrapper .ui-tabs .ui-widget-content .ui-tabs .ui-tabs-nav
+	{
+	border-color: #1A9F49;
+}
+
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td
+	{
+	border-right: 1px solid #F5F5F0;
+}
+
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.valueInfo,.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.columnDivider
+	{
+	border-right: 5px solid #F5F5F0
+}
+
+/* Style for Home page */
+.homeLinkTextDescription {
+	color: #646363;
+}
+
+.homeLinkText {
+	color: #00501F;
+}
+
+.homeContentWelcomeTitle {
+	color: #00501F;
+}
+
+.homeBorderHorz { /* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 20%, 80% 100%, from(#FFFFFF),
+		to(#D3D3C9) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #FFFFFF, #D3D3C9);
+	/* Firefox 3.6+ */
+	background-image: -moz-linear-gradient(left center, #FFFFFF 0%, #D3D3C9 20%, #D3D3C9 80%,
+		#FFFFFF 100%);
+}
+
+.reportsHome {
+	background: url("../images/metro/reports_icon.png") no-repeat
+		scroll center top transparent;
+}
+
+.ticketingHome {
+	background: url("../images/metro/ticketing_icon.png") no-repeat
+		scroll center top transparent;
+}
+/* included extra classes for mobile shortcuts defect no 6358*/
+.pricingHome,.pricing-home {
+	background: url("../images/metro/pricing_icon.png") no-repeat
+		scroll center top transparent;
+}
+
+.stockManagementHome,.stock-home {
+	background: url("../images/metro/stockManagement_icon.png")
+		no-repeat scroll center top transparent;
+}
+
+.iconlookupHome,.lookup-home {
+	background: url("../images/metro/iconlookup_icon.png") no-repeat
+		scroll center top transparent;
+}
+
+.ordersHome,.orders-home {
+	background: url("../images/metro/orders_icon.png") no-repeat scroll
+		center top transparent;
+}
+/* -------------------- */
+
+/* Styles for Lookup Page */
+.lookupWrapper {
+	background: #f6fde7 url(../images/shadowLookup.png) 0 1px no-repeat;
+	border: solid 1px #C8F369;
+	border-top: none;
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox {
+	border: 1px solid #D9D9D9;
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox input.inputDate {
+	background: url(../images/metro/iconCalendar.png) right 5px
+		no-repeat;
+	border-left: dotted 1px #C0C5CA;
+}
+
+.lookupWrapper .lookupParamWrapper .searchByOptions label {
+	color: #585858;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter label {
+	color: #585858;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter label.advancedSearch,.lookupWrapper .lookupParamWrapper .advancedParam .parameter label.newWindow
+	{
+	font-weight: normal;
+	color: #009A3D;
+}
+
+.advancedSearchFormatWrapper {
+	background: #f6fde7;
+	border: solid 1px #c8f369;
+	-webkit-box-shadow: 0 8px 6px -9px black;
+	-moz-box-shadow: 0 8px 6px -9px black;
+	box-shadow: 0 8px 6px -9px black;
+	border-top: 0 none;
+}
+
+/* -------------------- */
+input.inputDate {
+	background: #fff url(../images/metro/iconCalendar.png) 95% 4px
+		no-repeat;
+}
+
+input.inputTime {
+	background: #fff url(../images/metro/iconHistory.png) 95% 6px
+		no-repeat;
+}
+
+label.linkBtn,label.linkBtn a {
+	color: #009a3d;
+}
+
+label.linkBtn .advancedSearch {
+	background: url(../images/metro/iconAdvancedSearch.png) 0 2px
+		no-repeat;
+}
+
+.newWindow {
+	background: url(../images/metro/iconNewWindow.png) 0 center
+		no-repeat;
+}
+
+.newWindowAfter {
+	background: url(../images/metro/iconNewWindow.png) right center
+		no-repeat;
+}
+
+.newWindowDisPre {
+	background: url(../images/metro/iconDisPre.png) right center
+		no-repeat;
+}
+
+label.linkBtn .closeWindow {
+	background: url(../images/metro/iconCloseWindow.png) 0 3px
+		no-repeat;
+}
+
+label.linkBtn .unselect {
+	background: url(../images/metro/iconUnselectMulti.png) 0 3px
+		no-repeat;
+}
+
+label.selectItem {
+	background: url(../images/metro/iconArrowRight.png) right 2px
+		no-repeat;
+}
+
+label.addRow {
+	background: url(../images/metro/iconAdd.png) left 4px no-repeat;
+}
+
+label.filter {
+	background: url(../images/metro/iconFilter.png) left 2px no-repeat;
+}
+
+label.moreActions {
+	background: url(../images/metro/profileArrowDown.png) right center
+		no-repeat; /* img change*/
+}
+
+label.group {
+	background: url(../images/metro/iconGroupBy.png) left 2px no-repeat;
+}
+
+label.editRecord {
+	background: url(../images/metro/iconEditRow.png) center top
+		no-repeat;
+}
+
+label.deleteRecord {
+	background: url(../images/metro/iconDelete.png) center top
+		no-repeat;
+}
+
+label.saveRecord {
+	background: url(../images/metro/iconSave.png) center top no-repeat;
+}
+
+label.changePassword {
+	background: url(../images/metro/iconKey.png) center center
+		no-repeat;
+}
+
+label.deactivateUser {
+	background: url(../images/metro/iconDeactivateUser.png) center top
+		no-repeat;
+}
+
+label.history {
+	background: url(../images/metro/iconHistory.png) left top no-repeat;
+	color: #00501f;
+	margin-right: 10px;
+}
+label.blockingReason {
+	cursor: pointer;
+	background: url(../images/metro/block.png) left top no-repeat;
+	color: #00501f;
+	margin-right: 10px;
+	padding-left: 16px;
+}
+
+label.notpadLink {
+	background: url(../images/metro/iconPadTick.png) left top no-repeat;
+	color: #00501f;
+	margin-right: 10px;
+}
+
+label.notes {
+	background: url(../images/metro/iconNote.png) left top no-repeat;
+	color: #00501f;
+	margin-right: 10px;
+}
+
+label.offers {
+	background: url(../images/metro/iconTag.png) left top no-repeat;
+	color: #00501f;
+	margin-right: 10px;
+}
+
+a.navigate {
+	background: url(../images/metro/iconArrowRight.png) right center
+		no-repeat;
+	padding-right: 10px;
+	color: #009A3D;
+}
+
+.bookmark {
+	background: url(../images/metro/iconBookmark.png) left 1px
+		no-repeat;
+}
+
+.formWrapper .parameter label.advancedSearch {
+	color: #009A3D;
+}
+
+table.treetable tr.collapsed span.indenter a {
+	background-image: url("../images/metro/iconExpandNode.png");
+}
+
+table.treetable tr.expanded span.indenter a {
+	background-image: url("../images/metro/iconCollapseNode.png");
+}
+
+table.treetable tr.selected { /*background-color: #3875D7;*/ /* blue*/
+	
+}
+
+table.treetable tr.collapsed.selected span.indenter a {
+	background-image: url("../images/metro/iconExpandNode.png");
+}
+
+table.treetable tr.expanded.selected span.indenter a {
+	background-image: url("../images/metro/iconCollapseNode.png");
+}
+
+table.treetable tr.accept { /*background-color: #A3BCE4;*/ /*blue*/
+	
+}
+
+table.treetable tr.collapsed.accept td span.indenter a {
+	background-image: url("../images/metro/iconExpandNode.png");
+}
+
+table.treetable tr.expanded.accept td span.indenter a {
+	background-image: url("../images/metro/iconCollapseNode.png");
+}
+
+.ContentTableWrapper .treetable tr td {
+	color: #222222;
+}
+
+table.drilldownTable  tr.expanded td,table.drilldownTable  tr.defaultExpanded td,.ContentTableWrapper .ContentTable tr td.rowSection.rowHighlight
+	{
+	background-color: #F6FDE7 !important;
+	color: #00501F !important;
+}
+
+table.drilldownTable  tr.expanded td a.navigate,table.drilldownTable  tr.defaultExpanded td a.navigate,.ContentTableWrapper .ContentTable tr td.rowSection.rowHighlight a.navigate
+	{
+	color: #00501F;
+}
+
+.ContentTableWrapper .treetable tr.expanded>td,.ContentTableWrapper .treetable tr.defaultExpanded>td
+	{
+	border-top: solid 3px #77C250;
+}
+
+table.drilldownTable tr.collapsed span.indenter a,table.drilldownTable th span.indenter a.expandAll
+	{
+	background-image: url("../images/metro/iconOpenAccordion.png");
+}
+
+table.drilldownTable tr.expanded span.indenter a,table.drilldownTable th span.indenter a.collapseAll
+	{
+	background-image: url("../images/metro/iconCloseAccordion.png");
+}
+
+.formWrapper .parameter label {
+	color: #222222;
+}
+
+/*CheckBox dropdown*/
+.selectDropdown .dropdown li label {
+	border-bottom: 1px solid #C8F369;
+}
+
+/* Hover state */
+.selectDropdown .dropdown li:hover label {
+	background: #f6fde7;
+}
+
+/* Style for popups */
+.popupWrapper {
+	border: 1px solid #1a9f49;
+}
+
+.popupWrapper .ui-dialog-titlebar {
+	background: #1a9f49;
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#51b848),
+		to(#119a49) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #51b848, #119a49);
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #51b848, #119a49);
+}
+
+.popupWrapper  .ui-dialog-content .popupContent .popupActionsWrapper {
+	background: #F6FDE7;
+	border-top: dotted 1px #1A9F49;
+}
+
+/* Style for Date picker */
+.ui-datepicker {
+	border: solid 1px #1a9f49;
+}
+
+.ui-datepicker .ui-datepicker-header,.ui-timepicker .ui-timepicker-title,.ui-timepicker .ui-timepicker-hour-cell .ui-state-active,.ui-timepicker .ui-timepicker-minute-cell .ui-state-active,.ui-datepicker .ui-datepicker-current-day .ui-state-active
+	{ /* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4eb748),
+		to(#149c49) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #4eb748, #149c49);
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #4eb748, #149c49);
+	border: solid 1px #1a9f49;
+}
+
+.ui-datepicker th,.ui-timepicker th {
+	color: #00501F;
+}
+
+.ui-timepicker .ui-timepicker-hour-cell .ui-state-active,.ui-timepicker .ui-timepicker-minute-cell .ui-state-active,.ui-datepicker .ui-datepicker-current-day .ui-state-active
+	{
+	color: #fff;
+}
+
+/* Nav Bar css manipulation */
+.sf-menu li a:hover {
+	background-color: #393939;
+	color: #fff;
+}
+
+/**** Selected Menu ***/
+.sf-menu li.selectedMenu {
+	border-top: solid 5px #77c250;
+}
+
+.active-bar,.selected-menu {
+	background: #77c250;
+}
+
+.text-color {
+	color: #fff;
+}
+
+.text-color a {
+	color: #77c250;
+}
+
+.sf-menu li {
+	background-image: url(../images/metro/mainNavDivider.gif);
+	color: #6bbc53;
+}
+
+.sf-menu ul li {
+	background: #393939;
+}
+
+.sf-menu li.home a {
+	background-image: url(../images/metro/homeIcon.png);
+	background-position: 18px 19px;
+	background-repeat: no-repeat;
+}
+
+.reportBtmBrdr {
+	border-bottom: 1px solid #4e4e4e;
+}
+
+.innermenu li a:hover {
+	background-color: #77c250;
+	color: #00501f;
+}
+
+/* styling for both css and generated arrows */
+.sf-arrows .sf-with-ul:after {
+	border-top-color: #dFeEFF;
+	/* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255, 255, 255, .5);
+}
+
+.footer .policyInfo a:hover {
+	color: #619d1c;
+}
+
+/* JqueryUI css manipulation */
+.contentWrapper .articleAdditionalInfo h3.ui-accordion-header-active {
+	background: #F6FDE7;
+	border-color: #C8F369;
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li:hover {
+	background: #F6FDE7;
+	border-color: #C8F369;
+}
+
+.contentWrapper  .ui-widget-content li.ui-tabs-active,.popupWrapper  .ui-widget-content li.ui-tabs-active,.contentWrapper  .ui-widget-content li.ui-tabs-active:hover,.popupWrapper  .ui-widget-content li.ui-tabs-active:hover,.popupWrapper .ui-dialog-titlebar,.contentWrapper  .sectionTabs.ui-tabs .ui-tabs-nav li.ui-tabs-active:hover
+	{
+	background: #119A49;
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#51B848),
+		to(#119A49) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #51B848, #119A49);
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #51B848, #119A49);
+	border-color: #119A49;
+	color: white;
+}
+
+.contentWrapper  .ui-widget-content li.ui-tabs-active.highlightTab,.popupWrapper  .ui-widget-content li.ui-tabs-active.highlightTab,.contentWrapper  .ui-widget-content li.ui-tabs-active.highlightTab:hover,.popupWrapper  .ui-widget-content li.ui-tabs-active.highlightTab:hover,.contentWrapper  .sectionTabs.ui-tabs .ui-tabs-nav li.ui-tabs-active.highlightTab:hover
+	{
+	background: #119A49;
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#51B848),
+		to(#119A49) ) !important;
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #51B848, #119A49) !important;
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #51B848, #119A49) !important;
+	border-color: #119A49 !important;
+	color: white !important;
+}
+
+.contentWrapper  .ui-tabs .ui-tabs-nav,.reportWrapper .ui-tabs .ui-widget-content .ui-tabs .ui-tabs-nav
+	{
+	border-color: #119A49;
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li a {
+	color: #00501F;
+}
+
+.ContentTableWrapper .noTableSort tr:hover td,.ContentTableWrapper .noTableSort tr:hover td.sorted
+	{
+	background-color: #f6fde7;
+}
+
+.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default,.reportWrapper h4.innerTitle
+	{
+	color: #00501f;
+}
+
+.ui-state-default .ui-icon {
+	background-image: url("../images/metro/iconOpenAccordion.png");
+}
+
+.ui-state-active .ui-icon {
+	background-image: url("../images/metro/iconCloseAccordion.png");
+}
+
+.ui-widget-content {
+	border: 1px solid #C8F369;
+}
+
+.ContentTableWrapper .actionRows tr:hover td {
+	background-color: #f6fde7;
+}
+/* stocktake Pagination issue Fix */
+/* .noChildNew .sorted .actionRows:hover tr td {
+	background-color: #ffffff;
+}
+.noChildNew .sorted:hover .actionRows tr td {
+	background-color: #ffffff;
+}
+
+.noChildNew_missed .sorted .actionRows:hover tr td {
+	background-color: #ffffff;
+}
+.noChildNew_missed .sorted:hover .actionRows tr td {
+	background-color: #ffffff;
+} */
+
+.ContentTableWrapper .actionRows tr:hover td.sorted {
+	background-color: #eff9d9;
+}
+
+/* wizard css*/
+.wizardContent .jw-widget.jw-hasmenu .jw-menu-wrap .jw-menu {
+	background: #f6fde7;
+}
+
+.wizardContent .ui-state-highlight {
+	background: #c8f369;
+}
+
+.wizardContent .ui-widget-content .ui-state-highlight a {
+	color: #000;
+}
+
+.wizardContent .ui-widget-content .ui-state-focus {
+	border: solid 1px #f6fde7;
+}
+
+.wizardPage .wizardContent .jw-widget .jw-steps-wrap {
+	border-bottom: solid 5px #c8f369;
+}
+
+.ContentTableWrapper .ContentTable tr.promotion td {
+	color: #00501F;
+	background-color: #F6FDE7;
+}
+
+.ContentTableWrapper .ContentTable tr td.rowMoreInfo {
+	background-image: url("../images/metro/rowMoreInfo.png");
+	background-position: top right;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+.legend .rowHighlight {
+	background-color: #fff;
+	background-image: url("../images/metro/legendRowHighlight.png");
+	background-position: 4px center;
+	background-repeat: no-repeat;
+	padding-left: 24px;
+	color: #00501F;
+}
+
+.articleContentInner .articleImg.articleImgDefault{
+	background-image: url("../images/product1.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	min-height:155px;
+	
+}
+
+.ui-tabs-vertical .ui-tabs-panel {
+	border-color: #119a49;
+}
+
+table.drilldownTable td.expanded span.indenter a {
+	background-image: url("../images/metro/iconOpenAccordion.png");
+}
+
+table.drilldownTable td.collapsed span.indenter a {
+	background-image: url("../images/metro/iconCloseAccordion.png");
+}
+
+label.printRecord {
+    background: url(../images/metro/iconPrint.png) center center no-repeat;
+}
+.m-date-pick .ui-datepicker .ui-state-highlight a{
+  		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4eb748),
+		to(#149c49) ) !important;
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #4eb748, #149c49) !important;
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #4eb748, #149c49) !important;
+	border: solid 1px #1a9f49 !important;
+	color: #fff !important;
+}
+.m-date-pick .ui-datepicker .ui-datepicker-today .ui-state-highlight{
+      background: #999999;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999),
+ to(#666666) );
+    background: -webkit-linear-gradient(top, #999999, #666666);
+    background: -moz-linear-gradient(top, #999999, #666666);
+    border: solid 1px #666666;
+    color: #fff;
+}
+.m-date-pick .ui-datepicker .ui-state-active
+{ 
+	background: #f9f9f3;
+    border: solid 1px #f9f9f3;
+    color: #00501f;
+    font-weight: normal;
+	border: none;
+}
+.ticketingHome {
+	background: url("../images/metro/ticketing_icon.png") no-repeat
+		scroll center top transparent;
+}

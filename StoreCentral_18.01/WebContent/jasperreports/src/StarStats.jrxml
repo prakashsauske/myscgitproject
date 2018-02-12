@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StarStats" language="groovy" pageWidth="250" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="250" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="bbe44daa-2d99-4b4d-b2cb-ba0eac585254">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="displayHeading" class="java.lang.Boolean"/>
+	<parameter name="noOfRecords" class="java.lang.Integer"/>
+	<parameter name="msg" class="java.lang.String"/>
+	<parameter name="totRecords" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[description]]></fieldDescription>
+	</field>
+	<field name="displayBold" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[displayBold]]></fieldDescription>
+	</field>
+	<field name="ordinalValue" class="java.lang.Integer">
+		<fieldDescription><![CDATA[ordinalValue]]></fieldDescription>
+	</field>
+	<field name="value" class="java.lang.String">
+		<fieldDescription><![CDATA[value]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="249" height="20" uuid="db3c3ad4-5fc3-47ac-a604-d167c67d3189"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textField>
+					<reportElement x="0" y="0" width="249" height="20" uuid="72ee7d07-d1bd-475c-8df4-22d79b2f8a85"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{displayHeading}?"Statistics Summary":""]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<printWhenExpression><![CDATA[!$F{displayBold}]]></printWhenExpression>
+			<line>
+				<reportElement x="0" y="0" width="249" height="1" uuid="9f2edf48-4bc9-4d6d-99f4-1f69306f6abe">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT}==1]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="170" height="20" uuid="1d87b4e5-4b76-4adc-a59b-c49c153f48b4"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="2" y="0" width="167" height="20" uuid="4cd5f5c7-3d7c-4698-9ae4-9edba5ba224e"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="170" y="0" width="79" height="20" uuid="2acaf3c6-bef8-46ae-92cf-ffcaee4e2d1e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+					<reportElement x="3" y="0" width="75" height="20" uuid="3aed0416-176c-49bb-9751-ad7c032dedd9"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{value}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="19" width="249" height="1" uuid="3ec3326d-5c3e-4bca-966a-0350f5017468">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT}==$P{totRecords}]]></printWhenExpression>
+				</reportElement>
+			</line>
+		</band>
+		<band height="20">
+			<printWhenExpression><![CDATA[$F{displayBold}]]></printWhenExpression>
+			<line>
+				<reportElement x="0" y="0" width="249" height="1" uuid="b28c9ee5-71f3-48a5-8d2b-b105d40f4801">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT}==1]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="170" height="20" uuid="6dfef6e5-36df-4192-8e7a-c5f9990db53f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="2" y="0" width="167" height="20" uuid="0a2b41c8-0fe6-462d-b77c-17cdca1a5633"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="170" y="0" width="79" height="20" uuid="7cba60eb-2d29-4c84-b37f-b500f7179347"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+					<reportElement x="3" y="0" width="75" height="20" uuid="8c8b0fa3-aee6-4281-b143-9c9aa1b452d9"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{value}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="19" width="250" height="1" uuid="f42171c5-a826-49dd-8c95-466c1adbf21b">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT}==$P{totRecords}]]></printWhenExpression>
+				</reportElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<noData>
+		<band height="20"/>
+	</noData>
+</jasperReport>

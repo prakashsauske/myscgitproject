@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+<head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<link href="../../styles/common_new.css?version=${properties.version}" rel="stylesheet" type="text/css" />
+<link href="../../styles/navBar.css?version=${properties.version}" rel="stylesheet" type="text/css" />
+<link href="../../styles/simplePagination.css?version=${properties.version}" rel="stylesheet" type="text/css" />
+<link href="../../styles/jqueryUI.css?version=${properties.version}" rel="stylesheet" type="text/css" />
+<link href="../../styles/${user.imgLocation}.css?version=${properties.version}" rel="stylesheet"
+	type="text/css" />
+<link href="../../styles/reportPrintStyle.css?version=${properties.version}" rel="stylesheet" type="text/css" />
+<link href="../../styles/slider_NGBO.css?version=${properties.version}" rel="stylesheet" type="text/css" />
+<script src="../../scripts/jquery-1.9.1.js?version=${properties.version}"></script>
+
+
+<script type="text/javascript" src="../../scripts/jquery.simplePagination.js?version=${properties.version}"></script>
+<script src="../../scripts/jquery-ui.js?version=${properties.version}"></script>
+<!--  <script src="../../scripts/articleDtls.js?version=${properties.version}"></script> -->
+<script type="text/javascript"
+	src="../../scripts/inStore_PromoCreation_utils.js?version=${properties.version}"></script>
+<script type="text/javascript"
+	src="../../scripts/inStore_PromoCreation_validation.js?version=${properties.version}"></script>
+<script type="text/javascript"
+	src="../../scripts/instoreMobilinkServices.js?version=${properties.version}"></script>
+<script type="text/javascript"
+	src="../../scripts/instoreMobilinkServices.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/stockTake.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/stockTakeArticleHierarchy.js?version=${properties.version}"></script><!-- For article hierarchy -->
+<script type="text/javascript" src="../../scripts/reportStockTake.js?version=${properties.version}"></script><!-- For article hierarchy -->
+<script type="text/javascript" src="../../scripts/reportUtils.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/reportStockTakeArticleCount.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/reportStockTakeMissedArticles.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/reportStockTakeVariance.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/reportStockTakeAuditSummary.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/reportStockTakeStockValuation.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/reportStockTakeUserPerformance.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/reportStockTakeTeamPerformance.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/jquery.ui.timepicker.js?version=${properties.version}"></script>
+<!-- <script type="text/javascript" src="../../script/jquery.filtertable.js?version=${properties.version}"></script>  -->
+<script type="text/javascript" src="../../scripts/common.js?version=${properties.version}"></script>
+<script type="text/javascript"
+	src="../../scripts/jquery.tablesorter.latest.js?version=${properties.version}"></script>
+<script type="text/javascript"
+	src="../../scripts/basicSort.js?version=${properties.version}"></script>
+<script type="text/javascript" src="../../scripts/stocktakeFinalise.js?version=${properties.version}"></script>
+<script src="../../scripts/jquery-ui.multidatespicker.js?version=${properties.version}"></script>
+
+<title>Stock Take</title>
+</head>
+<body>
+	<div class="mainWrapper woolworths">
+		<div class="headWrapper">
+			
+<input id="navBarHighlight" type="hidden" value="stockManage"/>
+
+	<%@include file="header.jsp" %>
+
+			<div class="breadcrumbWrapper">
+				<div class="breadcrumbs">
+					<label class="breadcrumbLabel"> You are here: </label>
+					<ul>
+						<li><a href="../login/goingHome.htm">Home</a></li>
+						<li>Stock Management</li>	
+						<li class="currentPage">Stocktake</li>
+					</ul>
+				</div>
+				<!-- End of breadcrumbs -->
+
+				<div class="statusWrapper" >
+					<label class="loading hideBlock" id="statusImg">We are getting data,
+						please wait</label> <label class="secondaryActionBtn" id="backBtn">Back</label>
+				</div>
+
+				<!-- End of status wrapper -->
+
+			</div>
+			<!-- End of breadcrumb wrapper -->
+
+		</div>
+		<!-- End of head wrapper -->
+	<div class="contentWrapper directContent" id="stocktakeDiv">
+			
+				
+				
+				<!-- For displaying report results -->
+				<div class="ContentTableWrapper">
+				<label class="actionBtn hideBlock" id="loadStockTake"><a >Create</a></label>	
+					<div class="tableInfo">
+					
+						<div class="tableTitle">
+							<h4><strong>List of Stocktakes</strong></h4>
+						</div> <!-- End of table title -->					
+						
+					
+					</div> <!-- End of table info -->
+					
+					
+					<div id="tabs">			
+						
+						
+						<ul>
+								
+							<li><a href="#tabs-1" id="overdueTabId"><label></label>Overdue</a></li>
+							<li><a href="#tabs-1" id="duenowTabId">Due Now</a></li>
+							<li><a href="#tabs-1" id="upcomingTabId">Upcoming</a></li>
+							<li><a href="#tabs-1" id="completedTabId">Completed</a></li>
+							<li><a href="#tabs-1" id="deletedTabId">Deleted</a></li>
+							
+							<li class="${properties.CreateStockTake} highlightTab" id="createSTTab" style="float: right"><a href="#tabs-5">Create New Stocktake</a></li>
+							<!-- <li class="${properties.StocktakeMode}  highlightTab" id="STModeTab" style="float: right"><a href="#tabs-6">Stocktake Mode</a></li> -->
+							<li class="highlightTab hideBlock" style="float: right"><a href="#tabs-7">Locations</a></li>
+							
+						</ul>					
+						
+						
+						
+						<div id="tabs-1" class="hideBlock">
+							 <div id="o_stocktakes" class="filterTabs">
+								<ul>
+								   <li><a href="#my-orders" id="myDeptLink">My Department</a></li>
+								   <li><a href="#all-orders" id="otherDeptLink">All Departments</a></li>							 
+								</ul>
+								<div id="my-orders">									
+									<div class="displayArea" id="displaySTByStatusMyDep"></div>			
+								</div> <!-- Edn of tab one -->
+								<div id="all-orders">									
+									<div class="displayArea" id="displaySTByStatusAllDep"></div>	
+								</div> <!-- Edn of tab two -->
+							</div>
+							
+						</div>					
+						
+						
+					
+						<div id="tabs-5">
+											
+							<div class="ContentTableWrapper">
+							
+								
+								
+								
+								<div class="tableActionsBtnsWrapper">
+									<div class="lookupActionWrapper">
+													
+										
+										
+										
+										<label class="linkBtn"><strong>New Stocktake</strong></label>
+										
+										
+										
+										<div class="errorDiv hideBlock">
+											<label>Error message any..</label>
+											<label class="closeMessage">&nbsp;</label>
+										</div>
+									   
+									</div> <!-- End of lookup action wrapper -->
+															
+								
+								 </div> <!-- End of table actions btn wrapper -->
+								 
+								<div class="tableActionsWrapper hideBlock1" id="tableAddAction">
+									
+									<form method="POST" action="" id="stockTakeForm">
+										<div class="formWrapper alignParameter">
+										
+											<div class="parameter">
+										
+											
+												<label for="userID">Name</label>
+												<input type="#" placeholder="Enter Stocktake Name" id="stockTakeName" class="textbox largebox" maxlength="16">
+											
+												 
+											</div> <!-- End of parameter -->
+											
+											
+											<div class="parameter parameterRow clearfix">
+												<label for="store">Start Date</label>
+												<input type="#" class="textbox defaultTextbox inputDate" id="dateFromCreate" placeHolder="dd/mm/yyyy">
+
+												<select class="selectOptions" id="freqSelectOptions">
+												</select>
+												
+												<input type="#" class="textbox numberBox hideBlock" id="weeksCreateST"  maxlength="2" placeHolder=""> <label id="weeksCreateSTLbl" class="hideBlock">Weeks</label>
+												<!-- <input type="#" class="textbox inputDate hideBlock" id="dateselect" placeHolder="dd/mm/yyyy"> -->
+												<input id="datePick-input" class="textbox inputDate hideBlock" type="hidden"/>
+												<div id="datePick" class="hideBlock m-date-pick"></div>													
+											</div> <!-- End of parameter -->
+											
+											<div class="parameter clearfix">
+												<label for="enddate">End Date</label>
+												<input type="#" class="textbox defaultTextbox inputDate" id="enddateCreate" placeHolder="dd/mm/yyyy">
+
+											</div> <!-- End of parameter -->
+											
+											
+											
+											
+											<div class="parameter clearfix articleHierarchy">
+												<label for="dept">Departments</label>
+												<div id="createSTDeptDrpDwnDiv" class="selectDropdown"><label id="createSTDeptDrpDwnActiveId" class="selectLabel"><a  id="createSTDeptDrpDwnLabel">All departments</a></label>
+														<ul class="dropdown" id="createSTDeptDrpDwnUl">
+															<div class="inner-drop-down hierDrp"><li><input type="checkbox" id="createSTallDeptChkBox" name="createSTallDeptChkBox"><label class="dropdownLabel" for="">All departments</label></li></div>
+														</ul>
+												</div>
+											
+												<div class="searchByOptions onlyCheckbox">
+													<input type="checkbox" class="depH" name="depH" value="depH" id="createSTArticleH"><label for="createSTArticleH" class="labelText">Select multiple departments or sub-categories</label>
+												</div> <!-- End of search options -->
+												
+												
+											</div> <!-- End of parameter -->
+								
+											<div class="hierarchyWrapper clearfix hideBlock" id="createSTArticleHierarchyId">
+																		
+													<!-- Department -->
+													<div class="hierarchyContent deptDiv" >				
+														
+														<div class="hierarchyTitle">
+															<h3><input type="checkbox" class="deptSelectAll">Department</h3> 
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="hierarchyList">
+															<ul class="deptlst">
+							
+															</ul>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="heirachyBottom">
+															<span class="totalCount">
+																<label>Total Selected:<strong class="deptLstCnt">0</strong></label>
+															</span>							
+																				
+														</div> <!-- End of hierarchy bottom -->
+														
+													</div> <!-- End of hierarchy Content --> 
+																		
+													<!-- Category -->
+													<div class="hierarchyContent catDiv">				
+														
+														<div class="hierarchyTitle">
+															<h3><input type="checkbox" class="catSelectAll">Category</h3>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="hierarchyList">
+														
+															<div class="noSelection noSelectionCat">
+																<label>Please select any department to see it's associated categories.</label>
+															</div> <!-- End of no selection -->
+															
+															<label class="loading hideBlock">&nbsp;</label>
+															<div class="parentCatDiv">
+															</div>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="heirachyBottom">
+															<span class="totalCount hideBlock categoryLstTotal">
+																<label>Total Selected:<strong class="catLstCnt">0</strong></label>
+															</span>									
+														</div> <!-- End of heirachy bottom -->
+														
+													</div> <!-- End of hierarchy Content --> 
+													
+													
+													<!-- Sub-category -->
+													<div class="hierarchyContent subCatDiv">				
+														
+														<div class="hierarchyTitle">
+															<h3><input type="checkbox" class="sCatSelectAll">Sub-category</h3>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="hierarchyList">
+														
+															<div class="noSelection noSelectionSub">
+																<label>Please select any category to see sub-categories.</label>
+															</div> <!-- End of -->
+															
+															<label class="loading hideBlock">&nbsp;</label>
+															
+															<div class="parentSCatDiv">
+															</div>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="heirachyBottom">
+															<span class="totalCount hideBlock subCatTotal">
+																<label>Total Selected:<strong class="sCatLstCnt">0</strong></label>
+															</span>			
+														</div> <!-- End of heirachy bottom -->
+														
+													</div> <!-- End of hierarchy Content --> 
+																		
+													<!-- Segment -->
+													<div class="hierarchyContent lastContent segDiv">				
+														
+														<div class="hierarchyTitle">
+															<h3><input type="checkbox" class="segSelectAll">Segment</h3>
+														</div> <!-- End of hierarchy Title -->								
+														
+														<div class="hierarchyList">
+															
+															<div class="noSelection noSelectionSeg">
+																<label>Please select any sub-category to see segments.</label>
+															</div> <!-- End of -->
+															
+															<label class="loading hideBlock">&nbsp;</label>
+														
+															<div class="parentSegDiv">
+															</div>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="heirachyBottom">
+															<span class="totalCount hideBlock segmentTotal">
+																<label>Total Selected:<strong class="segLstCnt">0</strong></label>
+															</span>							
+																				
+														</div> <!-- End of heirachy bottom -->
+														
+													</div> <!-- End of hierarchy Content --> 
+
+												
+											</div> <!-- end of hierarchy Wrapper -->
+											
+											
+												
+											<div class="parameter parameterRow parameterOptions clearfix">
+												<label for="LocOp"><strong>Include</strong><br />Add Articles</label>
+												<input type="#" id="searchBoxInclude" placeholder="Enter Article Number, EAN, TUN or PLU and Press Enter" class="textbox textboxDefaultText searchbox">
+													
+												<div class="parameter parameterOptionsInputBox">
+													<span>
+														<ul class="parameterOptionsListBlock" id="parameterListInclude"></ul>														
+													</span>
+												</div> <!-- End of parameterOptionsInputBox -->
+											</div> <!-- End of parameter -->		
+											
+											
+											<div class="parameter parameterRow parameterOptions hideBlock">
+												<label for="LocOp"><strong>Exclude</strong><br />Specific Articles</label>
+												<input type="#" id="searchBoxExclude" placeholder="Type number, description, or EAN / TUN / PLU and press Enter" class="textbox textboxDefaultText searchbox">
+													
+												<div class="parameter parameterOptionsInputBox">
+													<span>
+														<ul class="parameterOptionsListBlock" id="parameterListExclude"></ul>														
+													</span>
+												</div> <!-- End of parameterOptionsInputBox -->
+											</div> <!-- End of parameter -->
+											
+											
+											<div class="formActions">
+												<label class="actionBtn" id="CreateStockTake"><a >Create</a></label>												
+												<label class="secondaryActionBtn closeLink" id="closeLink"><a href="">Close</a></label>						
+											</div> <!-- End of form actions -->
+																	
+										</div> <!-- End of content table wrapper -->
+									</form>	
+									
+								</div> <!-- End of table Actions Wrapper -->
+								
+								
+								
+							
+							</div>  <!-- End of content table wrapper -->	
+							
+										
+						</div> <!-- End of tabs 5 -->
+				
+						
+						
+						<!-- <div id="tabs-6">
+											
+							<div class="ContentTableWrapper reportWrapper ">
+							
+								<div class="tableInfo">		
+									<div class="tableTitle">
+										<h4 class="sectionTitle">Change settings to perform stocktake in the store</h4>	
+									</div> 
+								</div>
+								<hr class="sectionDivider clearfix">
+								
+							
+											
+								<table class="ContentTable" cellspacing="0" id="sortTable">
+										
+														
+										<tr class="">
+											<td class="" width="200px">Stocktake Mode</td>											
+											<td class="lastColumn">
+												<span class="reportRadio" id="stocktakeModeRadio">
+													<input type="radio" id="PN" value="t" name="ptype"><label class="labelText" for="t"><strong>Yes</strong></label>
+													<input type="radio" id="PL" value="f" name="ptype" checked><label class="labelText" for="f"><strong>No</strong></label> 
+												</span>
+											</td>										
+										</tr>
+									</table>
+								
+									<div class="pageActions ">
+                                        <label id="ApplyMode" class="actionBtn"><a ><label class="thumbUp" id="applySTChanges">Apply</label></a></label>                                      
+                                    </div>
+							
+							
+							</div> 
+							
+										
+						</div> 
+				
+						-->
+						
+						<div id="tabs-7">
+											
+							<div class="ContentTableWrapper reportWrapper ">
+							
+								<div class="tableInfo">		
+									<div class="tableTitle">
+										<h4 class="sectionTitle">Activate / Deactivate locations and corresponding sub-location</h4>	
+									</div> <!-- End of table title -->
+									<div class="tableActionBtns">
+										<label class="actionBtn"><a ><label class="editBtn">Edit</label></a></label> <!-- add class 'disabled' when clicked -->
+										<label class="actionBtn" id="quickButton"><a ><label class="">Quick Action</label></a></label>	<!-- Appears when Edit button is clicked -->
+										
+										<label class="actionBtn" id="printButton"><a ><label class="print">Print</label></a></label>				
+									</div>
+									
+								</div>
+								
+								<hr class="sectionDivider clearfix">
+								
+									<div class="hierarchyWrapper clearfix hideBlock" id="stLocHierarchyId">
+																		
+													<!-- Department -->
+													<div class="hierarchyContent">				
+														
+														<div class="hierarchyTitle">
+															<h3><input type="checkbox" class="locSelectAll">Other Locations</h3> 
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="hierarchyList">
+															<ul class="locLst"></ul>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="heirachyBottom">
+															<span class="totalCount">
+																<label>Total Selected:<strong class="locLstCnt">10</strong></label>
+															</span>							
+																				
+														</div> <!-- End of hierarchy bottom -->
+														
+													</div> <!-- End of hierarchy Content --> 																	
+													
+													<div class="hierarchyContent lastContent sublocDiv">				
+														
+														<div class="hierarchyTitle">
+															<h3><input type="checkbox" class="sublocSelectAll">Sub-locations</h3>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="hierarchyList">
+														
+															<div class="noSelection sublocnoSelection">
+																<label>Please select any location to select sub-locations.</label>
+															</div> <!-- End of no selection -->
+															
+															<label class="loading hideBlock">&nbsp;</label>
+															
+															<div class="parentSublocDiv">
+															</div>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="heirachyBottom">
+															<span class="totalCount hideBlock sublocLstTotal">
+																<label>Total Selected:<strong class="sublocLstCnt">5</strong></label>
+															</span>									
+														</div> <!-- End of heirachy bottom -->
+														
+													</div> <!-- End of hierarchy Content --> 
+													
+													
+												
+											</div> <!-- end of hierarchy Wrapper -->
+																	
+											<%--	<div class="hierarchyWrapper clearfix  " id="baysHierarchy">
+																		
+													<!-- Department -->
+													<div class="hierarchyContent" id="">				
+														
+														<div class="hierarchyTitle">
+															<h3><input type="checkbox">Other Locations</h3> 
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="hierarchyList">
+															<ul>
+																<li><input type="checkbox" name="baysList" value="dValue1" id="dValue1"><label for="dtValue1" class="labelText deptText">Location Name</label></li>
+																<li><input type="checkbox" name="baysList" value="dValue2" id="dValue2"><label for="dtValue2" class="labelText deptText">Location Name</label></li>
+																<li><input type="checkbox" name="baysList" value="dValue3" id="dValue3"><label for="dtValue3" class="labelText deptText">Location Name</label></li>
+																<li><input type="checkbox" name="baysList" value="dValue4" id="dValue4"><label for="dtValue4" class="labelText deptText">Location Name</label></li>
+																<li><input type="checkbox" name="baysList" value="dValue5" id="dValue5"><label for="dtValue5" class="labelText deptText">Location Name</label></li>
+																<li><input type="checkbox" name="baysList" value="dValue6" id="dValue6"><label for="dtValue6" class="labelText deptText">Location Name</label></li>
+																<li><input type="checkbox" name="baysList" value="dValue7" id="dValue7"><label for="dtValue7" class="labelText deptText">Location Name</label></li>
+																<li><input type="checkbox" name="baysList" value="dValue8" id="dValue8"><label for="dtValue8" class="labelText deptText">Location Name</label></li>
+																<li><input type="checkbox" name="baysList" value="dValue9" id="dValue9"><label for="dttValue9" class="labelText deptText">Location Name</label></li>
+																<li><input type="checkbox" name="baysList" value="dValue10" id="dValue10"><label for="dtValue10" class="labelText deptText">Location Name</label></li>
+															</ul>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="heirachyBottom">
+															<span class="totalCount">
+																<label>Total Selected:<strong>10</strong></label>
+															</span>							
+																				
+														</div> <!-- End of hierarchy bottom -->
+														
+													</div> <!-- End of hierarchy Content --> 
+																		
+													<!-- Category -->
+													<div class="hierarchyContent lastContent" id="">				
+														
+														<div class="hierarchyTitle">
+															<h3><input type="checkbox">Sub-locations</h3>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="hierarchyList">
+														
+															<div class="noSelection">
+																<label>Please select any location to select sub-locations.</label>
+															</div> <!-- End of no selection -->
+															
+															<label class="loading hideBlock">&nbsp;</label>
+															
+															<ul class="hideBlock">
+																<li><label class="titleText">Location ###### </label></li> <!-- TAlk to Haresh to understand the interactions -->
+																<li><input type="checkbox" name="bLoc" value="ctValue1" id="ctValue1" checked><label for="cttValue1" class="labelText catText">1</label></li>
+																<li><input type="checkbox" name="bLoc" value="catValue2" id="ctValue2"><label for="cttValue2" class="labelText catText">2</label></li>
+																<li><input type="checkbox" name="bLoc" value="catValue3" id="ctValue3" checked><label for="cttValue3" class="labelText catText">3</label></li>
+																<li><input type="checkbox" name="bLoc" value="catValue4" id="ctValue4"><label for="cttValue4" class="labelText catText">4</label></li>
+																<li><input type="checkbox" name="bLoc" value="catValue5" id="ctValue5"><label for="cttValue5" class="labelText catText">5</label></li>
+																<li><input type="checkbox" name="bLoc" value="catValue6" id="ctValue6"><label for="cttValue6" class="labelText catText">6</label></li>
+																<li><input type="checkbox" name="bLoc" value="catValue7" id="ctValue7"><label for="cttValue7" class="labelText catText">7</label></li>
+																<li><input type="checkbox" name="bLoc" value="catValue8" id="ctValue8"><label for="cttValue8" class="labelText catText">8</label></li>
+																<li><input type="checkbox" name="bLoc" value="catValue9" id="ctValue9"><label for="cttValue9" class="labelText catText">9</label></li>
+																<li><input type="checkbox" name="bLoc" value="catValue10" id="ctValue10"><label for="cttValue10" class="labelText catText">10</label></li>
+															</ul>
+														</div> <!-- End of hierarchy Title -->
+														
+														<div class="heirachyBottom">
+															<span class="totalCount hideBlock">
+																<label>Total Selected:<strong>5</strong></label>
+															</span>									
+														</div> <!-- End of heirachy bottom -->
+														
+													</div> <!-- End of hierarchy Content --> 
+													
+													
+												
+											</div> <!-- end of hierarchy Wrapper --> --%>
+											
+							
+							
+								
+								<div class="pageActions "> <!-- Appears when Edit button is clicked -->
+									<label id="saveLocationBtn" class="actionBtn"><a ><label class="thumbUp">Save</label></a></label>
+									<label class="secondaryActionBtn"><a >Cancel</a></label>
+								</div>
+							
+							
+							</div>  <!-- End of content table wrapper -->	
+							
+										
+						</div> <!-- End of tabs 5 -->						
+					</div> <!-- End of tabs -->					
+				</div>  <!-- End of Content Table Wrapper-->
+		</div> <!-- End of content wrapper -->
+	<%@include file="ReportStockTake.jsp" %>
+		
+	</div>	
+		
+	<!-- Edit Stocktake  popup  -->
+      <div id="dialog-hierarchy" title="Edit StockTake Details">
+         <div class="popupContent">
+            <div class="popupData contentWrapper">
+			
+				<div class="ContentTableWrapper formWrapper alignParameter">
+				
+					<div class="parameter parameterRow">
+				
+					
+						<label for="userID">Name</label>
+						<input type="#" placeholder="Enter Stocktake Name" id="editStockTakeName" class="textbox largebox" maxlength="16">
+					
+						 
+					</div> <!-- End of parameter -->
+					
+					
+					<div class="parameter parameterRow clearfix">
+						<label for="store">Start Date</label>
+						<input type="#" class="textbox defaultTextbox inputDate" id="dateFromEdit" placeHolder="dd/mm/yyyy">
+
+						<select class="selectOptions" id="editFreqSelectOptions">
+							
+						</select>
+						
+						<input type="#" class="textbox numberBox hideBlock" id="weeksEditST"><label id="weeksEditSTLbl" class="hideBlock">Weeks</label>
+						<!-- <input type="#" class="textbox inputDate hideBlock" id="editSTdateselect" placeHolder="dd/mm/yyyy"> -->
+						<input id="datePickEdit-input" class="textbox inputDate hideBlock" type="hidden"/>
+												<div id="editSTdateselect" class="hideBlock m-date-pick"></div>
+					</div> <!-- End of parameter -->
+					
+					
+					<div class="parameter clearfix">
+						<label for="enddate">End Date</label>
+						<input type="#" class="textbox defaultTextbox inputDate" id="enddateEdit" placeHolder="dd/mm/yyyy">
+
+					</div> <!-- End of parameter -->
+					
+					<div class="parameter clearfix articleHierarchy">
+						<label for="dept">Departments</label>
+						<div id="editSTDeptDrpDwnDiv" class="selectDropdown"><label id="editSTDeptDrpDwnActiveId" class="selectLabel"><a  id="editSTDeptDrpDwnLabel">Select departments</a></label>
+							<ul class="dropdown" id="editSTDeptDrpDwnUl">
+								<div class="inner-drop-down hierDrp"><li><input type="checkbox" id="editSTallDeptChkBox" name="editSTallDeptChkBox"><label class="dropdownLabel" for="">All departments</label></li></div>
+							</ul>
+						</div>
+					
+						<div class="searchByOptions onlyCheckbox">
+							<input type="checkbox" name="depH" value="depH" id="editSTArticleH"><label for="editSTArticleH" class="labelText">Select multiple departments or sub-categories</label>
+						</div> <!-- End of search options -->
+						
+						
+					</div> <!-- End of parameter -->
+	
+					<div class="hierarchyWrapper clearfix hideBlock" id="editSTArticleHierarchyId">
+																		
+							<!-- Department -->
+							<div class="hierarchyContent deptDiv" >				
+								
+								<div class="hierarchyTitle">
+									<h3><input type="checkbox" class="deptSelectAll">Department</h3> 
+								</div> <!-- End of hierarchy Title -->
+								
+								<div class="hierarchyList">
+									<ul class="deptlst">
+	
+									</ul>
+								</div> <!-- End of hierarchy Title -->
+								
+								<div class="heirachyBottom">
+									<span class="totalCount">
+										<label>Total Selected:<strong class="deptLstCnt">0</strong></label>
+									</span>							
+														
+								</div> <!-- End of hierarchy bottom -->
+								
+							</div> <!-- End of hierarchy Content --> 
+												
+							<!-- Category -->
+							<div class="hierarchyContent catDiv">				
+								
+								<div class="hierarchyTitle">
+									<h3><input type="checkbox" class="catSelectAll">Category</h3>
+								</div> <!-- End of hierarchy Title -->
+								
+								<div class="hierarchyList">
+								
+									<div class="noSelection noSelectionCat">
+										<label>Please select any department to see it's associated categories.</label>
+									</div> <!-- End of no selection -->
+									
+									<label class="loading hideBlock">&nbsp;</label>
+									<div class="parentCatDiv">
+									</div>
+								</div> <!-- End of hierarchy Title -->
+								
+								<div class="heirachyBottom">
+									<span class="totalCount hideBlock categoryLstTotal">
+										<label>Total Selected:<strong class="catLstCnt">0</strong></label>
+									</span>									
+								</div> <!-- End of heirachy bottom -->
+								
+							</div> <!-- End of hierarchy Content --> 
+							
+							
+							<!-- Sub-category -->
+							<div class="hierarchyContent subCatDiv">				
+								
+								<div class="hierarchyTitle">
+									<h3><input type="checkbox" class="sCatSelectAll">Sub-category</h3>
+								</div> <!-- End of hierarchy Title -->
+								
+								<div class="hierarchyList">
+								
+									<div class="noSelection noSelectionSub">
+										<label>Please select any category to see sub-categories.</label>
+									</div> <!-- End of -->
+									
+									<label class="loading hideBlock">&nbsp;</label>
+									
+									<div class="parentSCatDiv">
+									</div>
+								</div> <!-- End of hierarchy Title -->
+								
+								<div class="heirachyBottom">
+									<span class="totalCount hideBlock subCatTotal">
+										<label>Total Selected:<strong class="sCatLstCnt">0</strong></label>
+									</span>			
+								</div> <!-- End of heirachy bottom -->
+								
+							</div> <!-- End of hierarchy Content --> 
+												
+							<!-- Segment -->
+							<div class="hierarchyContent lastContent segDiv">				
+								
+								<div class="hierarchyTitle">
+									<h3><input type="checkbox" class="segSelectAll">Segment</h3>
+								</div> <!-- End of hierarchy Title -->								
+								
+								<div class="hierarchyList">
+									
+									<div class="noSelection noSelectionSeg">
+										<label>Please select any sub-category to see segments.</label>
+									</div> <!-- End of -->
+									
+									<label class="loading hideBlock">&nbsp;</label>
+								
+									<div class="parentSegDiv">
+									</div>
+								</div> <!-- End of hierarchy Title -->
+								
+								<div class="heirachyBottom">
+									<span class="totalCount hideBlock segmentTotal">
+										<label>Total Selected:<strong class="segLstCnt">0</strong></label>
+									</span>							
+														
+								</div> <!-- End of heirachy bottom -->
+								
+							</div> <!-- End of hierarchy Content --> 
+
+						
+					</div> <!-- end of hierarchy Wrapper -->
+					
+					<div class="parameter parameterRow parameterOptions clearfix">
+						<label for="LocOp"><strong>Include</strong><br />Add Articles</label>
+						<input type="#" id="searchBoxIncludeEdit" placeholder="Enter Article Number, EAN, TUN or PLU and Press Enter" class="textbox textboxDefaultText searchbox">
+							
+						<div class="parameter parameterOptionsInputBox">
+							<span>
+								<ul class="parameterOptionsListBlock" id="parameterListIncludeEdit"></ul>														
+							</span>
+						</div> <!-- End of parameterOptionsInputBox -->
+					</div> <!-- End of parameter -->		
+					
+					
+					<div class="parameter parameterRow parameterOptions hideBlock">
+						<label for="LocOp"><strong>Exclude</strong><br />Specific Articles</label>
+						<input type="#" id="searchBoxExcludeEdit" placeholder="Type number, description, or EAN / TUN / PLU and press Enter" class="textbox textboxDefaultText searchbox">
+							
+						<div class="parameter parameterOptionsInputBox">
+							<span>
+								<ul class="parameterOptionsListBlock" id="parameterListExcludeEdit"></ul>														
+							</span>
+						</div> <!-- End of parameterOptionsInputBox -->
+					</div> <!-- End of parameter -->
+					
+				
+					<div class="parameter clearfix onlyCheckbox <%-- ${properties.StockTakeDelete} --%>">							
+						<input type="radio" id="delSTChkBox" value="ranged" name="editSTOptionsRadio" class=" ${properties.StockTakeDelete}"><label class="labelText ${properties.StockTakeDelete}" for="delSTChkBox">Delete this stocktake schedule</label>							
+					</div>
+					<div class="parameter clearfix onlyCheckbox parameterRow">							
+						<input type="radio" id="overrrideSTChkBox" value="overr" name="editSTOptionsRadio"><label class="labelText" for="overrrideSTChkBox">Override this stocktake</label>
+						<select class="selectOptions" id="editReasonSelectBox" disabled>
+							<option>Select a reason</option>
+						</select>
+						<input type="text" id="overrideReasonOtherTxt" disabled class="textbox defaultTextbox largebox" id="" placeholder="Enter Reason" maxlength="40" />
+					</div>
+				
+				</div> <!-- End of form wrapper -->
+				 
+               <div class="popupActionsWrapper">
+                  <span class="popupActions">
+                  <label class="actionBtn" id="editStockTake"><a >Save</a></label>
+                  <label class="secondaryActionBtn" id="editCancelStockTake"><a >Cancel</a></label>
+                  </span>
+               </div>
+              
+               <!-- End of popup actions-->
+            </div>
+            <!-- End of pop up data -->	
+         </div>
+         <!-- End of popupContent -->
+      </div>
+      <!-- End Edit Stocktake  popup -->
+      
+      		<!-- Quick Action -->
+	<div id="dialog-quickActionDialog" title="Quick Action" class="ui-dialog-content ui-widget-content">
+	
+		<div class="popupContent">
+		
+			<div class="popupData popupTitle">
+				
+					<div class="formWrapper formWrapperContentPopup">						
+						
+					</div> <!-- End of form wrapper  -->
+			
+			</div> <!-- End of pop up data -->
+			
+			
+			<div class="popupActionsWrapper">				
+				<span class="popupActions" id="cancelQuickLoc"> <label class="secondaryActionBtn">Cancel</label></span>
+				<span class="popupActions" id="saveQuickLoc"> <label class="actionBtn">Save</label></span>
+			</div>
+			
+			
+			
+		</div> <!-- End of popupContent -->
+		
+		
+		
+	</div> <!-- End of Competition -->
+	<div id="dialog-confirmation"
+				class="ui-dialog-content ui-widget-content">
+				<div class="popupContent">
+
+					<div class="popupData popupTitle">
+
+						<h4 class="warning" id="message">
+							Please note that In-store Promotions will be available in
+							Promotions Planning screens after <strong>approximately
+								2 hours</strong>, once it is successfully created.
+						</h4>
+
+					</div>
+					<!-- End of pop up data -->
+
+
+					<div class="popupActionsWrapper">
+						<span class="popupActions" id="ok"> <label
+							class="actionBtn">Ok </label>
+
+						</span><span class="popupActions" id="cancel"> <label
+							class="secondaryActionBtn">Cancel </label>
+						</span><span class="popupActions hideBlock confirmation-nobtn" id="nobtn">
+							<label class="actionBtn">No</label>
+						</span> <span class="popupActions hideBlock confirmation-yesbtn"
+							id="yesbtn"> <label class="actionBtn">Yes </label>
+						</span>
+					</div>
+					<!-- End of popup actions-->
+
+
+				</div>
+				<!-- End of popupContent -->
+			</div>
+		
+	<%@include file="footer.jsp" %>
+</body>
+</html>

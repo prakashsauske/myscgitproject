@@ -1,0 +1,18 @@
+InStorePromoCreateOrValidateURL=http://localhost:8080/StoreCentralServices/instore/promoCreateOrValidate
+InStorePromoEnquiryURL=http://localhost:8080/StoreCentralServices/instore/promoEnquiry
+InStorePromoUpdateURL=http://localhost:8080/StoreCentralServices/instore/updatePromotion
+getInstoreCompetitorListURL=http://localhost:8080/StoreCentralServices/instore/getCompetitorList
+validateInstoreURL=http://localhost:8080/StoreCentralServices/instore/promoValidate
+ReturnOrderLookupSCSURL=http://localhost:8080/StoreCentralServices/orders/getReturnOrderlookup
+ReturnOrderDtlSCSURL=http://localhost:8080/StoreCentralServices/orders/getReturnOrderDtl
+createOrReturnSCSURL=http://localhost:8080/StoreCentralServices/orders/createOrFinaliseOrder
+getEncryptPasswordUrl=http://localhost:8080/StoreCentralServices/login/encryptPassword
+
+
+#added for RTC print
+sftphost=clgjba100
+sftpport=22
+sftpuser=javadm
+sftppassword=asdf0066
+sftpfilename=/Galaxy_JBOSS_uat/rtc_pdf/UAT/
+sftpfiletype=.csv

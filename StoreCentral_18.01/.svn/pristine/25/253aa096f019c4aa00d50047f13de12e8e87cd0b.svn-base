@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.2.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	<aop:aspectj-autoproxy />
+	<mvc:annotation-driven />
+	<!-- <cache:annotation-driven /> -->
+	<context:component-scan base-package="au.com.woolworths.portal" />
+	<context:property-placeholder location="classpath:email.properties"
+		order="1" ignore-unresolvable="true" />
+	<bean id="logAspect" class="au.com.woolworths.portal.aspect.LoggingAspect" />
+<bean id="stockAdjustmentController"
+		class="au.com.woolworths.portal.controller.StockAdjustmentController"
+		scope="session" />	
+		
+	<bean id="returnOrderSearchServiceImpl"
+		class="au.com.woolworths.portal.service.ReturnOrderSearchServiceImpl"
+		scope="session" />
+	<bean id="repairCentreServiceImpl"
+		class="au.com.woolworths.portal.service.RepairCentreServiceImpl"
+		scope="session" />
+	<bean id="plannedFcstOrderServiceImpl"
+		class="au.com.woolworths.portal.service.PlannedFcstOrderServiceImpl"
+		scope="session" />
+
+	<bean id="sugoServiceImpl"
+		class="au.com.woolworths.portal.service.SUGOServiceImpl"
+		scope="session" />
+	<bean id="validationServiceImpl"
+		class="au.com.woolworths.portal.service.ValidationServiceImpl"
+		scope="session" />
+		
+<bean id="tobaccoPricingServiceImpl"
+		class="au.com.woolworths.portal.service.TobaccoPricingServiceImpl"
+		scope="session" />
+	<bean id="inStorePromoServiceImpl"
+		class="au.com.woolworths.portal.service.InStorePromoServiceImpl"
+		scope="session" />
+	<bean id="instoreDisplayReportServiceImpl"
+		class="au.com.woolworths.portal.service.InstoreDisplayReportServiceImpl"
+		scope="session" />
+		
+	<bean id="broadcastController"
+		class="au.com.woolworths.portal.controller.BroadcastController"
+		scope="session" />
+	
+	<bean id="dailyStoreProfileReportController"
+		class="au.com.woolworths.portal.controller.DailyStoreProfileReportController"
+		scope="session" />
+
+	<bean id="inStorePromotionController"
+		class="au.com.woolworths.portal.controller.InStorePromotionController"
+		scope="session" />
+
+<bean id="gapScanReportController"
+		class="au.com.woolworths.portal.controller.GapScanReportController"
+		scope="session" />
+	<bean id="repairCentreController"
+		class="au.com.woolworths.portal.controller.RepairCentreController"
+		scope="session" />
+<bean id="SUGOController"
+		class="au.com.woolworths.portal.controller.SUGOController"
+		scope="session" />
+	
+	
+	<bean id="noAccess"
+		class="au.com.woolworths.portal.controller.NoAccess"
+		scope="session" />
+		
+	<bean id="orderRosterReportController"
+		class="au.com.woolworths.portal.controller.OrderRosterReportController"
+		scope="session" />
+	<bean id="AQMSearchQueryController"
+		class="au.com.woolworths.portal.controller.AQMSearchQueryController"
+		scope="session" />
+	<bean id="AQMInitiateQueryController"
+		class="au.com.woolworths.portal.controller.AQMInitiateQueryController"
+		scope="session" />
+	<bean id="promotionsPlanningController"
+		class="au.com.woolworths.portal.controller.PromotionsPlanningController"
+		scope="session" />
+		
+	<bean id="tobaccoPricingController"
+		class="au.com.woolworths.portal.controller.TobaccoPricingController"
+		scope="session" />
+		
+	<bean id="promotionsAuditTrailController"
+		class="au.com.woolworths.portal.controller.PromotionsAuditTrailController"
+		scope="session" />
+	<bean id="planOGramController" class="au.com.woolworths.portal.controller.PlanOGramController"
+		scope="session" />
+
+
+	<bean id="MPL" class="au.com.woolworths.portal.controller.MPL"
+		scope="session" />
+
+	<bean id="articleController" class="au.com.woolworths.portal.controller.ArticleController"
+		scope="session" />
+
+	<bean id="orderController" class="au.com.woolworths.portal.controller.OrderController"
+		scope="session" />
+
+	<bean id="allocationOrderSearchController"
+		class="au.com.woolworths.portal.controller.AllocationOrderSearchController"
+		scope="session" />
+	<bean id="pogService" class="au.com.woolworths.portal.service.POGServiceImpl"
+		scope="session" />
+
+	<bean id="loginController" class="au.com.woolworths.portal.controller.LoginController"
+		scope="session" />
+
+	<bean id="produceLoadListController"
+		class="au.com.woolworths.portal.controller.ProduceLoadListController"
+		scope="session" />
+
+	<bean id="nightFillLabourPlanController"
+		class="au.com.woolworths.portal.controller.NightFillLabourPlanController"
+		scope="session" />
+
+	<bean id="sohAdjustLogController"
+		class="au.com.woolworths.portal.controller.SohAdjustLogController"
+		scope="session" />
+
+
+	<!-- Article Look Up -->
+	<bean id="articleLookUpController"
+		class="au.com.woolworths.portal.controller.ArticleLookUpController"
+		scope="session" />
+<!-- Order Inquiry -->
+	<bean id="orderInquiryController"
+		class="au.com.woolworths.portal.controller.OrderInquiryController"
+		scope="session" />
+
+	<!-- Claims -->
+	<bean id="claimsController" class="au.com.woolworths.portal.controller.ClaimsController"
+		scope="session" />
+
+	<bean id="sohAdjustLogServiceImpl"
+		class="au.com.woolworths.portal.service.SohAdjustLogServiceImpl"
+		scope="session" />
+
+	<bean id="siteHierarchyService"
+		class="au.com.woolworths.portal.service.SiteHierarchyServiceImpl"
+		scope="session" />
+
+	<bean id="porderDetailsServiceImpl"
+		class="au.com.woolworths.portal.service.POrderDetailsServiceImpl"
+		scope="session" />
+
+	<bean id="allocationSearchServiceImpl"
+		class="au.com.woolworths.portal.service.AllocationSearchServiceImpl"
+		scope="session" />
+
+	<bean id="orderPopupTabSearchServiceImpl"
+		class="au.com.woolworths.portal.service.OrderPopupTabSearchServiceImpl"
+		scope="session" />
+	<!-- <bean id="aqmReasonCodesServiceImpl" class="au.com.woolworths.portal.service.AQMReasonCodesServiceImpl" 
+		scope="session" /> -->
+
+	<bean id="produceLoadListService" class="au.com.woolworths.portal.service.ProduceLoadListImpl"
+		scope="session" />
+
+	<bean id="articleService" class="au.com.woolworths.portal.service.ArticleServiceImpl"
+		scope="session" />
+
+	<bean id="ppArticleService" class="au.com.woolworths.portal.service.PPArticleServiceImpl"
+		scope="session" />
+
+	<bean id="nightFillLabourPlanService"
+		class="au.com.woolworths.portal.service.NightFillLabourPlanServiceImpl"
+		scope="session" />
+
+	<bean id="nightFillLabourPlanFutureService"
+		class="au.com.woolworths.portal.service.NightFillLabourPlanFutureServiceImpl"
+		scope="session" />
+		
+	<bean id="meatPlannerService"
+		class="au.com.woolworths.portal.pplanner.create.MeatPlannerServiceImpl"
+		scope="session" />
+
+	<bean id="loginService" class="au.com.woolworths.portal.service.LoginServiceImpl"
+		scope="session" />
+
+	<bean id="orderService" class="au.com.woolworths.portal.service.OrderServiceImpl"
+		scope="session" />
+	<bean id="preqService" class="au.com.woolworths.portal.service.PReqServiceImpl"
+		scope="session" />
+
+	<bean id="jasperReportUtil" class="au.com.woolworths.portal.reports.JasperReportUtil"
+		scope="prototype" />
+
+	<bean id="plannedOrderService"
+		class="au.com.woolworths.portal.service.PlannedOrderServiceImpl"
+		scope="session" />
+
+	<bean name="serviceImpl" id="commonService" class="au.com.woolworths.portal.service.CommonServiceImpl"
+		scope="session" autowire="byName"/>
+
+	<bean id="storeService" class="au.com.woolworths.portal.service.StoreODataImpl"
+		scope="session" />
+
+	<bean id="inventoryService" class="au.com.woolworths.portal.service.InventoryServiceImpl"
+		scope="session" />
+	<bean id="ReportService" class="au.com.woolworths.portal.service.ReportServiceImpl"
+		scope="session" />
+	<bean id="edgmsServiceImpl" class="au.com.woolworths.portal.service.EdgmsServiceImpl"
+		scope="session" />
+
+	<bean id="edgmsDiscrepancyServiceImpl"
+		class="au.com.woolworths.portal.service.EdgmsDiscrepancyServiceImpl"
+		scope="session" />
+
+	<bean id="orderRosterReportService"
+		class="au.com.woolworths.portal.service.OrderRosterReportServiceImpl"
+		scope="session" />
+
+	<bean id="invoiceReconcileServiceImpl"
+		class="au.com.woolworths.portal.service.InvoiceReconcilationServiceImpl"
+		scope="session" />
+	<bean id="MPLorSCAdjController"
+		class="au.com.woolworths.portal.controller.MPLorSCAdjController"
+		scope="session" />
+	<bean id="MPLorSCAdjServiceImpl" class="au.com.woolworths.portal.service.MPLorSCAdjServiceImpl"
+		scope="session" />
+
+	<bean id="dailyStoreProfileReportService"
+		class="au.com.woolworths.portal.service.DailyStoreProfileReportServiceImpl"
+		scope="session" />
+
+	<bean id="aQMSearchQueryService"
+		class="au.com.woolworths.portal.service.AQMSearchQueryServiceImpl"
+		scope="session" />
+	<bean id="searchArticleServiceImpl"
+		class="au.com.woolworths.portal.service.SearchArticleServiceImpl"
+		scope="session" />
+	<bean id="aQMInitiateQueryServiceImpl"
+		class="au.com.woolworths.portal.service.AQMInitiateQueryServiceImpl"
+		scope="session" />
+	<bean id="promotionsPlanningService"
+		class="au.com.woolworths.portal.service.PromotionsPlanningServiceImpl"
+		scope="session" />
+	<bean id="zeroMPLReportService"
+		class="au.com.woolworths.portal.service.ZeroMPLReportServiceImpl"
+		scope="session" />
+	<bean id="manualOrderBookService"
+		class="au.com.woolworths.portal.service.ManualOrderBookServiceImpl"
+		scope="session" />
+	<bean id="warehouseVarianceService"
+		class="au.com.woolworths.portal.service.WarehouseVarianceServiceImpl"
+		scope="session" />
+	<bean id="storeSearchService" class="au.com.woolworths.portal.service.StoreSearchServiceImpl"
+		scope="session" />
+	<bean id="intransitOrderService"
+		class="au.com.woolworths.portal.service.IntransitOrderServiceImpl"
+		scope="session" />
+	<bean id="userAccessService" class="au.com.woolworths.portal.service.UserAccessServiceImpl"
+		scope="session" />
+	<bean id="invoiceReconService"
+		class="au.com.woolworths.portal.service.InvoiceReconServiceImpl"
+		scope="session" />
+	<bean id="EncryptDecrypt" class="au.com.woolworths.portal.util.EncryptDecrypt"
+		scope="session" />
+	<bean id="jasperRptResponseHandler"
+		class="au.com.woolworths.portal.pos.controller.JasperRptResponseHandlerUtil"
+		scope="session" />
+	<bean id="ageVerificationDetailServiceImpl"
+		class="au.com.woolworths.portal.pos.service.AgeVerificationDetailServiceImpl"
+		scope="session" />
+	<bean id="ageVerificationSummaryServiceImpl"
+		class="au.com.woolworths.portal.pos.service.AgeVerificationSummaryServiceImpl"
+		scope="session" />
+	<bean id="investigateTransactionServiceImpl"
+		class="au.com.woolworths.portal.pos.service.InvestigateTransactionServiceImpl"
+		scope="session" />
+	<bean id="markdownDetailsServiceImpl"
+		class="au.com.woolworths.portal.pos.service.MarkdownDetailsServiceImpl"
+		scope="session" />
+	<bean id="paidInPaidOutServiceImpl"
+		class="au.com.woolworths.portal.pos.service.PaidInPaidOutServiceImpl"
+		scope="session" />
+	<bean id="pOSArticleVoidRefundServiceImpl"
+		class="au.com.woolworths.portal.pos.service.POSArticleVoidRefundServiceImpl"
+		scope="session" />
+	<bean id="posConsolidationServiceImpl"
+		class="au.com.woolworths.portal.pos.service.POSConsolidationServiceImpl"
+		scope="session" />
+	<bean id="pOSDeclarationResultsServiceImpl"
+		class="au.com.woolworths.portal.pos.service.POSDeclarationResultsServiceImpl"
+		scope="session" />
+	<bean id="pOSDepartmentandSalesTaxServiceImpl"
+		class="au.com.woolworths.portal.pos.service.POSDepartmentandSalesTaxServiceImpl"
+		scope="session" />
+	<bean id="salesByArticleServiceImpl"
+		class="au.com.woolworths.portal.pos.service.SalesByArticleServiceImpl"
+		scope="session" />
+	<bean id="sCOSalesSummaryServiceImpl"
+		class="au.com.woolworths.portal.pos.service.SCOSalesSummaryServiceImpl"
+		scope="session" />
+	<bean id="starReportServiceImpl"
+		class="au.com.woolworths.portal.pos.service.StarReportServiceImpl"
+		scope="session" />
+	<bean id="storePerformanceServiceImpl"
+		class="au.com.woolworths.portal.pos.service.StorePerformanceServiceImpl"
+		scope="session" />
+	<bean id="storeWeeklyMarkdownServiceImpl"
+		class="au.com.woolworths.portal.pos.service.StoreWeeklyMarkdownServiceImpl"
+		scope="session" />
+	<bean id="unknownandUnRangedArticleServiceImpl"
+		class="au.com.woolworths.portal.pos.service.UnknownandUnRangedArticleServiceImpl"
+		scope="session" />
+	<bean id="manualFuelPromotionsServiceImpl"
+		class="au.com.woolworths.portal.pos.service.ManualFuelPromotionsServiceImpl"
+		scope="session" />
+	<bean id="manualFuelSalesServiceImpl"
+		class="au.com.woolworths.portal.pos.service.ManualFuelSalesServiceImpl"
+		scope="session" />
+
+<bean id="stockTakeController" class="au.com.woolworths.portal.controller.StockTakeController"
+	scope="session" />
+	
+	<bean id="stockTransferServiceImpl" class="au.com.woolworths.portal.service.StockTransferServiceImpl"
+		scope="session" />
+
+	<!-- <bean id="plannedOrderService" class="au.com.woolworths.portal.service.PlannedOrderServiceImpl" 
+		scope="session" /> -->
+
+<!-- 	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+		<property name="caches">
+			<set>
+				<bean
+					class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+					p:name="orderRosters" />
+			</set>
+		</property>
+	</bean>
+ -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+		<property name="order" value="1" />
+		<property name="exposedContextBeanNames">
+			<list>
+				<value>properties</value>
+			</list>
+
+		</property>
+	</bean>
+
+	<!-- OData (REST) Template -->
+
+	<!-- Credentials provider needed by apache default http client -->
+	<!-- <bean id="credentialProvider" class="org.apache.http.impl.client.BasicCredentialsProvider" 
+		scope="session" /> -->
+
+	<!-- Used to invoke a method in BasicCredentialsProvider. This has to be 
+		done this way as BasicCredentialsProvider does not take provider and credentials 
+		in constructor or setter method. It has to set by invoking setCredentials() 
+		method and passing two arguments -->
+	<!--<bean id="methodInvoke" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"> 
+		<property name="targetObject"> <ref local="credentialProvider" /> </property> 
+		<property name="targetMethod" value="setCredentials"> </property> <property 
+		name="arguments"> <list> <ref local="authScope" /> <ref local="credentials" 
+		/> </list> </property> </bean> -->
+
+	<!-- Authorization scope for accessing restful service. Since we want this 
+		template to be used for everything, we are setting up it with defaults -->
+	<!--<bean id="authScope" class="org.apache.http.auth.AuthScope"> <constructor-arg> 
+		<null /> </constructor-arg> <constructor-arg> <value>-1</value> </constructor-arg> 
+		<constructor-arg> <null /> </constructor-arg> <constructor-arg> <null /> 
+		</constructor-arg> </bean> -->
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate"
+		scope="session"></bean>
+
+	<!-- <bean id="restTemplateFor1POS" class="org.springframework.web.client.RestTemplate" 
+		scope="session"></bean> <bean id="forPostRestTemplate" class="org.springframework.web.client.RestTemplate" 
+		scope="session"></bean> <bean id="restTemplatePostForReplenishment" class="org.springframework.web.client.RestTemplate" 
+		scope="session"></bean> -->
+
+	<!-- Username and Password Credentials to access restful service -->
+	<!-- <bean id="credentials" class="org.apache.http.auth.UsernamePasswordCredentials" 
+		> <constructor-arg value="${UserName}"></constructor-arg> <constructor-arg 
+		value="${Password}"></constructor-arg> </bean> -->
+
+
+
+	<bean id="JacksonObjectMapper" class="org.codehaus.jackson.map.ObjectMapper" />
+
+	<!-- Generic cache manager based on the JDK ConcurrentMap -->
+
+
+	<bean id="properties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:function_code.properties</value>
+				<value>classpath:screen_code.properties</value>
+				<value>classpath:report.properties</value>
+				<value>classpath:url_MobiLink.properties</value>
+				<value>${LOAD_TYPE}:${absPathPrefix}prop/${scEnv}/environment.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="nestProps" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	 	<property name="locations">
+			<list>
+				<value>${LOAD_TYPE}:${absPathPrefix}prop/${scEnv}/environment.properties</value>
+				<value>classpath:prop/ServiceUrls_1POS.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="url"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>${LOAD_TYPE}:${absPathPrefix}prop/${scEnv}/url_SAP.properties</value>
+				<value>${LOAD_TYPE}:${absPathPrefix}prop/${scEnv}/url_RC.properties</value>
+				<value>${LOAD_TYPE}:${absPathPrefix}prop/${scEnv}/url_NFLP.properties</value>
+				<value>${LOAD_TYPE}:${absPathPrefix}prop/${scEnv}/url_TOPR.properties</value>
+				<value>${LOAD_TYPE}:${absPathPrefix}prop/${scEnv}/url_SCS.properties</value>
+				<value>${LOAD_TYPE}:${absPathPrefix}prop/${scEnv}/url_PPS.properties</value>
+				<value>${LOAD_TYPE}:${absPathPrefix}prop/${scEnv}/url_CT.properties</value>
+				<value>${LOAD_TYPE}:${APPL_STORECENTRAL_CONFIG_URL_LDAP_FILE}</value>
+			</list>
+		</property>
+	</bean>
+<mvc:interceptors>
+    <mvc:interceptor>
+        <!-- <mvc:mapping path="/*/posconsolidation/**" />
+        <mvc:mapping path="/*/posdeclaration/**" />
+        <mvc:mapping path="/*/paidinpaidout/**" />
+        <mvc:mapping path="/*/starreport/**" />
+        <mvc:mapping path="/*/storeWeekly/**" />
+        
+        <mvc:mapping path="/*/markdowndetails/**" />
+        <mvc:mapping path="/*/investigate/**" />
+        <mvc:mapping path="/*/voidrefund/**" />
+        <mvc:mapping path="/*/ageVerificationDetail/**" />
+        <mvc:mapping path="/*/ageVerificationSummary/**" />
+        
+        <mvc:mapping path="/*/storeperfomance/**" />
+        <mvc:mapping path="/*/posdepartmentsales/**" />
+        <mvc:mapping path="/*/salesByArticle/**" />
+        <mvc:mapping path="/*/salesSummary/**" />
+        <mvc:mapping path="/*/manualFuelPromotions/**" />
+        <mvc:mapping path="/*/manualFuelSales/**" />
+        <mvc:mapping path="/*/plannerReport/**" />
+         -->
+         <mvc:mapping path="/**" />
+        
+        <bean class="au.com.woolworths.portal.servlet.RequestProcessingTimeInterceptor"></bean>
+    </mvc:interceptor>
+</mvc:interceptors>
+
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${host}" />
+		<property name="port" value="${port}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">${mail.transport.protocol}</prop>
+				<prop key="mail.smtp.auth">false</prop>
+				<prop key="mail.smtp.starttls.enable">${mail.smtp.starttls.enable}</prop>
+				<prop key="mail.debug">${mail.debug}</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

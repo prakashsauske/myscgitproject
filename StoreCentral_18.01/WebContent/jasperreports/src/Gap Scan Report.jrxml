@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StockTransferIn" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="4ff33c1f-4dfb-4da7-b006-2265d483123b">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="72"/>
+	<subDataset name="dataset1" uuid="ff43b490-37e7-4175-868e-1b5eb0b62b49"/>
+	<parameter name="reason_type" class="java.lang.String"/>
+	<parameter name="report_date" class="java.lang.String"/>
+	<parameter name="dept" class="java.lang.String"/>
+	<parameter name="employee" class="java.lang.String"/>
+	<parameter name="StoreNo" class="java.lang.String"/>
+	<parameter name="StoreName" class="java.lang.String"/>
+	<parameter name="report_time" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\NGBO_WS_Guru\\NGBO\\WebContent\\jasperreports\\src\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | HH:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="actionRequired" class="java.util.List">
+		<fieldDescription><![CDATA[actionRequired]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.String"/>
+	<field name="reviewOnly" class="java.util.List">
+		<fieldDescription><![CDATA[reviewOnly]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="159" height="20" uuid="bd642c62-1059-4d8d-acf3-c53f02ae6528"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Gap Scan Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="20" y="45" width="782" height="40" uuid="62bc7be6-023c-40c5-b1e9-15f6408629eb"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reason Type: " +$P{reason_type}+ " | Date & Time: "+ $P{report_date} +"  "+ $P{report_time}+(($P{dept}!=null && !$P{dept}.isEmpty())? ("  | Department:  "+$P{dept}) :"")+(($P{employee}!=null && !$P{employee}.isEmpty())? ("  | Employee:  "+$P{employee}):"")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="30" width="46" height="15" uuid="483d18a4-dd6e-4df7-aae5-f64a457ecc22"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Report for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="491" y="0" width="294" height="15" uuid="289e6005-dce9-4456-bb31-60c59fb47f2e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<subreport isUsingCache="false">
+				<reportElement x="0" y="0" width="802" height="28" uuid="a1e6c640-024f-422f-b4a5-b325a8b5facf"/>
+				<subreportParameter name="gap_scan_for">
+					<subreportParameterExpression><![CDATA["Y"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{actionRequired})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Gap Scan Report_Sub_Report.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="28" splitType="Stretch">
+			<subreport isUsingCache="false">
+				<reportElement x="1" y="0" width="802" height="28" uuid="b65dc7af-645c-4a9b-add0-beec786ec150"/>
+				<subreportParameter name="gap_scan_for">
+					<subreportParameterExpression><![CDATA["N"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{reviewOnly})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Gap Scan Report_Sub_Report.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="14" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="769" y="2" width="16" height="12" uuid="ad40d8ad-ce43-48c9-aa71-9398110e47e7"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="2" width="226" height="12" uuid="70513e11-fbc2-49ea-b245-b0fb0709142e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="2" width="45" height="12" uuid="3faf8052-72f6-4b36-b739-d7bee423d0a3"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="689" y="2" width="80" height="12" uuid="365c6a68-a436-4df3-9894-4c188d0501a7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="76">
+			<textField>
+				<reportElement x="66" y="63" width="226" height="12" uuid="78e171fe-9d42-41fc-81af-5f2f56a5624c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="769" y="64" width="16" height="12" uuid="1aee5315-bf30-40ce-8868-7538ee4c935b"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="689" y="64" width="80" height="12" uuid="df0f110c-29c4-440a-97ed-568f1f32367c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="63" width="45" height="12" uuid="b7e57784-d039-41fd-bcc0-5699998e6122"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="365" y="0" width="100" height="20" uuid="06aa0a1f-52b1-425b-ba9d-31c615e2e80c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[End of Report]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

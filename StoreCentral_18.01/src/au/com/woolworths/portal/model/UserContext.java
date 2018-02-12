@@ -1,0 +1,891 @@
+package au.com.woolworths.portal.model;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class UserContext implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String userId;
+	private String versionId;
+	private String firstName;
+	private String password;
+	private String expiryDate;
+	private String roleID;
+	private String lastName;
+	private String emailId;
+	private Integer salesOrg;
+	private String siteNo;
+	private String siteName;
+	private String role;
+	private String overrideSiteNo, overrideSiteName;
+	private String errorMessage;
+	private String imgLocation;
+	private String siteListString;
+	private String userAccess;
+	private List<UserInfoDetail> siteList;
+	private UserInfoDetail locatedStore;
+	private String msg;
+	private String sapPwd;
+	private String secretQuesFlag;
+	private String posStore;
+	private String district;
+	private String functionCodeList;
+	private String physicalStore;
+	private String latitude;
+	private String longitude;
+	private String isWriteAuthorized;
+	private String loggedInUser;
+	private String loggedInPwd;
+	private String loggedInSAPPwd;
+	private String salesOrgAuth;
+	private String department;
+	private String regionId;
+	private String active_flag;
+	private List<SiteDtls> siteDtlsList;
+	private String smInsertFlag;
+	private String superUserFlag;
+	private String domain;
+	private boolean isLocked;
+	private boolean isDeactivated;
+	private int expiryDueDays;
+	private String inStore;
+	private boolean loggedinSecretQues;
+	private boolean loggedinChangePwd;
+	private boolean loggedinAccessExp;
+	private boolean loggedin;
+	private boolean changePwdMandatory;
+	private boolean changePwdMandatoryOnLogin;
+	private String payingDept;
+	private boolean isNGBOStore;
+	private String NGBOStoreFlag;
+	private String primaryStore;
+	private boolean isInactiveInPrimary;
+	private String storeHost;
+	private String storeHostMap;
+	private String linkedSalesOrg;
+	private String replenishmentDate;
+	private String primaryDeptString;
+	private static String clientIp;
+	private static String loggedInStore;
+	public String timeZoneOffSet;
+	public String userName;
+	private String session_seq;
+	private String user_session;
+	private String c_user_id;
+	private String remote_ip;
+	private String fullName;
+	private boolean is1S3Store;
+	private String NGBO1S3StoreFlag;
+	private String loggedInEncryptedSAPPwd;
+	private String redirectURL;
+	/**
+	 * @return the loggedInStore
+	 */
+	public static String getLoggedInStore() {
+		return loggedInStore;
+	}
+
+	/**
+	 * @param loggedInStore
+	 *            the loggedInStore to set
+	 */
+	public static void setLoggedInStore(String loggedInStore) {
+		UserContext.loggedInStore = loggedInStore;
+	}
+
+	/**
+	 * @return the clientIp
+	 */
+	public static String getClientIp() {
+		return clientIp;
+	}
+
+	/**
+	 * @param clientIp
+	 *            the clientIp to set
+	 */
+	public static void setClientIp(String clientIp) {
+		UserContext.clientIp = clientIp;
+	}
+
+	public String getStoreHostMap() {
+		return storeHostMap;
+	}
+
+	public void setStoreHostMap(String storeHostMap) {
+		this.storeHostMap = storeHostMap;
+	}
+
+	public String getPrimaryDeptString() {
+		return primaryDeptString;
+	}
+
+	public void setPrimaryDeptString(String primaryDeptString) {
+		this.primaryDeptString = primaryDeptString;
+	}
+
+	/**
+	 * @return the storeHost
+	 */
+	public String getStoreHost() {
+		return storeHost;
+	}
+
+	/**
+	 * @param storeHost
+	 *            the storeHost to set
+	 */
+	public void setStoreHost(String storeHost) {
+		this.storeHost = storeHost;
+		// this.storeHost_m = storeHost;
+	}
+
+	/**
+	 * @return the isInactiveInPrimary
+	 */
+	public boolean isInactiveInPrimary() {
+		return isInactiveInPrimary;
+	}
+
+	/**
+	 * @param isInactiveInPrimary
+	 *            the isInactiveInPrimary to set
+	 */
+	public void setInactiveInPrimary(boolean isInactiveInPrimary) {
+		this.isInactiveInPrimary = isInactiveInPrimary;
+	}
+
+	/**
+	 * @return the primaryStore
+	 */
+	public String getPrimaryStore() {
+		return primaryStore;
+	}
+
+	/**
+	 * @param primaryStore
+	 *            the primaryStore to set
+	 */
+	public void setPrimaryStore(String primaryStore) {
+		this.primaryStore = primaryStore;
+	}
+
+	/**
+	 * @return the nGBOStoreFlag
+	 */
+	public String getNGBOStoreFlag() {
+		return NGBOStoreFlag;
+	}
+
+	/**
+	 * @param nGBOStoreFlag
+	 *            the nGBOStoreFlag to set
+	 */
+	public void setNGBOStoreFlag(String nGBOStoreFlag) {
+		NGBOStoreFlag = nGBOStoreFlag;
+	}
+
+	/**
+	 * @return the locatedStore
+	 */
+	public UserInfoDetail getLocatedStore() {
+		return locatedStore;
+	}
+
+	/**
+	 * @param locatedStore
+	 *            the locatedStore to set
+	 */
+	public void setLocatedStore(UserInfoDetail locatedStore) {
+		this.locatedStore = locatedStore;
+	}
+
+	/**
+	 * @return the isNGBOStore
+	 */
+	public boolean isNGBOStore() {
+		return isNGBOStore;
+	}
+
+	/**
+	 * @param isNGBOStore
+	 *            the isNGBOStore to set
+	 */
+	public void setNGBOStore(boolean isNGBOStore) {
+		this.isNGBOStore = isNGBOStore;
+		if (isNGBOStore) {
+			this.NGBOStoreFlag = "Y";
+		} else {
+			this.NGBOStoreFlag = "N";
+		}
+
+	}
+
+	/**
+	 * @return the payingDept
+	 */
+	public String getPayingDept() {
+		return payingDept;
+	}
+
+	/**
+	 * @param payingDept
+	 *            the payingDept to set
+	 */
+	public void setPayingDept(String payingDept) {
+		this.payingDept = payingDept;
+	}
+
+	public boolean isChangePwdMandatoryOnLogin() {
+		return changePwdMandatoryOnLogin;
+	}
+
+	public void setChangePwdMandatoryOnLogin(boolean changePwdMandatoryOnLogin) {
+		this.changePwdMandatoryOnLogin = changePwdMandatoryOnLogin;
+	}
+
+	public boolean isChangePwdMandatory() {
+		return changePwdMandatory;
+	}
+
+	public void setChangePwdMandatory(boolean changePwdMandatory) {
+		this.changePwdMandatory = changePwdMandatory;
+	}
+
+	public boolean isLoggedin() {
+		return loggedin;
+	}
+
+	public void setLoggedin(boolean loggedin) {
+		this.loggedin = loggedin;
+	}
+
+	public UserContext() {
+		super();
+		loggedinSecretQues = false;
+		loggedinChangePwd = false;
+		loggedinAccessExp = false;
+		loggedin = false;
+		isNGBOStore = false;
+		NGBOStoreFlag = "N";
+		isInactiveInPrimary = false;
+	}
+
+	public boolean isLoggedinSecretQues() {
+		return loggedinSecretQues;
+	}
+
+	public void setLoggedinSecretQues(boolean loggedinSecretQues) {
+		this.loggedinSecretQues = loggedinSecretQues;
+	}
+
+	public boolean isLoggedinChangePwd() {
+		return loggedinChangePwd;
+	}
+
+	public void setLoggedinChangePwd(boolean loggedinChangePwd) {
+		this.loggedinChangePwd = loggedinChangePwd;
+	}
+
+	public boolean isLoggedinAccessExp() {
+		return loggedinAccessExp;
+	}
+
+	public void setLoggedinAccessExp(boolean loggedinAccessExp) {
+		this.loggedinAccessExp = loggedinAccessExp;
+	}
+
+	/*
+	 * XPSNV - Code for Backend Restriction - Redirection to Not Authorized Page
+	 * - Begin
+	 */
+	Map<String, ArrayList<ActivityOptions>> userAccessMap;
+
+	public Map<String, ArrayList<ActivityOptions>> getUserAccessMap() {
+		return userAccessMap;
+	}
+
+	public void setUserAccessMap(
+			Map<String, ArrayList<ActivityOptions>> userAccessMap) {
+		this.userAccessMap = userAccessMap;
+	}
+
+	/*
+	 * XPSNV - Code for Backend Restriction - Redirection to Not Authorized Page
+	 * - End
+	 */
+
+	public int getExpiryDueDays() {
+		return expiryDueDays;
+	}
+
+	public void setExpiryDueDays(int expiryDueDays) {
+		this.expiryDueDays = expiryDueDays;
+	}
+
+	public String getPhysicalStore() {
+		return physicalStore;
+	}
+
+	public void setPhysicalStore(String physicalStore) {
+		this.physicalStore = physicalStore;
+	}
+
+	public boolean isLocked() {
+		return isLocked;
+	}
+
+	public void setLocked(boolean isLocked) {
+		this.isLocked = isLocked;
+	}
+
+	public boolean isDeactivated() {
+		return isDeactivated;
+	}
+
+	public void setDeactivated(boolean isDeactivated) {
+		this.isDeactivated = isDeactivated;
+	}
+
+	public String getImgLocation() {
+		return imgLocation;
+	}
+
+	public void setImgLocation(String imgLocation) {
+		this.imgLocation = imgLocation;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(String expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+
+	public String getRoleID() {
+		return roleID;
+	}
+
+	public void setRoleID(String roleID) {
+		this.roleID = roleID;
+	}
+
+	public Integer getSalesOrg() {
+		return salesOrg;
+	}
+
+	public void setSalesOrg(Integer salesOrg) {
+		this.salesOrg = salesOrg;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+	public String getSiteNo() {
+		return siteNo;
+	}
+
+	public void setSiteNo(String siteNo) {
+		this.siteNo = siteNo;
+		UserContext.setLoggedInStore(siteNo);
+	}
+
+	public String getSiteName() {
+		return siteName;
+	}
+
+	public void setSiteName(String siteName) {
+		this.siteName = siteName;
+	}
+
+	public String getOverrideSiteNo() {
+		return overrideSiteNo;
+	}
+
+	public void setOverrideSiteNo(String overrideSiteNo) {
+		this.overrideSiteNo = overrideSiteNo;
+	}
+
+	public String getOverrideSiteName() {
+		return overrideSiteName;
+	}
+
+	public void setOverrideSiteName(String overrideSiteName) {
+		this.overrideSiteName = overrideSiteName;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+	public String getLoggedInUser() {
+		return loggedInUser;
+	}
+
+	public void setLoggedInUser(String loggedInUser) {
+		this.loggedInUser = loggedInUser;
+	}
+
+	public String getLoggedInPwd() {
+		return loggedInPwd;
+	}
+
+	public void setLoggedInPwd(String loggedInPwd) {
+		this.loggedInPwd = loggedInPwd;
+	}
+
+	public String getIsWriteAuthorized() {
+		return isWriteAuthorized;
+	}
+
+	public void setIsWriteAuthorized(String isWriteAuthorized) {
+		this.isWriteAuthorized = isWriteAuthorized;
+	}
+
+	public String getSiteListString() {
+		return siteListString;
+	}
+
+	public void setSiteListString(String siteListString) {
+		this.siteListString = siteListString;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public List<UserInfoDetail> getSiteList() {
+		return siteList;
+	}
+
+	public void setSiteList(List<UserInfoDetail> siteList) {
+		this.siteList = siteList;
+	}
+
+	public String getUserAccess() {
+		return userAccess;
+	}
+
+	public void setUserAccess(String userAccess) {
+		this.userAccess = userAccess;
+	}
+
+	public String getSalesOrgAuth() {
+		return salesOrgAuth;
+	}
+
+	public void setSalesOrgAuth(String salesOrgAuth) {
+		this.salesOrgAuth = salesOrgAuth;
+	}
+
+	/**
+	 * @return the department
+	 */
+	public String getDepartment() {
+		return department;
+	}
+
+	/**
+	 * @param department
+	 *            the department to set
+	 */
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	/**
+	 * @return the regionId
+	 */
+	public String getRegionId() {
+		return regionId;
+	}
+
+	/**
+	 * @param regionId
+	 *            the regionId to set
+	 */
+	public void setRegionId(String regionId) {
+		this.regionId = regionId;
+	}
+
+	/**
+	 * @return the loggedInSAPPwd
+	 */
+	public String getLoggedInSAPPwd() {
+		return loggedInSAPPwd;
+	}
+
+	/**
+	 * @param loggedInSAPPwd
+	 *            the loggedInSAPPwd to set
+	 */
+	public void setLoggedInSAPPwd(String loggedInSAPPwd) {
+		this.loggedInSAPPwd = loggedInSAPPwd;
+	}
+
+	/**
+	 * @return the sapPwd
+	 */
+	public String getSapPwd() {
+		return sapPwd;
+	}
+
+	/**
+	 * @param sapPwd
+	 *            the sapPwd to set
+	 */
+	public void setSapPwd(String sapPwd) {
+		this.sapPwd = sapPwd;
+	}
+
+	/**
+	 * @return the secretQuesFlag
+	 */
+	public String getSecretQuesFlag() {
+		return secretQuesFlag;
+	}
+
+	/**
+	 * @param secretQuesFlag
+	 *            the secretQuesFlag to set
+	 */
+	public void setSecretQuesFlag(String secretQuesFlag) {
+		this.secretQuesFlag = secretQuesFlag;
+	}
+
+	/**
+	 * @return the superUserFlag
+	 */
+	public String getSuperUserFlag() {
+		return superUserFlag;
+	}
+
+	/**
+	 * @param superUserFlag
+	 *            the superUserFlag to set
+	 */
+	public void setSuperUserFlag(String superUserFlag) {
+		this.superUserFlag = superUserFlag;
+	}
+
+	/**
+	 * @return the posStore
+	 */
+	public String getPosStore() {
+		return posStore;
+	}
+
+	/**
+	 * @param posStore
+	 *            the posStore to set
+	 */
+	public void setPosStore(String posStore) {
+		this.posStore = posStore;
+	}
+
+	/**
+	 * @return the active_flag
+	 */
+	public String getActive_flag() {
+		return active_flag;
+	}
+
+	/**
+	 * @param active_flag
+	 *            the active_flag to set
+	 */
+	public void setActive_flag(String active_flag) {
+		this.active_flag = active_flag;
+	}
+
+	/**
+	 * @return the smInsertFlag
+	 */
+	public String getSmInsertFlag() {
+		return smInsertFlag;
+	}
+
+	/**
+	 * @param smInsertFlag
+	 *            the smInsertFlag to set
+	 */
+	public void setSmInsertFlag(String smInsertFlag) {
+		this.smInsertFlag = smInsertFlag;
+	}
+
+	/**
+	 * @return the siteDtlsList
+	 */
+	public List<SiteDtls> getSiteDtlsList() {
+		return siteDtlsList;
+	}
+
+	/**
+	 * @param siteDtlsList
+	 *            the siteDtlsList to set
+	 */
+	public void setSiteDtlsList(List<SiteDtls> siteDtlsList) {
+		this.siteDtlsList = siteDtlsList;
+	}
+
+	public String getFunctionCodeList() {
+		return functionCodeList;
+	}
+
+	public void setFunctionCodeList(String functionCodeList) {
+		this.functionCodeList = functionCodeList;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getVersionId() {
+		return versionId;
+	}
+
+	public void setVersionId(String versionId) {
+		this.versionId = versionId;
+	}
+
+	/**
+	 * @return the domain
+	 */
+	public String getDomain() {
+		return domain;
+	}
+
+	/**
+	 * @param domain
+	 *            the domain to set
+	 */
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+
+	public String getInStore() {
+		return inStore;
+	}
+
+	public void setInStore(String inStore) {
+		this.inStore = inStore;
+	}
+
+	/**
+	 * @return the linkedSalesOrg
+	 */
+	public String getLinkedSalesOrg() {
+		return linkedSalesOrg;
+	}
+
+	/**
+	 * @param linkedSalesOrg
+	 *            the linkedSalesOrg to set
+	 */
+	public void setLinkedSalesOrg(String linkedSalesOrg) {
+		this.linkedSalesOrg = linkedSalesOrg;
+	}
+
+	public String getReplenishmentDate() {
+		return replenishmentDate;
+	}
+
+	public void setReplenishmentDate(String replenishmentDate) {
+		this.replenishmentDate = replenishmentDate;
+	}
+
+	public String getTimeZoneOffSet() {
+		return timeZoneOffSet;
+	}
+
+	public void setTimeZoneOffSet(String timeZoneOffSet) {
+		this.timeZoneOffSet = timeZoneOffSet;
+	}
+
+	/**
+	 * @return the userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
+
+	/**
+	 * @param userName
+	 *            the userName to set
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getSession_seq() {
+		return session_seq;
+	}
+
+	public void setSession_seq(String session_seq) {
+		this.session_seq = session_seq;
+	}
+
+	public String getUser_session() {
+		return user_session;
+	}
+
+	public void setUser_session(String user_session) {
+		this.user_session = user_session;
+	}
+
+	public String getC_user_id() {
+		return c_user_id;
+	}
+
+	public void setC_user_id(String c_user_id) {
+		this.c_user_id = c_user_id;
+	}
+
+	public String getRemote_ip() {
+		return remote_ip;
+	}
+
+	public void setRemote_ip(String remote_ip) {
+		this.remote_ip = remote_ip;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	/**
+	 * @return the is1S3Store
+	 */
+	public boolean isIs1S3Store() {
+		return is1S3Store;
+	}
+
+	/**
+	 * @param is1s3Store the is1S3Store to set
+	 */
+	public void set1S3Store(boolean is1s3Store) {
+		is1S3Store = is1s3Store;
+		if (is1S3Store) {
+			this.NGBO1S3StoreFlag = "Y";
+		} else {
+			this.NGBO1S3StoreFlag = "N";
+		}
+	}
+
+	/**
+	 * @return the nGBO1S3StoreFlag
+	 */
+	public String getNGBO1S3StoreFlag() {
+		return NGBO1S3StoreFlag;
+	}
+
+	/**
+	 * @param nGBO1S3StoreFlagset1S3Store the nGBO1S3StoreFlag to set
+	 */
+	public void setNGBO1S3StoreFlag(String nGBO1S3StoreFlag) {
+		NGBO1S3StoreFlag = nGBO1S3StoreFlag;
+	}
+
+	public String getLoggedInEncryptedSAPPwd() {
+		return loggedInEncryptedSAPPwd;
+	}
+
+	public void setLoggedInEncryptedSAPPwd(String loggedInEncryptedSAPPwd) {
+		this.loggedInEncryptedSAPPwd = loggedInEncryptedSAPPwd;
+	}
+
+	public String getRedirectURL() {
+		return redirectURL;
+	}
+
+	public void setRedirectURL(String redirectURL) {
+		this.redirectURL = redirectURL;
+	}
+	
+	
+
+}

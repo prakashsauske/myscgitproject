@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StockTransferIn" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4ff33c1f-4dfb-4da7-b006-2265d483123b">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="57"/>
+	<property name="ireport.y" value="96"/>
+	<subDataset name="dataset1" uuid="ff43b490-37e7-4175-868e-1b5eb0b62b49"/>
+	<parameter name="StoreNo" class="java.lang.String"/>
+	<parameter name="StoreName" class="java.lang.String"/>
+	<parameter name="reportFor" class="java.lang.String"/>
+	<parameter name="reportForDate" class="java.lang.String"/>
+	<parameter name="day1" class="java.lang.String"/>
+	<parameter name="day2" class="java.lang.String"/>
+	<parameter name="day3" class="java.lang.String"/>
+	<parameter name="day4" class="java.lang.String"/>
+	<parameter name="day5" class="java.lang.String"/>
+	<parameter name="day6" class="java.lang.String"/>
+	<parameter name="day7" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | HH:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="class" class="java.lang.String"/>
+	<field name="reason_desc" class="java.lang.String"/>
+	<field name="mon_count" class="java.lang.String"/>
+	<field name="tue_count" class="java.lang.String"/>
+	<field name="wed_count" class="java.lang.String"/>
+	<field name="thu_count" class="java.lang.String"/>
+	<field name="fri_count" class="java.lang.String"/>
+	<field name="sat_count" class="java.lang.String"/>
+	<field name="sun_count" class="java.lang.String"/>
+	<field name="mon_prcnt" class="java.lang.String"/>
+	<field name="tue_prcnt" class="java.lang.String"/>
+	<field name="wed_prcnt" class="java.lang.String"/>
+	<field name="thu_prcnt" class="java.lang.String"/>
+	<field name="fri_prcnt" class="java.lang.String"/>
+	<field name="sat_prcnt" class="java.lang.String"/>
+	<field name="sun_prcnt" class="java.lang.String"/>
+	<field name="tot_count" class="java.lang.String"/>
+	<field name="tot_prcnt" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="103" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="291" height="20" uuid="bd642c62-1059-4d8d-acf3-c53f02ae6528"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Overstock Investigation Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="45" width="782" height="37" uuid="62bc7be6-023c-40c5-b1e9-15f6408629eb"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportFor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="46" height="15" uuid="483d18a4-dd6e-4df7-aae5-f64a457ecc22"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Report for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="509" y="0" width="294" height="15" uuid="289e6005-dce9-4456-bb31-60c59fb47f2e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="82" width="334" height="20" uuid="93109a08-0306-40f4-8f26-cd80062eaf43"/>
+				<textElement>
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Overstock report for "+$P{reportForDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="57" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="56" width="800" height="1" uuid="d1979600-6951-4c7a-b26a-22c3adb020bf"/>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="21" width="117" height="25" uuid="b85485ab-4e98-4a3e-9632-091e78b9187f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Overstock
+Reason]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="205" y="35" width="35" height="21" uuid="bd517488-3e1f-4430-9032-57f8484d4c8f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Count]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="205" y="15" width="77" height="20" isPrintWhenDetailOverflows="true" uuid="1f2e473e-b106-4887-83df-b2b21a793fe0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="240" y="35" width="42" height="21" uuid="34feafcb-4fc6-4987-af1a-79bb79d9fa15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="164" y="35" width="41" height="21" uuid="b15757a6-1379-425f-aee2-1756066e553b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="129" y="35" width="35" height="21" uuid="cdddafdb-62f0-446c-8731-a561add1b339"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Count]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="129" y="15" width="76" height="20" isPrintWhenDetailOverflows="true" uuid="f5b907d0-9f34-4444-9e3d-8f2ca711b119"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="317" y="35" width="55" height="21" uuid="e9eb65eb-f450-476e-bf12-5dfd4579eda3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="282" y="35" width="35" height="21" uuid="28b1833a-cd7a-42d7-a8d6-15751e824112"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Count]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="282" y="15" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="ca9b3c85-33e3-45b3-b45f-0d91d0f90a1d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="420" y="35" width="39" height="21" uuid="65f3598d-dec9-487b-a084-2c388353ef21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="372" y="35" width="48" height="21" uuid="1614ca1c-7ae6-4572-8a7c-9de5e0a3c427"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Count]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="372" y="15" width="87" height="20" isPrintWhenDetailOverflows="true" uuid="a593fa65-6ed9-4901-abbd-8a8c0c6b1a50"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day4}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="509" y="35" width="38" height="21" uuid="7781bb76-24e3-4145-9a34-4586e3cd912e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="459" y="35" width="50" height="21" uuid="a94ee4f4-6f37-43f7-bf06-716f0d249b44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Count]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="459" y="15" width="88" height="20" isPrintWhenDetailOverflows="true" uuid="99bfdda3-6dd0-4615-8eed-62b3ab6dc4aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day5}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="597" y="35" width="38" height="21" uuid="0a99738f-bd8b-4544-a24f-5cfbe32912c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="547" y="35" width="50" height="21" uuid="40f66726-23ed-4dd1-a478-29b0f07bcc20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Count]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="547" y="15" width="88" height="20" isPrintWhenDetailOverflows="true" uuid="14551220-de57-4264-b0af-b0d59a6cea38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day6}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="685" y="35" width="38" height="21" uuid="197a6e92-62c6-4492-81e8-e1f480df7375"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="635" y="35" width="50" height="21" uuid="5df81eff-4bfc-410e-aa8a-7f6e0c6af293"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Count]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="635" y="15" width="88" height="20" isPrintWhenDetailOverflows="true" uuid="b0128db9-0e14-4c21-b6cc-330c30e993c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day7}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="723" y="35" width="44" height="21" uuid="0fce7b68-8873-4a26-bde9-52b08566a8a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Count]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="767" y="35" width="36" height="21" uuid="45297c96-0b44-4fcd-80e3-6eb86b38f20d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="723" y="14" width="80" height="21" uuid="eb035847-d929-4180-95df-fec355aa6a2b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="164" y="3" width="41" height="20" isPrintWhenDetailOverflows="true" uuid="c0075601-4ca5-4373-9be7-29c500e49dde"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mon_prcnt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="2" width="129" height="20" isPrintWhenDetailOverflows="true" uuid="c9f7cf67-b1c4-4028-b3d1-85bc5da87e1d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reason_desc}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="25" width="800" height="1" uuid="6aa91220-f260-4696-ac34-c1d6eb9039dc"/>
+			</line>
+			<textField>
+				<reportElement x="129" y="2" width="35" height="20" isPrintWhenDetailOverflows="true" uuid="78c7e19d-f958-4f3e-99da-5a476ef01242"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mon_count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="3" width="35" height="20" isPrintWhenDetailOverflows="true" uuid="53d1b40c-4f2d-403f-a1c8-455eb2ecaa9b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tue_count}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="240" y="3" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="2b8f3f8e-34f9-4afc-8936-f66e0579d9f3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tue_prcnt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="282" y="4" width="35" height="20" isPrintWhenDetailOverflows="true" uuid="25dbea9e-6e19-48f3-8b3f-1d61d4030892"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{wed_count}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="317" y="4" width="55" height="20" isPrintWhenDetailOverflows="true" uuid="5ede8527-8149-40c3-9deb-259ea97f7191"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{wed_prcnt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="3" width="48" height="20" isPrintWhenDetailOverflows="true" uuid="3ad091e0-3774-4914-a870-2b12982055df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{thu_count}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="420" y="3" width="39" height="20" isPrintWhenDetailOverflows="true" uuid="dc83d0f0-a2e6-4c31-a1dc-18544753c910"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{thu_prcnt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="459" y="3" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="708558aa-c874-484e-8592-7761e8aafaed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fri_count}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="509" y="3" width="38" height="20" isPrintWhenDetailOverflows="true" uuid="24ea5cf6-752e-4fb1-b34a-d597ae097f02"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fri_prcnt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="547" y="3" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="8b230438-d49e-4d48-a0e8-18846225d8c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sat_count}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="597" y="3" width="38" height="20" isPrintWhenDetailOverflows="true" uuid="64449fb1-7a24-4d52-a6c1-e3aa8a62d326"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sat_prcnt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="635" y="2" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="45f26e68-15fb-42b8-b47d-7599d561b6c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sun_count}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="685" y="2" width="38" height="20" isPrintWhenDetailOverflows="true" uuid="1b9655be-d75f-47f2-9ae1-6a54432a792e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sun_prcnt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="723" y="3" width="44" height="20" isPrintWhenDetailOverflows="true" uuid="ce8f3ccd-e819-4158-b94e-84e890c2ca80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tot_count}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="767" y="3" width="35" height="20" isPrintWhenDetailOverflows="true" uuid="c2d7b034-0f3f-497e-9185-602ad0bbdbaa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tot_prcnt}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="31" width="16" height="12" uuid="ad40d8ad-ce43-48c9-aa71-9398110e47e7"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="31" width="80" height="12" uuid="365c6a68-a436-4df3-9894-4c188d0501a7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="46" y="31" width="226" height="12" uuid="70513e11-fbc2-49ea-b245-b0fb0709142e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="31" width="45" height="12" uuid="3faf8052-72f6-4b36-b739-d7bee423d0a3"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="317" height="13" uuid="4bd1c605-9711-4e41-a8ef-d307f0cac954"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Legend: * Single Price Promo, # Multibuy, @  In-store Promo]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="38">
+			<textField>
+				<reportElement x="46" y="25" width="226" height="12" uuid="78e171fe-9d42-41fc-81af-5f2f56a5624c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="26" width="16" height="12" uuid="1aee5315-bf30-40ce-8868-7538ee4c935b"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="26" width="80" height="12" uuid="df0f110c-29c4-440a-97ed-568f1f32367c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="25" width="45" height="12" uuid="b7e57784-d039-41fd-bcc0-5699998e6122"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="372" y="2" width="100" height="20" uuid="63c1b787-58f5-4199-968a-18dabeb71550"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[End of Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="1" width="317" height="13" uuid="661336a6-eca1-4748-a44e-ccd0dbdea2cb"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Legend: * Single Price Promo, # Multibuy, @ In-store Promo]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

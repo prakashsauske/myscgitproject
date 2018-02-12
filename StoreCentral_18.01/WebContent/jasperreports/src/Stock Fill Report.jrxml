@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StockTransferIn" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4ff33c1f-4dfb-4da7-b006-2265d483123b">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="ff43b490-37e7-4175-868e-1b5eb0b62b49"/>
+	<parameter name="StoreNo" class="java.lang.String"/>
+	<parameter name="StoreName" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\NGBO_WS_Guru\\NGBO\\WebContent\\jasperreports\\src\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | HH:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SalesOrg" class="java.lang.Integer"/>
+	<parameter name="ADReport" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="ltoLocation" class="java.util.List">
+		<fieldDescription><![CDATA[ltoLocationList]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.String"/>
+	<field name="otherLocation" class="java.util.List">
+		<fieldDescription><![CDATA[otherLocationList]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="159" height="21" uuid="bd642c62-1059-4d8d-acf3-c53f02ae6528"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Stock Fill Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="491" y="0" width="294" height="15" uuid="289e6005-dce9-4456-bb31-60c59fb47f2e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<subreport isUsingCache="false">
+				<reportElement x="0" y="0" width="802" height="18" uuid="a1e6c640-024f-422f-b4a5-b325a8b5facf"/>
+				<subreportParameter name="stock_fill_for">
+					<subreportParameterExpression><![CDATA["Y"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SalesOrg">
+					<subreportParameterExpression><![CDATA[$P{SalesOrg}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADReport">
+					<subreportParameterExpression><![CDATA[$P{ADReport}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{ltoLocation})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Stock Fill Sub Report.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="18" splitType="Immediate">
+			<subreport isUsingCache="false">
+				<reportElement x="0" y="0" width="802" height="18" uuid="b65dc7af-645c-4a9b-add0-beec786ec150"/>
+				<subreportParameter name="stock_fill_for">
+					<subreportParameterExpression><![CDATA["N"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SalesOrg">
+					<subreportParameterExpression><![CDATA[$P{SalesOrg}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADReport">
+					<subreportParameterExpression><![CDATA[$P{ADReport}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{otherLocation})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Stock Fill Sub Report.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="45" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="769" y="33" width="16" height="12" uuid="ad40d8ad-ce43-48c9-aa71-9398110e47e7"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="33" width="226" height="12" uuid="70513e11-fbc2-49ea-b245-b0fb0709142e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="33" width="45" height="12" uuid="3faf8052-72f6-4b36-b739-d7bee423d0a3"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="689" y="33" width="80" height="12" uuid="365c6a68-a436-4df3-9894-4c188d0501a7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="0" width="345" height="20" uuid="82ba086c-4baa-4663-86a3-4fb4c9aef1cb"/>
+				<textElement>
+					<font fontName="Arial" size="8" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[Legend: * Single Price Promo, # Multibuy, @ In-store Promo]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="51">
+			<textField>
+				<reportElement x="66" y="38" width="226" height="12" uuid="78e171fe-9d42-41fc-81af-5f2f56a5624c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="769" y="39" width="16" height="12" uuid="1aee5315-bf30-40ce-8868-7538ee4c935b"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="689" y="39" width="80" height="12" uuid="df0f110c-29c4-440a-97ed-568f1f32367c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="38" width="45" height="12" uuid="b7e57784-d039-41fd-bcc0-5699998e6122"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="15" width="100" height="20" uuid="63c1b787-58f5-4199-968a-18dabeb71550"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[End of Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="0" width="345" height="20" uuid="80e08aac-dbbe-4c24-afdc-d1ff0968165a"/>
+				<textElement>
+					<font fontName="Arial" size="8" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[Legend: * Single Price Promo, # Multibuy, @ In-store Promo]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

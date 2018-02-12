@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a51cffbb-c2ca-40f2-af54-7a2395ca830e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="19"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Category" class="java.lang.String"/>
+	<field name="generateBarcode" class="java.awt.image.BufferedImage"/>
+	<field name="fixture_type" class="java.lang.String"/>
+	<field name="category" class="java.lang.String"/>
+	<field name="loc_name_to_sort" class="java.lang.String"/>
+	<detail>
+		<band height="595">
+			<textField>
+				<reportElement x="20" y="487" width="791" height="81" uuid="be0756af-3724-40be-818f-7b0667720ab9"/>
+				<textElement>
+					<font fontName="Arial" size="65" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format(new Date())]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="20" y="109" width="768" height="139" uuid="9c47db07-7242-4fd3-afd1-9d15aafe2c22"/>
+				<imageExpression><![CDATA[$F{generateBarcode}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement positionType="Float" x="20" y="261" width="768" height="205" isPrintWhenDetailOverflows="true" uuid="33c19014-60bb-4fab-a717-d2d9ec4ce56a"/>
+				<textElement>
+					<font fontName="Arial" size="84" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="20" y="478" width="768" height="1" uuid="51c3faf3-8171-48ce-857a-1071f1718736"/>
+			</line>
+			<textField>
+				<reportElement x="20" y="16" width="768" height="80" uuid="e82de2a5-c436-4c09-b3ac-dd84cea87703"/>
+				<textElement>
+					<font fontName="Arial" size="65" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{loc_name_to_sort}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

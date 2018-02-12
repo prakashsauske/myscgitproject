@@ -1,0 +1,249 @@
+.defCursor{
+	cursor: default;
+}
+.centerValue{
+	text-align: center;
+}
+.leftValue{
+	text-align: left;
+}
+.rightValue{
+	text-align: right;
+}
+.plannerThisPromo {
+    background-image: url(../images/iconP.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+}
+.plannerRight {
+    background-position: 93% 23%;
+}
+div.page
+      {
+        page-break-after: always;
+        page-break-inside: avoid;
+      }
+tr.border_bottom {
+  border-bottom:1pt solid black !important;
+}
+ table.printDeviceLogTable tr th {
+ 	background: #ffffff !important;
+    min-height: 35px !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-bottom : solid 1px;
+    padding: 8px 10px;
+    vertical-align: top;
+    white-space: nowrap;
+}
+ table.printWithBordersHeader tr th {
+ 	background: #ffffff !important;
+    min-height: 35px !important;
+    border-right: solid 1px;
+    border-left: solid 1px;
+    border-top: solid 1px;
+    border-bottom : solid 1px;
+    padding: 8px 10px;
+    vertical-align: top;
+    white-space: nowrap;
+}
+ table.printWithBorders tr th {
+ 	background: #ffffff !important;
+    min-height: 35px !important;
+    padding: 8px 10px;
+    vertical-align: top;
+    white-space: nowrap;
+}
+ table.printWithBorders tr td {
+ 	background: #ffffff !important;
+    min-height: 35px !important;
+    padding: 8px 10px;
+    vertical-align: top;
+    white-space: nowrap;
+}
+.subtitle-bold{
+	font-weight: bold;
+	font-size: 15px;
+}
+.subtitle{
+	font-size: 15px;
+}
+.printbody table {
+	border: 0px;
+	border-radius: 3px;
+	border-collapse: collapse;
+	clear: both;
+	width: 100%;
+}
+
+.printbody {
+	border: /* solid 1px gray */ 0px;
+	border-radius: 3px;
+	clear: both;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 1000px;
+	padding: 35px;
+}
+
+.printbody tr th {
+	background: #c0c5ca;
+	min-height: 35px !important;
+	border-right: solid 1px !important;
+	border-left: solid 1px !important;
+	border-top: solid 1px !important;
+	padding: 8px 10px;
+	vertical-align: top;
+	white-space: nowrap
+}
+
+.printbody tr td {
+	border-bottom: 0px !important;
+	border-right: 0px !important; 	
+	border-left: 0px !important;
+	border-top: 0px !important;
+	padding: 8px 10px;
+	vertical-align: top;
+	height: 10px !important;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+.oocPrint tr td{
+	padding: 8px 3px !important;
+}
+.printbodyWithBorder table {
+	border: 0px;
+	border-radius: 3px;
+	border-collapse: collapse;
+	clear: both;
+	width: 100%;
+}
+
+.printbodyWithBorder {
+	border: /* solid 1px gray */ 0px;
+	border-radius: 3px;
+	clear: both;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 1000px;
+	padding: 35px;
+}
+
+.printbodyWithBorder tr th {
+	background: #c0c5ca;
+	min-height: 35px !important;
+	border-right: solid 1px !important;
+	border-left: solid 1px !important;
+	border-top: solid 1px !important;
+	padding: 8px 10px;
+	vertical-align: top;
+	white-space: nowrap
+}
+
+.printbodyWithBorder tr td {
+	 border-bottom: solid 1px !important;
+	border-right: solid 1px !important;
+	border-left: solid 1px !important;
+	border-top: solid 1px !important;	 
+	padding: 8px 10px;
+	vertical-align: top;
+	height: 10px !important;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+.endOfReport {
+	text-align: center;
+	width: 45%;
+	float: left
+}
+.endOfReportMain {
+	text-align: center;
+	font-weight: bold;
+}
+.smallText {
+	font-size: 11px;
+    padding: 0px !important;
+}
+.text-align-right {
+	text-align: right
+}
+.blank_row
+{
+    height: 10px !important; /* Overwrite any previous rules */
+    background-color: #FFFFFF;
+}
+.margin5 {
+	margin: 5px
+}
+.lineheight15 {
+	line-height: 15px
+}
+.width35 {
+	width: 25%
+}
+.width45 {
+	width: 45%
+}
+.inline-block {
+	display: inline-block
+}
+.text-align-right {
+	text-align: right
+}
+.bold {
+	font-weight: bold
+}
+.text-align-left {
+	text-align: left
+}
+.width98 {
+	width: 99.5%
+}
+.hideBlock {
+	display: none
+}
+.left {
+	float: left
+}
+.upDownArrow {
+    background-color: #F6F6F6;
+    font-weight: bold;
+}
+@page {
+	margin-top: 60px;
+	margin-bottom: 30px;
+	margin-right: 70px;
+	margin-left: 70px;
+	size: landscape;
+}
+/* @media screen {
+        div.divFooter {
+            display: none;
+        }
+    }
+@media print {
+        div.divFooter {
+            position: fixed;
+            bottom: 0;
+        }
+    } */
+@media print {
+	/* make a 10-inch high block that sits on top of the page content */
+	.page-break {
+		page-break-before: always;
+		display: block;
+		position: absolute;
+		width: 100%;
+	}
+	.pageBreak {
+		page-break-before: always;
+	}
+
+	/* stick the contents of .page-break to the bottom of the 10 inch block */
+	.page-break .copyright {
+		position: absolute;
+		bottom: 0px;
+		/* width:100% */
+	}
+}

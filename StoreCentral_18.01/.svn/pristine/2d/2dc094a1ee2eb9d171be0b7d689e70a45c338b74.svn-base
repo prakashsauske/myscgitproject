@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="POSDeclarationReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="82b2012c-8cec-44cc-84d8-7cd6e9f4d2de">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<scriptlet name="MYSCRIPTLET" class="au.com.woolworths.portal.reports.ScriptletUtil"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\EclipseMcr\\workspace_1POS\\JasperJavaBean\\jasperReports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateFrom" class="java.lang.String"/>
+	<parameter name="pos" class="java.lang.String"/>
+	<parameter name="StoreNo" class="java.lang.String"/>
+	<parameter name="StoreName" class="java.lang.String"/>
+	<parameter name="msg" class="java.lang.String"/>
+	<parameter name="weekFromDateHide" class="java.lang.String"/>
+	<parameter name="weekToDateHide" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="operatorName" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[operatorName]]></fieldDescription>
+	</field>
+	<field name="posDeclaration" class="java.util.List">
+		<fieldDescription><![CDATA[posDeclaration]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{operatorName}]]></printWhenExpression>
+			<subreport runToBottom="true">
+				<reportElement x="0" y="0" width="802" height="20" uuid="ec2d595c-694d-454a-a4b7-9ce2bea2fb22"/>
+				<subreportParameter name="weekToDateHide">
+					<subreportParameterExpression><![CDATA[$P{weekToDateHide}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="StoreNo">
+					<subreportParameterExpression><![CDATA[$P{StoreNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="StoreName">
+					<subreportParameterExpression><![CDATA[$P{StoreName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="dateFrom">
+					<subreportParameterExpression><![CDATA[$P{dateFrom}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$P{msg}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="weekFromDateHide">
+					<subreportParameterExpression><![CDATA[$P{weekFromDateHide}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="pos">
+					<subreportParameterExpression><![CDATA[$P{pos}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{posDeclaration})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "POSDeclarationOprName.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20">
+			<printWhenExpression><![CDATA[!$F{operatorName}]]></printWhenExpression>
+			<subreport runToBottom="true">
+				<reportElement x="0" y="0" width="802" height="20" uuid="6e4cbc5c-6470-402e-846f-570dbab175e3"/>
+				<subreportParameter name="weekToDateHide">
+					<subreportParameterExpression><![CDATA[$P{weekToDateHide}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="StoreNo">
+					<subreportParameterExpression><![CDATA[$P{StoreNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="StoreName">
+					<subreportParameterExpression><![CDATA[$P{StoreName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="dateFrom">
+					<subreportParameterExpression><![CDATA[$P{dateFrom}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="msg">
+					<subreportParameterExpression><![CDATA[$P{msg}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="weekFromDateHide">
+					<subreportParameterExpression><![CDATA[$P{weekFromDateHide}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="pos">
+					<subreportParameterExpression><![CDATA[$P{pos}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{posDeclaration})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "POSDeclarationNoOprName.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<noData>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="50" uuid="4b117ccc-589b-4718-98f9-1f81fdf27d32"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.isNotNullNotEmptyNotWhiteSpace($P{msg})?$P{msg}:"Either no data found or Techincal Problem"]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

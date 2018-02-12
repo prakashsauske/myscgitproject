@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LTODiscripancies" language="groovy" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="04aa4db1-4376-4777-90ac-7e8768acc8a1">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="307"/>
+	<property name="ireport.y" value="21"/>
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.wrap.text" value="true"/>
+	<parameter name="FromDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["01/12/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ToDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["02/02/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="StoreNo" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="StoreName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Test Store 1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="groupCount" class="java.lang.String"/>
+	<parameter name="transCount" class="java.lang.String"/>
+	<parameter name="msg" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="article_desc" class="java.lang.String">
+		<fieldDescription><![CDATA[article_desc]]></fieldDescription>
+	</field>
+	<field name="article_no" class="java.lang.String">
+		<fieldDescription><![CDATA[article_no]]></fieldDescription>
+	</field>
+	<field name="base_uom" class="java.lang.String">
+		<fieldDescription><![CDATA[base_uom]]></fieldDescription>
+	</field>
+	<field name="pbd_uom" class="java.lang.String">
+		<fieldDescription><![CDATA[pbd_uom]]></fieldDescription>
+	</field>
+	<field name="scan_uom" class="java.lang.String">
+		<fieldDescription><![CDATA[scan_uom]]></fieldDescription>
+	</field>
+	<field name="pi_uom" class="java.lang.String">
+		<fieldDescription><![CDATA[pi_uom]]></fieldDescription>
+	</field>
+	<field name="pi_om" class="java.lang.String">
+		<fieldDescription><![CDATA[pi_om]]></fieldDescription>
+	</field>
+	<field name="pack_size_to_use" class="java.lang.String">
+		<fieldDescription><![CDATA[pack_size_to_use]]></fieldDescription>
+	</field>
+	<field name="soh" class="java.lang.String">
+		<fieldDescription><![CDATA[soh]]></fieldDescription>
+	</field>
+	<field name="pi_soh" class="java.lang.String">
+		<fieldDescription><![CDATA[pi_soh]]></fieldDescription>
+	</field>
+	<field name="lto_id" class="java.lang.String">
+		<fieldDescription><![CDATA[lto_id]]></fieldDescription>
+	</field>
+	<field name="lto_status" class="java.lang.String">
+		<fieldDescription><![CDATA[lto_status]]></fieldDescription>
+	</field>
+	<field name="lto_notes" class="java.lang.String">
+		<fieldDescription><![CDATA[lto_notes]]></fieldDescription>
+	</field>
+	<field name="fixture_type" class="java.lang.String">
+		<fieldDescription><![CDATA[fixture_type]]></fieldDescription>
+	</field>
+	<field name="loc_short_name" class="java.lang.String">
+		<fieldDescription><![CDATA[loc_short_name]]></fieldDescription>
+	</field>
+	<field name="location_name" class="java.lang.String">
+		<fieldDescription><![CDATA[location_name]]></fieldDescription>
+	</field>
+	<field name="aisle_name" class="java.lang.String">
+		<fieldDescription><![CDATA[aisle_name]]></fieldDescription>
+	</field>
+	<field name="category_name" class="java.lang.String">
+		<fieldDescription><![CDATA[category_name]]></fieldDescription>
+	</field>
+	<field name="lto_qty" class="java.lang.String">
+		<fieldDescription><![CDATA[lto_qty]]></fieldDescription>
+	</field>
+	<field name="weight_qty" class="java.lang.String">
+		<fieldDescription><![CDATA[weight_qty]]></fieldDescription>
+	</field>
+	<field name="om" class="java.lang.String">
+		<fieldDescription><![CDATA[om]]></fieldDescription>
+	</field>
+	<field name="pbd_flag" class="java.lang.String">
+		<fieldDescription><![CDATA[pbd_flag]]></fieldDescription>
+	</field>
+	<field name="deleted_line_ind" class="java.lang.String">
+		<fieldDescription><![CDATA[deleted_line_ind]]></fieldDescription>
+	</field>
+	<field name="pack_size" class="java.lang.String">
+		<fieldDescription><![CDATA[pack_size]]></fieldDescription>
+	</field>
+	<field name="random_weight_flag" class="java.lang.String">
+		<fieldDescription><![CDATA[random_weight_flag]]></fieldDescription>
+	</field>
+	<field name="total_units" class="java.lang.String">
+		<fieldDescription><![CDATA[total_units]]></fieldDescription>
+	</field>
+	<field name="base_uom_sc" class="java.lang.String">
+		<fieldDescription><![CDATA[base_uom_sc]]></fieldDescription>
+	</field>
+	<field name="fill_qty" class="java.lang.String">
+		<fieldDescription><![CDATA[fill_qty]]></fieldDescription>
+	</field>
+	<field name="consolidated_lto_qty" class="java.lang.String">
+		<fieldDescription><![CDATA[consolidated_lto_qty]]></fieldDescription>
+	</field>
+	<field name="consol_lto_qty_loc" class="java.lang.String">
+		<fieldDescription><![CDATA[consol_lto_qty_loc]]></fieldDescription>
+	</field>
+	<field name="department_id" class="java.lang.String">
+		<fieldDescription><![CDATA[department_id]]></fieldDescription>
+	</field>
+	<field name="order_uom" class="java.lang.String">
+		<fieldDescription><![CDATA[order_uom]]></fieldDescription>
+	</field>
+	<field name="order_uom_om" class="java.lang.String">
+		<fieldDescription><![CDATA[order_uom_om]]></fieldDescription>
+	</field>
+	<field name="weighted_flg" class="java.lang.String">
+		<fieldDescription><![CDATA[weighted_flg]]></fieldDescription>
+	</field>
+	<field name="allow_decimal_adj" class="java.lang.String">
+		<fieldDescription><![CDATA[allow_decimal_adj]]></fieldDescription>
+	</field>
+	<field name="loc_name_to_sort" class="java.lang.String">
+		<fieldDescription><![CDATA[loc_name_to_sort]]></fieldDescription>
+	</field>
+	<field name="msg_typ" class="java.lang.String">
+		<fieldDescription><![CDATA[msg_typ]]></fieldDescription>
+	</field>
+	<field name="msg_string" class="java.lang.String">
+		<fieldDescription><![CDATA[msg_string]]></fieldDescription>
+	</field>
+	<field name="linkage_ind" class="java.lang.String"/>
+	<variable name="lto_id_1" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{lto_id}]]></variableExpression>
+	</variable>
+	<variable name="article_no_1" class="java.lang.Integer" resetType="Group" resetGroup="LTO Location" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{article_no}]]></variableExpression>
+	</variable>
+	<group name="LTO Location">
+		<groupExpression><![CDATA[$F{location_name}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="0" y="0" width="100" height="28" uuid="598d7e17-8a46-42fc-bb7b-e3c0a07a2c33"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{location_name}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="28" width="802" height="1" uuid="b1d50c2b-7e6b-43a1-8ec2-6067575754ed"/>
+				</line>
+				<textField evaluationTime="Group" evaluationGroup="LTO Location">
+					<reportElement x="114" y="4" width="100" height="20" uuid="7f37cebf-05d4-49b8-8c51-17cbd382df30"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Total Articles("+$V{article_no_1}+")"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="8">
+				<line>
+					<reportElement x="1" y="4" width="802" height="1" uuid="ea75ce0e-b196-412d-b99b-8bb86e23fcbf"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="53" splitType="Prevent">
+			<textField>
+				<reportElement x="426" y="1" width="377" height="20" uuid="a9b92edc-1656-4be7-9f8f-0fa310917e50"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="1" width="334" height="20" uuid="4f078a89-4bbb-4d9c-a6cb-03c8c68fcc08"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[LTO Discrepancies]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="22" width="334" height="15" uuid="95262465-7ba2-4350-b6dc-ac72dadf0af2"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="37" width="110" height="16" uuid="a10cddc7-528d-41d6-a6a9-0da7260feacf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LTO Location Count :]]></text>
+			</staticText>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement x="110" y="37" width="100" height="16" printWhenGroupChanges="LTO Location" uuid="9d68f979-f7ac-47a6-aae6-f102fae9b334"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{lto_id_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Prevent">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="30" uuid="97eb37c4-e7cb-4315-8010-0dbfb506c67d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<staticText>
+					<reportElement x="661" y="0" width="60" height="30" uuid="a964deb0-20e2-4185-8548-aa17ea10326f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LTO Count]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="127" height="30" uuid="663d49bf-ae0f-4d7a-b1a7-6ee0b9ecea23"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LTO Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="220" y="0" width="128" height="30" uuid="9f2e6697-5175-4aef-a35e-515c4288a8b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="350" y="0" width="65" height="30" uuid="ce1e59e1-f1ef-43c9-b05b-46aa097b787f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pack Breakdown Indicator]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="417" y="0" width="57" height="30" uuid="c7dae4c7-104e-4aa9-995d-9a7b4d8fc79b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Linked Article Indicator]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="475" y="0" width="55" height="30" uuid="36a04280-0cbf-4cd6-b478-c586d1356bcc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="532" y="0" width="63" height="30" uuid="29fec1bb-6026-4130-a474-cf611271e303"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Shelf Capacity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="596" y="0" width="63" height="30" uuid="2bf48901-a831-44c1-b3b2-d92cfdc8706a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UOM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="128" y="0" width="90" height="30" uuid="42e16e1c-eed9-4743-846d-92e6b8e43c99"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="730" y="0" width="63" height="30" uuid="1448b699-f1ea-4246-b979-2391caaf144d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOH Count]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<textField>
+				<reportElement x="0" y="0" width="127" height="20" uuid="608ce963-1dcf-4f5a-8303-d2a3bc9aa8f4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{location_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="128" y="0" width="90" height="20" uuid="367ccbe2-2a32-46e5-8fd9-ed4acd87f186"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{article_no}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="220" y="0" width="128" height="20" uuid="b900fdd5-f6c2-48ab-b64b-13c8d37ce94a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{article_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="65" height="20" uuid="ced33778-a651-4a36-aa9d-fe868aa0efc3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pbd_flag}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="0" width="55" height="20" uuid="c6b461eb-f305-4050-93c4-554fd9399c39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{om}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="598" y="0" width="57" height="20" uuid="81d48a84-7e39-480c-8734-8ec289221734"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{scan_uom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="729" y="0" width="66" height="20" uuid="1ffe1b1c-96d2-484b-ad92-d267099658e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{soh}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="532" y="0" width="63" height="20" uuid="81a8dc8f-82ef-43ac-8321-efd61aa5c614"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{base_uom_sc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="417" y="0" width="57" height="20" uuid="a3eb599f-f8ae-4d2c-909c-902762ffa7fa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{linkage_ind}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0" isBlankWhenNull="true">
+				<reportElement x="664" y="0" width="60" height="20" uuid="46adec3f-00bc-457a-b004-98aacd21fb05"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{consol_lto_qty_loc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="18" width="45" height="12" uuid="c0269a55-6a95-4d2f-9d9c-165550437095"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="45" y="18" width="289" height="12" uuid="58483d84-fafd-43d7-93cf-01e8def4f4bd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement x="786" y="18" width="16" height="12" uuid="3d6cca83-5003-42ad-ab1e-4ff5846d7b33"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="f2ae2b12-7b83-4d48-bbfa-af6a86f87a5f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<noData>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="50" uuid="c0790c41-1e0b-4661-857c-fd1e80a657b5"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{msg}!=null && !"".equals($P{msg}.trim()))?$P{msg}:"Either no data found or Techincal Problem"]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

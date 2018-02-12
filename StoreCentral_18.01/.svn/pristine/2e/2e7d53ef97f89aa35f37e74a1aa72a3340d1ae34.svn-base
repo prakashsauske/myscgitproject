@@ -1,0 +1,162 @@
+version=Version_Dev V2.35
+PageSize=20
+PageSizeOrders=10
+UserName=xpsn7
+Password=welcome123
+SocketTimeout=120000
+ConnectionTimeout=120000
+MaxNoOfConnecitons=200
+DateRange=14
+UserPreferencesSize=6
+
+ManualOrderRefSql=select S_ORDR_REF_SEQUENCE.nextval from dual
+IBTOrderRefSql=select S_IBT_ORDR_REF_SEQUENCE.nextval from dual
+
+FreshFoodLabelServiceUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_FRESH_FOOD_LABELS/zsp_fresh_food_labelsCollection?$filter={filter}
+ArticlePosDataServiceUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_POS_DATA/zsp_pos_dataCollection?$filter={filter}
+ArticleCustcomServiceUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_ARTICLE_NUTRI/zsp_article_nutriCollection?$filter={filter}
+SitesbyDistanceServiceUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_STORE_SEARCH/zsp_store_searchCollection?$filter={filter}
+ProductNotesServiceUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_PRODUCT_NOTES/zsp_product_notesCollection?$filter={filter}
+PackBreakdownServiceUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_PACK_BREAKDOWN/zsp_pack_breakdownCollection?$filter={filter}
+ScaleArticleServiceUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_SCALE_ARTICLE/zsp_scale_articleCollection?$filter={filter}
+promotionServiceUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_GET_PROMO_IDS/zsp_get_promo_idsCollection?$filter={filter}
+SiteViewServiceUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_ART_LISTING/zsp_art_listingCollection{(1)}/et_site_view_r
+InventoryServiceSOHUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_STOCKS_ON_HAND/zsp_stock_on_handCollection({1})/et_basic_level3_r
+InventoryServiceSITUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_STOCKS_ON_HAND/zsp_stock_on_handCollection({1})/et_plant_stock_r
+InventoryServiceSOOUrl = http://clsapa123:8021/sap/opu/odata/sap/ZSP_STOCKS_ON_HAND/zsp_stock_on_handCollection({1})/et_commitment_r
+PurchaseViewServiceURL= http://clsapa123:8021/sap/opu/odata/sap/ZSP_ART_LISTING/zsp_art_listingCollection{(1)}/et_purchase_view_r
+ArticleListingServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ART_SRCH_DESC_HIER_ID/zsp_art_srch_desc_hier_iCollection?$filter={filter}
+WareHouseServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_WAREHOUSE_LOOKUP/zsp_warehouse_lookupCollection?$filter={filter}
+vendorServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_VENDOR_SEARCH_DTR/zsp_vendor_search_dtrCollection?$filter=
+GTINServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ARTICLE_EAN/zsp_article_eanCollection?$filter={filter}
+StoreServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_STORE_LOOKUP/zsp_store_lookupCollection?$filter={filter}
+OrderEnquiryURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_ENQ/zsp_order_enqCollection?$filter={filter}
+OrderDetailURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_ENQ_ITM/zsp_order_enq_itmCollection?$filter={filter}
+ProduceLoadListServiceUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_LOAD_LIST/zsp_load_listCollection?$filter={filter}
+DepartmentServiceUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ARTICLE_HIERARCHY/zsp_article_hierarchyCollection?$filter={filter}
+OrderReceiveServicePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_RCV/zsp_order_rcvCollection
+OrderCreateServicePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_CREATION/OrderHeaders
+OrderReceiveServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_RCV
+OrderCreateServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_CREATION
+StdPoReceiveArticleTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_RCV
+StdPoReceiveArticlePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_RCV/OrderHeaders
+StandardPoReceivePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_INVOICE_CREATE/InvcCreate
+StandardPoReceiveTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_INVOICE_CREATE
+CancelOrderPostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_CANCELLATION/POCancel
+CancelOrderTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_CANCELLATION
+sohAdjustLogURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_SOH_HISTORY/zsp_soh_historyCollection?$filter={filter}
+MvmtTypeURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_MVMT_TYPE/zsp_mvmt_typeCollection?$filter={filter}
+DGMSReportEnquiryURLURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_DGMS_PROCESSING_RPT/zsp_dgms_processing_rptCollection?$filter={filter}
+EDGMSReportEnquiryURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_EDGMS_SUMMARY_RPT/zsp_edgms_summary_rptCollection?$filter={filter}
+SupplierSearchURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_IBT_SUPP_SITE/zsp_ibt_supp_siteCollection?$filter={filter}
+IbtCreateTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_IBT_ORDER_CREATE
+IbtCreatePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_IBT_ORDER_CREATE/OrderHeaders
+StoresNearByURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_STORE_SEARCH/zsp_store_searchCollection?$filter={filter}
+AdjustedSOHPostServiceUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_STOCK_ADJ/StockAdjustments
+AdjustedSOHServiceUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_STOCK_ADJ
+IBTOrderAdjustTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_IBT_ORDER_ADJ
+IBTOrderAdjustPostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_IBT_ORDER_ADJ/IBTHeaders
+ManualOrderBookServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_MANUAL_ORDER_BOOK/zsp_manual_order_bookCollection?$filter={filter}
+IBTGoodsReceiptTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_IBT_TO_STORE_ORDER
+IBTGoodsReceiptPostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_IBT_TO_STORE_ORDER/zsp_ibt_to_store_orderCollection
+NearbyStoreSearchServiceUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_SITES_ARTICLE/zsp_sites_articleCollection?$filter={filter}
+InvoiceReconcilationURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_INVC_RECONCILIATION_ENQ/zsp_invc_reconciliation_Collection?$filter=
+UpdateDelDatePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_DELIVERY_DATE_UPDATE/DELDATE
+UpdateDelDateTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_DELIVERY_DATE_UPDATE
+StdPoReceiveDocketURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_RCV
+StdPoReceiveDocketPostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_RCV/OrderHeaders
+vendorClaimsPostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_VENDOR_CLAIM_SERVICE/VCAN
+vendorClaimsTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_VENDOR_CLAIM_SERVICE
+EDGMSDiscrepancyURL = http://clsapa123:8021/sap/opu/odata/sap/ZSP_EDGMS_DISCREPANCY_RPT/zsp_edgms_discrepancy_rpCollection?$filter={filter}
+sendIBTPostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_IBT_ORDER_GI/IBT_GI
+sendIBTTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_IBT_ORDER_GI
+PurReqCreateURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PREQ_CREATE
+PurReqCreatePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PREQ_CREATE/PRHeaders
+PurReqToPOCreateURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PR_TO_PO
+PurReqToPOCreatePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PR_TO_PO/PR_TO_PO
+PurReqChangeURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PREQ_CHANGE
+PurReqChangePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PREQ_CHANGE/PReqHeaders
+PurReqEnquiryURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PR_ENQ_HEADER/zsp_pr_enq_headerCollection?$filter={filter}
+PurReqEnquiryDetailURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PR_ENQ_ITEM/zsp_pr_enq_itemCollection?$filter={filter}
+PurReqCancelURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PREQ_CANCEL
+PurReqCancelPostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PREQ_CANCEL/PReqHeaders
+AddArticleWhileReceivingURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PO_APPEND
+AddArticleWhileReceivingPostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PO_APPEND/POHeaders
+LoginServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PORTAL_LOGIN_SERVICE/PORTAL_LOGIN?$filter={filter}
+TemperatureUpdateTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_GRTEMP_UPDATE
+TemperatureUpdatePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_GRTEMP_UPDATE/GR_TEMP
+VendorServiceNewURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_VENDOR_SEARCH/zsp_vendor_searchCollection?$filter=
+SalesHistoryURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_BW_SALES_HISTORY_DATA_2_S/ZMRBIL01_QBO_0021{filter}/Results
+POGUpdatePostServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_POG_UPDATE/POGHeaders
+POGUpdateTokenServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_POG_UPDATE
+POGDataExtractServiceURL=http://clsapa123:8021/sap/opu/odata/sap/Z_SP_POG_DATA_EXTRACT/zsp_pog_data_extractCollection?$filter=
+ZeroMPLReportServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_POG_ZEROMPL/zsp_pog_zeromplCollection?$filter=
+ManualOrderBookItemServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_MANUAL_ITEM/zsp_manual_itemCollection?$filter=
+ManualOrderBookHdrServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_MANUAL_HEADER/zsp_manual_headerCollection?$filter=
+WarehouseVarianceItemServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_WHS_ITEM/zsp_whs_itemCollection?$filter=
+WarehouseVarianceHdrServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_WHS_HEADER/zsp_whs_headerCollection?$filter=
+UserSiteServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_WHS_HEADER/zsp_whs_headerCollection?$filter=
+UserSiteVerifyServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_WHS_HEADER/zsp_whs_headerCollection?$filter=
+AllocationOrderSearchServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ALLOCATION_ORDER/zsp_allocation_orderCollection?$filter=
+POrderDetailsURL= http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_ENQUIRY_HDR/zsp_order_enquiry_hdrCollection?$filter=
+IntransitOrderSearchServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_INTRANSIT_ORDER_ENQUIRY/zsp_intransit_order_enquCollection?$filter=
+PReqDetailsURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PREQ_ENQUIRY_HDR/zsp_preq_enquiry_hdrCollection?$filter=
+InvoiceDetailsforPO=http://clsapa123:8021/sap/opu/odata/sap/ZSP_GET_INVOICE_DATA/zsp_get_invoice_dataCollection?$filter=
+GRDetailsforPO=http://clsapa123:8021/sap/opu/odata/sap/ZSP_GET_GOODS_RECEIPTS/zsp_get_goods_receiptsCollection?$filter=
+DeliveryDataforPOURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_DELIVERY_DATA/zsp_delivery_dataCollection?$filter=
+OrderItemDataURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ORDER_ENQUIRY_ITEM/zsp_order_enquiry_itemCollection?$filter=
+PReqItemdataURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PREQ_ENQUIRY_ITEM/z_sp_preq_enquiry_itemCollection?$filter=
+GRArticleServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_GR_ENQUIRY/zsp_gr_enquiryCollection?$filter=
+ArticleReplenishmentURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_REPLENISHMENT_DATA/zsp_replenishment_dataCollection/?$filter=
+ArticlePackBrkURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PACK_BRKDWN_DATA/zsp_pack_brkdwn_dataCollection?$filter=
+ArticlePOSDataURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ARTICLE_POS_INFO/zsp_article_pos_infoCollection?$filter=
+LinkedArticleService=http://clsapa123:8021/sap/opu/odata/sap/ZSP_LINKED_ARTICLE_DATA/zsp_linked_article_dataCollection?$filter=
+ManualOrderBookDepartmentServiceUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_HIER/zsp_hierCollection?$filter={filter}
+ManualOrderBookNewServiceUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_MANUAL_ORD_BOOK/MAN_ORDER?$filter=
+AllocationNewServiceUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ALLOCATION/ALLOC_ORDER/?$filter=
+ReplenishmentTabServiceURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_ART_LOOKUP_REPLENISH_TAB/zsp_art_lookup_replenishCollection?$filter=
+ArticleHierarchyTabServiceURL= http://clsapa123:8021/sap/opu/odata/sap/ZSP_ART_LOOKUP_HIER_TAB/zsp_art_lookup_hier_tabCollection?$filter=
+ProductionPlannerDailyUrl= http://clsapa123:8021/sap/opu/odata/sap/ZSP_PRODUCTION_PLANNER_DAILY/zsp_production_planner_dCollection?$filter={filter}
+ProductionPlannerWeeklyUrl= http://clsapa123:8021/sap/opu/odata/sap/ZSP_PRODUCTION_PLANNER_WEEKLY/zsp_production_planner_wCollection?$filter={filter}
+ProductionPlannerCategoryUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PRODUCTION_PLAN_CAT/zsp_production_plan_catCollection?$filter=
+ProductionPlannerBakeryEnquiryPostUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PROD_PLAN_DAILY_ENQ/PPHeaders
+ProductionPlannerBakeryEnquiryTokenUrl=http://clsapa123:8021/sap/opu/odata/sap/ZSP_PROD_PLAN_DAILY_ENQ
+
+InstorePromoPostURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PROMO_CREATE/PromoHeaders
+InstorePromoPostTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PROMO_CREATE
+SearchInstorePromoURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PROMOTION_ENQUIRY/zngbo_promo_enquiryCollection?$filter={filter}
+updateInstorePromoTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PROMOTION_CHANGE
+updateInstorePromoURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PROMOTION_CHANGE/PromoHeaders
+instoreGetCompetitorListURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_COMPETITORS_LIST/zngbo_competitors_listCollection?$filter={filter}
+RepairServiceAgreementURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_VEN_AGG_ENQUIRY/zngbo_ven_agg_enquiryCollection?$filter=
+RepairCreateServiceOrderTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_REPAIR_ORDER_CREATE
+RepairCreateServiceOrderURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_REPAIR_ORDER_CREATE/POHeaders
+RepairEnquireServiceOrderURL=http://clsapa123:8021/sap/opu/odata/sap/Z_NGBO_REPAIR_ORDER_ENQUIRY/z_ngbo_repair_order_enquCollection?$filter=
+RepairServiceOrderDetailsURL=http://clsapa123:8021/sap/opu/odata/sap/Z_NGBO_REPAIR_ORDER_DISPLAY/z_ngbo_repair_order_dispCollection?$filter=
+RepairServiceOrderUpdateTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_REPAIR_ORDER_CHNG
+RepairServiceOrderUpdateURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_REPAIR_ORDER_CHNG/POHeaders
+validateInstorePromoTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PROMO_VALIDATION
+validateInstorePromoURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PROMO_VALIDATION/PromoHeaders
+SegmentDeliveryDataURL=http://clsapa123:8021/sap/opu/odata/sap/ZSP_DELIVERY_ITEM_ENQ/zsp_delivery_item_enqCollection?$filter=
+RepairCartonLabelDetailsURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_REPAIR_CARTON_LABEL/zngbo_repair_carton_labeCollection?$filter=
+RepairCompleteServiceOrderTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_REPAIR_ORDER_COMPLETE
+RepairCompleteServiceOrderURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_REPAIR_ORDER_COMPLETE/POHeaders
+RepairCancelServiceOrderTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_REPAIR_ORD_CANCEL
+RepairCancelServiceOrderURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_REPAIR_ORD_CANCEL/POHeaders
+
+
+# ORDER CREATION AND UPDATE URL FOR NGBO
+OrderUpdateTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PUR_ORDER_CHANGE
+OrderUpdatePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PUR_ORDER_CHANGE/POHeaders
+PreqUpdateTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PURCHASE_REQ_CHANGE/
+PreqUpdatePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PURCHASE_REQ_CHANGE/PRHeaders
+OrderCreateTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_IBT_CREATE
+OrderCreatePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_IBT_CREATE/IBTHeaders
+PreqCreateTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PURCHASE_REQ_CREATION
+PreqCreatePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_PURCHASE_REQ_CREATION/PRHeaders
+IBTCancelPostURL=http://clsapa123:8021/sap/opu/odata/sap/Z_NGBO_IBT_CANCEL/IBTHeaders
+IBTCancelTokenURL=http://clsapa123:8021/sap/opu/odata/sap/Z_NGBO_IBT_CANCEL
+IBTCreateTokenURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_IBT_CREATE_NON_STOCK
+IBTCreatePostURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_IBT_CREATE_NON_STOCK/IBTHeaders
+ReturnOrderLookupURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_RTV_ENQUIRY_001/z_ngbo_rtv_enquiryCollection?$filter=
+ReturnOrderDtlURL=http://clsapa123:8021/sap/opu/odata/sap/ZNGBO_RTV_ENQUIRY_DETAIL/z_ngbo_rtv_detail_Collection?$filter=

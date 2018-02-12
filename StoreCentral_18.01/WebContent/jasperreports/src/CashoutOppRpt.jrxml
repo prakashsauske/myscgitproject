@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CashoutRpt" language="groovy" pageWidth="250" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="250" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="930d862b-39b2-43f7-a868-f2aa85a733b0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="noOfRecords" class="java.lang.Integer"/>
+	<parameter name="msg" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="articlesPerMinute" class="java.lang.Double">
+		<fieldDescription><![CDATA[articlesPerMinute]]></fieldDescription>
+	</field>
+	<field name="averageArticlePrice" class="java.lang.Double">
+		<fieldDescription><![CDATA[averageArticlePrice]]></fieldDescription>
+	</field>
+	<field name="averageBasketSize" class="java.lang.Double">
+		<fieldDescription><![CDATA[averageBasketSize]]></fieldDescription>
+	</field>
+	<field name="cashOutAmount" class="java.lang.Double">
+		<fieldDescription><![CDATA[cashOutAmount]]></fieldDescription>
+	</field>
+	<field name="cashOutCount" class="java.lang.Double">
+		<fieldDescription><![CDATA[cashOutCount]]></fieldDescription>
+	</field>
+	<field name="cashback" class="java.lang.Double">
+		<fieldDescription><![CDATA[cashback]]></fieldDescription>
+	</field>
+	<field name="cashierFirstName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierFirstName]]></fieldDescription>
+	</field>
+	<field name="cashierLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierLastName]]></fieldDescription>
+	</field>
+	<field name="cashierNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierNumber]]></fieldDescription>
+	</field>
+	<field name="cigaretteSales" class="java.lang.Double">
+		<fieldDescription><![CDATA[cigaretteSales]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="frontOfStoreSales" class="java.lang.Double">
+		<fieldDescription><![CDATA[frontOfStoreSales]]></fieldDescription>
+	</field>
+	<field name="idleTime" class="java.lang.String">
+		<fieldDescription><![CDATA[idleTime]]></fieldDescription>
+	</field>
+	<field name="idleTimeFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[idleTimeFormatted]]></fieldDescription>
+	</field>
+	<field name="itemsScannedCount" class="java.lang.Double">
+		<fieldDescription><![CDATA[itemsScannedCount]]></fieldDescription>
+	</field>
+	<field name="noDataFound" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFound]]></fieldDescription>
+	</field>
+	<field name="percentageEDR" class="java.lang.Double">
+		<fieldDescription><![CDATA[percentageEDR]]></fieldDescription>
+	</field>
+	<field name="quantity" class="java.lang.Double">
+		<fieldDescription><![CDATA[quantity]]></fieldDescription>
+	</field>
+	<field name="reducedToClearSal" class="java.lang.Double">
+		<fieldDescription><![CDATA[reducedToClearSal]]></fieldDescription>
+	</field>
+	<field name="salesQuantityBaseUoM" class="java.lang.Double">
+		<fieldDescription><![CDATA[salesQuantityBaseUoM]]></fieldDescription>
+	</field>
+	<field name="salesRetailIncT" class="java.lang.Double">
+		<fieldDescription><![CDATA[salesRetailIncT]]></fieldDescription>
+	</field>
+	<field name="scanTime" class="java.lang.String">
+		<fieldDescription><![CDATA[scanTime]]></fieldDescription>
+	</field>
+	<field name="scanTimeFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[scanTimeFormatted]]></fieldDescription>
+	</field>
+	<field name="selfCheckOutTransactions" class="java.lang.Double">
+		<fieldDescription><![CDATA[selfCheckOutTransactions]]></fieldDescription>
+	</field>
+	<field name="tValue" class="java.lang.String">
+		<fieldDescription><![CDATA[tValue]]></fieldDescription>
+	</field>
+	<field name="tenderingTime" class="java.lang.Double">
+		<fieldDescription><![CDATA[tenderingTime]]></fieldDescription>
+	</field>
+	<field name="tenderingTime2" class="java.lang.Double">
+		<fieldDescription><![CDATA[tenderingTime2]]></fieldDescription>
+	</field>
+	<field name="transactionCount" class="java.lang.Double">
+		<fieldDescription><![CDATA[transactionCount]]></fieldDescription>
+	</field>
+	<field name="withdrawal" class="java.lang.Double">
+		<fieldDescription><![CDATA[withdrawal]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="249" height="20" uuid="5d586b67-a6f7-4c4b-adbe-b2b4f0709391"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="0" width="249" height="20" uuid="1ba801be-3540-479f-a631-c4dce4177d8d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Opportunity]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="0" y="20" width="130" height="20" uuid="a53e4f5d-c59b-4560-9924-7321872c0eb9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="2" y="0" width="126" height="20" uuid="d8fcaa08-0173-4241-ba40-0bb46f8a849a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[POS Operator Name]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="130" y="20" width="70" height="20" uuid="fffd7f24-b147-4f5e-bf71-7cc5c37944c8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="1" y="0" width="67" height="20" uuid="e3fb7a56-113d-4a8a-82fb-c8b9c7118a1f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="200" y="20" width="49" height="20" uuid="513129fa-c9a9-4413-9447-7fc7b7061105"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="1" y="0" width="46" height="20" uuid="a0493a70-6d1f-4888-9631-c4e6f555e11d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[QTY]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}<=($P{noOfRecords}==null?5:$P{noOfRecords})]]></printWhenExpression>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="130" height="20" uuid="7d027d47-b544-4229-8b50-e13f70cc2d70"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="2" y="0" width="126" height="20" uuid="5a2fa398-e400-448a-b8c1-6bcde2958f87"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cashierFirstName}==null && $F{cashierLastName}==null?null:$F{cashierFirstName}+" "+$F{cashierLastName}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="130" y="0" width="70" height="20" uuid="65c045c0-03bc-439c-926d-119ba43fc30f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="1" y="0" width="67" height="20" uuid="b4e30d33-71f2-4472-a259-0c3391d612bb"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cashOutAmount}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="200" y="0" width="49" height="20" uuid="f5e658fa-52b4-4e6f-9874-11424f46fa41"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" pattern="###0" isBlankWhenNull="true">
+					<reportElement x="1" y="0" width="46" height="20" uuid="300c0464-1106-417b-8305-6c7dca1d48db"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cashOutCount}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<noData>
+		<band height="20">
+			<frame>
+				<reportElement x="0" y="0" width="250" height="20" uuid="d4222856-e313-477a-a6f8-67d8f20edb1d"/>
+				<textField>
+					<reportElement x="1" y="0" width="248" height="20" uuid="40e2e628-c101-4d2a-8456-be0aa2e22ff3"/>
+					<textFieldExpression><![CDATA["Cashout - Opportunity Scanners :  "+(($P{msg}!=null && !"".equals($P{msg}.trim()))?$P{msg}:"Either no data found or Technical problem")]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</noData>
+</jasperReport>

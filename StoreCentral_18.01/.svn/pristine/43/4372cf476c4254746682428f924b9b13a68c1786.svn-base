@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains 
+	and services --><!-- Two ways to do this: --><!-- java org.apache.axis.client.AdminClient 
+	deploy.wsdd --><!-- after the axis server is running --><!-- or --><!-- java org.apache.axis.utils.Admin 
+	client|server deploy.wsdd --><!-- from the same directory that the 
+	Axis engine runs -->
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+	<!-- Services from LoginServiceImplService WSDL service -->
+
+	<service name="LoginServiceImpl" provider="java:RPC" style="wrapped"
+		use="literal">
+		<parameter name="wsdlTargetNamespace" value="http://service.portal.woolworths.com.au" />
+		<parameter name="wsdlServiceElement" value="LoginServiceImplService" />
+		<parameter name="schemaQualified"
+			value="http://model.portal.woolworths.com.au,http://service.portal.woolworths.com.au" />
+		<parameter name="wsdlServicePort" value="LoginServiceImpl" />
+		<parameter name="className"
+			value="au.com.woolworths.portal.service.LoginServiceImpl" />
+		<parameter name="wsdlPortType" value="LoginServiceImpl" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<operation xmlns:operNS="http://service.portal.woolworths.com.au"
+			xmlns:retNS="http://service.portal.woolworths.com.au" xmlns:rtns="http://www.w3.org/2001/XMLSchema"
+			name="getOrderRefNo" qname="operNS:getOrderRefNo" returnQName="retNS:getOrderRefNoReturn"
+			returnType="rtns:string" soapAction="">
+			<parameter xmlns:pns="http://service.portal.woolworths.com.au"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:type" type="tns:string" />
+			<parameter xmlns:pns="http://service.portal.woolworths.com.au"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:application"
+				type="tns:string" />
+			<parameter xmlns:pns="http://service.portal.woolworths.com.au"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:storeNo"
+				type="tns:string" />
+		</operation>
+		<operation xmlns:operNS="http://service.portal.woolworths.com.au"
+			xmlns:retNS="http://service.portal.woolworths.com.au" xmlns:rtns="http://model.portal.woolworths.com.au"
+			name="getUserInfo" qname="operNS:getUserInfo" returnQName="retNS:getUserInfoReturn"
+			returnType="rtns:UserContext" soapAction="">
+			<parameter xmlns:pns="http://service.portal.woolworths.com.au"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userID"
+				type="tns:string" />
+			<parameter xmlns:pns="http://service.portal.woolworths.com.au"
+				xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password"
+				type="tns:string" />
+		</operation>
+		<parameter name="allowedMethods" value="getOrderRefNo getUserInfo" />
+
+		<typeMapping xmlns:ns="http://model.portal.woolworths.com.au"
+			qname="ns:UserContext" type="java:au.com.woolworths.portal.model.UserContext"
+			serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+			deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+			encodingStyle="" />
+	</service>
+</deployment>

@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StoreWeeklyMarkDown" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="06acb2cd-d030-4c56-a23b-d9e3e97ae8ba">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="StoreName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Test Store 1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="StoreNo" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ToDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["02/02/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FromDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["01/12/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="msg" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="advertisements" class="java.lang.String">
+		<fieldDescription><![CDATA[advertisements]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="clearance" class="java.lang.String">
+		<fieldDescription><![CDATA[clearance]]></fieldDescription>
+	</field>
+	<field name="comp" class="java.lang.String">
+		<fieldDescription><![CDATA[comp]]></fieldDescription>
+	</field>
+	<field name="damagedStock" class="java.lang.String">
+		<fieldDescription><![CDATA[damagedStock]]></fieldDescription>
+	</field>
+	<field name="deferredLoyalty" class="java.lang.String">
+		<fieldDescription><![CDATA[deferredLoyalty]]></fieldDescription>
+	</field>
+	<field name="deleted" class="java.lang.String">
+		<fieldDescription><![CDATA[deleted]]></fieldDescription>
+	</field>
+	<field name="department" class="java.lang.String">
+		<fieldDescription><![CDATA[department]]></fieldDescription>
+	</field>
+	<field name="departmentNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[departmentNumber]]></fieldDescription>
+	</field>
+	<field name="loyalty" class="java.lang.String">
+		<fieldDescription><![CDATA[loyalty]]></fieldDescription>
+	</field>
+	<field name="markdownRetailVal" class="java.lang.String">
+		<fieldDescription><![CDATA[markdownRetailVal]]></fieldDescription>
+	</field>
+	<field name="outOfDate" class="java.lang.String">
+		<fieldDescription><![CDATA[outOfDate]]></fieldDescription>
+	</field>
+	<field name="priceOverrideRTC" class="java.lang.String">
+		<fieldDescription><![CDATA[priceOverrideRTC]]></fieldDescription>
+	</field>
+	<field name="promotions" class="java.lang.String">
+		<fieldDescription><![CDATA[promotions]]></fieldDescription>
+	</field>
+	<field name="specialActivity" class="java.lang.String">
+		<fieldDescription><![CDATA[specialActivity]]></fieldDescription>
+	</field>
+	<field name="staffDiscount" class="java.lang.String">
+		<fieldDescription><![CDATA[staffDiscount]]></fieldDescription>
+	</field>
+	<field name="stockWriteOff" class="java.lang.String">
+		<fieldDescription><![CDATA[stockWriteOff]]></fieldDescription>
+	</field>
+	<field name="theft" class="java.lang.String">
+		<fieldDescription><![CDATA[theft]]></fieldDescription>
+	</field>
+	<field name="scanningPolicy" class="java.lang.String"/>
+	<variable name="staffDiscount" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{staffDiscount}==null?"0.00":$F{staffDiscount})]]></variableExpression>
+	</variable>
+	<variable name="loyalty" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{loyalty}==null?"0.00":$F{loyalty})]]></variableExpression>
+	</variable>
+	<variable name="promotions" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{promotions}==null?"0.00":$F{promotions})]]></variableExpression>
+	</variable>
+	<variable name="priceOverrideRTC" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{priceOverrideRTC}==null?"0.00":$F{priceOverrideRTC})]]></variableExpression>
+	</variable>
+	<variable name="clearance" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{clearance}==null?"0.00":$F{clearance})]]></variableExpression>
+	</variable>
+	<variable name="advertisements" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{advertisements}==null?"0.00":$F{advertisements})]]></variableExpression>
+	</variable>
+	<variable name="deleted" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{deleted}==null?"0.00":$F{deleted})]]></variableExpression>
+	</variable>
+	<variable name="outOfDate" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{outOfDate}==null?"0.00":$F{outOfDate})]]></variableExpression>
+	</variable>
+	<variable name="theft" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{theft}==null?"0.00":$F{theft})]]></variableExpression>
+	</variable>
+	<variable name="stockWriteOff" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{stockWriteOff}==null?"0.00":$F{stockWriteOff})]]></variableExpression>
+	</variable>
+	<variable name="damagedStock" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{damagedStock}==null?"0.00":$F{damagedStock})]]></variableExpression>
+	</variable>
+	<variable name="comp" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{comp}==null?"0.00":$F{comp})]]></variableExpression>
+	</variable>
+	<variable name="specialActivity" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{specialActivity}==null?"0.00":$F{specialActivity})]]></variableExpression>
+	</variable>
+	<variable name="total" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{staffDiscount}+$V{loyalty}+$V{promotions}+
+$V{priceOverrideRTC}+$V{clearance}+$V{advertisements}+
+$V{deleted}+$V{outOfDate}+$V{theft}+$V{stockWriteOff}+
+$V{damagedStock}+$V{comp}+$V{specialActivity}+
+new Double($F{scanningPolicy}==null?"0.00":$F{scanningPolicy})]]></variableExpression>
+	</variable>
+	<variable name="deferdLylt" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{deferredLoyalty}==null?"0.00":$F{deferredLoyalty})]]></variableExpression>
+	</variable>
+	<variable name="sumStaffDiscount" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{staffDiscount}==null?"0.00":$F{staffDiscount})]]></variableExpression>
+	</variable>
+	<variable name="sumLoyalty" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{loyalty}==null?"0.00":$F{loyalty})]]></variableExpression>
+	</variable>
+	<variable name="sumPromotions" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{promotions}==null?"0.00":$F{promotions})]]></variableExpression>
+	</variable>
+	<variable name="sumPriceOverrideRTC" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{priceOverrideRTC}==null?"0.00":$F{priceOverrideRTC})]]></variableExpression>
+	</variable>
+	<variable name="sumClearance" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{clearance}==null?"0.00":$F{clearance})]]></variableExpression>
+	</variable>
+	<variable name="sumAdvertisements" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{advertisements}==null?"0.00":$F{advertisements})]]></variableExpression>
+	</variable>
+	<variable name="sumDeleted" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{deleted}==null?"0.00":$F{deleted})]]></variableExpression>
+	</variable>
+	<variable name="sumOutOfDate" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{outOfDate}==null?"0.00":$F{outOfDate})]]></variableExpression>
+	</variable>
+	<variable name="sumTheft" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{theft}==null?"0.00":$F{theft})]]></variableExpression>
+	</variable>
+	<variable name="sumStockWriteOff" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{stockWriteOff}==null?"0.00":$F{stockWriteOff})]]></variableExpression>
+	</variable>
+	<variable name="sumDamagedStock" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{damagedStock}==null?"0.00":$F{damagedStock})]]></variableExpression>
+	</variable>
+	<variable name="sumComp" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{comp}==null?"0.00":$F{comp})]]></variableExpression>
+	</variable>
+	<variable name="sumSpecialActivity" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{specialActivity}==null?"0.00":$F{specialActivity})]]></variableExpression>
+	</variable>
+	<variable name="sumTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{staffDiscount}+$V{loyalty}+$V{promotions}+
+$V{priceOverrideRTC}+$V{clearance}+$V{advertisements}+
+$V{deleted}+$V{outOfDate}+$V{theft}+$V{stockWriteOff}+
+$V{damagedStock}+$V{comp}+$V{specialActivity}+
+new Double($F{scanningPolicy}==null?"0.00":$F{scanningPolicy})]]></variableExpression>
+	</variable>
+	<variable name="sumDfrdLylt" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{deferdLylt}]]></variableExpression>
+	</variable>
+	<variable name="sumAftrDfrdLylt" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{total}+$V{deferdLylt}]]></variableExpression>
+	</variable>
+	<variable name="scanningPolicy" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double($F{scanningPolicy}==null?"0.00":$F{scanningPolicy})]]></variableExpression>
+	</variable>
+	<variable name="sumScanningPolicy" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{scanningPolicy}==null?"0.00":$F{scanningPolicy})]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="73" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="0" width="311" height="20" uuid="8257077b-4a6a-48f7-a723-bc00a7acb6e1"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Store Weekly Markdown Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="21" width="311" height="15" uuid="f0f11f45-6070-45cb-aaae-a5898e5068b0"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="37" width="311" height="15" uuid="75ba4c4b-cba1-4fe1-bf16-071583b9298b"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reported for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="53" width="311" height="15" uuid="59304e33-7c96-46b4-b25f-9088c7384400"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date: "+$P{FromDate}+"  |  For Week Ending: "+ $P{ToDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="351" height="20" uuid="edffcaaf-92b2-4be2-972a-7411ba0c3ffc"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="39" uuid="31f7ed69-77c6-4863-a48a-c7fd48437116"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="0" width="45" height="39" uuid="075c979d-5782-4479-bb24-14e77b8ecfb5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Team
+Discount *]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="0" width="45" height="39" uuid="a8abb710-7e42-4c18-9021-cf8bc65df16d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Loyalty *]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="0" width="45" height="39" uuid="dc4754d6-14dc-4e78-9bd4-84f3c4e9e40e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Promotions *]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="0" width="50" height="39" uuid="76c22448-deb3-4481-a3d4-f898ad19de6c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Price Override/RTC* ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="0" width="40" height="39" uuid="d9737a1e-3412-452a-8cd9-50ec92ae9f6c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clearance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="0" width="51" height="39" uuid="bf457fa9-e4b1-434f-8cb9-789bfd0e96f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Out of date ]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="0" y="1" width="802" height="40" uuid="a9657161-9fa7-4f7b-b3b8-a6400632995c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<staticText>
+					<reportElement x="276" y="0" width="45" height="39" uuid="354110ee-3a74-4a4b-b5b1-941493408d9a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Advert]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="365" y="1" width="42" height="39" uuid="661f911c-c355-4f24-92e3-05b2f4d68223"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Deleted]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="460" y="0" width="39" height="39" uuid="2b1cb475-688d-4308-9b0f-a765c40b9a74"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Theft]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="501" y="0" width="36" height="39" uuid="0743ef4c-2d60-4934-aa66-fee161602c54"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock Write Off]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="539" y="0" width="45" height="39" uuid="96ae76ab-f391-4125-b05a-37a0f4d96e0f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Damaged Stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="584" y="0" width="45" height="39" uuid="c6115507-a4b6-4a07-a249-3b458bb09aac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="630" y="0" width="43" height="39" uuid="29e29757-d1d1-43de-bf35-418b127077c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Special Activity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="673" y="0" width="42" height="39" uuid="09b56c91-3867-4e50-96db-5b237d73acaa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="716" y="0" width="45" height="39" uuid="c6e81ced-497c-4db6-912b-fe403093efcf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Deferred Loyalty ($)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="762" y="0" width="39" height="39" uuid="c84f6fa2-1fec-42b2-9d47-0288dac77b9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total after
+Deferred
+Loyalty ($)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="0" width="45" height="39" uuid="958c8200-56df-4846-9576-5d03270fd428"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Scanning Policy*]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Prevent">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="45" height="20" uuid="37e57ced-3053-4a53-9b0d-aa1b16ab0bdc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(($F{departmentNumber}!=null && !"#".equals($F{departmentNumber}))?$F{departmentNumber}.substring(1)+" ":(($F{departmentNumber}==null||"#".equals($F{departmentNumber}.trim())?"":$F{departmentNumber})))+$F{department}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="46" y="0" width="44" height="20" uuid="aaad1506-342b-4b7c-91f7-97e24b1d9e7d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{staffDiscount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="92" y="0" width="42" height="20" uuid="4bca989e-491b-48cb-a42a-88bbb37f3b42"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{loyalty}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="137" y="0" width="42" height="20" uuid="bfe75a17-63d9-432e-a77d-a8204f229bba"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{promotions}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="181" y="0" width="48" height="20" uuid="8499db0b-fb23-41fe-81f9-31470f02cbf8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{priceOverrideRTC}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="237" y="0" width="36" height="20" uuid="52233532-f5f7-424b-a46f-2c10f715694a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{clearance}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="406" y="0" width="49" height="20" uuid="3d5f6914-987d-4dfa-926e-1a3f4ae95024"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{outOfDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="458" y="0" width="37" height="20" uuid="3d4ed534-08f4-4f11-b37d-8245ae3a5325"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{theft}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="499" y="0" width="36" height="20" uuid="a8d02d92-98d1-4226-b800-4bc9fd902e42"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{stockWriteOff}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="537" y="0" width="43" height="20" uuid="4b5aab45-b09a-4e86-81be-f9cd7b78fb84"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{damagedStock}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="582" y="0" width="42" height="20" uuid="e5862682-49a8-4e6f-a8f4-8962db571859"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{comp}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="628" y="0" width="43" height="20" uuid="59476abd-b926-4200-a294-550bcb3f44f6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{specialActivity}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="671" y="0" width="40" height="20" uuid="46c829b2-31d0-4302-84e3-feaa278ae6e7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="717" y="0" width="43" height="20" uuid="45ae381d-e41d-434b-9956-977beba44af5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{deferdLylt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="762" y="0" width="39" height="20" uuid="30308e46-35d1-4074-bc65-ca1740a512da"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}+$V{deferdLylt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="283" y="0" width="31" height="20" uuid="4cc26a67-0f98-4d77-90b0-b0040ef2d4de"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{advertisements}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="369" y="2" width="28" height="20" uuid="6dbb1220-f9ef-485d-9a3d-e33db6aa4b7d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{deleted}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="324" y="2" width="41" height="20" uuid="78167bb2-8840-4bb6-8e51-07a79694a73a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{scanningPolicy}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="13" splitType="Prevent">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="12" uuid="75ea5917-a585-4011-a6ae-0b98b6828596"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="284" y="0" width="33" height="12" uuid="e4db9e5a-195e-44df-8d25-6e2848f722ce"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumAdvertisements}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="367" y="0" width="30" height="12" uuid="3c30311c-ecab-4007-9691-90fd0aebff53"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumDeleted}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="321" y="0" width="44" height="12" uuid="a9e29f4d-be9e-478f-8053-ace29d304437"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumScanningPolicy}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="46" y="0" width="45" height="12" uuid="91b75759-670d-4d7e-b773-7363c733381c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumStaffDiscount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="92" y="0" width="45" height="12" uuid="00394307-a59c-4417-812b-e052a60b51a7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumLoyalty}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="142" y="0" width="42" height="12" uuid="0db3afb5-6c85-4422-a3bc-061b22921c66"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumPromotions}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="189" y="0" width="47" height="12" uuid="b63dd75b-f4ef-4916-bcd8-b115317c7344"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumPriceOverrideRTC}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="236" y="0" width="40" height="12" uuid="50d8cfd5-f064-48c9-a779-9a545639d94d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumClearance}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="408" y="0" width="46" height="12" uuid="52981831-cf18-41ff-99d3-310a6174308a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumOutOfDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="463" y="0" width="33" height="12" uuid="1fc2027e-b483-4756-a2bb-6bed2000417b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumTheft}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="495" y="0" width="38" height="12" uuid="6029e368-39e5-4aab-aea1-65599865e954"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumStockWriteOff}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="539" y="0" width="38" height="12" uuid="0bd4a513-22f6-478b-bccd-52027374f286"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumDamagedStock}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="584" y="0" width="39" height="12" uuid="46800e8f-6b49-43d2-9314-3b7e70e29c4e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumComp}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="630" y="0" width="41" height="12" uuid="789b7869-35a3-41ff-a583-40c80cf47e99"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumSpecialActivity}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="673" y="0" width="36" height="12" uuid="ca2329d3-f6a4-4fc8-8a35-55686db291f5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="12" uuid="56d9c749-58b8-4485-8ba7-ec2119d756f9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Store Total]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="718" y="0" width="40" height="12" uuid="0b76ef12-41a3-4514-8bbb-b8b1bb280c6b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumDfrdLylt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="762" y="0" width="40" height="12" uuid="820108f8-c664-4e1d-ae70-936647cc266d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumAftrDfrdLylt}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Prevent">
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="0cdeb65c-4a11-4a61-9344-7754a1e6e561"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="18" width="16" height="12" uuid="6dacd32d-bb1d-4de8-9e3b-aeeacf64cb3f"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="18" width="264" height="12" uuid="1831a516-2e76-4de5-85db-dd8b49a4b190"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="18" width="45" height="12" uuid="c35bc3dd-897a-42b9-8c9d-38300890701e"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="30">
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="f51abd73-b3c3-480d-b93a-4c9cb7119df9"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="18" width="16" height="12" uuid="02efca1b-bde4-4366-981b-7d09991b3fca"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="18" width="264" height="12" uuid="fb228498-1851-458f-b2f7-86b549459b05"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="18" width="45" height="12" uuid="ac181cd0-d487-4ed9-b960-0634d15f102d"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="309" height="12" uuid="151b8dff-5a0b-49ee-a9d4-658a00964587"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="false" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ * Indicates GST Inclusive]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<noData>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="50" uuid="90202571-1e33-4e11-873f-933087738465"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{msg}!=null && !"".equals($P{msg}.trim()))?$P{msg}:"Either no data found or Techincal Problem"]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

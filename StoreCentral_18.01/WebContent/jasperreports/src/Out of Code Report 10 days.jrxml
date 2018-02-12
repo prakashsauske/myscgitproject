@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StockTransferIn" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4ff33c1f-4dfb-4da7-b006-2265d483123b">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="43"/>
+	<subDataset name="dataset1" uuid="ff43b490-37e7-4175-868e-1b5eb0b62b49"/>
+	<parameter name="dept" class="java.lang.String"/>
+	<parameter name="StoreNo" class="java.lang.String"/>
+	<parameter name="StoreName" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\NGBO_WS_Guru\\NGBO\\WebContent\\jasperreports\\src\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateFrom" class="java.lang.String"/>
+	<parameter name="dateTo" class="java.lang.String"/>
+	<parameter name="week1Date" class="java.lang.String"/>
+	<parameter name="week1Day" class="java.lang.String"/>
+	<parameter name="week2Date" class="java.lang.String"/>
+	<parameter name="week2Day" class="java.lang.String"/>
+	<parameter name="week3Date" class="java.lang.String"/>
+	<parameter name="week3Day" class="java.lang.String"/>
+	<parameter name="week4Date" class="java.lang.String"/>
+	<parameter name="week4Day" class="java.lang.String"/>
+	<parameter name="week5Date" class="java.lang.String"/>
+	<parameter name="week5Day" class="java.lang.String"/>
+	<parameter name="week6Date" class="java.lang.String"/>
+	<parameter name="week6Day" class="java.lang.String"/>
+	<parameter name="week7Date" class="java.lang.String"/>
+	<parameter name="week7Day" class="java.lang.String"/>
+	<parameter name="week8Date" class="java.lang.String"/>
+	<parameter name="week8Day" class="java.lang.String"/>
+	<parameter name="week9Date" class="java.lang.String"/>
+	<parameter name="week9Day" class="java.lang.String"/>
+	<parameter name="week10Date" class="java.lang.String"/>
+	<parameter name="week10Day" class="java.lang.String"/>
+	<parameter name="expiring" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | HH:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="class" class="java.lang.String"/>
+	<field name="reviewOnly" class="java.util.List">
+		<fieldDescription><![CDATA[reviewOnly]]></fieldDescription>
+	</field>
+	<field name="week1Val" class="java.lang.String"/>
+	<field name="week2Val" class="java.lang.String"/>
+	<field name="week3Val" class="java.lang.String"/>
+	<field name="week4Val" class="java.lang.String"/>
+	<field name="week5Val" class="java.lang.String"/>
+	<field name="week6Val" class="java.lang.String"/>
+	<field name="week7Val" class="java.lang.String"/>
+	<field name="week8Val" class="java.lang.String"/>
+	<field name="week9Val" class="java.lang.String"/>
+	<field name="week10Val" class="java.lang.String"/>
+	<field name="article" class="java.lang.String"/>
+	<field name="article_desc" class="java.lang.String"/>
+	<field name="aisle" class="java.lang.String"/>
+	<field name="soh" class="java.lang.String"/>
+	<field name="urgentFlag" class="java.lang.String"/>
+	<group name="aisle">
+		<groupExpression><![CDATA[$F{aisle}]]></groupExpression>
+		<groupHeader>
+			<band height="23">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="803" height="20" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC" uuid="38531201-5cb0-445f-b13e-2391342a3c79"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aisle}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="22" width="800" height="1" uuid="db5ec302-6815-4160-a075-6935e4b82e95"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="291" height="20" uuid="bd642c62-1059-4d8d-acf3-c53f02ae6528"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Out of Code Articles Report]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="45" width="782" height="28" uuid="62bc7be6-023c-40c5-b1e9-15f6408629eb"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date from: " +$P{dateFrom}+ " | Date to : "+ $P{dateTo} + (($P{dept}!=null && !$P{dept}.isEmpty())? ("  | Deprtment:  "+$P{dept}) :"")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="46" height="15" uuid="483d18a4-dd6e-4df7-aae5-f64a457ecc22"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Report for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="509" y="0" width="294" height="15" uuid="289e6005-dce9-4456-bb31-60c59fb47f2e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="73" width="334" height="20" uuid="93109a08-0306-40f4-8f26-cd80062eaf43"/>
+				<textElement>
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["List of articles expiring ("+$P{expiring}+")"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="55" y="15" width="165" height="25" uuid="fbb7ae30-6993-4f0c-9b0b-4413e1c4737c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="56" width="800" height="1" uuid="d1979600-6951-4c7a-b26a-22c3adb020bf"/>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="15" width="55" height="25" uuid="b85485ab-4e98-4a3e-9632-091e78b9187f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Article]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="220" y="15" width="52" height="25" uuid="6fb613fc-09cf-41da-a4ce-a7bcfbc7c49e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[SOH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="272" y="15" width="30" height="25" uuid="62e60343-9ad8-4d77-bdbe-66c2b304c6d9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Urgent]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="302" y="15" width="50" height="13" isPrintWhenDetailOverflows="true" uuid="613de34b-5e47-4e08-9eb4-da11707d8ac5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week1Day}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="302" y="28" width="50" height="12" isPrintWhenDetailOverflows="true" uuid="d529e648-7001-4efa-97b9-5da4b8bf34d4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week1Date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="352" y="15" width="50" height="13" isPrintWhenDetailOverflows="true" uuid="36727064-cd49-409a-9a5a-a62dcfa9fb58"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week2Day}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="352" y="28" width="50" height="12" isPrintWhenDetailOverflows="true" uuid="f515dc8a-c7f6-4667-84db-ce4738947ab5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week2Date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="402" y="15" width="50" height="13" isPrintWhenDetailOverflows="true" uuid="6595baac-60aa-492b-9292-ab4612bd3852"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week3Day}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="402" y="28" width="50" height="12" isPrintWhenDetailOverflows="true" uuid="ed27a38c-dd99-4a33-a412-36cea72e97b4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week3Date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="452" y="15" width="50" height="13" isPrintWhenDetailOverflows="true" uuid="37a2aadc-b3a2-4594-9620-33c081037eb2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week4Day}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="452" y="28" width="50" height="12" isPrintWhenDetailOverflows="true" uuid="4fa18274-5d39-4e62-b57e-be006e8d85c4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week4Date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="502" y="15" width="50" height="13" isPrintWhenDetailOverflows="true" uuid="b5ae96f2-8c08-4b0d-88be-fd7f54924760"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week5Day}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="502" y="28" width="50" height="12" isPrintWhenDetailOverflows="true" uuid="50a1314e-c834-41a4-814d-4121e85f1859"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week5Date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="552" y="15" width="50" height="13" isPrintWhenDetailOverflows="true" uuid="f76e15b8-567e-4322-b716-67817cea8b0e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week6Day}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="552" y="28" width="50" height="12" isPrintWhenDetailOverflows="true" uuid="d65ae864-ba33-4fb3-911d-bb7294c0a0ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week6Date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="602" y="15" width="50" height="13" isPrintWhenDetailOverflows="true" uuid="44865e3d-5e68-4508-88e8-5ccae176707a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week7Day}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="602" y="28" width="50" height="12" isPrintWhenDetailOverflows="true" uuid="e6566cab-c4fc-4017-bb24-0ee8735e6e99"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week7Date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="652" y="15" width="50" height="13" isPrintWhenDetailOverflows="true" uuid="4ba84f47-664c-417e-b9c4-10ac09369fa6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week8Day}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="652" y="28" width="50" height="12" isPrintWhenDetailOverflows="true" uuid="bf520ecd-2282-41a2-aca3-91ace72ebe18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week8Date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="702" y="15" width="50" height="13" isPrintWhenDetailOverflows="true" uuid="836d2690-a549-4254-a181-6533944ac7cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week9Day}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="702" y="28" width="50" height="12" isPrintWhenDetailOverflows="true" uuid="f499c329-95ca-436e-bac6-44a9ac75a1c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week9Date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="752" y="15" width="50" height="13" isPrintWhenDetailOverflows="true" uuid="1d13c7be-c52b-4319-89d0-515df41f761a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week10Day}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="752" y="28" width="50" height="12" isPrintWhenDetailOverflows="true" uuid="527e6d6d-ea09-4378-ab31-c0e141f6b6f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{week10Date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="220" y="2" width="52" height="20" isPrintWhenDetailOverflows="true" uuid="c0075601-4ca5-4373-9be7-29c500e49dde"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{soh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="3" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="45d22bb3-4787-4ba9-b2fc-7c47def91505"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{week3Val}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="552" y="3" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="24e7bfe3-ab5b-4c9c-beb6-5f8f9510bd13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{week6Val}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="272" y="2" width="30" height="20" isPrintWhenDetailOverflows="true" uuid="d599047d-65ee-468c-9d5d-ece8dd0661e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{urgentFlag}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="452" y="3" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="c0cbfe88-b284-493e-9757-114d7ee93cd7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{week4Val}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="352" y="2" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="a56dd319-af0f-40d1-b305-2690559edb07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{week2Val}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="2" width="55" height="20" isPrintWhenDetailOverflows="true" uuid="c9f7cf67-b1c4-4028-b3d1-85bc5da87e1d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{article}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="25" width="800" height="1" uuid="6aa91220-f260-4696-ac34-c1d6eb9039dc"/>
+			</line>
+			<textField>
+				<reportElement x="55" y="2" width="165" height="20" isPrintWhenDetailOverflows="true" uuid="78c7e19d-f958-4f3e-99da-5a476ef01242"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{article_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="502" y="3" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="cfb327c5-714b-4e1b-81cc-2e29403f64c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{week5Val}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="302" y="2" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="27ae955c-9992-41b2-b0de-dfb1436711a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{week1Val}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="602" y="3" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="c7e20f4b-9dd8-42cf-9ba7-bbcaa1166916"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{week7Val}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="652" y="3" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="85939902-8621-4cb3-b872-3b9ab25b46fb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{week8Val}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="702" y="3" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="d632c8f6-f51f-4598-b315-b01f110e9ecc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{week9Val}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="752" y="3" width="50" height="20" isPrintWhenDetailOverflows="true" uuid="3b568198-da6c-40d2-aa71-131bbeb9daa7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{week10Val}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="2" width="16" height="12" uuid="ad40d8ad-ce43-48c9-aa71-9398110e47e7"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="2" width="80" height="12" uuid="365c6a68-a436-4df3-9894-4c188d0501a7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="46" y="5" width="226" height="12" uuid="70513e11-fbc2-49ea-b245-b0fb0709142e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="5" width="45" height="12" uuid="3faf8052-72f6-4b36-b739-d7bee423d0a3"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="38">
+			<textField>
+				<reportElement x="46" y="25" width="226" height="12" uuid="78e171fe-9d42-41fc-81af-5f2f56a5624c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="26" width="16" height="12" uuid="1aee5315-bf30-40ce-8868-7538ee4c935b"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="26" width="80" height="12" uuid="df0f110c-29c4-440a-97ed-568f1f32367c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="25" width="45" height="12" uuid="b7e57784-d039-41fd-bcc0-5699998e6122"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="372" y="2" width="100" height="20" uuid="63c1b787-58f5-4199-968a-18dabeb71550"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[End of Report]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PosConsolidation" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="af6155cd-9f1d-4828-8fc4-9c5770ae4c66">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<scriptlet name="MYSCRIPTLET" class="au.com.woolworths.portal.pos.model.PosConsolidationScriptlet"/>
+	<parameter name="dateFrom" class="java.lang.String"/>
+	<parameter name="pos" class="java.lang.String"/>
+	<parameter name="StoreNo" class="java.lang.String"/>
+	<parameter name="StoreName" class="java.lang.String"/>
+	<parameter name="msg" class="java.lang.String"/>
+	<parameter name="weekFromDateHide" class="java.lang.String"/>
+	<parameter name="weekToDateHide" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\EclipseMcr\\workspace_1POS\\JasperJavaBean\\jasperReports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="expectedFunds" class="java.lang.String">
+		<fieldDescription><![CDATA[expectedFunds]]></fieldDescription>
+	</field>
+	<field name="grpLastRec" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[grpLastRec]]></fieldDescription>
+	</field>
+	<field name="noDataFound" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFound]]></fieldDescription>
+	</field>
+	<field name="openingLoan" class="java.lang.String">
+		<fieldDescription><![CDATA[openingLoan]]></fieldDescription>
+	</field>
+	<field name="paidIns" class="java.lang.String">
+		<fieldDescription><![CDATA[paidIns]]></fieldDescription>
+	</field>
+	<field name="paidOuts" class="java.lang.String">
+		<fieldDescription><![CDATA[paidOuts]]></fieldDescription>
+	</field>
+	<field name="pickUps" class="java.lang.String">
+		<fieldDescription><![CDATA[pickUps]]></fieldDescription>
+	</field>
+	<field name="posNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[posNumber]]></fieldDescription>
+	</field>
+	<field name="posNumberMap" class="java.lang.String">
+		<fieldDescription><![CDATA[posNumberMap]]></fieldDescription>
+	</field>
+	<field name="salesTender" class="java.lang.String">
+		<fieldDescription><![CDATA[salesTender]]></fieldDescription>
+	</field>
+	<field name="tValue" class="java.lang.String">
+		<fieldDescription><![CDATA[tValue]]></fieldDescription>
+	</field>
+	<field name="tenderLoan" class="java.lang.String">
+		<fieldDescription><![CDATA[tenderLoan]]></fieldDescription>
+	</field>
+	<field name="tenderType" class="java.lang.String">
+		<fieldDescription><![CDATA[tenderType]]></fieldDescription>
+	</field>
+	<field name="tenderTypeT" class="java.lang.String">
+		<fieldDescription><![CDATA[tenderTypeT]]></fieldDescription>
+	</field>
+	<field name="sttlIndicator" class="java.lang.String"/>
+	<field name="borrowedFunds" class="java.lang.String">
+		<fieldDescription><![CDATA[borrowedFunds]]></fieldDescription>
+	</field>
+	<variable name="ForGrpTotal" class="java.lang.String">
+		<variableExpression><![CDATA["GrandTotal"]]></variableExpression>
+		<initialValueExpression><![CDATA["GrandTotal"]]></initialValueExpression>
+	</variable>
+	<variable name="openingLoan" class="java.lang.Double" resetType="Group" resetGroup="GroupTenderType">
+		<variableExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.getOpeningLoan()]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="salesTender" class="java.lang.Double" resetType="Group" resetGroup="GroupTenderType" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{salesTender})]]></variableExpression>
+	</variable>
+	<variable name="tenderLoan" class="java.lang.Double" resetType="Group" resetGroup="GroupTenderType" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{tenderLoan})]]></variableExpression>
+	</variable>
+	<variable name="paidIns" class="java.lang.Double" resetType="Group" resetGroup="GroupTenderType" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{paidIns})]]></variableExpression>
+	</variable>
+	<variable name="paidOuts" class="java.lang.Double" resetType="Group" resetGroup="GroupTenderType" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{paidOuts})]]></variableExpression>
+	</variable>
+	<variable name="pickUps" class="java.lang.Double" resetType="Group" resetGroup="GroupTenderType" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{pickUps})]]></variableExpression>
+	</variable>
+	<variable name="expectedFunds" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[($V{openingLoan}==null?0.0:$V{openingLoan})+
+($V{salesTender}==null?0.0:$V{salesTender})+
+($V{salesTender}==null?0.0:$V{tenderLoan})+
+($V{paidIns}==null?0.0:$V{paidIns})-
+($V{paidOuts}==null?0.0:$V{paidOuts})-
+($V{pickUps}==null?0.0:$V{pickUps})]]></variableExpression>
+	</variable>
+	<variable name="salesTender_1_2_3" class="java.lang.Double"/>
+	<variable name="sumOpeningLoan" class="java.lang.Double" resetType="Group" resetGroup="PosNumberGrp" incrementType="Group" incrementGroup="GroupTenderType" calculation="Sum">
+		<variableExpression><![CDATA[$V{openingLoan}]]></variableExpression>
+	</variable>
+	<variable name="sumSalesTender" class="java.lang.Double" resetType="Group" resetGroup="PosNumberGrp" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{salesTender})]]></variableExpression>
+	</variable>
+	<variable name="sumTenderLoan" class="java.lang.Double" resetType="Group" resetGroup="PosNumberGrp" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{tenderLoan})]]></variableExpression>
+	</variable>
+	<variable name="sumPaidIns" class="java.lang.Double" resetType="Group" resetGroup="PosNumberGrp" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{paidIns})]]></variableExpression>
+	</variable>
+	<variable name="sumPaidOuts" class="java.lang.Double" resetType="Group" resetGroup="PosNumberGrp" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{paidOuts})]]></variableExpression>
+	</variable>
+	<variable name="sumPickUps" class="java.lang.Double" resetType="Group" resetGroup="PosNumberGrp" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{pickUps})]]></variableExpression>
+	</variable>
+	<variable name="sumExpectedFunds" class="java.lang.Double" resetType="Group" resetGroup="PosNumberGrp" incrementType="Group" incrementGroup="GroupTenderType" calculation="Sum">
+		<variableExpression><![CDATA[$V{expectedFunds}]]></variableExpression>
+	</variable>
+	<variable name="noOfPos" class="java.lang.Integer" incrementType="Group" incrementGroup="PosNumberGrp">
+		<variableExpression><![CDATA[($V{PosNumberGrp_COUNT} == 1) ? $V{noOfPos} + 1 : $V{noOfPos}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="sumBorrowedFunds" class="java.lang.Double" resetType="Group" resetGroup="PosNumberGrp" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{borrowedFunds})]]></variableExpression>
+	</variable>
+	<variable name="borrowedFunds" class="java.lang.Double" resetType="Group" resetGroup="GroupTenderType" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{borrowedFunds})]]></variableExpression>
+	</variable>
+	<group name="GrandTotalGrp" minHeightToStartNewPage="40">
+		<groupExpression><![CDATA[$V{ForGrpTotal}]]></groupExpression>
+		<groupFooter>
+			<band height="20">
+				<printWhenExpression><![CDATA[$V{noOfPos}>1]]></printWhenExpression>
+				<subreport>
+					<reportElement x="0" y="0" width="802" height="20" uuid="9a5923ac-ca8e-4a07-a758-c4e6cb33b967"/>
+					<subreportParameter name="noOfPos">
+						<subreportParameterExpression><![CDATA[$V{noOfPos}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($P{MYSCRIPTLET_SCRIPTLET}.getPosConsAggregation())]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ALHFinancialGrpTotal.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="PosNumberGrp" minHeightToStartNewPage="40">
+		<groupExpression><![CDATA[$F{posNumber}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="0" y="0" width="135" height="20" uuid="939168dd-d858-413c-885e-b1f3172b47e6"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["POS "+$F{posNumber}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<frame>
+					<reportElement x="0" y="0" width="802" height="20" uuid="b648932b-9187-4ffc-b8a8-1f520068a323"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+						<reportElement x="374" y="0" width="98" height="20" uuid="4ffcb4a1-f90c-4dfe-9161-f767d5766456"/>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="Arial" size="8" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{sumBorrowedFunds}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="0" width="135" height="20" uuid="2323aaf8-d6ee-48e3-a541-251891b76f54"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" size="8" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Total]]></text>
+					</staticText>
+				</frame>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="160" y="0" width="98" height="20" uuid="9135e5e3-7086-4a1b-b25d-a9ef7f4f8748"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumSalesTender}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="268" y="0" width="93" height="20" uuid="075fd1b3-8e10-4955-b789-cd64c2e95bdc"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumTenderLoan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="479" y="0" width="98" height="20" uuid="a67c154b-9485-4f6d-a0c5-668bd574325d"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumPaidIns}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="584" y="0" width="98" height="20" uuid="0521ec63-c4ed-4532-ae14-eeb93e3abcc1"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumPaidOuts}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="688" y="0" width="98" height="20" uuid="f88338d2-a3ad-4ead-b544-3288981dc8c7"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumPickUps}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="GroupTenderType" minHeightToStartNewPage="40">
+		<groupExpression><![CDATA[$F{tenderTypeT}]]></groupExpression>
+		<groupFooter>
+			<band height="20">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="135" height="20" uuid="a6856a9a-4a05-484b-8cea-cc0f3bd6e727"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.evalTenderTypeGrpFooterBand( $F{tenderTypeT} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="160" y="0" width="98" height="20" uuid="305516f6-25c1-4742-8fbe-7164b1242dff"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{salesTender}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="268" y="0" width="98" height="20" uuid="adf11414-9e9e-424d-a247-f211c6c03464"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{tenderLoan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="479" y="0" width="98" height="20" uuid="35b051e5-8fc4-4f54-99cf-c0c3cac71d01"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{paidIns}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="584" y="0" width="98" height="20" uuid="8568ce6b-9df1-4cb1-beb7-f7cbe4dc91e1"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{paidOuts}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="688" y="0" width="98" height="20" uuid="0dbd7550-a85c-4135-a5f7-25e77caf6927"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{pickUps}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="374" y="0" width="98" height="20" uuid="0e02010b-a8a8-4899-a9a7-9f99aa98133d"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{borrowedFunds}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<textField>
+				<reportElement x="452" y="0" width="350" height="20" uuid="7be5590d-5e52-44b4-8109-71dfbfc4520d"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="37" width="405" height="15" uuid="782ff136-3229-4357-b4ea-7b4fb25db2f7"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reported for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="21" width="405" height="15" uuid="86eb1d37-ecd6-43f4-be33-22a0afc26e60"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="405" height="20" uuid="fb863787-6ffd-4d4a-8fc7-fb5a4bce808b"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ALH Financial Data]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="53" width="405" height="15" uuid="9cbefcd3-a5b3-4934-8610-b1f4f9655a9e"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["From Date: "+$P{weekFromDateHide}+" | To Date: "+$P{weekToDateHide}+"  |  POS : "+ ("All".equals($P{pos})?"All":"Single".equals($P{pos})?"Single":"Multiple")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="30" uuid="31c70f49-2692-4601-8ed3-830ce8089e2e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="0" width="135" height="30" uuid="aac920bc-5a94-4abb-9723-71ef47b8a9a6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tender Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="0" width="98" height="30" uuid="f0912fb5-5579-47b4-9baf-bb52464bb6b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sales Tender (+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="0" width="98" height="30" uuid="c778217d-cc25-43a4-9cde-944f3a969c53"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tender Loan (+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="0" width="98" height="30" uuid="ae2af594-81bb-49b2-8639-d44ed889f687"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Borrowed Funds (+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="0" width="98" height="30" uuid="8e96df0b-76e5-493b-add6-feec3788099c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paid In (+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="584" y="0" width="98" height="30" uuid="b2e175d0-31cf-4e9b-8317-ba193bebaecb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paid Out (-)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="688" y="0" width="98" height="30" uuid="5dd71468-eb80-4e17-a67e-47e14a5ee088"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pick Up (-)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="45" height="12" uuid="cf51740c-4148-4f22-86eb-491e5db3df8a"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="706" y="5" width="80" height="12" uuid="96313b4a-a06f-4759-8e15-9b5ad71420c0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="5" width="16" height="12" uuid="32aa2adf-bd04-467c-b9d3-eca949e8336c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="5" width="289" height="12" uuid="acdc4c80-5299-422b-87de-948f55c65d94"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<noData>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="50" uuid="65a8eaa7-0170-4f90-8272-6d7f96a9f6d4"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.isNotNullNotEmptyNotWhiteSpace($P{msg})?$P{msg}:"Either no data found or Techincal Problem"]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

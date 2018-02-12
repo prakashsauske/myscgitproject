@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" columnCount="2" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a51cffbb-c2ca-40f2-af54-7a2395ca830e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="shopField" class="java.lang.String"/>
+	<field name="shopCount" class="java.lang.String"/>
+	<field name="logo" class="java.awt.image.BufferedImage"/>
+	<detail>
+		<band height="101" splitType="Stretch">
+			<staticText>
+				<reportElement x="147" y="48" width="100" height="20" uuid="59d79828-ea15-4b3b-8040-02a9c8878186"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="147" y="28" width="100" height="20" uuid="07c30aa1-bd83-4b5c-9e31-189f93a120ff"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{shopField}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="147" y="65" width="100" height="20" uuid="954bb5f2-4b20-446c-8ea0-332311c83b94"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{shopCount}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="22" y="10" width="107" height="75" uuid="4b254fec-70cd-461e-8403-d365a04afdab"/>
+				<imageExpression><![CDATA[$F{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="147" y="10" width="100" height="20" uuid="27244984-0c16-47dc-8214-b3252aba8d77"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

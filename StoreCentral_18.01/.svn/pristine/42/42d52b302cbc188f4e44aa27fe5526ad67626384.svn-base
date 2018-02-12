@@ -1,0 +1,475 @@
+package au.com.woolworths.portal.controller;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import au.com.woolworths.portal.model.StockTakeVarianceResult;
+import au.com.woolworths.portal.model.UserContext;
+import au.com.woolworths.portal.param.StockTakeVarianceParam;
+import au.com.woolworths.portal.pos.controller.BaseController;
+import au.com.woolworths.portal.pos.controller.JasperRptResponseHandlerUtil;
+import au.com.woolworths.portal.reports.JasperReportUtil;
+import au.com.woolworths.portal.service.LoginServiceImpl;
+import au.com.woolworths.portal.service.ReportServiceImpl;
+import au.com.woolworths.portal.util.CommonUtils;
+
+@Controller
+@RequestMapping(value = "*/stockTakeVarianceReport")
+@Scope("session")
+public class StockTakeVarianceController extends BaseController {
+
+	private static final Logger LOGGER = Logger
+			.getLogger(LoginServiceImpl.class.getName());
+
+	@Autowired
+	private JasperReportUtil jasper;
+
+	@Autowired
+	private JasperRptResponseHandlerUtil jasperRptResponseHandler;
+
+	@Value("#{properties['stockTakeVarianceName']}")
+	private String stockTakeVarianceName = null;
+
+	private StockTakeVarianceParam stockTakeVarianceParamGlobal;
+
+	List<StockTakeVarianceResult> stockTakeVarianceResult = null;
+
+	@Autowired
+	private ReportServiceImpl reportService;
+
+	@RequestMapping(method = RequestMethod.POST, value = "/printStockVarianceReportPDF.htm", consumes = "application/json")
+	@ResponseBody
+	public String printStockTakeVariancePDF(
+			@RequestBody StockTakeVarianceParam stockTakeVarianceResults,
+			HttpServletRequest request, HttpServletResponse response) {
+		if (setSessionAndReturnIfInvalid(request, null) ? true : false) {
+			return "";
+		}
+		stockTakeVarianceParamGlobal = stockTakeVarianceResults;
+		stockTakeVarianceParamGlobal.setReportNotGenerated(true);
+		return CommonUtils.convertObjectTojson("success");
+	}
+
+	private List<StockTakeVarianceResult> generateVarianceReport(
+			HttpServletRequest request) {
+		if (stockTakeVarianceParamGlobal != null
+				&& stockTakeVarianceParamGlobal.getParam() != null
+				&& stockTakeVarianceParamGlobal.isReportNotGenerated()) {
+			UserContext userDetail = ((UserContext) request.getSession()
+					.getAttribute("user"));
+			try {
+				StockTakeVarianceResult[] stockTakeVarianceResultArray = reportService
+						.getVarianceInfoMobilink(userDetail,
+								userDetail.getDomain(),
+								stockTakeVarianceParamGlobal.getParam());
+				if (stockTakeVarianceResultArray != null
+						&& stockTakeVarianceResultArray.length > 0) {
+					stockTakeVarianceParamGlobal.setReportNotGenerated(false);
+					stockTakeVarianceResult = Arrays
+							.asList(stockTakeVarianceResultArray);
+					stockTakeVarianceResult = formatVarianceResult(stockTakeVarianceResult);
+				}
+			} catch (Exception e) {
+				LOGGER.error(e);
+			}
+		}
+		return stockTakeVarianceResult;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/downloadStockTakeArticleCountReportPdf.pdf", method = RequestMethod.GET)
+	public byte[] downloadGapScanReportPdf(HttpServletRequest request,
+			HttpServletResponse response) throws Throwable {
+		List<StockTakeVarianceResult> stockTakeVarianceInfo = null;
+		byte[] byos = null;
+		try {
+			HashMap<String, Object> reportInputParams = new HashMap<String, Object>();
+			stockTakeVarianceInfo = generateVarianceReport(request);
+			if (stockTakeVarianceInfo != null
+					&& !stockTakeVarianceInfo.isEmpty()) {
+				Integer totalCount = stockTakeVarianceInfo.size();
+				JRBeanCollectionDataSource beanDS = new JRBeanCollectionDataSource(
+						stockTakeVarianceInfo);
+				reportInputParams.put("stockTakePrint",
+						stockTakeVarianceParamGlobal.getStockTakePrint());
+				reportInputParams.put("reportFor",
+						stockTakeVarianceParamGlobal.getReportFor());
+				reportInputParams.put("storeNo",
+						stockTakeVarianceParamGlobal.getStoreNo());
+				reportInputParams.put("storeName",
+						stockTakeVarianceParamGlobal.getStoreName());
+				reportInputParams.put("overAllTotal", stockTakeVarianceInfo
+						.get(0).getOverAllTotal());
+				reportInputParams.put("totalCount", totalCount.toString());
+				reportInputParams.put("applyGroupby",
+						stockTakeVarianceParamGlobal.getApplyGroupby());
+				byos = jasper.printPdfReportTimeZone(stockTakeVarianceName,
+						beanDS,
+						jasperRptResponseHandler.getReportSourcePath(request),
+						jasperRptResponseHandler.getReportBinPath(request),
+						reportInputParams, request).toByteArray();
+				response.setContentType("application/pdf");
+				response.setContentLength(byos.length);
+				response.getOutputStream().write(byos);
+				return byos;
+			}
+		} catch (Exception e) {
+			LOGGER.error(e);
+		}
+		response.setContentType("text/html");
+		PrintWriter pw = response.getWriter();
+		pw.println("<html>");
+		pw.println("<head><title>Sorry, Some technical issue occured</title></title>");
+		pw.println("<body>");
+		pw.println("<h1>Sorry, Some technical issue occured. </h1>");
+		pw.println("</body></html>");
+		return byos;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/downloadStockTakeVarianceReportExcel.pdf", method = RequestMethod.GET)
+	public String downloadVarianceReportExcel(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		List<StockTakeVarianceResult> stockTakeVarianceInfo = null;
+		StringBuilder writer = null;
+		try {
+			stockTakeVarianceInfo = generateVarianceReport(request);
+			if (stockTakeVarianceInfo != null
+					&& !stockTakeVarianceInfo.isEmpty()) {
+				response.setContentType("text/csv");
+				response.setHeader("Content-Disposition",
+						"attachment; filename=\"variance_export.csv");
+				writer = new StringBuilder();
+				OutputStream out = response.getOutputStream();
+				OutputStreamWriter outWriter = new OutputStreamWriter(out);
+
+				writer.append("Article");
+				writer.append(',');
+				writer.append("Description");
+				writer.append(',');
+				writer.append("Value ($)");
+				writer.append(',');
+				writer.append("Location");
+				writer.append(',');
+				writer.append("Count");
+				writer.append(',');
+				writer.append("Base Count");
+				writer.append(',');
+				writer.append("Re-Count 1");
+				writer.append(',');
+				writer.append("Re-Count 2");
+				writer.append(',');
+				writer.append("Re-Count 3");
+				writer.append(',');
+				writer.append("Re-Count 4");
+				writer.append(',');
+				writer.append("Final Count");
+				writer.append(',');
+				writer.append("SOH");
+				writer.append(',');
+				writer.append("Variance Qty");
+				writer.append(',');
+				writer.append("Variance Value");
+				writer.append(',');
+				writer.append('\n');
+				writer.append('\n');
+
+				Map<String, List<StockTakeVarianceResult>> map = new HashMap<String, List<StockTakeVarianceResult>>();
+				for (StockTakeVarianceResult row : stockTakeVarianceInfo) {
+					String key = row.getSubCategorie();
+					if (map.get(key) == null) {
+						map.put(key, new ArrayList<StockTakeVarianceResult>());
+					}
+					map.get(key).add(row);
+				}
+
+				writer.append("");
+				writer.append(',');
+				writer.append(""); // added sub-cate total
+				writer.append(',');
+				writer.append("");
+				writer.append(',');
+				writer.append("");
+				writer.append(',');
+				writer.append("");
+				writer.append(',');
+				writer.append("");
+				writer.append(',');
+				writer.append("");
+				writer.append(',');
+				writer.append("");
+				writer.append(',');
+				writer.append("");
+				writer.append(',');
+				writer.append("");
+				writer.append(',');
+				writer.append("");
+				writer.append(',');
+				writer.append("");
+				writer.append(',');
+				writer.append("Sub-category Total ($)");
+				writer.append(',');
+				writer.append(stockTakeVarianceInfo.get(0).getOverAllTotal());
+				writer.append('\n');
+
+				for (String key : map.keySet()) {
+					writer.append(key);
+					writer.append(',');
+					writer.append(""); // added sub-cate total
+					writer.append(',');
+					writer.append("");
+					writer.append(',');
+					writer.append("");
+					writer.append(',');
+					writer.append("");
+					writer.append(',');
+					writer.append("");
+					writer.append(',');
+					writer.append("");
+					writer.append(',');
+					writer.append("");
+					writer.append(',');
+					writer.append("");
+					writer.append(',');
+					writer.append("");
+					writer.append(',');
+					writer.append("");
+					writer.append(',');
+					writer.append("");
+					writer.append(',');
+					writer.append("Sub-category Total ($)");
+					writer.append(',');
+					writer.append(map.get(key).get(0).getGroup_tt());
+					writer.append('\n');
+
+					for (int i = 0; i < map.get(key).size(); i++) {
+						writer.append(map.get(key).get(i)
+								.getArticle_number_indi());
+						writer.append(',');
+						writer.append(map.get(key).get(i)
+								.getArticle_desc_excel());
+						writer.append(',');
+						writer.append(map.get(key).get(i).getSell_price());
+						writer.append(',');
+						writer.append(map.get(key).get(i)
+								.getLocationDetails_excel());
+						writer.append(',');
+						writer.append('\n');
+					}
+				}
+				outWriter.write(writer.toString());
+				outWriter.flush();
+				return null;
+			}
+		} catch (Exception e) {
+			LOGGER.error(e);
+		}
+		response.setContentType("text/html");
+		PrintWriter pw = response.getWriter();
+		pw.println("<html>");
+		pw.println("<head><title>Sorry, Some technical issue occured</title></title>");
+		pw.println("<body>");
+		pw.println("<h1>Sorry, Some technical issue occured. </h1>");
+		pw.println("</body></html>");
+		return null;
+	}
+
+	private ArrayList<StockTakeVarianceResult> formatVarianceResult(
+			List<StockTakeVarianceResult> stockTakeVarianceResultList) {
+		ArrayList<StockTakeVarianceResult> stockTakeVarianceResultListFormated = null;
+		ArrayList<StockTakeVarianceResult> tmpList = null;
+		Double grpTotal = 0.0;
+		Double tempVal = 0.0;
+		Double total = 0.0;
+		LinkedHashMap<String, ArrayList<StockTakeVarianceResult>> responseMap = null;
+		LinkedHashMap<String, Double> subCatMap = null;
+		LinkedHashMap<String, ArrayList<StockTakeVarianceResult>> locationMap = null;
+		String id = "";
+		try {
+			if (stockTakeVarianceResultList != null
+					&& !stockTakeVarianceResultList.isEmpty()) {
+				stockTakeVarianceResultListFormated = new ArrayList<StockTakeVarianceResult>();
+				responseMap = new LinkedHashMap<String, ArrayList<StockTakeVarianceResult>>();
+				locationMap = new LinkedHashMap<String, ArrayList<StockTakeVarianceResult>>();
+				subCatMap = new LinkedHashMap<String, Double>();
+				for (StockTakeVarianceResult obj : stockTakeVarianceResultList) {
+					if (obj.getDisplay_indicator().equalsIgnoreCase("H")) {
+						stockTakeVarianceResultListFormated.add(obj);
+						id = obj.getArticle_no();
+						if (responseMap != null && responseMap.containsKey(id)) {
+							responseMap.get(id).add(obj);
+						} else {
+							tmpList = new ArrayList<StockTakeVarianceResult>();
+							tmpList.add(obj);
+							responseMap.put(id, tmpList);
+						}
+						id = obj.getSubCategorie();
+						if (subCatMap != null && subCatMap.containsKey(id)) {
+							grpTotal = subCatMap.get(id);
+							if (obj.getVar_value() != null
+									&& !obj.getVar_value().isEmpty()) {
+								tempVal = Double
+										.parseDouble(obj.getVar_value());
+								total = total + tempVal;
+								grpTotal = grpTotal + tempVal;
+							}
+						} else {
+							grpTotal = 0.0;
+							if (obj.getVar_value() != null
+									&& !obj.getVar_value().isEmpty()) {
+								tempVal = Double
+										.parseDouble(obj.getVar_value());
+								total = total + tempVal;
+								grpTotal = tempVal;
+							}
+						}
+						subCatMap.put(id, grpTotal);
+					} else if (obj.getDisplay_indicator().equalsIgnoreCase("D")) {
+						id = obj.getArticle_no();
+						if (locationMap != null && locationMap.containsKey(id)) {
+							locationMap.get(id).add(obj);
+						} else {
+							tmpList = new ArrayList<StockTakeVarianceResult>();
+							tmpList.add(obj);
+							locationMap.put(id, tmpList);
+						}
+					}
+				}
+
+				for (StockTakeVarianceResult result : stockTakeVarianceResultListFormated) {
+					result.formateCountVal();
+					result.setPrintLoc("");
+					grpTotal = subCatMap.get(result.getSubCategorie());
+					result.setGroup_tt(correctDecimalPostion(
+							grpTotal.toString(), true));
+					StringBuilder locate = null;
+					boolean sellable = false;
+					Double sellableVal = 0.0;
+					ArrayList<StockTakeVarianceResult> mainArray = responseMap
+							.get(result.getArticle_no());
+					ArrayList<StockTakeVarianceResult> locArray = locationMap
+							.get(result.getArticle_no());
+					for (int j = 0; j < locArray.size(); j++) {
+						if (locArray.get(j).getPerpetual_flag() != null
+								&& locArray.get(j).getPerpetual_flag()
+										.equalsIgnoreCase("N")) {
+							sellableVal = (sellableVal + Double
+									.parseDouble(locArray.get(j)
+											.getFinal_count_f()));
+							sellable = true;
+						} else {
+							String counted = "";
+							if ((mainArray.get(0).getBase_uom() != null && mainArray
+									.get(0).getBase_uom()
+									.equalsIgnoreCase("KG"))
+									|| (mainArray.get(0).getBase_uom() != null
+											&& mainArray.get(0).getBase_uom()
+													.equalsIgnoreCase("L") && mainArray
+											.get(0).getBase_uom()
+											.equalsIgnoreCase("G"))) {
+								counted = correctDecimalPostion(locArray.get(j)
+										.getFinal_count_f(), false);
+							} else {
+								counted = correctDecimalPostion(locArray.get(j)
+										.getFinal_count_f(), true);
+							}
+							if (locate == null) {
+								locate = new StringBuilder(locArray.get(j)
+										.getLoc_name()).append("=").append(
+										counted);
+							} else {
+								locate.append(",")
+										.append(locArray.get(j).getLoc_name())
+										.append("=").append(counted);
+							}
+						}
+					}
+					if (sellable) {
+						String countedVal = "";
+						if ((mainArray.get(0).getBase_uom() != null && mainArray
+								.get(0).getBase_uom().equalsIgnoreCase("KG"))
+								|| (mainArray.get(0).getBase_uom() != null
+										&& mainArray.get(0).getBase_uom()
+												.equalsIgnoreCase("L") && mainArray
+										.get(0).getBase_uom()
+										.equalsIgnoreCase("G"))) {
+							countedVal = correctDecimalPostion(
+									sellableVal.toString(), false);
+						} else {
+							countedVal = correctDecimalPostion(
+									sellableVal.toString(), true);
+						}
+
+						if (locate == null) {
+							locate = new StringBuilder("Sellable=")
+									.append(countedVal);
+						} else {
+							locate.append(",").append("Sellable=")
+									.append(countedVal);
+						}
+					}
+					result.setPrintLoc(locate != null ? locate.toString() : "");
+				}
+				Collections.sort(stockTakeVarianceResultListFormated,
+						new SubCatSort());
+				stockTakeVarianceResultListFormated.get(0).setOverAllTotal(
+						correctDecimalPostion(total.toString(), false));
+			}
+		} catch (Exception e) {
+			LOGGER.error(e);
+		}
+		return stockTakeVarianceResultListFormated;
+	}
+
+	private String correctDecimalPostion(String value, boolean wholeOrDecimal) {
+		try {
+			if (value != null && !value.isEmpty()) {
+				DecimalFormat df = null;
+				if (wholeOrDecimal) {
+					df = new DecimalFormat("0.##");
+				} else {
+					df = new DecimalFormat("0.000");
+				}
+				return df.format(Double.parseDouble(value));
+			}
+		} catch (Exception e) {
+			LOGGER.error(e);
+		}
+		return value;
+	}
+
+	public class SubCatSort implements Comparator<StockTakeVarianceResult> {
+		@Override
+		public int compare(StockTakeVarianceResult subCate1,
+				StockTakeVarianceResult subCate2) {
+			return subCate1.getSubCategorie().compareTo(
+					subCate2.getSubCategorie());
+		}
+	}
+}

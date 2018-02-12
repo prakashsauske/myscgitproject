@@ -1,0 +1,289 @@
+body {
+	font: 80%/1.2 Arial, Helvetica, sans-serif;
+	background-color: #898a8c;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul,ol,dl {
+	/* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+	margin-top: 0;
+	/* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 15px;
+	/* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+}
+
+a img {
+	/* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color: #42413C;
+	text-decoration: underline;
+	/* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+
+a:hover,a:active,a:focus {
+	/* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this fixed width container surrounds the other divs ~~ */
+.container {
+	width: 960px;
+	background-color: #FFF;
+	margin: 0 auto;
+	/* the auto value on the sides, coupled with the width, centers the layout */
+}
+
+/* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
+.header {
+	background-color: #fff;
+}
+
+/* ~~ This is the layout information. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the div. The elements within this div have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+*/
+.content {
+	padding: 10px 0;
+}
+
+/* ~~ The footer ~~ */
+.footer {
+	padding: 10px 0;
+	background: url(../images/footer_bg.png) no-repeat 0 0;
+}
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {
+	/* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+
+.fltlft {
+	/* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+
+.clearfloat {
+	/* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear: both;
+	height: 0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+#header_right {
+	position: absolute;
+	width: 426px;
+	height: 124px;
+	z-index: 1;
+	left: 708px;
+	top: 19px;
+}
+
+#Edit {
+	position: absolute;
+	width: 117px;
+	height: 37px;
+	z-index: 2;
+	left: 1015px;
+	top: 195px;
+}
+
+.ui-listview,.ui-li {
+	list-style: none;
+	padding: 15px;
+}
+
+#listTable {
+	border: 1px solid gray;
+	border-radius: 5px;
+	height: 100%;
+	width: 90%;
+	margin-left: 15px;
+	margin-right: 15px;
+	font-size: 15px;
+}
+
+#search {
+	width: 75%;
+	margin-top: 3px;
+}
+
+#listTable {
+	border: 1px solid #999;
+	border-radius: 5px;
+	height: 100%;
+	width: 97%;
+	background: #D4CBC0;
+}
+
+#tableHeader {
+	text-align: left;
+	padding: 0px;
+	height: 40px;
+}
+
+.trTable {
+	height: 45px;
+	text-align: center;
+	background-color: white;
+}
+
+tr.border_bottom td {
+	
+}
+
+.fltLeft {
+	float: left;
+}
+
+.txtAlign {
+	text-align: left;
+}
+
+.fltRight {
+	float: right;
+}
+
+.cursorpoint {
+	cursor: pointer;
+}
+
+input {
+	height: 25px;
+	width: 150px;
+	border-radius: 5px;
+}
+
+.borderRight {
+	border-right: 2px solid #d4cbc0;
+	height: 100%;
+	width: 50%;
+}
+
+#storeTab {
+	border: none;
+	background: none;
+	margin-left: 10px;
+}
+
+#tabUl {
+	background: none;
+	border-radius: 0px;
+	border: none;
+}
+
+.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active
+	{
+	border: 1px solid #d4cbc0;
+	background: #d4cbc0;
+}
+
+.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default a
+	{
+	color: orange;
+	font-weight: bold;
+}
+
+.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active a
+	{
+	color: white;
+	font-weight: bold;
+}
+
+.tabLi {
+	border: 0px;
+}
+
+#tab1table {
+	border-collapse: collapse;
+	font-weight: bold;
+	width: 100%;
+	height: 100%;
+}
+
+#tableHeading {
+	background-color: #D4CBC0;
+	font-weight: bold;
+	font-size: 12px;
+	text-align: left;
+	height: 30px;
+}
+
+#infoDiv {
+	border: 2px solid #D4CBC0;
+	background-color: white;
+	margin-left: -15px;
+	margin-top: -12px;
+}
+
+.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default
+	{
+	border: 0px;
+	background: none;
+}
+
+#storeTab .ui-state-active {
+	background: #D4CBC0;
+	border: none;
+}
+
+.Quantity {
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+.quantityUnit {
+	margin-left: 20px;
+}
+
+.quantityTable {
+	border: 1px solid #999;
+	border-radius: 5px;
+	height: 100%;
+	width: 97%;
+	background: #D4CBC0;
+	margin-left: 15px;
+}
+
+.white {
+	background: white;
+	text-align: center;
+	color: #009A3D;
+	font-weight: bold;
+}
+
+.rowHeading {
+	height: 25px;
+}
+
+.downArrow {
+	background-image: url("images/dn_arw.png");
+	background-repeat: no-repeat;
+}
+
+.upArrow {
+	background-image: url("images/up_arw.png");
+	background-repeat: no-repeat;
+}

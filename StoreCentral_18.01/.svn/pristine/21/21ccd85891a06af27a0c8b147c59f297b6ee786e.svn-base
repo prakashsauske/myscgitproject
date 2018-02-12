@@ -1,0 +1,1057 @@
+var recordCount;
+var currentPage;
+var prevRes = '';
+var endTime='';
+var NDF="Sorry, no results found for your search criteria. Please try again.";
+visibleCtrls = 'input[name="dateFrom"],input[name="fromTime"],input[name="dateTo"],input[name="toTime"]';
+hiddentCtrls = 'input[name="dateFromHide"],input[name="timeFromHide"],input[name="dateToHide"],input[name="timeToHide"]';
+allInputCtrls = 'input[name="dateFrom"],input[name="fromTime"],input[name="dateTo"],input[name="toTime"]';
+$(document).ready(function() {
+	/*$.tablesorter.addParser({
+	    // set a unique id
+	    id: 'storePerfsCustSort',
+	    is: function(s) {
+	        return false;
+	    },
+	    format: function(s, table, cell) {
+	    	console.log('Is this called');
+	    	var timArr = timeAnyHrMnScRegEx($(cell).html());
+	    	var mul = 1;
+	    	if($(cell).html().charAt(0)=='-') {
+	    		mul = -1;
+	    	}
+	    	if(timArr != undefined && timArr != null) {
+	    	return (((Number(timArr[1]) * 60 * 60) + (Number(timArr[2]) * 60) + Number(timArr[3])) * mul);
+	    	}
+	    	else {
+	    		return 0;
+	    	}
+	    },
+	    type: 'numeric'
+	});*/
+});
+$(function() {
+		
+	$('#filter').css('padding-top', '4px').css('width', '18%');		
+		
+			$("#dateFrom").datepicker({
+				dateFormat: "dd/mm/yy",
+				zIndex:50,
+				onClose: function( selectedDate ) {
+					$( "#timeFrom" ).focus();
+				}
+				
+			});
+			
+			$("#dateTo").datepicker({
+				dateFormat: "dd/mm/yy",
+				zIndex:50,
+				onClose: function( selectedDate ) {
+					$( "#timeTo" ).focus();
+				}
+				
+			});		
+			
+			
+			$("#timeTo, #timeFrom").timepicker({
+			   hours: { starts: 0, ends: 23 },
+			   minutes: { interval: 5 },
+			   rows: 4,
+			   showPeriodLabels: true,
+			   minuteText: 'Min'
+			});		
+		
+//			$(".sortTable").tablesort();
+			var today = new Date();
+			var newDate = today.getDate();
+			var newMonth = today.getMonth() + 1;
+			if (newDate < 10) {
+				newDate = '0' + newDate;
+			}
+			if (newMonth < 10) {
+				newMonth = '0' + newMonth;
+			}
+			var presentDate = (newDate + "/" + (newMonth) + "/" + today.getFullYear());
+			$('#dateTo').val(presentDate);
+			
+			var previousDate = new Date();
+			previousDate.setTime(previousDate.getTime()-(60*60*24*1000));
+
+			var newPrevDate =previousDate.getDate();
+			var newPrevMonth = previousDate.getMonth() + 1;
+			
+			if (newPrevDate < 10) {
+				newPrevDate = '0' + newPrevDate;
+			}
+			if (newPrevMonth < 10) {
+				newPrevMonth = '0' + newPrevMonth;
+			}
+			
+			var oneDayBefCurDate = (newPrevDate + "/" + (newPrevMonth) + "/" + previousDate.getFullYear());
+			$('#dateFrom').val(oneDayBefCurDate);
+			
+			$('#reportContent').removeClass('hideBlock');
+			$(".sortTable").removeClass('hideBlock');
+			$(".sortTable tbody:first").html('');
+			$(".sortTable").tablesorter({
+			    emptyTo: 'top'/*,
+		        headers: {
+			        4: {
+			            sorter:'storePerfsCustSort'
+			        },
+			        5: {
+			            sorter:'storePerfsCustSort'
+			        },
+			        6: {
+			            sorter:'storePerfsCustSort'
+			        },
+			        7: {
+			            sorter:'storePerfsCustSort'
+			        }
+		        }*/
+			  });
+			$('#reportContent').addClass('hideBlock');
+			$(".sortTable").addClass('hideBlock');
+		
+		
+			
+			//Code for accordion
+			$("#accordion").accordion({
+				header:"h3.mainAccordion",
+				collapsible: true, 		
+				heightStyle: "content" 
+			});
+			
+			$("#generateReport").click(function(){
+				hideError();
+				$('#filter').val('');
+				var fromDate = formateDate($('#dateFrom').val());
+				var toDate = formateDate($('#dateTo').val());
+				var start = $("#dateFrom").datepicker("getDate");
+		        var end = $("#dateTo").datepicker("getDate");
+		        var days = (end - start) / (1000 * 60 * 60 * 24);
+				$('#dateToHide').text(toDate);
+				$('#dateFromHide').text(fromDate);
+				var today = new Date();
+				var newDate = today.getDate();
+				var newMonth = today.getMonth();
+				var newYear = today.getFullYear();
+				var curDate = new Date(newYear, newMonth, newDate);
+				var date1 = new Date();
+			
+				
+				var fDate = new Date(fromDate.split('/')[2],fromDate.split('/')[1],fromDate.split('/')[0]);
+				//console.log(fDate.getTime());
+				var tDate = new Date(toDate.split('/')[2],toDate.split('/')[1],toDate.split('/')[0]);
+				//console.log(tDate.getTime());
+				var fTime =$('#timeFrom').val();
+				var tTime =$('#timeTo').val();
+				$('#timeFromHide').text(fTime);
+				$('#timeToHide').text(tTime);
+				
+				var fTim = fTime.split(':');
+				var fHour =fTim[0];
+				var fMin =fTim[1];
+				
+				var tTim =tTime.split(':');
+				var tHour= tTim[0];
+				var tMin =tTim[1];
+				/*
+				console.log(fHour);
+				console.log(tHour)*/;
+				var parts = fromDate.split('/');
+				var partsLen = parts.length;
+				var date1Len = fromDate.length;
+				date1.setFullYear(parts[2], parts[1] - 1, parts[0]);
+				var newTime=Number(date1.getTime());
+				
+				var dateComFrom = new Date(fromDate.split('/')[2],fromDate.split('/')[1],fromDate.split('/')[0]);
+				var dateComTo = new Date(toDate.split('/')[2],toDate.split('/')[1],toDate.split('/')[0]);
+				var toYear = dateComTo.getFullYear();
+				var fromYear = dateComFrom.getFullYear();
+				var toMonth = dateComTo.getMonth();
+				var fromMonth = dateComFrom.getMonth();
+				var toDay = dateComTo.getDate();
+				var fromDay = dateComFrom.getDate();	
+				//fTime = fromDate + ' '+fTime;
+				
+				//tTime = toDate + ' ' +tTime;
+				
+				/*console.log(Number(fTime.getTime()));
+				console.log(Number(tTime.getTime()));*/
+				var rangeDate = new Date(toDate.split('/')[2],
+						toDate.split('/')[1]-1, toDate.split('/')[0]);
+				
+				var toDateTime=dateComTo.getTime();
+				var fromDateTime=dateComFrom.getTime();
+				var date2 = new Date();
+				var part = toDate.split('/');
+				var partLen = part.length;
+				var date2Len = toDate.length;
+				var date2Time = Number(date2.getTime());
+				date2.setFullYear(part[2], part[1] - 1, part[0]);
+				
+				var splittedDate = formateDate($('#dateTo').val(),$('#dateTo').val().split('/').length).split('/');
+				var splittedTwo = splittedDate[0]
+				+ splittedDate[1] + splittedDate[2];
+				
+				newTime=Number(newTime)+Number(24*60*60*1000*90);
+				/*console.log(fromDate.split('/')[0]);
+				console.log(toDate.split('/')[0]);*/
+		
+				if (fromDate == "") {
+					showError('Please enter From Date.');
+					callFrom();
+				} else if (toDate == "") {
+					showError('Please enter To Date.');
+					callTo();
+				} else if (partsLen != 3 || date1Len != 10
+						|| fromDate.split('/')[0] > 31
+						|| fromDate.split('/')[1] > 12
+						|| fromDate.split('/')[2].length != 4) {
+					showError('Invalid From Date.');
+					callFrom();
+				} else if (partLen != 3 || date2Len != 10
+						|| toDate.split('/')[0] > 31
+						|| toDate.split('/')[1] > 12
+						|| toDate.split('/')[2].length != 4) {
+					showError('Invalid To Date.');
+					callTo();
+				}else if (date1.getTime() > date2.getTime()) {
+					showError('To Date should not be lesser than the From Date');
+					callTo();
+					
+					
+				}
+		
+				
+				else if(((fDate.getTime() == tDate.getTime())  && ((fHour == tHour) && (fMin>tMin))) || ((fDate.getTime() == tDate.getTime()) && (fHour > tHour)) )
+					{
+					
+					showError('To Time should not be lesser than the From Time');
+				/*	console.log(fDate.getTime() +" - "+tDate.getTime() );*/
+					}
+					
+				else if ((splittedDate[0] > 31
+					|| splittedDate[1] > 12 || splittedDate[2] > 9999)
+					|| isNaN(splittedTwo)){
+				
+					showError("Invalid Date Format");
+				}
+			 /*
+				 * else if(fromDateTime > curDateTime ) { showError("Future
+				 * Dates not allowed for From Date."); callFrom(); }
+				 */
+				else if(days >6){
+					showError('Date Range is more than one week.');
+					callFrom();
+				}
+				else if(rangeDate > curDate)
+					{
+					showError("Future Dates are not allowed for To Date.");
+							callTo();
+							}
+				else if (isValidTime_1pos($("#timeFrom").val())==false) {
+					showError("Invalid from time format please enter valid time between 00:00 to 23:59");
+					callFromTime();
+				}
+				else if (isValidTime_1pos($("#timeTo").val())==false) {
+					showError("Invalid to time format please enter valid time between 00:00 to 23:59");
+					callToTime();
+				}
+				
+						
+							
+				else if ((toYear-fromYear) == 1) {
+					if(((toMonth - fromMonth)+12)>3){
+						showError('Date difference should not be greater than 3 months');		
+						callFrom();
+					}else if((((toMonth - fromMonth)+12) == 3) && (((toDay - fromDay)+30)>30)){
+						showError('Date difference should not be greater than 3 months');		
+						callFrom();
+					}else{
+						storePerformance($('#storePerformance')
+								.serialize());		
+					}
+				}else if(toYear-fromYear == 0){
+						if((toMonth - fromMonth)>3){
+								showError('Date difference should not be greater than 3 months');		
+								callFrom();
+					}else if(((toMonth - fromMonth) == 3) && (((toDay - fromDay)+30)>30)){
+								showError('Date difference should not be greater than 3 months');		
+								callFrom();
+					}else{
+						storePerformance($('#storePerformance')
+								.serialize());
+					}
+				}else if((toYear-fromYear) >= 2){
+					showError('Date difference should not be greater than 3 months');		
+					callFrom();
+				}
+			
+				
+				else{
+					storePerformance($('#storePerformance')
+							.serialize());			
+					
+					
+					
+				}// hideError();
+					
+			});
+			
+			$("#closeLink").click(function(){				
+				$('#accordion').accordion({active : true });			
+			});
+			
+			
+			/*$('#deptFilterOpen').click(function(){
+				$('#deptFilterOpen').addClass('hideBlock');
+				$('#deptFilterClear').removeClass('hideBlock');
+				showdeptFilter();
+				});
+				$('#deptFilterClear').click(function(){
+				$('#deptFilterOpen').removeClass('hideBlock');
+				$('#deptFilterClear').addClass('hideBlock');
+				hidedeptFillter();
+				});*/
+				
+			$(".backBtn").click(function(e) {
+				window.location.href="../login/goingHome.htm";
+			});
+					
+			$("#menu").menu({ position: { my: "right top", at: "right top+20" } });
+			
+			
+			// code for table sorter 
+		//	$(".actionRows").tablesorter();
+			
+			$(".actionRows tr th").click(function(){	
+				
+				$('.actionRows tr td').each(function(){				
+					$(this).removeClass("sorted");					
+				});			
+			});
+			
+			
+			$(".actionRows .subHeader th").click(function(){
+				
+				$('.actionRows tr td').each(function(){				
+					$(this).removeClass("sorted");				
+				});	
+				
+				
+				
+				col=$(this).parent().children().index($(this));		
+				
+				//col=$('th.sorted').index();
+				
+				
+				$('.actionRows tr').each(function(){				
+					$(this).find('td').eq(col).addClass("sorted");				
+				});			
+			
+			});
+			
+			$("label.toolTip").tooltip({ 
+				position: { 
+					my: "left top", 
+					at: "left top-50" 
+				} 
+			});
+			
+			
+			$(document).keypress(function(event) {
+				if (event.which == 13) {
+					event.preventDefault();
+				
+						$('#generateReport').click();	
+				
+					
+				}
+			});
+		
+			
+			
+			
+
+				
+			
+		});
+		
+
+		
+		function updateSortPlugin(){
+			$(".sortTable").trigger("update"); 
+    
+		}
+		
+		
+		function storePerformance(data)
+		{
+			$.ajax({
+				type : "get",
+				url : "getStorePerformance.htm",
+				data : data,
+				beforeSend : function() {
+				//	startLoading();
+					fullScreenLoader();
+					// hideAllocationTbl();
+				},
+				success : function(response) {
+					
+						formStorePerformanceContent(response,'');
+						prevRes = response;
+					
+						backupInputParams();
+					//bindFilter();
+				//	stopLoading();
+					$.loader('close');
+				},
+				error : function() {
+					showError('Technical issue occurred. Due to service unavailability.');
+					$.loader('close');
+//stopLoading();// goToLogin();
+				}
+			});
+		}
+		
+function showOldSearch(){
+	if(prevRes!=null && prevRes!=undefined && prevRes.trim().length>0)
+	formStorePerformanceContent(prevRes,'');
+}
+		
+		function formStorePerformanceContent(response,value)
+		{
+			output = $.parseJSON(response);
+			storePerfrm = output.data;
+			msg = output.msg;
+			
+			var fromGetTime =$('#timeFrom').val();
+			var toGetTime =$('#timeTo').val();
+			
+			var fTim = fromGetTime.split(':');
+			var fHour =fTim[0];
+			var fMin =fTim[1];
+			
+			var tTim =toGetTime.split(':');
+			var tHour= tTim[0];
+			var tMin =tTim[1];
+			
+			var inputHour =fHour;
+			var inputHour1 = "-" +tHour;
+			
+			currentPage = 1; 
+			var timeend ='';
+			var avgTransPricCalc = 0;
+			var avgPricCalc = 0;
+			
+			var flag=false;
+			if (msg != undefined && msg != '' && !isNaN(msg) && storePerfrm != null && storePerfrm!=undefined&& !(storePerfrm.length==1 
+					&&  (storePerfrm[0].activePOSTerminal== null || storePerfrm[0].activePOSTerminal==undefined || storePerfrm[0].activePOSTerminal=='') ) ) {
+				setReportGenerationFlags();
+				recordCount = storePerfrm.length;
+				var content = '';
+				
+				if (storePerfrm != null) {
+
+					var list = storePerfrm;
+					
+					for ( var i = 0; i < list.length; i++) {
+						list[i].timeField= (list[i].timeField != null	&& list[i].timeField != undefined ) ?  list[i].timeField : '';
+						list[i].activePOSTerminal= (list[i].activePOSTerminal != null	&& list[i].activePOSTerminal != undefined ) ?  Number(list[i].activePOSTerminal).toFixed(0) : '';
+						list[i].salesRetailincT= (list[i].salesRetailincT != null	&& list[i].salesRetailincT != undefined ) ?  Number(list[i].salesRetailincT).toFixed(2) : '';
+						//list[i].avgTrans= (list[i].avgTrans != null	&& list[i].avgTrans != undefined ) ?  Number(list[i].avgTrans).toFixed(2) : '';
+						list[i].articlesScannedPerRegPerMin= (list[i].articlesScannedPerRegPerMin != null	&& list[i].articlesScannedPerRegPerMin != undefined ) ?  Number(list[i].articlesScannedPerRegPerMin).toFixed(2) : '';
+						list[i].tenderP_CustFormatted= (list[i].tenderP_CustFormatted != null	&& list[i].tenderP_CustFormatted != undefined ) ?  list[i].tenderP_CustFormatted: '';
+						list[i].idleTimeFormatted= (list[i].idleTimeFormatted != null	&& list[i].idleTimeFormatted != undefined ) ?  list[i].idleTimeFormatted : '';
+						list[i].sercureTimeFormatted= (list[i].sercureTimeFormatted != null	&& list[i].sercureTimeFormatted != undefined ) ? list[i].sercureTimeFormatted : '';
+						list[i].transCount= (list[i].transCount != null	&& list[i].transCount != undefined && !isNaN(list[i].transCount)) ? Number(list[i].transCount).toFixed(0) : '';
+						list[i].itemScannedCount= (list[i].itemScannedCount != null	&& list[i].itemScannedCount != undefined ) ? Number(list[i].itemScannedCount).toFixed(0) : '';
+						//list[i].avgPrice= (list[i].avgPrice != null	&& list[i].avgPrice != undefined ) ? Number(list[i].avgPrice).toFixed(2) : '';
+						flag=true;
+						avgTransPricCalc = ((list[i].transCount==null || list[i].transCount == undefined || Number(list[i].transCount) == 0 )?0:Number(list[i].salesRetailincT)/Number(list[i].transCount));
+						avgPricCalc = ((list[i].itemScannedCount==null || list[i].itemScannedCount == undefined || Number(list[i].itemScannedCount) == 0 )?0:Number(list[i].salesRetailincT)/Number(list[i].itemScannedCount));
+						
+						var fromHourCal = Number(list[i].timeField);
+						var toHourCal = Number(list[i].timeField)+1;
+						
+						content += '<tr id="'+i+'" class="parentTr';
+						content += ' hideBlock ';
+						content +='"><td class="leftValue" >';
+						if(list[i].timeField != '#' && list[i].timeField != '')
+							content += convertTimeStorePerf(list[i].timeField)+"-"+ convertTimeStorePerf((Number(list[i].timeField)+1).toFixed(0));
+						else
+							content +='&nbsp;';
+								content+='</td>'
+								+ '<td class="centerValue" >'
+								+ Number(list[i].activePOSTerminal).toFixed(0) + '</td>'
+								+ '<td class="centerValue hoursCal" >'
+								+ Number(list[i].salesRetailincT).toFixed(2) + '</td>'
+								+ '<td class="centerValue avgTrans" >' + Number(avgTransPricCalc).toFixed(2)
+								+ '</td>' + '<td class="centerValue" >'
+								+ Number(list[i].articlesScannedPerRegPerMin).toFixed(2) + '</td>'
+								+ '<td class="centerValue">'
+								+ list[i].tenderP_CustFormatted
+								+ '</td>'
+								+ '<td class=" centerValue idle">' 
+								+ list[i].idleTimeFormatted
+								+ '</td>' + '<td class=" centerValue secure">'
+								+ list[i].sercureTimeFormatted
+								+'</td>' + '<td class=" centerValue ">'
+								+Number(list[i].transCount)+'</td>'
+								+ '<td class=" centerValue ">'+ Number(list[i].itemScannedCount).toFixed(0)
+								+'<td class=" centerValue  lastColumn">'+ Number(avgPricCalc).toFixed(2)
+						+'</td></tr>';
+					}
+				}
+				
+				$('.sortTable tbody:first').html('');
+				$('.sortTable tbody:first').append(content);
+				showContentStorePerfBlock();
+				 if(flag){
+				updateSortPlugin();
+				setTimeout(function(){
+					// set sorting column and direction, this will sort on the first 
+				    var sorting = [[0,0]]; 
+				    // sort on the first column 
+				    $(".sortTable").trigger("sorton",[sorting]);
+				},30);
+				}else{
+					$('.paginationDiv ').addClass('hideBlock');
+				}
+
+			} else {
+				if (msg == 'null' || msg == NDF) {
+					showWarning(NDF);
+				}
+				else if(msg=='' ||(  storePerfrm!=null && storePerfrm!=undefined && storePerfrm.length>0 && (storePerfrm[0].activePOSTerminal== null || storePerfrm[0].activePOSTerminal==undefined || storePerfrm[0].activePOSTerminal=='')))
+					showWarning(NDF);
+				else
+					showError(msg);
+			}
+		}
+		function pagenationCallbackMethod(pageNo)
+		{
+			if(pageNo==undefined || pageNo==null) {
+				pageNo = 1;
+			}
+			var hourOfDay =0;
+			var avgTrans=0;
+			var articlesScannedPer=0;
+			var tenderpcust=0;
+			var tenderpcustNeg=1;
+			var idleTime=0;
+			var idleTimeNeg=1;
+			var secureTime=0;
+			var secureTimeNeg=1;
+			var transCount = 0;
+			var avgPrice=0;
+			var itemscannedcount=0;
+			var val1=0;
+			var val2=0;
+			var val3=0;
+			var val4=0;
+			var val5=0;
+			var val6=0;
+			var val7=0;
+			var val8=0;
+			var val9=0;
+			var finalIdleT=0;
+			var finalSecureT=0;
+			var finalTenderT=0;
+			$('.parentTr:visible').filter(function(){
+				tenderpcustNeg=1;
+				idleTimeNeg=1;
+				secureTimeNeg=1;
+				if($(this).children(':nth-child(3)').text().trim()!='#')
+					{
+				hourOfDay+=Number($(this).children(':nth-child(3)').text().trim());
+					}
+				avgTrans+=Number($(this).children(':nth-child(4)').text().trim());
+				articlesScannedPer+=Number($(this).children(':nth-child(5)').text().trim());
+				
+				tenderpcust=$(this).children(':nth-child(6)').text().trim();
+				idleTime=$(this).children(':nth-child(7)').text().trim();
+				secureTime=$(this).children(':nth-child(8)').text().trim();
+			
+				transCount+=Number($(this).children(':nth-child(9)').text().trim());
+				itemscannedcount+=Number($(this).children(':nth-child(10)').text().trim());
+				avgPrice+=Number($(this).children(':nth-child(11)').text().trim());
+				if(idleTime.substring(0, 1)=="-") {
+					idleTime = idleTime.substring(1);
+					idleTimeNeg = -1;
+				}
+				val1 =Number(idleTime.split(":")[0]);
+				val2 =Number(idleTime.split(":")[1]);
+				val3 =Number(idleTime.split(":")[2]);
+				
+				if(tenderpcust.substring(0, 1)=="-") {
+					tenderpcust = tenderpcust.substring(1);
+					tenderpcustNeg = -1;
+				}
+				val4 =Number(tenderpcust.split(":")[0]);
+				val5 =Number(tenderpcust.split(":")[1]);
+				val6 =Number(tenderpcust.split(":")[2]);
+				
+				if(secureTime.substring(0, 1)=="-") {
+					secureTime = secureTime.substring(1);
+					secureTimeNeg = -1;
+				}
+				val7 =Number(secureTime.split(":")[0]);
+				val8 =Number(secureTime.split(":")[1]);
+				val9 =Number(secureTime.split(":")[2]);
+				
+				var idleT = (Number(val1 *3600) +Number(val2 * 60) + Number(val3))*idleTimeNeg;
+				var tenderT = (Number(val4 *3600) +Number(val5 * 60) + Number(val6))*tenderpcustNeg;
+				var secureT = (Number(val7 *3600) +Number(val8 * 60) + Number(val9))*secureTimeNeg;
+				
+				//console.log("idle" +idleT);
+				 finalIdleT += idleT;
+				 finalTenderT+= tenderT;
+				 finalSecureT+= secureT;
+				
+			
+			});
+			
+			var finalIdleTAbs = Math.abs(finalIdleT);
+			var finalTenderTAbs = Math.abs(finalTenderT);
+			var finalSecureTAbs = Math.abs(finalSecureT);
+
+			 var sec_num1 = parseInt(finalTenderTAbs, 10); // don't forget the second param
+			    var hours1   = Math.floor(sec_num1 / 3600);
+			    var minutes1 = Math.floor((sec_num1 - (hours1 * 3600)) / 60);
+			    var seconds1 = sec_num1 - (hours1 * 3600) - (minutes1 * 60);
+
+	        hours1 = (hours1 < 10) ? "0" + hours1 : hours1;
+	        minutes1 = (minutes1 < 10) ? "0" + minutes1 : minutes1;
+	        seconds1 = (seconds1 < 10) ? "0" + seconds1 : seconds1;
+
+	        //console.log( hours1 + ":" + minutes1 + ":" + seconds1  );
+	        finalTenderT=	(finalTenderT<0?"-":"")+hours1 + ":" + minutes1 + ":" + seconds1 ;
+			
+			 var sec_num = parseInt(finalIdleTAbs, 10); // don't forget the second param
+			    var hours   = Math.floor(sec_num / 3600);
+			    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+			    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+	        hours = (hours < 10) ? "0" + hours : hours;
+	        minutes = (minutes < 10) ? "0" + minutes : minutes;
+	        seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+	       // console.log( hours + ":" + minutes + ":" + seconds  );
+	        finalIdleT=	(finalIdleT<0?"-":"")+hours + ":" + minutes + ":" + seconds ;
+	        
+	        
+	        var sec_num2 = parseInt(finalSecureTAbs, 10); // don't forget the second param
+		    var hours2   = Math.floor(sec_num2 / 3600);
+		    var minutes2 = Math.floor((sec_num2 - (hours2 * 3600)) / 60);
+		    var seconds2 = sec_num2 - (hours2 * 3600) - (minutes2 * 60);
+
+        hours2 = (hours2 < 10) ? "0" + hours2 : hours2;
+        minutes2 = (minutes2 < 10) ? "0" + minutes2 : minutes2;
+        seconds2 = (seconds2 < 10) ? "0" + seconds2 : seconds2;
+        //var numberOfTrans = $('.parentTr:visible').length;
+        //console.log( hours2 + ":" + minutes2 + ":" + seconds2  );
+        finalSecureT=	(finalSecureT<0?"-":"")+hours2 + ":" + minutes2 + ":" + seconds2 ;
+			$('.hourOfDayNSW').text(hourOfDay.toFixed(2));
+			$('.avgTransValue').text((Number(transCount)==0?0:Number(hourOfDay)/Number(transCount)).toFixed(2));
+			$('.articlesScannedPerRegPerMin').text(articlesScannedPer.toFixed(2));
+			$('.tenderP_Cust').text(finalTenderT);
+			$('.idleTime').text(finalIdleT);
+			$('.secureTime').text(finalSecureT);
+			$('.transCount').text(transCount);
+			$('.itemScannedCount').text(itemscannedcount.toFixed(0));
+			$('.avgPrice').text((Number(itemscannedcount)==0?0:Number(hourOfDay)/Number(itemscannedcount)).toFixed(2));
+			
+			
+		}
+		function totValuePrint()
+		{
+			var hourOfDay =0;
+			var avgTrans=0;
+			var articlesScannedPer=0;
+			var tenderpcust=0;
+			var idleTime=0;
+			var secureTime=0;
+			var transCount = 0;
+			var avgPrince=0;
+			var itemscannedcount=0;
+			var val1=0;
+			var val2=0;
+			var val3=0;
+			var val4=0;
+			var val5=0;
+			var val6=0;
+			var val7=0;
+			var val8=0;
+			var val9=0;
+			var finalIdleT=0;
+			var finalSecureT=0;
+			var finalTenderT=0;
+			$('.parentTrPrint').filter(function(){
+				if($(this).children(':nth-child(3)').text().trim()!='#')
+					{
+				hourOfDay+=Number($(this).children(':nth-child(3)').text().trim());
+					}
+				avgTrans+=Number($(this).children(':nth-child(4)').text().trim());
+				articlesScannedPer+=Number($(this).children(':nth-child(5)').text().trim());
+				tenderpcust=$(this).children(':nth-child(6)').text().trim();
+				idleTime=$(this).children(':nth-child(7)').text().trim();
+				secureTime=$(this).children(':nth-child(8)').text().trim();
+				transCount+=Number($(this).children(':nth-child(9)').text().trim());
+				itemscannedcount+=Number($(this).children(':nth-child(10)').text().trim());
+				avgPrince+=Number($(this).children(':nth-child(11)').text().trim());
+				
+				val1 =Number(idleTime.split(":")[0]);
+				val2 =Number(idleTime.split(":")[1]);
+				val3 =Number(idleTime.split(":")[2]);
+				
+				val4 =Number(tenderpcust.split(":")[0]);
+				val5 =Number(tenderpcust.split(":")[1]);
+				val6 =Number(tenderpcust.split(":")[2]);
+				
+				val7 =Number(secureTime.split(":")[0]);
+				val8 =Number(secureTime.split(":")[1]);
+				val9 =Number(secureTime.split(":")[2]);
+				
+				var idleT = Number(val1 *3600) +Number(val2 * 60) + Number(val3);
+				var tenderT = Number(val4 *3600) +Number(val5 * 60) + Number(val6);
+				var secureT = Number(val7 *3600) +Number(val8 * 60) + Number(val9);
+				
+				/*console.log("idle" +idleT);*/
+				 finalIdleT += idleT;
+				 finalTenderT+= tenderT;
+				 finalSecureT+= secureT;
+			});
+			
+			
+			var sec_num1 = parseInt(finalTenderT, 10); // don't forget the second param
+		    var hours1   = Math.floor(sec_num1 / 3600);
+		    var minutes1 = Math.floor((sec_num1 - (hours1 * 3600)) / 60);
+		    var seconds1 = sec_num1 - (hours1 * 3600) - (minutes1 * 60);
+
+        hours1 = (hours1 < 10) ? "0" + hours1 : hours1;
+        minutes1 = (minutes1 < 10) ? "0" + minutes1 : minutes1;
+        seconds1 = (seconds1 < 10) ? "0" + seconds1 : seconds1;
+
+     /*   console.log( hours1 + ":" + minutes1 + ":" + seconds1  );*/
+        finalTenderT=	hours1 + ":" + minutes1 + ":" + seconds1 ;
+		
+		 var sec_num = parseInt(finalIdleT, 10); // don't forget the second param
+		    var hours   = Math.floor(sec_num / 3600);
+		    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+		    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+      /*  console.log( hours + ":" + minutes + ":" + seconds  );*/
+        finalIdleT=	hours + ":" + minutes + ":" + seconds ;
+        
+        
+        var sec_num2 = parseInt(finalSecureT, 10); // don't forget the second param
+	    var hours2   = Math.floor(sec_num2 / 3600);
+	    var minutes2 = Math.floor((sec_num2 - (hours2 * 3600)) / 60);
+	    var seconds2 = sec_num2 - (hours2 * 3600) - (minutes2 * 60);
+
+    hours2 = (hours2 < 10) ? "0" + hours2 : hours2;
+    minutes2 = (minutes2 < 10) ? "0" + minutes2 : minutes2;
+    seconds2 = (seconds2 < 10) ? "0" + seconds2 : seconds2;
+
+   /* console.log( hours2 + ":" + minutes2 + ":" + seconds2  );*/
+    finalSecureT=	hours2 + ":" + minutes2 + ":" + seconds2 ;
+    
+    
+    var numberOfTrans = $('.parentTrPrint').length;
+			//console.log(cnt.toFixed(3));
+			$('.hourOfDayNSW1').text(hourOfDay.toFixed(2));
+	$('.avgTransValue1').text((Number(avgTrans.toFixed(2))/numberOfTrans).toFixed(2));
+			$('.articlesScannedPerRegPerMin1').text(articlesScannedPer.toFixed(2));
+			$('.tenderP_Cust1').text(finalTenderT);
+			$('.idleTime1').text(finalIdleT);
+			$('.secureTime1').text(finalSecureT);
+			$('.transCount1').text(transCount.toFixed(0));
+			$('.itemScannedCount1').text(itemscannedcount.toFixed(0));
+	$('.avgPrice1').text((Number(avgPrince.toFixed(2))/numberOfTrans).toFixed(2));
+			
+			
+		}
+		function bindFilter(){
+		
+			var value = '';
+			var timeout='';
+			$('.sortTable .textbox').unbind('keyup');
+			$('.sortTable .textbox')
+					.keyup(
+							function() {
+								value = $(this).val().trim();
+								//if you already have a timout, clear it
+								  if(timeout){ clearTimeout(timeout);}
+
+								  //start new time, to perform ajax stuff in 500ms
+								  timeout = setTimeout(function() {
+								   //your ajax stuff
+								
+									  formStorePerformanceContent(prevRes,value.toUpperCase());
+					
+				
+			
+				
+				if($('.parentTr:visible').length==0){
+					$('.treetable ').find('tr :first').addClass('hideBlock');
+					$('.totVal').addClass('hideBlock');
+				}
+				else{
+					$('.treetable').find('tr :first').removeClass('hideBlock');
+					$('.totVal').removeClass('hideBlock');
+				}
+				
+				
+				  },500);
+			});
+			
+			
+		}
+		function showContentStorePerfBlock()
+		{
+			$('#reportContent').removeClass('hideBlock');
+			$('.ContentTableWrapperError').addClass('hideBlock');
+			$('.sortTable').removeClass('hideBlock');
+		}
+		
+		function filterPagination()
+		{
+			if($('.parentTr:visible').length==0){
+				$('.treetable ').find('tr :first').addClass('hideBlock');
+				$('.totVal').addClass('hideBlock');
+			}
+			else{
+				$('.treetable').find('tr :first').removeClass('hideBlock');
+				$('.totVal').removeClass('hideBlock');
+			}
+			
+			var recCnt=$('.parentTr:visible').length;
+			currentPage=1;
+			if(recCnt>10){
+				$('.paginationDiv').removeClass('hideBlock');
+			$('.paginationDiv').pagination({
+				items : recCnt,
+				itemsOnPage : 10,
+				cssStyle : 'compact-theme',
+				currentPage : currentPage,
+				onPageClick : function(pageNo) {
+					$('.childTr').addClass('hideBlock');
+					$('.parentTr').removeClass('expanded');
+					currentPage=pageNo;
+					var pageClass='page-'+pageNo;
+					$('.parentTr').filter(function(){
+						if($(this).hasClass(pageClass))
+							{
+							$(this).removeClass('hideBlock');
+							totValue();
+							}
+						else
+							$(this).addClass('hideBlock');
+					});
+				}
+			});
+			totValue();
+			}
+			else{
+				$('.paginationDiv').addClass('hideBlock');
+			}
+		}
+function printResult(newList) {}
+
+function formateDate(v) {
+	if (v.length == 8) {
+		var finalDate = parseDate(v).getFullYear();
+		var splitDate = v.split("/");
+		finalDate = splitDate[0] + "/" + splitDate[1] + "/" + finalDate;
+		return finalDate;
+	} else {
+		return v;
+	}
+}
+
+function showContent() {
+//	$('#reportContent .tableInfo .tableTitle h4 strong').text(count);
+	$(
+			'#reportContent,#reportContent .tableInfo .tableTitle,#reportContent,.ContentTable.actionRows')
+			.removeClass('hideBlock');
+	closeAccordian();
+}
+function hideContent() {
+
+	$(
+			'#reportContent,#reportContent,.ContentTable.actionRows')
+			.addClass('hideBlock');
+//	$('.paginationWrapper').hide();
+}
+function showError(msg) {
+	$('.ContentTableWrapperError').removeClass('hideBlock');
+	$('#reportContent').addClass('hideBlock');
+	$('.sortTable').addClass('hideBlock');
+	$('#errorMsgDiv').addClass('errorDiv').find('#errorMsg').text(msg);
+	$("#errorMsgDiv").removeClass('nodataMessage');
+	hideContent();
+}
+function hideError() {
+	$('.ContentTableWrapperError').addClass('hideBlock');
+}
+function startLoading() {
+	$('#statusImg').removeClass('loading hideBlock');
+	$('#statusImg').addClass('loading');
+}
+function stopLoading() {
+	$('#statusImg').addClass('loading hideBlock');
+	$('#statusImg').removeClass('loading');
+}
+function closeAccordian() {
+	// $(".ContentTableWrapper").removeClass('hideBlock');
+	$('#accordion').accordion({
+		active : true
+	});
+}
+function callFrom() {
+	setTimeout(function() {
+		$('#dateFrom').focus();
+	}, 200);
+}
+function callTo() {
+	setTimeout(function() {
+		$('#dateTo').focus();
+	}, 200);
+}
+function callFromTime() {
+	setTimeout(function() {
+		$('#timeFrom').focus();
+	}, 200);
+}
+function callToTime() {
+	setTimeout(function() {
+		$('#timeTo').focus();
+	}, 200);
+}
+
+function convertTimeStorePerf(val) {
+
+	var newHour = '';
+	var newMinu1='';
+	var temp = val;
+	try {
+		if (temp.trim() != '' && temp.trim() != '#' && temp.trim() != undefined && temp.trim() != null ) {
+			if (temp.length == 1 ) {
+				newHour = '0' + temp + '00';
+			}
+			else if (temp.length == 2 )	{
+				newHour =  temp + '00';
+			}
+		}
+		return(newHour);	
+	} catch (error) {
+		return '';
+	}
+	
+}
+
+function convertDate1() {
+	$('.dates1').filter(
+			function() {
+				var temp = $(this).text().trim();
+				if (temp != '') {
+					var time = temp.replace('/', '').replace('/', '').replace(
+							'(', '').replace(')', '').split('Date')[1];
+					var today = new Date();
+					today.setTime(time);
+					// var today = new Date();
+					var newDate = today.getDate();
+					var newMonth = today.getMonth() + 1;
+					if (newDate < 10) {
+						newDate = '0' + newDate;
+					}
+					if (newMonth < 10) {
+						newMonth = '0' + newMonth;
+					}
+					$(this).text(
+							(newDate + "/" + (newMonth) + "/" + today
+									.getFullYear()));
+
+				}
+			});
+
+}
+
+function convertTime1() {
+	$('.time1').filter(
+			function() {
+				var temp = $(this).text().trim();
+				/* var date = new Date(parseInt(temp.substr(6))); */
+
+				if (temp != '') {
+					var time = temp.replace('/', '').replace('/', '').replace(
+							'(', '').replace(')', '').split('Date')[1];
+					var today = new Date();
+					today.setTime(time);
+					// var today = new Date();
+					var newHour = today.getHours();
+					var newMinu = today.getMinutes();
+					/*var newSeco = today.getSeconds();*/
+					if (newHour < 10) {
+						newHour = '0' + newHour;
+					}
+					if (newMinu < 10) {
+						newMinu = '0' + newMinu;
+					}
+					/*if (newSeco < 10) {
+						newSeco = '0' + newSeco;
+					}*/
+					$(this).text((newHour + ":" + newMinu /*+ ":" + newSeco*/));
+
+				}
+			});
+
+}
+
+function showWarning(text) {
+	$('#reportContent').addClass('hideBlock');
+	$('.ContentTableWrapperError').removeClass('hideBlock');
+	$('#errorMsg').text(text);
+	$("#errorMsgDiv,.tableStart").removeClass('hideBlock');
+	$("#errorMsgDiv").addClass('tableTitle nodataMessage');
+	$("#errorMsgDiv").removeClass('tableTitle errorDiv');
+	
+	
+	$('.paginationDiv').hide();
+}
+function storePerformancePrintJasper() {
+	if(isNotJasperPrintValid()) {
+		printJasperValMsg();
+	}
+	else {
+		$('#storePerformance').attr("action", "getStorePerformance.pdf");
+		$('#storePerformance').attr('target','_blank');
+		$('#storePerformance').submit();
+	}
+}
+$( document ).ready(function() {
+	bindTableHeaderClickEvent();
+	bindTableSortEndEvent($("#treeTableBothType"), $("#storePerformanceAttr"));
+});
+function shiftKeyCallbackFunction(tableIdName, tableHeaderObj, sortColVal) {
+	if(tableIdName == 'treeTableBothType') {
+		shiftKeyFunction(tableHeaderObj, $("#storePerformanceAttr"));
+	}
+}
+function ctrlKeyCallbackFunction(tableIdName, tableHeaderObj, sortColVal) {
+	if(tableIdName == 'treeTableBothType') {
+		ctrlKeyFunction($("#storePerformanceAttr"));
+	}
+}
+function clickCallbackFunction(tableIdName, tableHeaderObj, sortColVal) {
+	if(tableIdName == 'treeTableBothType') {
+		clickFunction(tableHeaderObj, $("#storePerformanceAttr"));
+	}
+}

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ALHFinancialGrpTotal" language="groovy" pageWidth="802" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isFloatColumnFooter="true" uuid="0c013ce1-82f3-4480-a27e-0c4ba56f1da0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="noOfPos" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="borrowedFunds" class="java.lang.Double">
+		<fieldDescription><![CDATA[borrowedFunds]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="expectedFunds" class="java.lang.Double">
+		<fieldDescription><![CDATA[expectedFunds]]></fieldDescription>
+	</field>
+	<field name="openingLoan" class="java.lang.Double">
+		<fieldDescription><![CDATA[openingLoan]]></fieldDescription>
+	</field>
+	<field name="paidIns" class="java.lang.Double">
+		<fieldDescription><![CDATA[paidIns]]></fieldDescription>
+	</field>
+	<field name="paidOuts" class="java.lang.Double">
+		<fieldDescription><![CDATA[paidOuts]]></fieldDescription>
+	</field>
+	<field name="pickUps" class="java.lang.Double">
+		<fieldDescription><![CDATA[pickUps]]></fieldDescription>
+	</field>
+	<field name="salesTender" class="java.lang.Double">
+		<fieldDescription><![CDATA[salesTender]]></fieldDescription>
+	</field>
+	<field name="tenderLoan" class="java.lang.Double">
+		<fieldDescription><![CDATA[tenderLoan]]></fieldDescription>
+	</field>
+	<field name="tenderTypeT" class="java.lang.String">
+		<fieldDescription><![CDATA[tenderTypeT]]></fieldDescription>
+	</field>
+	<variable name="openingLoan" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{openingLoan}]]></variableExpression>
+	</variable>
+	<variable name="salesTender" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{salesTender}]]></variableExpression>
+	</variable>
+	<variable name="tenderLoan" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{tenderLoan}]]></variableExpression>
+	</variable>
+	<variable name="borrowedFunds" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{borrowedFunds}]]></variableExpression>
+	</variable>
+	<variable name="paidIns" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{paidIns}]]></variableExpression>
+	</variable>
+	<variable name="paidOuts" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{paidOuts}]]></variableExpression>
+	</variable>
+	<variable name="pickUps" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{pickUps}]]></variableExpression>
+	</variable>
+	<variable name="expectedFunds" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{expectedFunds}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="7da3c606-aedf-459b-81de-e576ef5762cb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Store Total]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="135" height="20" uuid="ad50812e-cdc4-4a30-9b16-7e0c1cb81685"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenderTypeT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="160" y="0" width="98" height="20" uuid="21bedfd0-33c0-4d71-927f-bada68f7e894"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salesTender}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="268" y="0" width="98" height="20" uuid="851e48a4-4b6b-4d40-9faf-2d8738172026"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenderLoan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="479" y="0" width="98" height="20" uuid="c178f96e-31b7-465c-8e8b-e8d1b053d2c7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{paidIns}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="584" y="0" width="98" height="20" uuid="188a86e6-3af7-4811-bd97-fe62ebc77eaa"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{paidOuts}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="688" y="0" width="98" height="20" uuid="5885420d-9dda-43cd-8ea3-a9b3b15b377b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pickUps}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="374" y="0" width="98" height="20" uuid="8e471f1f-e3d1-4426-8ed9-adcbef0398a8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{borrowedFunds}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="20">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="20" uuid="45c5243e-7d33-405b-aa32-464afc0f33a8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textField pattern="###0.00" isBlankWhenNull="true">
+					<reportElement x="374" y="0" width="98" height="20" uuid="99da653d-d9ce-4252-abc8-b39893f6da9e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{borrowedFunds}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="0" width="135" height="20" uuid="a783b52f-b063-4e2f-aca4-fb2cb0aa1391"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="160" y="0" width="98" height="20" uuid="d5312a5b-378f-432b-ac04-3f9c3c3b2597"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{salesTender}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="268" y="0" width="98" height="20" uuid="6723acc8-ce41-45f3-879d-b184543d067a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tenderLoan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="479" y="0" width="98" height="20" uuid="7f25baaf-0a2d-466c-97f5-f9ea3d2fb2d4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{paidIns}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="584" y="0" width="98" height="20" uuid="908a72d3-0b92-4dcc-8004-066aa7bd26d7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{paidOuts}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="688" y="0" width="98" height="20" uuid="7b15a26f-d6d0-46ca-9093-620800fa80f8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{pickUps}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>

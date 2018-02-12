@@ -1,0 +1,23 @@
+version=Version_Test V2.44
+NFLPUserName=xspie
+NFLPPassword=tgwpwd01
+NFLPUserNameOld=TT_ANFL
+NFLPPasswordOld=welcome123
+
+
+NightFillLabourPlanURL=http://cltaat1:7003/rest/HCM_Kronos/Nightfill/store?
+NightFillBreakLoadURL=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP1_BREAK_LOAD_1_SRV/ZOMNFLP1_Q01
+NightFillDropCartonURL=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP1_DROP_CART_1_SRV/ZOMNFLP1_Q02
+NightFillReportSummaryURL=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP1_REP_SUMMARY_2_SRV/ZOMNFLP1_Q03
+NightFillFillCartonURL=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP1_FIL_CART_1_SRV/ZOMNFLP1_Q06
+NightFillRubbishCartonURL=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP1_RUBBISH_CART1_1_SRV/ZOMNFLP1_Q04
+NightFillPresentationURL=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP1_PRESNT_QUERY_2_SRV/ZOMNFLP1_Q05
+NightFillBulkOrderURL=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZCPNFLP01_BULK_ORDER_1_SRV_02/ZCPNFLP01_Q01
+
+NightFillBreakLoadURLFuture=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP2_BRKLOAD_1_SRV/ZOMNFLP2_Q01
+NightFillDropCartonURLFuture=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP2_DROPLOAD_1_SRV/ZOMNFLP2_Q02
+NightFillReportSummaryURLFuture=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP2_SUMMARY_1_SRV/ZOMNFLP2_Q03
+NightFillFillCartonURLFuture=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP2_FILL_1_SRV/ZOMNFLP2_Q06
+NightFillRubbishCartonURLFuture=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP2_RUBBISH_1_SRV/ZOMNFLP2_Q04
+NightFillPresentationURLFuture=http://sapgw-uat.woolworths.com.au:8041/sap/opu/odata/sap/ZOMNFLP2_PRESENT_1_SRV/ZOMNFLP2_Q05
+

@@ -1,0 +1,847 @@
+.headWrapper .header .logoWrapper .logoImg {
+	width: 310px;
+	height: 105px;
+	background: url(../images/thomasdux/logo.gif) 20px 11px no-repeat;
+	/*img change*/
+}
+
+h2 {
+	color: #666666; /*color change*/
+}
+
+h3 {
+	color: #666666; /*color change*/
+}
+
+a.moreNumber,.ui-widget-content a {
+	color: #908686;
+}
+
+h4 {
+	color: #292929;
+}
+
+h4 .searchString {
+	color: #666666; /*color change*/
+}
+
+.headWrapper .header .logoWrapper .logoImg{
+	width: 310px;
+	height: 65px;
+	background: url(../images/thomasdux/logo.gif) 20px 6px no-repeat; /*img change*/
+	background-size:65%;
+}
+
+.headWrapper .header .globalLinksWrapper .globalLinkAccountName {
+	background-image: url(../images/thomasdux/profileArrowDown.png);
+	/*img change*/
+	color: #666666; /*color change*/
+}
+
+.headWrapper .header .globalLinksWrapper .store {
+	background-color: #f4f4f4;
+	border: solid 1px #ececec;
+}
+
+.headWrapper .header .globalLinksWrapper .ui-state-active {
+	background-color: #a17c54; /*change color*/
+	color: #fff;
+	background-image: url(../images/thomasdux/profileArrowUp.png);
+}
+
+.userProfile .ui-menu ul {
+	border: solid 1px #d4d4d4; /* color change*/
+}
+
+.userProfile .ui-menu ul.ui-menu li {
+	border-bottom: solid 1px #d4d4d4; /* color change*/
+}
+
+.userProfile .ui-menu ul.ui-menu li:hover {
+	background: #eeebe6; /* color change*/
+}
+
+.userProfile .ui-menu ul.ui-menu li:hover a {
+	color: #494949;
+}
+
+.userProfile .ui-menu ul.ui-menu li a {
+	color: ##666666; /* color change*/
+}
+
+
+.headWrapper{
+	background:#fff url(../images/thomasdux/headerBg.gif) left top repeat-x;
+}
+.headWrapper .navWrapper
+{
+	/* background:#c4996c url(../images/thomasdux/navBg.gif) left top repeat-x; img and color nav change*/
+	
+	color: #fff; 	
+}
+
+.headWrapper  .breadcrumbWrapper {
+	background-color: #d3d3d3;
+}
+
+.headWrapper  .breadcrumbWrapper .breadcrumbs {
+	color: #2d2d2d;
+}
+
+.breadcrumbWrapper .breadcrumbs ul li {
+	background: url(../images/breadcrumbArrow.gif) right 2px no-repeat;
+}
+
+.breadcrumbWrapper .breadcrumbs ul li a {
+	color: #2d2d2d;
+}
+.breadcrumbWrapper .breadcrumbs ul li .cursor-pointer:hover{
+		color:#c4996c;
+	}
+
+.breadcrumbWrapper .breadcrumbs ul li a:hover {
+	color: #c4996c;;
+}
+
+.articleHead {
+	background-color: #eeebe6; /* color change */
+	border: solid 1px #d4d4d4; /* color change */
+}
+
+.articleHead .articleHeaderWrapper .articleTitle,.ui-tabs-vertical .ui-tabs-panel .sectionTitle
+	{
+	color: #666666; /* color change*/
+}
+
+.articleHead .articleHeaderWrapper .articleTitle span {
+	color: #696969; /* color change*/
+}
+
+.articleHead .articleHeaderWrapper p {
+	color: #252525; /* color change */
+}
+
+.articleDate {
+	color: #696969; /* color change*/
+}
+
+/* Page title */
+.pageTitleWrapper h2.pageTitle {
+	color: #c4996c; /* color change*/
+}
+
+.actionBtn,.secondaryActionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.actionBtn,.wizardContent .jw-buttons .actionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn,.selectDropdown .dropdown li:hover label.actionBtn
+	{
+	background: #c49a6d; /* color change*/
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c49a6d),
+		to(#a17c54) ); /* color change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #c49a6d, #a17c54);
+	/* color change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #c49a6d, #a17c54);
+	/* color change*/
+	border: solid 1px #a17c54; /* color change*/
+	color: #fff;
+}
+
+.actionBtn:hover,.wizardContent .jw-buttons .actionBtn:hover,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.actionBtn:hover,.selectDropdown .dropdown li label.actionBtn:hover
+	{
+	background: #a17c54; /* color change*/
+}
+
+.secondaryActionBtn,.wizardContent .jw-buttons .secondaryActionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn,.selectDropdown .dropdown li:hover label.secondaryActionBtn
+	{
+	background: #999999;
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999),
+		to(#666666) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #999999, #666666);
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #999999, #666666);
+	border: solid 1px #666666;
+	color: #fff;
+}
+
+.secondaryActionBtn:hover,.wizardContent .jw-buttons .secondaryActionBtn:hover,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn:hover,.selectDropdown .dropdown li label.secondaryActionBtn:hover
+	{
+	background: #666666;
+}
+
+.selectDropdown.buttonMenu .actionBtn {
+	background: #c49a6d;
+	/* Safari 4-5, Chrome 1-9 */
+	background-image: url("../images/iconButtonActions.png"),
+		-webkit-gradient(linear, 0% 0%, 0% 100%, from(#c49a6d), to(#a17c54) );
+	/* Safari 5.1, Chrome 10+ */
+	background-image: url("../images/iconButtonActions.png"),
+		-webkit-linear-gradient(top, #c49a6d, #a17c54);
+	/* Firefox 3.6+ */
+	background-image: url("../images/iconButtonActions.png"),
+		-moz-linear-gradient(top, #c49a6d, #a17c54);
+	background-position: 90% center;
+	background-repeat: no-repeat;
+	padding-right: 30px;
+}
+
+.contentWrapper .articleContent,.contentWrapper .detailsSections .articleHead
+	{
+	background-color: #f5f6f6;
+	/* grey back of article table dif woolworths */
+	border: solid 1px #eae9e9; /* d4cbc0 - for lighter theme */
+	border-top: none;
+}
+
+.contentWrapper .detailsSections .articleHead {
+	background: #fff;
+}
+
+.articleContentInner .articleDetails {
+	border: solid 1px #e0e0e0;
+}
+
+.articleContentInner .articleInfoTop {
+	background: #464d57;
+}
+
+.articleContentInner .articleInfoBottom {
+	background: #464d57;
+}
+
+.articleContentInner .articleInfo {
+	background: #464d57;
+}
+
+.articleContentInner .articleDetails tr th,.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.subTitle
+	{
+	background: #c0c5ca;
+	color: #2d2d2d;
+}
+
+.articleContentInner .articleDetails tr td {
+	border-bottom: solid 1px #f5f5f0;
+	color: #222222;
+}
+
+.articleContentInner .articleDetails tr th label.history {
+	color: #666666;
+}
+
+span.summaryInfo {
+	color: #666666; /* color change */
+}
+
+.contentWrapper .articleAdditionalInfo h3 {
+	background: #f3f4f5;
+}
+
+.contentWrapper .articleAdditionalInfo h3.ui-accordion-header-active {
+	background: #dcf4ff; /* color change*/
+	border: solid 1px #d4d4d4; /* color change*/
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li,.popupWrapper  .ui-widget-content .ui-tabs-nav li
+	{
+	background: #EFEFEF;
+	border: solid 1px #EDEDED;
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li:hover,.popupWrapper  .ui-widget-content .ui-tabs-nav li:hover
+	{
+	background: #eeebe6; /* color change*/
+	border: 1px solid #d4d4d4; /* color change*/
+}
+
+.ContentTableWrapper .noTableSort tr:hover td,.ContentTableWrapper .noTableSort tr:hover td.sorted
+	{
+	background-color: #eeebe6;
+}
+
+/* Style for Home page */
+.homeLinkTextDescription {
+	color: #646363;
+}
+
+.homeLinkText {
+	color: #c4996c; /* color change*/
+}
+
+.homeContentWelcomeTitle {
+	color: #c4996c; /* color change*/
+}
+
+.homeBorderHorz { /* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 20%, 80% 100%, from(#FFFFFF),
+		to(#D3D3C9) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #FFFFFF, #D3D3C9);
+	/* Firefox 3.6+ */
+	background-image: -moz-linear-gradient(left center, #FFFFFF 0%, #D3D3C9 20%, #D3D3C9 80%,
+		#FFFFFF 100%);
+}
+
+.reportsHome {
+	background: url("../images/thomasdux/reports_icon.png") no-repeat scroll
+		center top transparent; /* img change*/
+}
+
+.ticketingHome {
+	background: url("../images/thomasdux/ticketing_icon.png") no-repeat
+		scroll center top transparent; /* img change*/
+}
+/* included extra classes for mobile shortcuts defect no 6358*/
+.pricingHome,.pricing-home {
+	background: url("../images/thomasdux/pricing_icon.png") no-repeat scroll
+		center top transparent; /* img change*/
+}
+
+.stockManagementHome,.stock-home {
+	background: url("../images/thomasdux/stockManagement_icon.png")
+		no-repeat scroll center top transparent; /* img change*/
+}
+
+.iconlookupHome,.lookup-home {
+	background: url("../images/thomasdux/iconlookup_icon.png") no-repeat
+		scroll center top transparent; /* img change*/
+}
+
+.ordersHome,.orders-home {
+	background: url("../images/thomasdux/orders_icon.png") no-repeat scroll
+		center top transparent; /* img change*/
+}
+
+/* -------------------- */
+/* Styles for Lookup Page */
+.lookupWrapper {
+	background: #eeebe6 url(../images/shadowLookup.png) 0 1px no-repeat;
+	/* color change but no img change*/
+	border: solid 1px #d4d4d4; /* color change*/
+	border-top: none;
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox {
+	border: 1px solid #D9D9D9;
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox input.inputDate {
+	background: url(../images/thomasdux/iconCalendar.png) right 5px
+		no-repeat; /*img change*/
+	border-left: dotted 1px #C0C5CA;
+}
+
+.lookupWrapper .lookupParamWrapper .searchByOptions label {
+	color: #585858;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter label {
+	color: #585858;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter label.advancedSearch,.lookupWrapper .lookupParamWrapper .advancedParam .parameter label.newWindow
+	{
+	font-weight: normal;
+	color: #a17c54; /* color change*/
+}
+
+.advancedSearchFormatWrapper {
+	background: #eeebe6; /* color change*/
+	border: solid 1px #d4d4d4; /* color change*/
+	-webkit-box-shadow: 0 8px 6px -9px black;
+	-moz-box-shadow: 0 8px 6px -9px black;
+	box-shadow: 0 8px 6px -9px black;
+	border-top: 0 none;
+}
+
+/* -------------------- */
+input.inputDate {
+	background: #fff url(../images/thomasdux/iconCalendar.png) 95% 4px
+		no-repeat; /* img change*/
+}
+
+input.inputTime {
+	background: #fff url(../images/thomasdux/iconHistory.png) 95% 6px
+		no-repeat;
+}
+
+label.linkBtn,label.linkBtn a {
+	color: #a17c54; /* color change*/
+}
+
+label.linkBtn .advancedSearch {
+	background: url(../images/thomasdux/iconAdvancedSearch.png) 0 2px
+		no-repeat; /* img change*/
+}
+
+.newWindow {
+	background: url(../images/thomasdux/iconNewWindow.png) 0 center
+		no-repeat;
+}
+
+.newWindowAfter {
+	background: url(../images/thomasdux/iconNewWindow.png) right center
+		no-repeat;
+}
+
+.newWindowDisPre {
+	background: url(../images/thomasdux/iconDisPre.png) right center
+		no-repeat;
+}
+
+label.linkBtn .closeWindow {
+	background: url(../images/thomasdux/iconCloseWindow.png) 0 3px no-repeat;
+	/* img change*/
+}
+
+label.linkBtn .unselect {
+	background: url(../images/thomasdux/iconUnselectMulti.png) 0 3px
+		no-repeat;
+}
+
+label.selectItem {
+	background: url(../images/thomasdux/iconArrowRight.png) right 2px
+		no-repeat; /* img change*/
+}
+
+label.addRow {
+	background: url(../images/thomasdux/iconAdd.png) left 4px no-repeat;
+	/* img change*/
+}
+
+label.filter {
+	background: url(../images/thomasdux/iconFilter.png) left 2px no-repeat;
+	/* img change*/
+}
+
+label.moreActions {
+	background: url(../images/thomasdux/profileArrowDown.png) right center
+		no-repeat; /* img change*/
+}
+
+label.group {
+	background: url(../images/thomasdux/iconGroupBy.png) left 2px no-repeat;
+}
+
+label.editRecord {
+	background: url(../images/thomasdux/iconEditRow.png) center top
+		no-repeat; /* img change*/
+}
+
+label.deleteRecord {
+	background: url(../images/thomasdux/iconDelete.png) center top no-repeat;
+	/* img change*/
+}
+
+label.saveRecord {
+	background: url(../images/thomasdux/iconSave.png) center top no-repeat;
+	/* img change*/
+}
+
+label.changePassword {
+	background: url(../images/thomasdux/iconKey.png) center center no-repeat;
+}
+
+label.deactivateUser {
+	background: url(../images/thomasdux/iconDeactivateUser.png) center top
+		no-repeat;
+}
+
+label.history {
+	background: url(../images/thomasdux/iconHistory.png) left top no-repeat;
+	color: #c4996c;
+	margin-right: 10px;
+}
+label.blockingReason {
+	cursor: pointer;
+	background: url(../images/thomasdux/block.png) left top no-repeat;
+	color: #00501f;
+	margin-right: 10px;
+	padding-left: 16px;
+}
+
+label.notpadLink {
+	background: url(../images/thomasdux/iconPadTick.png) left top no-repeat;
+	color: #c4996c;
+	margin-right: 10px;
+}
+
+label.notes {
+	background: url(../images/thomasdux/iconNote.png) left top no-repeat;
+	color: #c4996c;
+	margin-right: 10px;
+}
+
+label.offers {
+	background: url(../images/thomasdux/iconTag.png) left top no-repeat;
+	color: #00501f;
+	margin-right: 10px;
+}
+
+a.navigate {
+	background: url(../images/thomasdux/iconArrowRight.png) right center
+		no-repeat;
+	padding-right: 10px;
+	color: #c4996c;
+}
+
+.bookmark {
+	background: url(../images/thomasdux/iconBookmark.png) left 1px no-repeat;
+}
+
+/* up to here */
+.formWrapper .parameter label.advancedSearch {
+	color: #c49a6d; /* color change*/
+}
+
+table.treetable tr.collapsed span.indenter a {
+	background-image: url("../images/thomasdux/iconExpandNode.png");
+	/* img change*/
+}
+
+table.treetable tr.expanded span.indenter a {
+	background-image: url("../images/thomasdux/iconCollapseNode.png");
+	/* img change*/
+}
+
+table.treetable tr.selected { /*background-color: #3875D7;*/ /* blue*/
+	
+}
+
+table.treetable tr.collapsed.selected span.indenter a {
+	background-image: url("../images/thomasdux/iconExpandNode.png");
+	/* img change*/
+}
+
+table.treetable tr.expanded.selected span.indenter a {
+	background-image: url("../images/thomasdux/iconCollapseNode.png");
+	/* img change*/
+}
+
+table.treetable tr.accept { /*background-color: #A3BCE4;*/ /*blue*/
+	
+}
+
+table.treetable tr.collapsed.accept td span.indenter a {
+	background-image: url("../images/thomasdux/iconExpandNode.png");
+	/* img change*/
+}
+
+table.treetable tr.expanded.accept td span.indenter a {
+	background-image: url("../images/thomasdux/iconCollapseNode.png");
+	/* img change*/
+}
+
+.ContentTableWrapper .treetable tr td {
+	color: #222222;
+}
+
+table.drilldownTable  tr.expanded td,table.drilldownTable  tr.defaultExpanded td,.ContentTableWrapper .ContentTable tr td.rowSection.rowHighlight
+	{
+	background-color: #eeebe6 !important; /* color change*/
+	color: #666666 !important; /* color change*/
+}
+
+table.drilldownTable tr.collapsed span.indenter a,table.drilldownTable th span.indenter a.expandAll
+	{
+	background-image: url("../images/thomasdux/iconOpenAccordion.png");
+	/* img change*/
+}
+
+table.drilldownTable tr.expanded span.indenter a,table.drilldownTable th span.indenter a.collapseAll
+	{
+	background-image: url("../images/thomasdux/iconCloseAccordion.png");
+	/* img change*/
+}
+
+.formWrapper .parameter label {
+	color: #222222; /* color change*/
+}
+
+/*CheckBox dropdown*/
+.selectDropdown .dropdown li label {
+	border-bottom: 1px solid #d4d4d4;
+}
+
+/* Hover state */
+.selectDropdown .dropdown li:hover label {
+	background: #eeebe6;
+}
+
+/* Style for popups */
+.popupWrapper {
+	border: 1px solid #d4d4d4; /* color change  */
+}
+
+.popupWrapper .ui-dialog-titlebar {
+	background: #d4d4d4; /* color change  */
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c49a6d),
+		to(#d4d4d4) ); /* color change  */
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #c49a6d, #d4d4d4);
+	/* color change  */
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #c49a6d, #d4d4d4);
+	/* color change  */
+	border-color: #d4d4d4; /* color change  */
+}
+
+.popupWrapper  .ui-dialog-content .popupContent .popupActionsWrapper {
+	background: #eeebe6; /* color change  */
+	border-top: dotted 1px #d4d4d4; /* color change  */
+}
+
+/* Style for Date picker */
+.ui-datepicker {
+	border: solid 1px #d4d4d4; /* color change */
+}
+
+.ui-datepicker .ui-datepicker-header,.ui-timepicker .ui-timepicker-title,.ui-timepicker .ui-timepicker-hour-cell .ui-state-active,.ui-timepicker .ui-timepicker-minute-cell .ui-state-active,.ui-datepicker .ui-datepicker-current-day .ui-state-active
+	{ /* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c49a6d),
+		to(#a17c54) ); /* color change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #c49a6d, #a17c54);
+	/* color change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #c49a6d, #a17c54);
+	/* color change*/
+	border: solid 1px #ab845a; /* color change*/
+}
+
+.ui-datepicker th,.ui-timepicker th {
+	color: #d4d4d4; /* color change */
+}
+
+.ui-timepicker .ui-timepicker-hour-cell .ui-state-active,.ui-timepicker .ui-timepicker-minute-cell .ui-state-active,.ui-datepicker .ui-datepicker-current-day .ui-state-active
+	{
+	color: #fff;
+}
+
+/* Nav Bar css manipulation */
+.sf-menu li a:hover {
+	background-color: #a17c54;
+	color: #fff;
+}
+
+/**** Selected Menu ***/
+.sf-menu li.selectedMenu {
+	border-top: solid 5px #666666; /* color change */
+}
+
+.active-bar,.selected-menu {
+	background: #666;
+}
+
+.text-color {
+	color: #fff;
+}
+
+.text-color a {
+	color: #373538; /* color change */
+}
+
+.sf-menu li {
+	background-image: url(../images/thomasdux/mainNavDivider.gif);
+	color: #c4996c; /* color change */
+}
+
+.sf-menu ul li {
+	background: #c4996c;
+}
+
+.sf-menu li.home a {
+	background-image: url(../images/thomasdux/homeIcon.png); /* img change*/
+	background-position: 32px 19px;
+	background-repeat: no-repeat;
+}
+
+.reportBtmBrdr {
+	border-bottom: 1px solid #a17c54;
+}
+
+.innermenu li a:hover {
+	background-color: #a17c54; /* color change*/
+	color: #fff; /* color change*/
+}
+
+/* styling for both css and generated arrows */
+.sf-arrows .sf-with-ul:after {
+	border-top-color: #dFeEFF;
+	/* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255, 255, 255, .5);
+}
+
+.footer .policyInfo a:hover {
+	color: #c49a6d; /* color change*/
+}
+
+/* JqueryUI css manipulation */
+.contentWrapper .articleAdditionalInfo h3.ui-accordion-header-active {
+	background: #eeebe6; /*color change*/
+	border-color: #d4d4d4; /* color  change*/
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li:hover {
+	background: #eeebe6; /*color change*/
+	border-color: #d4d4d4; /* color  change*/
+}
+
+.contentWrapper  .ui-widget-content li.ui-tabs-active,.popupWrapper  .ui-widget-content li.ui-tabs-active,.contentWrapper  .ui-widget-content li.ui-tabs-active:hover,.popupWrapper  .ui-widget-content li.ui-tabs-active:hover,.popupWrapper .ui-dialog-titlebar,.contentWrapper  .sectionTabs.ui-tabs .ui-tabs-nav li.ui-tabs-active:hover
+	{
+	background: #c49a6d; /* color change*/
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c49a6d),
+		to(#a17c54) ); /* color change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #c49a6d, #a17c54);
+	/* color change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #c49a6d, #a17c54);
+	/* color change*/
+	border-color: #a17c54; /* color change*/
+	color: white; /* color  change*/
+}
+
+.contentWrapper  .ui-widget-content li.ui-tabs-active.highlightTab,.popupWrapper  .ui-widget-content li.ui-tabs-active.highlightTab,.contentWrapper  .ui-widget-content li.ui-tabs-active.highlightTab:hover,.popupWrapper  .ui-widget-content li.ui-tabs-active.highlightTab:hover,.contentWrapper  .sectionTabs.ui-tabs .ui-tabs-nav li.ui-tabs-active.highlightTab:hover
+	{
+	background: #c49a6d; /* color change*/
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c49a6d),
+		to(#a17c54) ) !important; /* color change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #c49a6d, #a17c54) !important;
+	/* color change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #c49a6d, #a17c54) !important;
+	/* color change*/
+	border-color: #a17c54 !important; /* color change*/
+	color: white !important; /* color  change*/
+}
+
+.contentWrapper  .ui-tabs .ui-tabs-nav,.reportWrapper .ui-tabs .ui-widget-content .ui-tabs .ui-tabs-nav
+	{
+	border-color: #d4d4d4; /* color  change*/
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li a {
+	color: #666666; /* color  change*/
+}
+
+.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default,.reportWrapper h4.innerTitle
+	{
+	color: #666666; /* color  change*/
+}
+
+.ui-state-default .ui-icon {
+	background-image: url("../images/thomasdux/iconOpenAccordion.png");
+	/* img change*/
+}
+
+.ui-state-active .ui-icon {
+	background-image: url("../images/thomasdux/iconCloseAccordion.png");
+	/* img change*/
+}
+
+.ui-widget-content {
+	border: 1px solid #d4d4d4;
+}
+
+.ContentTableWrapper .actionRows tr:hover td {
+	background-color: #EEEBE6;
+}
+/* stocktake Pagination issue Fix */
+/* .noChildNew .sorted .actionRows:hover tr td {
+	background-color: #ffffff;
+}
+.noChildNew .sorted:hover .actionRows tr td {
+	background-color: #ffffff;
+}
+
+.noChildNew_missed .sorted .actionRows:hover tr td {
+	background-color: #ffffff;
+}
+.noChildNew_missed .sorted:hover .actionRows tr td {
+	background-color: #ffffff;
+} */
+
+.ContentTableWrapper .actionRows tr:hover td.sorted {
+	background-color: #d4d4d4;
+}
+
+/* wizard css*/
+.wizardContent .jw-widget.jw-hasmenu .jw-menu-wrap .jw-menu {
+	background: #eeebe6;
+}
+
+.wizardContent .ui-state-highlight {
+	background: #d4d4d4;
+}
+
+.wizardContent .ui-widget-content .ui-state-highlight a {
+	color: #000;
+}
+
+.wizardContent .ui-widget-content .ui-state-focus {
+	border: solid 1px #eeebe6;
+}
+
+.wizardPage .wizardContent .jw-widget .jw-steps-wrap {
+	border-bottom: solid 5px #d4d4d4;
+}
+
+.articleContentInner .articleImg.articleImgDefault{
+	background-image: url("../images/product1.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	min-height:155px;
+
+}
+
+.ui-tabs-vertical .ui-tabs-panel {
+	border-color: #d4d4d4;
+}
+table.drilldownTable td.expanded span.indenter a {
+	background-image: url("../images/thomasdux/iconOpenAccordion.png");
+}
+
+table.drilldownTable td.collapsed span.indenter a {
+	background-image: url("../images/thomasdux/iconCloseAccordion.png");
+}
+label.printRecord {
+    background: url(../images/thomasdux/iconPrint.png) center center no-repeat;
+}
+.m-date-pick .ui-datepicker .ui-state-highlight a{
+  		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c49a6d),
+		to(#a17c54) ) !important; /* color change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #c49a6d, #a17c54) !important;
+	/* color change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #c49a6d, #a17c54) !important;
+	/* color change*/
+	border: solid 1px #ab845a !important;
+	color: #fff !important;
+}
+.m-date-pick .ui-datepicker .ui-datepicker-today .ui-state-highlight{
+      background: #999999;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999),
+ to(#666666) );
+    background: -webkit-linear-gradient(top, #999999, #666666);
+    background: -moz-linear-gradient(top, #999999, #666666);
+    border: solid 1px #666666;
+    color: #fff;
+}
+.m-date-pick .ui-datepicker .ui-state-active
+{ 
+	background: #f9f9f3;
+    border: solid 1px #f9f9f3;
+    color: #666666;
+    font-weight: normal;
+	border: none;
+}
+.ticketingHome {
+	background: url("../images/thomasdux/ticketing_icon.png") no-repeat
+		scroll center top transparent;
+}

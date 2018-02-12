@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Store Portal</display-name>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value> 
+		    /WEB-INF/mvcDispatcher-servlet.xml</param-value>
+  </context-param>
+  <context-param>
+    <param-name>REPORT_CACHE_ENABLED</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>REPORT_CACHE_SOURCE</param-name>
+    <param-value>EHCACHE</param-value>
+  </context-param>
+  <filter>
+  <filter-name>logSessionIdFilter</filter-name>
+  <filter-class>au.com.woolworths.portal.aspect.LogSessionIdFilter</filter-class>
+</filter>
+<filter-mapping>
+  <filter-name>logSessionIdFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>au.com.woolworths.portal.servlet.StoreCentralRequestListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>au.com.woolworths.portal.servlet.ApplicationContextListener</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>mvcDispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet-mapping>
+    <servlet-name>mvcDispatcher</servlet-name>
+    <url-pattern>*.htm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>mvcDispatcher</servlet-name>
+    <url-pattern>*.pdf</url-pattern>
+  </servlet-mapping>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/pages/login.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/pages/login.jsp</location>
+  </error-page>
+  <servlet>
+    <display-name>LoginServiceImpl</display-name>
+    <servlet-name>LoginServiceImpl</servlet-name>
+    <servlet-class>au.com.woolworths.portal.service.LoginServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServiceImpl</servlet-name>
+    <url-pattern>/LoginServiceImpl</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>Apache-Axis Servlet</display-name>
+    <servlet-name>AxisServlet</servlet-name>
+    <servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/servlet/AxisServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>*.jws</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/services/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>Axis Admin Servlet</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>org.apache.axis.transport.http.AdminServlet</servlet-class>
+    <load-on-startup>100</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/servlet/AdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet to handle Login redirection</description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>au.com.woolworths.portal.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/petrol</url-pattern>
+    <url-pattern>/dm</url-pattern>
+    <url-pattern>/bigw</url-pattern>
+    <url-pattern>/tdux</url-pattern>
+    <url-pattern>/bws</url-pattern>
+    <url-pattern>/cntdwn</url-pattern>
+    <url-pattern>/smkt</url-pattern>
+    <url-pattern>/sfs</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,883 @@
+h2 {
+	color: #037bad; /*color change*/
+}
+
+h3 {
+	color: #037bad; /*color change*/
+}
+
+a.moreNumber,.ui-widget-content a {
+	color: #149dd6;
+}
+
+h4 {
+	color: #292929;
+}
+
+h4 .searchString {
+	color: #037bad; /*color change*/
+}
+.headWrapper{
+	background:#fff url(../images/bigw/headerBg.gif) left top repeat-x;
+}
+.headWrapper .header .logoWrapper .logoImg{
+	width: 151px;
+	height: 75px;
+	background: url(../images/bigw/logo.gif) 20px 6px no-repeat; /*img change*/
+	background-size:55%;
+}
+
+.headWrapper .header .globalLinksWrapper .globalLinkAccountName {
+	background-image: url(../images/bigw/profileArrowDown.png);
+	/*img change*/
+	color: #018ec8; /*color change*/
+}
+
+.headWrapper .header .globalLinksWrapper .store {
+	background-color: #f4f4f4;
+	border: solid 1px #ececec;
+}
+
+.headWrapper .header .globalLinksWrapper .ui-state-active {
+	background-color: #00a1e4; /*change color*/
+	color: #fff;
+	background-image: url(../images/bigw/profileArrowUp.png);
+}
+
+.userProfile .ui-menu ul{
+	border: solid 1px #9edef9; /* color change*/
+}
+
+.userProfile .ui-menu ul.ui-menu li {
+	border-bottom: solid 1px #9edef9; /* color change*/
+}
+
+.userProfile .ui-menu ul.ui-menu li:hover {
+	background: #dcf4ff; /* color change*/
+}
+
+.userProfile .ui-menu ul.ui-menu li:hover a {
+	color: #494949;
+}
+
+.userProfile .ui-menu ul.ui-menu li a {
+	color: #00a1e4; /* color change*/
+}
+
+.headWrapper .navWrapper
+{
+	/*background:#00a1e4 url(../images/bigw/navBg.gif) left top repeat-x;  img and color nav change*/
+	
+	color: #77c250; 	
+}
+
+.headWrapper  .breadcrumbWrapper {
+	background-color: #d3d3d3;
+}
+
+.headWrapper  .breadcrumbWrapper .breadcrumbs {
+	color: #2d2d2d;
+}
+
+.breadcrumbWrapper .breadcrumbs ul li {
+	background: url(../images/breadcrumbArrow.gif) right 2px no-repeat;
+}
+
+.breadcrumbWrapper .breadcrumbs ul li a {
+	color: #2d2d2d;
+}
+
+.breadcrumbWrapper .breadcrumbs ul li .cursor-pointer:hover{
+		color:#4ba4c4;
+	}
+.breadcrumbWrapper .breadcrumbs ul li a:hover {
+	color: #4ba4c4;;
+}
+
+.articleHead {
+	background-color: #dcf4ff; /* color change */
+	border: solid 1px #9edef9; /* color change */
+}
+
+.articleHead .articleHeaderWrapper .articleTitle,.ui-tabs-vertical .ui-tabs-panel .sectionTitle
+	{
+	color: #037bad; /* color change*/
+}
+
+.articleHead .articleHeaderWrapper .articleTitle span {
+	color: #696969; /* color change*/
+}
+
+.articleHead .articleHeaderWrapper p {
+	color: #252525; /* color change */
+}
+
+.articleDate {
+	color: #696969; /* color change*/
+}
+
+/* Page title */
+.pageTitleWrapper h2.pageTitle {
+	color: #4ba4c4; /* color change*/
+}
+
+.actionBtn,.secondaryActionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.actionBtn,.wizardContent .jw-buttons .actionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn,.selectDropdown .dropdown li:hover label.actionBtn
+	{
+	background: #00a1e4; /* color change*/
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#66cdf8),
+		to(#00a1e4) ); /* color change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #66cdf8, #00a1e4);
+	/* color change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #66cdf8, #00a1e4);
+	/* color change*/
+	border: solid 1px #20bdff; /* color change*/
+	color: #fff;
+}
+
+.actionBtn:hover,.wizardContent .jw-buttons .actionBtn:hover,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.actionBtn:hover,.selectDropdown .dropdown li label.actionBtn:hover
+	{
+	background: #00a1e4; /* color change*/
+}
+
+.selectDropdown.buttonMenu .actionBtn {
+	background: #293b13;
+	/* Safari 4-5, Chrome 1-9 */
+	background-image: url("../images/iconButtonActions.png"),
+		-webkit-gradient(linear, 0% 0%, 0% 100%, from(#66cdf8), to(#00a1e4) );
+	/* Safari 5.1, Chrome 10+ */
+	background-image: url("../images/iconButtonActions.png"),
+		-webkit-linear-gradient(top, #66cdf8, #00a1e4);
+	/* Firefox 3.6+ */
+	background-image: url("../images/iconButtonActions.png"),
+		-moz-linear-gradient(top, #66cdf8, #00a1e4);
+	background-position: 90% center;
+	background-repeat: no-repeat;
+	padding-right: 30px;
+}
+
+.secondaryActionBtn,.wizardContent .jw-buttons .secondaryActionBtn,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn,.selectDropdown .dropdown li:hover label.secondaryActionBtn
+	{
+	background: #999999;
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999),
+		to(#666666) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #999999, #666666);
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #999999, #666666);
+	border: solid 1px #666666;
+	color: #fff;
+}
+
+.secondaryActionBtn:hover,.wizardContent .jw-buttons .secondaryActionBtn:hover,.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn:hover,.selectDropdown .dropdown li label.secondaryActionBtn:hover
+	{
+	background: #666666;
+}
+
+.contentWrapper .articleContent,.contentWrapper .detailsSections .articleHead
+	{
+	background-color: #f5f6f6;
+	/* grey back of article table dif woolworths */
+	border: solid 1px #eae9e9; /* d4cbc0 - for lighter theme */
+	border-top: none;
+}
+
+.contentWrapper .detailsSections .articleHead {
+	background: #fff;
+}
+
+.articleContentInner .articleDetails {
+	border: solid 1px #e0e0e0;
+}
+
+.articleContentInner .articleInfoTop {
+	background: #464d57;
+}
+
+.articleContentInner .articleInfoBottom {
+	background: #464d57;
+}
+
+.articleContentInner .articleInfo {
+	background: #464d57;
+}
+
+.articleContentInner .articleDetails tr th,.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.subTitle
+	{
+	background: #c0c5ca;
+	color: #2d2d2d;
+}
+
+.articleContentInner .articleDetails tr td {
+	border-bottom: solid 1px #f5f5f0;
+	color: #222222;
+}
+
+.articleContentInner .articleDetails tr th label.history {
+	color: #037bad;
+}
+
+span.summaryInfo {
+	color: #037bad; /* color change */
+}
+
+.contentWrapper .articleAdditionalInfo h3 {
+	background: #f3f4f5;
+}
+
+.contentWrapper .articleAdditionalInfo h3.ui-accordion-header-active {
+	background: #dcf4ff; /* color change*/
+	border: solid 1px #9edef9; /* color change*/
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li,.popupWrapper  .ui-widget-content .ui-tabs-nav li
+	{
+	background: #EFEFEF;
+	border: solid 1px #EDEDED;
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li:hover,.popupWrapper  .ui-widget-content .ui-tabs-nav li:hover
+	{
+	background: #dcf4ff; /* color change*/
+	border: 1px solid #9edef9; /* color change*/
+}
+
+.ContentTableWrapper .noTableSort tr:hover td,.ContentTableWrapper .noTableSort tr:hover td.sorted
+	{
+	background-color: #dcf4ff;
+}
+
+/* Style for Home page */
+.homeLinkTextDescription {
+	color: #646363;
+}
+
+.homeLinkText {
+	color: #4ba4c4; /* color change*/
+}
+
+.homeContentWelcomeTitle {
+	color: #4ba4c4; /* color change*/
+}
+
+.homeBorderHorz { /* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 20%, 80% 100%, from(#FFFFFF),
+		to(#D3D3C9) );
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #FFFFFF, #D3D3C9);
+	/* Firefox 3.6+ */
+	background-image: -moz-linear-gradient(left center, #FFFFFF 0%, #D3D3C9 20%, #D3D3C9 80%,
+		#FFFFFF 100%);
+}
+
+.reportsHome {
+	background: url("../images/bigw/reports_icon.png") no-repeat scroll
+		center top transparent; /* img change*/
+}
+
+.ticketingHome {
+	background: url("../images/bigw/ticketing_icon.png") no-repeat scroll
+		center top transparent; /* img change*/
+}
+/* included extra classes for mobile shortcuts defect no 6358*/
+.pricingHome,.pricing-home {
+	background: url("../images/bigw/pricing_icon.png") no-repeat scroll
+		center top transparent; /* img change*/
+}
+
+.stockManagementHome,.stock-home {
+	background: url("../images/bigw/stockManagement_icon.png") no-repeat
+		scroll center top transparent; /* img change*/
+}
+
+.iconlookupHome,.lookup-home {
+	background: url("../images/bigw/iconlookup_icon.png") no-repeat scroll
+		center top transparent; /* img change*/
+}
+
+.ordersHome,.orders-home {
+	background: url("../images/bigw/orders_icon.png") no-repeat scroll
+		center top transparent; /* img change*/
+}
+
+/* -------------------- */
+/* Styles for Lookup Page */
+.lookupWrapper {
+	background: #dcf4ff url(../images/shadowLookup.png) 0 1px no-repeat;
+	/* color change but no img change*/
+	border: solid 1px #9edef9; /* color change*/
+	border-top: none;
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox {
+	border: 1px solid #D9D9D9;
+}
+
+.lookupWrapper .lookupParamWrapper .searchBox input.inputDate {
+	background: url(../images/bigw/iconCalendar.png) right 5px no-repeat;
+	/*img change*/
+	border-left: dotted 1px #C0C5CA;
+}
+
+.lookupWrapper .lookupParamWrapper .searchByOptions label {
+	color: #585858;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter label {
+	color: #585858;
+}
+
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter label.advancedSearch,.lookupWrapper .lookupParamWrapper .advancedParam .parameter label.newWindow
+	{
+	font-weight: normal;
+	color: #00a1e4; /* color change*/
+}
+
+.advancedSearchFormatWrapper {
+	background: #dcf4ff; /* color change*/
+	border: solid 1px #9edef9; /* color change*/
+	-webkit-box-shadow: 0 8px 6px -9px black;
+	-moz-box-shadow: 0 8px 6px -9px black;
+	box-shadow: 0 8px 6px -9px black;
+	border-top: 0 none;
+}
+
+/* -------------------- */
+input.inputDate {
+	background: #fff url(../images/bigw/iconCalendar.png) 95% 4px no-repeat;
+	/* img change*/
+}
+
+input.inputTime {
+	background: #fff url(../images/bigw/iconHistory.png) 95% 6px no-repeat;
+}
+
+label.linkBtn,label.linkBtn1,label.linkBtn a {
+	color: #00a1e4; /* color change*/
+}
+
+label.linkBtn .advancedSearch {
+	background: url(../images/bigw/iconAdvancedSearch.png) 0 2px no-repeat;
+	/* img change*/
+}
+
+label.linkBtn1 .advancedSearch {
+	background: url(../images/bigw/iconAdvancedSearch.png) 0 2px no-repeat;
+	/* img change*/
+}
+.newWindow {
+	background: url(../images/bigw/iconNewWindow.png) 0 center no-repeat;
+}
+
+.newWindowAfter {
+	background: url(../images/bigw/iconNewWindow.png) right center no-repeat;
+}
+
+.newWindowDisPre {
+	background: url(../images/bigw/iconDisPre.png) right center
+		no-repeat;
+}
+label.linkBtn .closeWindow {
+	background: url(../images/bigw/iconCloseWindow.png) 0 3px no-repeat;
+	/* img change*/
+}
+
+label.linkBtn1 .closeWindow {
+	background: url(../images/bigw/iconCloseWindow.png) 0 3px no-repeat;
+	/* img change*/
+}
+label.linkBtn .unselect {
+	background: url(../images/bigw/iconUnselectMulti.png) 0 3px no-repeat;
+}
+
+label.selectItem {
+	background: url(../images/bigw/iconArrowRight.png) right 2px no-repeat;
+	/* img change*/
+}
+
+label.addRow {
+	background: url(../images/bigw/iconAdd.png) left 4px no-repeat;
+	/* img change*/
+}
+
+label.filter {
+	background: url(../images/bigw/iconFilter.png) left 2px no-repeat;
+	/* img change*/
+}
+
+label.moreActions {
+	background: url(../images/bigw/profileArrowDown.png) right center
+		no-repeat; /* img change*/
+}
+
+label.group {
+	background: url(../images/bigw/iconGroupBy.png) left 2px no-repeat;
+}
+
+label.editRecord {
+	background: url(../images/bigw/iconEditRow.png) center top no-repeat;
+	/* img change*/
+}
+
+label.deleteRecord {
+	background: url(../images/bigw/iconDelete.png) center top no-repeat;
+	/* img change*/
+}
+
+label.saveRecord {
+	background: url(../images/bigw/iconSave.png) center top no-repeat;
+	/* img change*/
+}
+
+label.changePassword {
+	background: url(../images/bigw/iconKey.png) center center no-repeat;
+}
+label.printRecord{
+	background: url(../images/bigw/iconPrint.png) center center  no-repeat;
+}
+
+label.deactivateUser {
+	background: url(../images/bigw/iconDeactivateUser.png) center top
+		no-repeat;
+}
+
+label.history {
+	background: url(../images/bigw/iconHistory.png) left top no-repeat;
+	color: #4ba4c4;
+	margin-right: 10px;
+}
+label.blockingReason {
+	cursor: pointer;
+	background: url(../images/bigw/block.png) left top no-repeat;
+	color: #4ba4c4;
+	margin-right: 10px;
+	padding-left: 16px;
+}
+
+label.blockingReason {
+	cursor: pointer;
+	background: url(../images/bigw/block.png) left top no-repeat;
+	color: #4ba4c4;
+	margin-right: 10px;
+	padding-left: 16px;
+}
+
+label.notpadLink {
+	background: url(../images/bigw/iconPadTick.png) left top no-repeat;
+	color: #4ba4c4;
+	margin-right: 10px;
+}
+
+label.notes {
+	background: url(../images/bigw/iconNote.png) left top no-repeat;
+	color: #4ba4c4;
+	margin-right: 10px;
+}
+
+label.offers {
+	background: url(../images/bigw/iconTag.png) left top no-repeat;
+	color: #4ba4c4;
+	margin-right: 10px;
+}
+
+a.navigate {
+	background: url(../images/bigw/iconArrowRight.png) right center
+		no-repeat;
+	padding-right: 10px;
+	color: #4ba4c4;
+}
+
+.bookmark {
+	background: url(../images/bigw/iconBookmark.png) left 1px no-repeat;
+}
+
+/* up to here */
+.formWrapper .parameter label.advancedSearch {
+	color: #00a1e4; /* color change*/
+}
+
+table.treetable tr.collapsed span.indenter a {
+	background-image: url("../images/bigw/iconExpandNode.png");
+	/* img change*/
+}
+
+table.treetable tr.expanded span.indenter a {
+	background-image: url("../images/bigw/iconCollapseNode.png");
+	/* img change*/
+}
+
+table.treetable tr.selected { /*background-color: #3875D7;*/ /* blue*/
+	
+}
+
+table.treetable tr.collapsed.selected span.indenter a {
+	background-image: url("../images/bigw/iconExpandNode.png");
+	/* img change*/
+}
+
+table.treetable tr.expanded.selected span.indenter a {
+	background-image: url("../images/bigw/iconCollapseNode.png");
+	/* img change*/
+}
+
+table.treetable tr.accept { /*background-color: #A3BCE4;*/ /*blue*/
+	
+}
+
+table.treetable tr.collapsed.accept td span.indenter a {
+	background-image: url("../images/bigw/iconExpandNode.png");
+	/* img change*/
+}
+
+table.treetable tr.expanded.accept td span.indenter a {
+	background-image: url("../images/bigw/iconCollapseNode.png");
+	/* img change*/
+}
+
+.ContentTableWrapper .treetable tr td {
+	color: #222222;
+}
+
+table.drilldownTable  tr.expanded td,table.drilldownTable  tr.defaultExpanded td,.ContentTableWrapper .ContentTable tr td.rowSection.rowHighlight
+	{
+	background-color: #dcf4ff !important; /* color change*/
+	color: #037BAD !important; /* color change*/
+}
+
+table.drilldownTable tr.collapsed span.indenter a,table.drilldownTable th span.indenter a.expandAll
+	{
+	background-image: url("../images/bigw/iconOpenAccordion.png");
+	/* img change*/
+}
+
+table.drilldownTable tr.expanded span.indenter a,table.drilldownTable th span.indenter a.collapseAll
+	{
+	background-image: url("../images/bigw/iconCloseAccordion.png");
+	/* img change*/
+}
+
+.formWrapper .parameter label {
+	color: #222222; /* color change*/
+}
+
+.formWrapper .parameter .advancedSearch {
+	color: #037BAD;
+}
+
+/*CheckBox dropdown*/
+.selectDropdown .dropdown li label {
+	border-bottom: 1px solid #9edef9;
+}
+
+/* Hover state */
+.selectDropdown .dropdown li:hover label {
+	background: #dcf4ff;
+}
+
+/* Style for popups */
+.popupWrapper {
+	border: 1px solid #20bdff; /* color change  */
+}
+
+.popupWrapper .ui-dialog-titlebar {
+	background: #20bdff; /* color change  */
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00a1e4),
+		to(#20bdff) ); /* color change  */
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #00a1e4, #20bdff);
+	/* color change  */
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #00a1e4, #20bdff);
+	/* color change  */
+	border-color: #20bdff; /* color change  */
+}
+
+.popupWrapper  .ui-dialog-content .popupContent .popupActionsWrapper {
+	background: #dcf4ff; /* color change  */
+	border-top: dotted 1px #20bdff; /* color change  */
+}
+
+/* Style for Date picker */
+.ui-datepicker {
+	border: solid 1px #20bdff; /* color change */
+}
+
+.ui-datepicker .ui-datepicker-header,.ui-timepicker .ui-timepicker-title,.ui-timepicker .ui-timepicker-hour-cell .ui-state-active,.ui-timepicker .ui-timepicker-minute-cell .ui-state-active,.ui-datepicker .ui-datepicker-current-day .ui-state-active
+	{ /* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00a1e4),
+		to(#20bdff) ); /* color change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #00a1e4, #20bdff);
+	/* color change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #00a1e4, #20bdff);
+	/* color change*/
+	border: solid 1px #20bdff; /* color change*/
+}
+
+.ui-datepicker th,.ui-timepicker th {
+	color: #4ba4c4; /* color change */
+}
+
+.ui-timepicker .ui-timepicker-hour-cell .ui-state-active,.ui-timepicker .ui-timepicker-minute-cell .ui-state-active,.ui-datepicker .ui-datepicker-current-day .ui-state-active
+	{
+	color: #fff;
+}
+
+/* Nav Bar css manipulation */
+.sf-menu li a:hover {
+	background-color: #51c8f9;
+	color: #fff;
+}
+
+/**** Selected Menu ***/
+.sf-menu li.selectedMenu {
+	border-top: solid 5px white; /* color change */
+}
+
+.active-bar,.selected-menu {
+	background: #fff;
+}
+
+.text-color {
+	color: #fff;
+}
+
+.text-color a {
+	color: white; /* color change */
+}
+
+.sf-menu li {
+	background-image: url(../images/bigw/mainNavDivider.gif);
+	color: #00a1e4; /* color change */
+}
+
+.sf-menu ul li {
+	background: #51c8f9;
+}
+
+.sf-menu li.home a {
+	background-image: url(../images/bigw/homeIcon.png); /* img change*/
+	background-position: 22px 19px;
+	background-repeat: no-repeat;
+}
+
+.reportBtmBrdr {
+	border-bottom: 1px solid #4dbdec;
+}
+
+.innermenu li a:hover {
+	background-color: #00A1E4; /* color change*/
+	color: #033a51; /* color change*/
+}
+
+/* styling for both css and generated arrows */
+.sf-arrows .sf-with-ul:after {
+	border-top-color: #dFeEFF;
+	/* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255, 255, 255, .5);
+}
+
+.footer .policyInfo a:hover {
+	color: #00a1e4; /* color change*/
+}
+
+/* JqueryUI css manipulation */
+.contentWrapper .articleAdditionalInfo h3.ui-accordion-header-active {
+	background: #dcf4ff; /*color change*/
+	border-color: #9edef9; /* color  change*/
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li:hover {
+	background: #dcf4ff; /*color change*/
+	border-color: #9edef9; /* color  change*/
+}
+
+.contentWrapper  .ui-widget-content li.ui-tabs-active,.popupWrapper  .ui-widget-content li.ui-tabs-active,.contentWrapper  .ui-widget-content li.ui-tabs-active:hover,.popupWrapper  .ui-widget-content li.ui-tabs-active:hover,.popupWrapper .ui-dialog-titlebar,.contentWrapper  .sectionTabs.ui-tabs .ui-tabs-nav li.ui-tabs-active:hover
+	{
+	background: #20bdff; /* color  change*/
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#20bdff),
+		to(#00a1e4) ); /* color  change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #20bdff, #00a1e4);
+	/* color  change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #20bdff, #00a1e4);
+	/* color  change*/
+	border-color: #20bdff; /* color  change*/
+	color: white; /* color  change*/
+}
+
+.contentWrapper  .ui-widget-content li.ui-tabs-active.highlightTab,.popupWrapper  .ui-widget-content li.ui-tabs-active.highlightTab,.contentWrapper  .ui-widget-content li.ui-tabs-active.highlightTab:hover,.popupWrapper  .ui-widget-content li.ui-tabs-active.highlightTab:hover,.contentWrapper  .sectionTabs.ui-tabs .ui-tabs-nav li.ui-tabs-active.highlightTab:hover
+	{
+	background: #20bdff; /* color  change*/
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#20bdff),
+		to(#00a1e4) ) !important; /* color  change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #20bdff, #00a1e4) !important;
+	/* color  change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #20bdff, #00a1e4) !important;
+	/* color  change*/
+	border-color: #20bdff !important; /* color  change*/
+	color: white !important; /* color  change*/
+}
+
+.contentWrapper  .ui-tabs .ui-tabs-nav,.reportWrapper .ui-tabs .ui-widget-content .ui-tabs .ui-tabs-nav
+	{
+	border-color: #20bdff; /* color  change*/
+}
+
+.contentWrapper  .ui-widget-content .ui-tabs-nav li a {
+	color: #037bad; /* color  change*/
+}
+
+.ui-state-default,.ui-widget-content .ui-state-default,.reportWrapper h4.innerTitle
+	{
+	color: #037bad; /* color  change*/
+}
+
+.ui-state-default .ui-icon {
+	background-image: url("../images/bigw/iconOpenAccordion.png");
+	/* img change*/
+}
+
+.ui-state-active .ui-icon {
+	background-image: url("../images/bigw/iconCloseAccordion.png");
+	/* img change*/
+}
+
+.ui-widget-content {
+	border: 1px solid #9edef9;
+}
+
+.ContentTableWrapper .actionRows tr:hover td {
+	background-color: #dcf4ff;
+}
+
+.ContentTableWrapper .actionRows tr:hover td.sorted {
+	background-color: #9edef9;
+}
+/* stocktake Pagination issue Fix */
+/* .noChildNew .sorted .actionRows:hover tr td {
+	background-color: #ffffff;
+}
+.noChildNew .sorted:hover .actionRows tr td {
+	background-color: #ffffff;
+}
+
+.noChildNew_missed .sorted .actionRows:hover tr td {
+	background-color: #ffffff;
+}
+.noChildNew_missed .sorted:hover .actionRows tr td {
+	background-color: #ffffff;
+} */
+
+/* wizard css*/
+.wizardContent .jw-widget.jw-hasmenu .jw-menu-wrap .jw-menu {
+	background: #DCF4FF;
+}
+
+.wizardContent .ui-state-highlight {
+	background: #51c8f9;
+}
+
+.wizardContent .ui-widget-content .ui-state-highlight a {
+	color: #000;
+}
+
+.wizardContent .ui-widget-content .ui-state-focus {
+	border: solid 1px #DCF4FF;
+}
+
+.wizardPage .wizardContent .jw-widget .jw-steps-wrap {
+	border-bottom: solid 5px #51c8f9;
+}
+
+.articleContentInner .articleImg.articleImgDefault{
+	background-image: url("../images/product1.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	min-height:155px;
+	
+}
+
+.ui-tabs-vertical .ui-tabs-panel {
+	border-color: #20bdff;
+}
+table.drilldownTable td.expanded span.indenter a {
+	background-image: url("../images/bigw/iconOpenAccordion.png");
+}
+
+table.drilldownTable td.collapsed span.indenter a {
+	background-image: url("../images/bigw/iconCloseAccordion.png");
+}
+label.printRecord {
+    background: url(../images/bigw/iconPrint.png) center center no-repeat;
+}
+
+h2.recvTabTitle {
+    font-size: 1.1em;
+    font-weight: normal;
+    padding: 10px 0 8px 8px;
+    background: #4BC4F7;
+    color: #000;
+}
+.bigwcolor{
+	color: #00a1e4 !important; /* color change*/
+}
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a{
+  		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00a1e4),
+		to(#20bdff) ); /* color change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #00a1e4, #20bdff);
+	/* color change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #00a1e4, #20bdff);
+	/* color change*/
+	border: solid 1px #20bdff; /* color change*/
+	color: #fff;
+}
+.m-date-pick .ui-datepicker .ui-state-highlight a{
+  		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00a1e4),
+		to(#20bdff) ) !important; /* color change*/
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #00a1e4, #20bdff) !important;
+	/* color change*/
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #00a1e4, #20bdff) !important;
+	/* color change*/
+	border: solid 1px #20bdff !important;
+	color: #fff !important;
+}
+.m-date-pick .ui-datepicker .ui-datepicker-today .ui-state-highlight{
+      background: #999999;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999),
+ to(#666666) );
+    background: -webkit-linear-gradient(top, #999999, #666666);
+    background: -moz-linear-gradient(top, #999999, #666666);
+    border: solid 1px #666666;
+    color: #fff;
+}
+.m-date-pick .ui-datepicker .ui-state-active
+{ 
+	background: #f9f9f3;
+    border: solid 1px #f9f9f3;
+    color: #037bad;
+    font-weight: normal;
+	border: none;
+}
+.ticketingHome {
+	background: url("../images/bigw/ticketing_icon.png") no-repeat
+		scroll center top transparent;
+}
+.laybyHome {
+	background: url("../images/bigw/pricing-home.png") no-repeat
+		scroll center top transparent;
+}

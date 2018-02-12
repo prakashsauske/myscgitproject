@@ -1,0 +1,12 @@
+ant.project.name="antsimple" />
+jarname=${ant.project.name}
+src=src
+classes=classes
+dist=dist
+webinf=WebContent/WEB-INF
+build=${webinf}/classes
+lib=WebContent/WEB-INF/lib
+reportssrc=WebContent/jasperreports/src
+#reportsbin=WebContent/jasperreports/bin
+wslib=lib
+

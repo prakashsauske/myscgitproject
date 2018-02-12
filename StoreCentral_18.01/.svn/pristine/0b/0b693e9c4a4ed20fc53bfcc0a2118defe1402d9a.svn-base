@@ -1,0 +1,718 @@
+var uldParam = '';
+var supp_invalid_msg ='Invalid supplier.';
+var salesOrg = '';
+var uldTypeMap = {};
+var leaveScreenMsg = 'Discard changes?';
+$(function() {
+			salesOrg = $('#salesOrg').val();
+	
+			if(salesOrg == '1060'){
+				$('.carDiv').removeClass('hideBlock');
+				$('.consignDiv').removeClass('hideBlock');
+				$('.regLblBigW').removeClass('hideBlock');
+				$('.regLblNotBigW').addClass('hideBlock');
+				createCarrierAutoSuggest($('#car'));
+			} else {
+				$('.carDiv').removeClass('hideBlock');
+				$('.regLblNotBigW').removeClass('hideBlock');
+				$('.regLblBigW').addClass('hideBlock');
+				createCarrierAutoSuggest($('#car'));
+			}
+			
+			//verify receiver code
+			 $("#dialog-verifySupplier").dialog({
+				    autoOpen: false,
+				    modal: true,
+				    resizable: false,
+				    minHeight: 120,
+				    maxHeight: 600,
+				    width: 700
+				  });
+			 
+			 $("#verifySupplier").click(function() {
+					var $supplierElem =$('#rec');
+				    var vendorNo = $supplierElem.val().split('-')[0];
+				    if (vendorNo != '') {
+				    	var vendorTextBox = $("#rec");
+				    	var isVendorChecked =  $('#vendorCheck');
+				    	getVendorLookup(vendorNo,vendorTextBox,isVendorChecked);
+				    } else {
+				    	$.fn.showCustomMsg(['Please fill Receiver'],error,'ULD Sweep');
+				    	//error scenario
+					    /*$advanceLink.trigger('click');
+					    errors.push(enter_supp_msg);
+					    showAllErrors(errors);
+					    $supplierElem.focus();*/
+				    }
+			  });
+		
+			$("#addActionBtn").click(function(){ 
+				if($("#searchAndAdd").is(":visible")){
+					$(this).find('label').attr('class','addRow');
+				}else{
+					$(this).find('label').attr('class','hideRow');
+				}
+				$("#uldSearchArea").toggleClass('hideBlock');
+			});
+			$("#closeLink").click(function(){
+				$("#addActionBtn").find('label').attr('class','addRow');			 
+				$("#uldSearchArea").addClass('hideBlock');
+			});
+			
+			
+			$("#menu").menu({ position: { my: "right top", at: "right top+20" } });
+			
+			$('#sen').val($('#posSite').val() + '-' + $('#posSiteName').val());
+			
+			$('#sen').prop('disabled', true);
+			
+			createSupplierAutoSuggest($('#rec'));
+			
+			$('#cnpn').keypress(function(event) {
+				if(event.which == 13 && $('#salesOrg').val() == '1060'){
+					callULDDetailsService($(this).val());
+				}	
+			});
+			
+			$('#searchAndAdd').unbind('click');
+			$('#searchAndAdd').click(function() {
+				var toAddArea = $('#addULDTable');
+				var srArea = $('#uldSearchArea');
+				if($('#addULDTable').find('tbody tr').length == 0){
+					$('#addULDTable').find('thead').removeClass('hideBlock');
+					$('#uldButtonDiv').removeClass('hideBlock');
+				}
+				addULDRow(srArea, toAddArea);
+			});
+			
+			var masterParam = {
+					"iv_user_id" : $('#loginUserId').val(),
+					"iv_pwd" : "",
+					"iv_session_id" : "111",
+					"iv_site_no" : $('#posSite').val(),
+					"iv_sales_org": $('#salesOrg').val()
+				};
+
+			console.log(getULDMasterInfoUrl+' '+JSON.stringify(masterParam));
+			
+			var options = '<option value="">Select</option>';
+			
+			$.ajax({
+			    type: "POST",
+			    url: getULDMasterInfoUrl,
+			    data: JSON.stringify(masterParam),
+			    beforeSend: function(){
+			    	startLoading();
+			    }
+			  }).done(function(data) {
+				  if(checkResult(data,'uld_id','ULD Sweep')){
+					  var response = data;
+						for ( var i = 0; i < response.length; i++) {
+							//Defect_12500
+							options += '<option plt_type = "'+(response[i].plt_type||'')+'" value="'
+									+ $.trim(response[i].uld_id) + '">'
+									+ $.trim(response[i].uld_desc) + '</options>';
+							uldTypeMap[response[i].uld_id] = response[i].uld_desc;
+						}
+						$('#typeSelect').html(options);
+					}
+			  }).fail(function() {
+				  $.fn.showCustomMsg([mobiSerErrCode],error);
+				  stopLoading();
+			  }).always(function() {
+				  stopLoading();
+			  });
+			
+			$('#uldSubmitBtn').unbind('click');
+			$('#uldSubmitBtn').click(function(){
+				callULDUpdateService($(this));
+			});
+			$('#uldCancelBtn').click(function(){
+				//Defect 5891
+				if( $('#addULDTable tbody tr').length > 0 || $('#uldSweepForm').data('changed')){//some changes are there..so warning mesg
+					$.fn.warnPopup('warn',leaveScreenMsg,'Process ULDs',triggercancelProcessUldsYes,triggerLeaveStkAdjNo,'',$(this),'');
+				}
+				else
+				callULDCancelButton($(this));
+			});
+			//on click of back button
+			$("#backBtn").click(function(e) {//Defect 5891
+				if( $('#addULDTable tbody tr').length > 0 || $('#uldSweepForm').data('changed')){//some changes are there..so warning mesg
+					$.fn.warnPopup('warn',leaveScreenMsg,'Process ULDs',triggerBackProcessUldsYes,triggerLeaveStkAdjNo,'',$(this),'');
+				}
+				else
+				 window.location.href="../login/homepage.htm";
+			});
+			
+			$('#rec').focus();
+			
+			$('.qtyField').onlyNumbers();
+			
+			$("form :input").change(function() {
+				  $('#uldSweepForm').data('changed', true);
+				});
+		});
+//Defect 5891
+
+var triggercancelProcessUldsYes		= function(e)
+{
+	callULDCancelButton('#uldCancelBtn');
+	var $elem = e.data.msg;
+	$elem.dialog('close');
+};
+var triggerBackProcessUldsYes		= function(e)
+{
+	var $elem = e.data.msg;
+	$elem.dialog('close');
+	window.location.href="../login/homepage.htm";
+};
+function leavePrcsULDBreadCrumbNavigation()
+{
+	$("#backBtn").trigger('click');
+}
+		// Code for Auto Complete with select box
+		
+		
+		 (function( $ ) {
+			$.widget( "custom.combobox", {
+			_create: function() {
+			this.wrapper = $( "<span>" )
+			.addClass( "custom-combobox" )
+			.insertAfter( this.element );
+			this.element.hide();
+			this._createAutocomplete();
+			this._createShowAllButton();
+			},
+			_createAutocomplete: function() {
+			var selected = this.element.children( ":selected" ),
+			value = selected.val() ? selected.text() : "";
+			this.input = $( "<input>" )
+			.appendTo( this.wrapper )
+			.val( value )
+			.attr( "title", "")
+			.attr("placeholder", "Type or select" )
+			
+			.addClass( "custom-combobox-input textbox defaultTextbox" )
+			.autocomplete({
+			delay: 0,
+			minLength: 0,
+			source: $.proxy( this, "_source" )
+			})
+			.tooltip({
+			tooltipClass: "ui-state-highlight"
+			});
+			this._on( this.input, {
+			autocompleteselect: function( event, ui ) {
+			ui.item.option.selected = true;
+			this._trigger( "select", event, {
+			item: ui.item.option
+			});
+			},
+			autocompletechange: "_removeIfInvalid"
+			});
+			},
+			_createShowAllButton: function() {
+			var input = this.input,
+			wasOpen = false;
+			$( "<a>" )
+			.attr( "tabIndex", -1 )
+			.attr( "title", "Show All Items" )
+			
+			.appendTo( this.wrapper )
+			.button({
+			icons: {
+			primary: "ui-icon-triangle-1-s"
+			},
+			text: false
+			})
+			.removeClass( "ui-corner-all" )
+			.addClass( "custom-combobox-toggle" )
+			.mousedown(function() {
+			wasOpen = input.autocomplete( "widget" ).is( ":visible" );
+			})
+			.click(function() {
+			input.focus();
+			// Close if already visible
+			if ( wasOpen ) {
+			return;
+			}
+			// Pass empty string as value to search for, displaying all results
+			input.autocomplete( "search", "" );
+			});
+			},
+			_source: function( request, response ) {
+			var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+			response( this.element.children( "option" ).map(function() {
+			var text = $( this ).text();
+			if ( this.value && ( !request.term || matcher.test(text) ) )
+			return {
+			label: text,
+			value: text,
+			option: this
+			};
+			}) );
+			},
+			_removeIfInvalid: function( event, ui ) {
+			// Selected an item, nothing to do
+			if ( ui.item ) {
+			return;
+			}
+			// Search for a match (case-insensitive)
+			var value = this.input.val(),
+			valueLowerCase = value.toLowerCase(),
+			valid = false;
+			this.element.children( "option" ).each(function() {
+			if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+			this.selected = valid = true;
+			return false;
+			}
+			});
+			// Found a match, nothing to do
+			if ( valid ) {
+			return;
+			}
+			// Remove invalid value
+			this.input
+			.val( "" )
+			.attr( "title", "Select from available display types" )
+			.tooltip( "open" );
+			this.element.val( "" );
+			this._delay(function() {
+			this.input.tooltip( "close" ).attr( "title", "" );
+			}, 2500 );
+			this.input.autocomplete( "instance" ).term = "";
+			},
+			_destroy: function() {
+			this.wrapper.remove();
+			this.element.show();
+			}
+			});
+			})( jQuery );
+			
+			
+			 $(function() {
+				$( ".combobox" ).combobox();
+				
+				
+			});
+			 
+// Related to supplier verify option
+ function getVendorLookup(vendor,from,toCheck) {
+ 	
+ 	  startLoading();
+ 	  var param = { "iv_vendor": vendor, "iv_sales_org": salesOrg};
+ 	  console.log(getSupplierSuggestionsUrl + ' ' + JSON.stringify(param));
+ 	  errors = [];
+ 	  var $verifyPopup = $("#dialog-verifySupplier");
+ 	  $.post(getSupplierSuggestionsUrl, JSON.stringify(param)).done(function(data) {
+ 	      if (data != undefined && data != null && data.length > 0 && data[0].supplier_no != undefined) {
+ 	        var response = data;
+ 	        var i = 1;
+ 	        var cnt = 1;
+ 	        var content = formVendorContent(response, vendor);
+ 	        var $paginatioDiv = '';
+ 	        //var $supplierElem = $('#vendorDesc');
+ 			var $messHoldElem = $('#error_div');
+ 	        $('#popupDataDiv').html('').append(content);
+ 	        var recCnt = response.length;
+ 	        currentPageInPopup = 1;
+ 	        $paginatioDiv = $('.paginationDivVerifyVendorPopup');
+ 	        
+ 	        if (recCnt > 9) {
+ 	        	$paginatioDiv.removeClass('hideBlock').pagination({ 
+ 	        	  items: recCnt,  
+ 	        	  itemsOnPage: 9,  
+ 	        	  cssStyle: 'compact-theme', 
+ 	        	  currentPage: currentPageInPopup, 
+ 	        	  onPageClick: function(pageNumber) {
+ 	                getVendorsForPagination(pageNumber);
+ 	              }
+ 	            });
+ 	        } else {
+ 	        	$paginatioDiv.addClass('hideBlock');
+ 	        }
+ 	       
+ 	        $('.verifyVendorContent tbody tr').each(function() {
+ 	            $(this).attr('class', '');
+ 	            $(this).addClass('verifyContentInPopUp').addClass('pagNo-' + cnt);
+ 	            if (cnt > 1){ 
+ 	            	$(this).addClass('hideBlock'); 
+ 	            }
+ 	            if (i % 9 == 0) {
+ 	              cnt++;
+ 	            }
+ 	            i++;
+ 	          });
+ 	        if ($('#sizeCheck').val() == 0) {
+ 	          if ($verifyPopup.dialog("isOpen")) {
+ 	            $verifyPopup.dialog("close");
+ 	          }
+ 	          if ($verifyPopup.dialog("isOpen")) {
+ 	        	 $messHoldElem.addClass('warningMessage').removeClass('errorDiv');
+ 	            $('#message-div,.paginationDivVerifyVendorPopup').addClass('hideBlock');
+ 	            //$('.error-div').removeClass('hideBlock').text(supp_invalid_msg);
+ 	            errors.push(supp_invalid_msg);
+ 		        showAllErrors(errors);
+ 	          } else {
+ 	            errors.push(supp_invalid_msg);
+ 	            from.focus();
+ 	            showAllErrors(errors);
+ 	          }
+ 	        } else if ($('#sizeCheck').val() > 1) {
+ 	          if (!$verifyPopup.dialog("isOpen")) {
+ 	        	//$supplierElem.val($('#supplier').val());
+ 	            $verifyPopup.parent().addClass("popupWrapper");
+ 	            $verifyPopup.dialog("open").removeClass('visible-hide');
+ 	            $('.verifyVendorContent').parent().removeClass('hideBlock');
+ 	            $("#searchWarning").addClass('hideBlock');
+ 	            $("#popupSearchVendor").removeClass('hideBlock');
+ 	            $messHoldElem.parent().parent().removeClass('warningMessage').removeClass('errorDiv');
+ 	            $('#message-div,.paginationDivVerifyVendorPopup').removeClass('hideBlock');
+ 	            $('.error-div').addClass('hideBlock');
+ 	          }
+ 	        } else {
+ 	          from.val($("#suppNo0").text() + "-" + $("#suppName0").text());
+ 	          toCheck.val(true);
+ 	          $verifyPopup.dialog("close");
+ 	        }
+ 	        bindVendorSelect(from,toCheck);
+ 	      } else {
+ 	        if ($verifyPopup.dialog("isOpen")) {
+ 	          //$('#message-div').parent().parent().addClass('errorDiv').removeClass('warningMessage');
+ 	          $('#message-div,.paginationDivVerifyVendorPopup').addClass('hideBlock');
+ 	          //$('.error-div').removeClass('hideBlock').text(supp_invalid_msg);
+ 	          $('.verifyVendorContent').parent().addClass('hideBlock');
+ 	          errors.push(supp_invalid_msg);
+ 		      showAllErrors(errors);
+ 	        } else {
+ 	        	errors.push(supp_invalid_msg);
+ 	            showAllErrors(errors);
+ 	        }
+ 	      }
+ 	      stopLoading();
+ 	    });
+ 	}
+ 
+function formVendorContent(list, text) {
+	  var content = '';
+	  var rowContent = '';
+	  content += '<div class="popupSearchWrapper" id="error_div">';
+	  content += '<div class="tableInfo "style="display: inline-block;float: left;"><h4 id="message-div">Total <strong>' + list.length + '</strong> results found for <strong class="searchString">"' + text + '"</strong>. Please select a vendor from the list below.</h4></div>' + '<h4 class="error-div"></h4>';
+	  content += '<div class="paginationWrapper  paginationDivVerifyVendorPopup paginationDiv hideBlock" id="paginationDiv1">' + '<div class="pagination-holder clearfix"><div id="compact-pagination" class="compact-theme simple-pagination"></div>' + '</div></div></div><!-- End of search wrapper --></div>';
+	  content += '<div class="ContentTableWrapper"><table class="ContentTable verifyVendorContent" cellspacing="0">' + '<thead><tr><th>Supplier #</th><th>Description</th><th width="25px" class="lastColumn">&nbsp;</th></tr></thead><tbody>';
+	  if (list != null && list != undefined && list.length > 0) {
+	    for (var i = 0; i < list.length; i++) {
+	      rowContent += '<tr><td class="pagNo-';
+	      if (i > 9) rowContent += 'hideBlock';
+	      rowContent += '" id="suppNo' + i + '">' + list[i].supplier_no + '</td><td id="suppName' + i + '">' + list[i].supplier_name + '</td><td class="sorted lastColumn"><label class="linkBtn linkBtn1" id="' + i + '"><label class="selectItem">Select</label></label></td></tr>';
+	    }
+	  }
+	  content += rowContent + '</tbody></table>' + '<div class="tableFooter"><div class="paginationWrapper bottomPagination  paginationDivVerifyVendorPopup paginationDiv hideBlock"' + 'id="paginationDiv2"><div class="pagination-holder clearfix"><div id="compact-pagination" class="compact-theme simple-pagination"></div>' + '</div></div></div>' + '</div><input type="hidden" value="' + list.length + '" id="sizeCheck" />';
+	  return content;
+}
+ 
+function getVendorsForPagination(pageNo) {
+	  currentPageInPopup = pageNo;
+	  var pageClass = 'pagNo-' + pageNo;
+	  $('.verifyContentInPopUp').filter(function() {
+	      if ($(this).hasClass(pageClass)) { $(this).removeClass('hideBlock');}
+	      else { $(this).addClass('hideBlock'); }
+	    });
+}
+ 
+function showAllErrors(content) {
+		$.fn.showCustomMsg(content,error, 'ULD Sweep');
+}
+ 
+function bindVendorSelect(from,toCheck) {
+	  $(".linkBtn1").click(function() {
+	      //clearAllErrors();
+	      var id = $(this).attr("id");
+	      from.val($("#suppNo" + id + "").text() + "-" + $("#suppName" + id + "").text());
+	      toCheck.val(true);
+	      if ($("#dialog-verifySupplier").dialog("isOpen")) { $("#dialog-verifySupplier").dialog("close"); }
+	    });
+}
+ 
+function callULDDetailsService(consignNo){
+	var param = {"iv_consign_id":consignNo};
+	
+	console.log(getULDDetailsUrl + ' ' + JSON.stringify(param));
+	
+	$.ajax({
+	    type: "POST",
+	    url: getULDDetailsUrl,
+	    data: JSON.stringify(param),
+	    beforeSend: function() {
+	    	  startLoading();
+	      }
+	  }).done(function(response) {
+		  console.log(JSON.stringify(response));	
+		  if(response != undefined  && response.length > 0 && response[0].pcd_id != undefined){
+			  if($('#addULDTable').find('tbody tr').length == 0){
+					$('#addULDTable').find('thead').removeClass('hideBlock');
+					$('#uldButtonDiv').removeClass('hideBlock');
+				}
+			  for(var i=0; i< response.length; i++)
+			  //Defect_12500
+			  addRowToULDTable(response[i].pallet_type, response[i].pallet_type, response[i].pallet_qty, '', response[i].pcd_Id, $('#addULDTable'),'00');	
+		  }		
+	  }).fail(function() {	
+		  $.fn.showCustomMsg(['Sorry, Some technical issue occured.'],error,'ULD Sweep');
+	  }).always(function() {
+		  stopLoading();
+	  });
+}
+
+function addULDRow(srArea, toAddArea) {
+	if (validateULDSearch(srArea, toAddArea)) {
+		addToULDTable(srArea, toAddArea);
+	}
+}
+
+function validateULDSearch(srArea, toAddArea) {
+	if (srArea.find('#typeSelect').val().trim() == '') {
+		$.fn.showCustomMsg(['Please select Type.'],error,'ULD Sweep');
+		return false;
+	}
+	return true;
+}
+
+function addToULDTable(srArea, toAddArea) {
+	var selectedElem = srArea.find('#typeSelect').children(':selected');
+	var uldId = selectedElem.val();
+	//var recQty = srArea.find('#req').val();
+	var retQty = srArea.find('#ret').val();
+	//Defect_12500
+	var plt_type = selectedElem.attr('plt_type');	
+	addRowToULDTable(uldId, selectedElem.text(), '', retQty, '', toAddArea,plt_type);
+
+	srArea.find('#typeSelect').val(srArea.find('#typeSelect').find('options:first').val());
+	//srArea.find('#req').val('');
+	srArea.find('#ret').val('');
+}
+//Defect_12500
+function addRowToULDTable(uldId, uldType, recQty, retQty, pcdId, toAddArea,plt_type){
+	var tempTr = '';
+	if (toAddArea.find('tbody').find('tr[id="row-' + uldId + '"]').length >= 1) {
+/*		if (recQty != undefined && recQty != null && recQty != '') {
+			toAddArea.find('tbody').find('tr[id="row-' + uldId + '"]').find(
+					'.recQty').val(recQty);
+		}*/
+		if (retQty != undefined && retQty != null && retQty != '') {
+			toAddArea.find('tbody').find('tr[id="row-' + uldId + '"]').find(
+					'.retQty').val(retQty);
+		}
+	} else {
+//Defect_12500
+		tempTr = '<tr plt_type="'+plt_type+'" id="row-' + uldId + '" pcdId="'+pcdId+'"><td>' + uldType
+				+ '</td><td class="centerValue" id="uom-1"><input type="#" class="textbox xsmallbox retQty qtyField" value="'+retQty+'">'
+				+ '</td><td class="centerValue">'
+				+ '<label class="linkBtn" id="deleteULD-1"><label id="delete-'
+				+ uldId + '" class="deleteRecord">Delete</label>'
+				+ '</label></td></tr>';
+
+		toAddArea.find('tbody').append(tempTr);
+		toAddArea.removeClass('hideBlock');
+		bindDeleteULDEvent(toAddArea, uldId);
+		
+		$('.qtyField').onlyNumbers();
+	}
+}
+
+function bindDeleteULDEvent(toAddArea, id) {
+	var btnId = 'delete-' + id;
+	toAddArea.find('#' + btnId).unbind('click');
+	toAddArea.find('#' + btnId).click(function() {
+		toAddArea.find('#' + btnId).closest('tr').detach();
+	});
+}
+function callULDCancelButton(elem){
+	$('#addULDTable').find('tbody tr').remove();
+	$('#addULDTable').find('thead').addClass('hideBlock');
+	$('#uldButtonDiv').addClass('hideBlock');
+	$("#closeLink").trigger('click');
+}
+function callULDUpdateService(elem){
+	uldParam = prepareULDUpdateServiceParam();
+	
+	if(uldParam.valid == 'Y'){
+		
+		console.log(updateULDDetailsUrl + ' ' + JSON.stringify(uldParam));
+		$.ajax({
+		    type: "POST",
+		    url: updateULDDetailsUrl,
+		    data: JSON.stringify(uldParam),
+		    beforeSend: function() {
+		    	  startLoading();
+		      }
+		  }).done(function(response) {
+			  console.log(JSON.stringify(response));	
+			  if(response != undefined  && response.length > 0 && response[0].msg != undefined && response[0].msg == 'S'){
+				  $.fn.showCustomMsg(['ULD information has been sent.'],success,'Process ULD');
+				  if($('#salesOrg').val() == '1060'){
+				  // As per UAT defect 5460 and discussed with muhammed azim we are allowing to show for all users instead of bigw
+					  $.fn.warnPopup('warn','Do you want to print Pallet Control Docket Copy?','Confirmation',triggerPrintYes,triggerPrintNo,'',elem,okButtons);
+				  }
+				  clearULDElements();
+			  }	else {
+				  $.fn.showCustomMsg(['ULD details update failed.'],error,'ULD Sweep'); 
+			  }	
+		  }).fail(function() {	
+			  $.fn.showCustomMsg(['Sorry, Some technical issue occured.'],error,'ULD Sweep');
+		  }).always(function() {
+			  stopLoading();
+		  });
+	}
+	
+}
+
+function prepareULDUpdateServiceParam(){
+	var valid = 'Y';
+	var pcdId = '';
+	var deliveryDocId = '';
+	var uldItem = {};
+	var uldList = [];
+	var uldId = '';
+	var retQtyEmptyFlag = false;
+	
+	if($('#rec').val() == ''){
+		$.fn.showCustomMsg(['Receiver is mandatory.'],error,'ULD Sweep');
+		valid = 'N';
+	} /*else if(salesOrg == '1060' && $('#cnpn').val() == ''){
+		$.fn.showCustomMsg(['Consignment no. is mandatory.'],error,'ULD Sweep');
+		valid = 'N';
+	} */else if(salesOrg != '1060' && $('#reg').val() == ''){
+		$.fn.showCustomMsg(['Pan no. is mandatory.'],error,'ULD Sweep');
+		valid = 'N';
+	} else if($('#addULDTable').find('tbody tr').length == 0){
+		$.fn.showCustomMsg(['ULD is mandatory.'],error,'ULD Sweep');
+		valid = 'N';
+	} else {
+		$('#addULDTable').find('tbody tr').each(function(){
+			if($(this).find('td').length > 0){
+				if($(this).find('.retQty').val() == undefined || $(this).find('.retQty').val() == ''){
+					retQtyEmptyFlag = true;
+					$(this).find('.retQty').error('Return Quantity is Mandatory');
+				}
+				
+				uldId = getEmptyIfNull($(this).attr('id').split("-")[1]);
+				uldItem = {
+					"iv_uld_id"	: uldId,
+					"iv_uld_recv_qty" : '0',
+					"iv_uld_return_qty" : getEmptyIfNull($(this).find('.retQty').val()),
+					"uld_type" : ((uldTypeMap[uldId] != undefined) && (uldTypeMap[uldId] != '')) ? uldTypeMap[uldId] : uldId,
+					//Defect_12500
+					"iv_plt_type": getEmptyIfNull($(this).attr('plt_type'))
+				};
+				
+				pcdId = $(this).attr('pcdId');
+				
+				uldList.push(uldItem);
+			}	
+		});
+		
+		if(retQtyEmptyFlag){
+			$.fn.showCustomMsg(['Return Quantity is mandatory.'],error,'ULD Sweep');
+			valid = 'N';
+		}
+	}
+	
+	if(salesOrg == '1060'){
+		deliveryDocId = getEmptyIfNull($('#cnpn').val());
+	} else {
+		deliveryDocId = getEmptyIfNull($('#reg').val());
+	}
+	
+	var param = {
+				"iv_site_no"	:$('#posSite').val(),
+				"iv_supplier_no"	:getEmptyIfNull($('#sen').val().split("-")[0]),
+				"iv_receiver_no"	:getEmptyIfNull($('#rec').val().split("-")[0]),
+				"iv_cons_freight"	:"",
+				"iv_carrier"	:getEmptyIfNull($('#car').val().split("-")[0]),
+				"iv_rego"	:getEmptyIfNull($('#reg').val()),
+				"iv_delivery_doc_id":deliveryDocId,
+				"iv_sales_org"	:salesOrg,
+				"iv_pcd_id":	"1231231",
+				//"iv_pcd_id":	pcdId,
+				"iv_user_id"	:$('#loginUserId').val(),
+				"iv_action_code":"A",
+				"iv_uld_info": uldList,
+				"iv_carrier_name"	:getEmptyIfNull($('#car').val().split("-")[1]),
+				"iv_receiver_name"	:getEmptyIfNull($('#rec').val().split("-")[1]),
+				"valid" : valid
+				
+		};
+			
+	return param;
+}
+
+function clearULDElements(){
+	$('#rec').val('');
+	$('#reg').val('');
+	$('#car').val('');
+	$('#cnpn').val('');
+	$("#typeSelect").val($("#typeSelect option:first").val());
+	$('#req').val('');
+	$('#ret').val('');
+	$('#addULDTable').find('tbody').html('');
+	$('#addULDTable').find('thead').addClass('hideBlock');
+	$('#uldButtonDiv').addClass('hideBlock');
+}
+
+var triggerPrintYes = function(e){
+	var $popUp = e.data.msg;
+	
+	callULDJasperPrint(uldParam);
+	$popUp.dialog('close');
+};
+
+var triggerPrintNo = function(e){
+	var $elem = e.data.msg;
+	$elem.dialog('close');
+};
+
+function callULDJasperPrint(uldParam)
+{	
+	var obj={			
+			reportResult	: uldParam.iv_uld_info,
+			pcdId			: uldParam.iv_pcd_id,
+			storeNo 		: uldParam.iv_receiver_no,
+			storeName 		: uldParam.iv_receiver_name,
+			supplierNo		: $('#posSite').val(),
+			supplierName	: $('#posSiteName').val(),
+			carrierNo		: uldParam.iv_carrier,
+			carrierName		: uldParam.iv_carrier_name,
+			regoNo			: uldParam.iv_rego,
+			consignNo		: uldParam.iv_delivery_doc_id,
+			userId			: $('#loginUserId').val()
+			};
+	//console.log(JSON.stringify(obj));
+	$.ajax({
+	url: "printPCDCopyPDF.htm",
+	type: "POST",
+	dataType: "json",
+	contentType:"application/json",
+	data:JSON.stringify(obj),
+    cache: false,    //This will force requested pages not to be cached by the browser  
+    processData:false, //To avoid making query String instead of JSON
+    beforeSend: function() {
+        startLoading();
+    },
+	success: function(response, textStatus ){
+	//console.log(response.data);
+	if(response.data == 'success')
+		{
+		$('#uldSweepForm').attr("action", "downloadPCDCopyPdf.pdf");
+		$('#uldSweepForm').attr('target','_blank');
+		$('#uldSweepForm').attr('method','get');
+		$('#uldSweepForm').submit();
+		stopLoading();
+		}
+	//console.log("success");
+	},
+	error: function(xhr, textStatus, errorThrown){
+	console.log('request failed'+errorThrown);
+	}
+	});
+}

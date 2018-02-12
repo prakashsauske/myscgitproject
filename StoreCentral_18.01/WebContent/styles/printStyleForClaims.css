@@ -1,0 +1,727 @@
+@page {
+
+size: A4 portrait;
+
+	/* margin-top: 60px;
+	margin-bottom: 30px;
+	margin-right: 70px;
+	margin-left: 70px;
+	size: portrait; */
+}
+/* @media screen {
+        div.divFooter {
+            display: none;
+        }
+    }*/
+@media screen {
+        div.divFooter {
+            display: none;
+        }
+    } 
+@media print {
+	/* make a 10-inch high block that sits on top of the page content */
+	.page-break {
+		page-break-before: always;
+		display: block;
+		position: absolute;
+		width: 100%;
+	}
+	.pageBreak {
+		page-break-before: always;
+	}
+
+	/* stick the contents of .page-break to the bottom of the 10 inch block */
+	.page-break .copyright {
+		position: absolute;
+		bottom: 0px;
+		/* width:100% */
+	}
+}
+
+.printbody table {
+	border: 0px;
+	border-radius: 3px;
+	border-collapse: collapse;
+	clear: both;
+	width: 100%;
+}
+
+.printbody {
+	border: /* solid 1px gray */ 0px;
+	border-radius: 3px;
+	clear: both;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 1000px;
+	padding: 35px;
+}
+
+.printbody tr th {
+	background: #c0c5ca;
+	min-height: 35px !important;
+	border-right: solid 1px !important;
+	border-left: solid 1px !important;
+	border-top: solid 1px !important;
+	padding: 8px 10px;
+	vertical-align: top;
+	white-space: nowrap
+}
+
+.printbody.cartonLabel tr td {
+	border-bottom: solid 1px !important;
+	border-right: solid 1px !important;
+	padding: 8px 10px;
+	border-left: solid 1px !important;
+	border-top: solid 1px !important;
+	vertical-align: top;
+	height: 10px !important
+}
+
+.printbody tr td {
+	border-bottom: 0px !important;
+	border-right: 0px !important;
+	padding: 8px 10px;
+	border-left: 0px !important;
+	border-top: 0px !important;
+	vertical-align: top;
+	height: 10px !important
+}
+.printbody.serviceOrder tr:first-child td {
+	background-color: #c0c5ca;
+	border-bottom: solid 1px !important;
+	border-right: 0px !important;
+	padding: 8px 10px;
+	border-left: 0px !important;
+	border-top: 0px !important;
+	vertical-align: top;
+	height: 10px !important
+}
+
+.font11 {
+	font-size: 11px;
+}
+
+.reportName {
+	font-size: 18px;
+	font-weight: bold;
+	float: left;
+	margin-top: 5px
+}
+
+.bold {
+	font-weight: bold
+}
+
+.normal {
+	font-weight: normal;
+}
+
+.width70 {
+	width: 70%
+}
+
+.width30 {
+	width: 30%
+}
+
+.width35 {
+	width: 25%
+}
+
+.width25 {
+	width: 20%
+}
+
+.width26 {
+	width: 25%
+}
+
+.width48 {
+	width: 48%
+}
+
+.width98 {
+	width: 99.5%
+}
+
+.width100 {
+	width: 100%
+}
+
+.width49 {
+	width: 49%
+}
+
+.width50 {
+	width: 50%
+}
+
+.noteText {
+	font-size: 10px
+}
+
+.inline-block {
+	display: inline-block
+}
+/* .border{border:1px solid gray;border-radius: 3px;} */
+.padding5 {
+	padding: 5px
+}
+
+.text-align-right {
+	text-align: right
+}
+
+div.inline-block.margin5.endOfReportVoid {
+	width: 47%;
+	text-align: center;
+}
+
+.text-align-center {
+	text-align: center
+}
+
+.text-align-left {
+	text-align: left
+}
+
+.right {
+	float: right
+}
+
+.left {
+	float: left
+}
+
+.margin5 {
+	margin: 5px
+}
+
+.margintop20 {
+	margin-top: 20px
+}
+
+.margintop40 {
+	margin-top: 40px
+}
+
+.margintop100 {
+	margin-top: 150px !important
+}
+
+.lineheight40 {
+	line-height: 40px
+}
+
+.lineheight15 {
+	line-height: 15px
+}
+
+.margontopnone {
+	margin-top: 0px !important
+}
+
+.separator {
+	padding: 10px 10px
+}
+
+.block {
+	display: block
+}
+
+.height30 {
+	height: 30px !important
+}
+
+.height50 {
+	height: 50px !important
+}
+ #foot{  
+ /* background: #ffab62; */
+  width: 100%;
+height: 63px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  }
+.printtablesoh  tr td {
+	height: 36px !important
+}
+
+.printtablesoh  tr td.print-td {
+	height: 20px !important
+}
+
+.printtablesoh  th.text-align-left.bold.width25 {
+	width: 34%;
+}
+
+.printtablesoh  th.text-align-left.bold.width20 {
+	width: 20%;
+}
+
+.printtablesoh  th.text-align-left.bold.width15 {
+	width: 22%;
+}
+
+.printtablesoh  tr td {
+	padding: 3px 10px !important;
+}
+
+.printtableinv tr {
+	height: 34px !important
+}
+
+.printtabledis tr {
+	height: 34px !important
+}
+
+.printtableprod tr {
+	height: 40px !important
+}
+
+.without-invoice-table tr {
+	height: 55px !important
+}
+
+.with-invoice-table tr {
+	height: 66px !important
+}
+
+.bordernone {
+	border: 0px !important
+}
+
+.bordernone tr td {
+	border-bottom: 0px !important
+}
+
+.centerValue {
+	text-align: center
+}
+
+;
+.with-invoice-records {
+	height: 58px !important
+}
+
+.without-invoice-records {
+	height: 50px !important
+}
+
+tr.border-bottom th {
+	border-bottom: 1px solid black !important;
+}
+
+.border-bottom-main {
+	border-bottom: 1px solid black !important
+}
+
+.salesOrgName {
+	padding-top: 15px !important
+}
+
+.print .centerValue {
+	width: 18px;
+}
+
+.print {
+	border: /* solid 1px gray */ 0px;
+	border-radius: 3px;
+	clear: both;
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 1000px
+}
+
+.vendor-name-mob {
+	width: 48%;
+	float: left;
+}
+
+.date-time-mob {
+	width: 48%;
+	float: right;
+	text-align: right
+}
+
+.contact-mob {
+	width: 23%;
+	float: left;
+}
+
+.site-mob {
+	float: right;
+	width: 23%;
+	text-align: right
+}
+
+.page-mob {
+	width: 30%;
+	float: right;
+	text-align: right
+}
+
+.inline-block {
+	display: inline-block;
+	padding: 2px
+}
+
+.print-head-mob {
+	float: left;
+	width: 49%;
+	text-align: center
+}
+
+.ContentTable.actionRowPrint {
+	text-align: left !important;
+	font-size: 11px !important;
+	margin-top: 20px
+}
+
+.ContentTable.actionRowPrint th {
+	border-top: 1px solid black !important;
+	border-bottom: 1px solid black !important;
+}
+
+.hideBlock {
+	display: none
+}
+
+.height90 {
+	height: 93px !important
+}
+
+#mobReportEnd {
+	vertical-align: bottom !important;
+	text-align: center !important;
+}
+
+#mobPrintTable tr td {
+	border-bottom: 1px solid black !important;
+	border-left: 1px solid black !important;
+}
+
+#mobPrintTable tr.appendedMob td {
+	border-bottom: 0px solid black !important;
+	border-left: 0px solid black !important;
+	text-align: center;
+	vertical-align: inherit;
+}
+
+#mobPrintTable>tbody>tr:nth-child(19)>td:nth-child(2) {
+	width: 175px;
+}
+
+#mobPrintTable tr th {
+	border-left: 1px solid black !important;
+	border-top: 1px solid black !important;
+	padding: 8px !important;
+}
+
+#mobPrintTable tr td.barcode-area {
+	padding-top: 12px !important;
+	text-align: left;
+	padding-left: 10px !important;
+}
+
+#mobPrintTable tr th.lastColumn {
+	border-right: 1px solid black;
+}
+
+#mobPrintTable tr td.lastColumn {
+	border-right: 1px solid black;
+}
+
+#mobPrintTable>tbody>tr:nth-child(1)>th:nth-child(1) {
+	padding: 8px 50px !important;
+}
+
+#mobPrintTable td:nth-child(41) {
+	border-right: 1px solid black !important;
+}
+
+#mobPrintTable td:nth-child(40).columnDivider {
+	border-right: 1px solid black !important;
+}
+
+#mobPrintTable td:nth-child(36).columnDivider {
+	border-right: 1px solid black !important;
+}
+
+body {
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+.columnDivider.crntWeek,.columnDivider.weekOne,.columnDivider.weekTwo,.columnDivider.weekThree,.lastColumn.weekFour
+	{
+	border-bottom: 0px !important;
+}
+
+.endOfReport {
+	text-align: center;
+	width: 45%;
+	float: left
+}
+
+.hideBlock {
+	display: none
+}
+
+.height30 {
+	height: 30px !important
+}
+
+.wvrReportEnd,.mplReportEnd {
+	text-align: center !important;
+}
+
+.manuAllignLeft {
+	text-align: left !important;
+}
+
+td.rightValue {
+	text-align: right !important;
+}
+
+td.leftValue {
+	text-align: left !important;
+}
+
+td.noteFont {
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+tr.parentTrPrintVal.storeTotVal {
+	background: #c0c5ca;
+	min-height: 35px !important;
+	border-right: 0px;
+	border-left: 0px;
+	padding: 8px 10px;
+	vertical-align: top;
+	white-space: nowrap;
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.parentTrPrintVal.storeTotVal td {
+	border-top: 1px solid black !important;
+	border-bottom: 1px solid black !important;
+	font-weight: bold;
+}
+
+.printTable tr td {
+	border-bottom: solid 1px !important;
+	border-right: solid 1px !important;
+	border-left: solid 1px !important;
+	font-size: 1em !important;
+	padding: 8px 10px !important;
+	vertical-align: top !important;
+	border: solid 1px;
+	border-top-style: solid;
+	border-top-width: 1px;
+}
+.printTabletr  {
+	border-bottom:  1px !important;
+	border-right: 1px !important;
+	border-left: 1px !important;
+	border-top: solid 1px !important;
+	font-size: 20px !important;
+	padding: 8px 10px !important;
+	vertical-align: top !important;
+	border: solid 1px !important;
+	border-top-style: solid;
+	border-top-width: 0px;
+}
+.printTable tr th {
+	border-right: solid 1px !important;
+	border-bottom: solid 1px !important;
+	border-left: solid 1px !important;
+	font-size: 1em !important;
+	padding: 8px 10px;
+	text-align: left ! important;
+	vertical-align: top !important;
+	white-space: nowrap !important;
+	border: solid 1px;
+	border-top-style: solid;
+	border-top-width: 1px;
+}
+
+#printplannerbody table {
+	border-right: 1px solid black;
+	border-spacing: 0;
+	clear: both;
+	width: 100%;
+}
+
+#printplannerbody {
+	border-radius: 3px;
+	clear: both;
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 1000px;
+	border-spacing: 0;
+}
+
+#printplannerbody tr th {
+	background: #c0c5ca;
+	min-height: 35px !important;
+	border-left: 1px solid grey;
+	border-bottom: 1px solid black;
+	padding: 8px 10px;
+	vertical-align: top;
+	white-space: nowrap;
+	border-spacing: 0;
+}
+
+#printplannerbody tr td {
+	border-bottom: 1px solid grey;
+	padding: 8px 10px;
+	border-left: 1px solid grey;
+	vertical-align: top;
+	border-spacing: 0;
+}
+
+#printplannerbody tr td #firstRow {
+	border-top: 1px solid grey;
+	padding: 8px 10px;
+	vertical-align: top
+}
+.boxed {
+  	border: 2px solid rgb(5, 5, 5) ;
+  	font-size: 16px;
+    float: right;
+    height : 32px;
+    vertical-align:center;
+    width: 209px;
+    padding-top: 11px;
+    padding-left: 21px;
+    margin-left: 0px;
+    margin-right: 100px;
+    margin-top: 9px;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.rightItalic
+{
+	float:right;
+	font-style: italic;
+	
+}
+.bigwLogo
+{
+	background-image:url(../images/bigw/bigw_logo.png);
+	height:100px;
+	background-repeat:no-repeat;
+}
+.bigFont
+{
+    font-style:arial;
+    font-size:25px;
+}
+.posFixed {
+padding-left: 180px;
+padding-top: 3px;
+font-size: 20px;
+}
+.styleForDiv
+{
+font-size: 16px;
+/*background-color:#BCF5A9;*/ 
+height:20px;
+width:800px;
+}
+.styleForNote
+{
+	font-style: italic;
+	font-size: 16px;
+	
+}
+.printbody.claimcontent tr th {
+	background: #CACAD4;
+	min-height: 35px !important;
+	border-right: solid 1px !important;
+	border-left: solid 1px !important;
+	border-top: solid 1px !important;
+	vertical-align: top;
+	text-align:left;
+	white-space: nowrap
+}
+.smallFont
+{
+    font-style:arial;
+    font-size:14px;
+}
+.styleForClaimDiv
+{
+font-size: 20px;
+background-color:#E0E0EB;
+height:35px;
+width:1347px;
+padding-right: 751px;
+}
+.styleForNoteDiv
+{
+font-size: 20px;
+/*background-color:#BCF5A9;*/
+width:890px;
+padding-top:20px;
+padding-botton:20px;
+}
+.tableBoxed {
+  border: 1px solid grey ;
+  font-size: 16px;
+}
+.woolworthsLogo
+{
+	background-image:url(../images/woolworths/wowLogo.PNG);
+	background-size: 150px 150px;
+	height:100px;
+	background-repeat:no-repeat;
+}
+.bwsLogo
+{
+	background-image:url(../images/bws/logo.gif);
+	background-size: 150px 150px;
+	height:100px;
+	background-repeat:no-repeat;
+}
+.corporateLogo
+{
+	background-image:url(../images/corporate/logo.gif);
+	background-size: 150px 150px;
+	height:100px;
+	background-repeat:no-repeat;
+}
+.countdownLogo
+{
+	background-image:url(../images/countdown/logo.gif);
+	background-size: 150px 150px;
+	height:100px;
+	background-repeat:no-repeat;
+}
+.danmurphyLogo
+{
+	background-image:url(../images/danmurphy/logo.gif);
+	background-size: 150px 150px;
+	height:100px;
+	background-repeat:no-repeat;
+}
+.petrolLogo
+{
+	background-image:url(../images/danmurphy/logo.gif);
+	background-size: 150px 150px;
+	height:100px;
+	background-repeat:no-repeat;
+}
+.thomasduxLogo
+{
+	background-image:url(../images/thomasdux/logo.gif);
+	background-size: 150px 150px;
+	height:100px;
+	background-repeat:no-repeat;
+}

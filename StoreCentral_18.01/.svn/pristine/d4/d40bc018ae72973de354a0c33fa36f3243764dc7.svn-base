@@ -1,0 +1,63 @@
+.scrollTableContainer {
+	width: 966px;
+	overflow: hidden;
+}
+
+.scrollTableContainer .scrollWindow {
+	width: 2000px;
+	overflow: hidden;
+}
+
+.scrollTableContainer .scrollWindowCol16 {
+	width: 800px;
+}
+
+.scrollTableContainer .scrollWindow table {
+	float: left;
+	width: 100%;
+}
+
+.tableScroller {
+	cursor: pointer;
+	user-select: none;
+	-o-user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+}
+
+.tableScroller .scrollLeft {
+	width: 20px;
+	height: 40px;
+	background: url(../images/tableScrollLeft.png) 97% no-repeat;
+	float: right;
+	position: fixed;
+	margin: 65px -20px;
+}
+
+.tableScroller .scrollLeft:hover {
+	width: 20px;
+	height: 40px;
+	background: url(../images/tableScrollLeftHover.png) 97% no-repeat;
+	float: right;
+	position: fixed;
+	margin: 65px -20px;
+}
+
+.tableScroller .scrollRight {
+	width: 20px;
+	height: 40px;
+	background: url(../images/tableScrollRight.png) 97% no-repeat;
+	float: right;
+	position: fixed;
+	margin: 65px 966px;
+}
+
+.tableScroller .scrollRight:hover {
+	width: 20px;
+	height: 40px;
+	background: url(../images/tableScrollRightHover.png) 97% no-repeat;
+	float: right;
+	position: fixed;
+	margin: 65px 966px;
+}

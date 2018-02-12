@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Store Portal - Page Not Found</title>
+<link rel="stylesheet" href="./styles/detailed.css" />
+<link rel="shortcut icon" href="images/woolworths-icon.jpg">
+</head>
+<body>
+	<h1>
+		<a href="./home.htm" style="text-decoration: none"> <img
+			src="./images/WOWLogo1.png" style="border: 0; vertical-align: middle">
+			Store Portal
+		</a>
+	</h1>
+	<h1>
+		Not found <span>:(</span>
+	</h1>
+	<p>Sorry, but the page you were trying to view does not exist.</p>
+	<p>It looks like this was the result of either:</p>
+	<ul>
+		<li>a mistyped address</li>
+		<li>page temporary unavailable being under construction</li>
+	</ul>
+</body>
+</html>

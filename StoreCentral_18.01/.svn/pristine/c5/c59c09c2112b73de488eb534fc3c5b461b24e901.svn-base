@@ -1,0 +1,667 @@
+var report_deviceLog_name = 'Report_Device_Log_Table';
+var report_deviceLog_title = '';
+var rfGunPrint = '';
+var mobilePrint = '';
+var totalRecords = '';
+var responseO = '';
+var searchedParam=undefined;
+$( document ).ready(function() {			// for Defect_7130
+	$( "#accessTypeInclude" ).prop( "checked", true );
+	$( "#accessTypeEcclude" ).prop( "checked", true );
+});
+
+$(function() {	
+			$('.pageActions').addClass('hideBlock');
+			$("#menu").menu({ position: { my: "right top", at: "right top+20" } });
+			/* Autocomplete Off */
+			document.forms[0].autocomplete="off";
+			
+			//Registers back button click event
+			 $("#backBtn").click(function(e) {
+				 window.location.href="../login/homepage.htm";
+			});  			 
+			
+			// Code for adding scorllers to the table			
+			var tableCols = 0;			
+			$("#tableData tbody tr").each(function(){
+				var currCount = 0;
+				$(this).children("td").each(function(){
+					currCount++;
+					var colSpan = $(this).attr("colspan");
+					if (colSpan > 0) {
+						currCount = currCount + (colSpan - 1);
+					}
+					if (currCount > tableCols)
+						tableCols = currCount;
+				}); // next td
+			}); // next tr			
+			
+			var width = 0;
+			if (tableCols < 12) {
+				$("#scrollTable").removeClass('scrollTableContainer');
+				$("#scrollWindow").removeClass('scrollWindow');
+				$("#scrollBtns").addClass('hideBlock');
+			}
+			
+			if (tableCols > 11){
+				width = (tableCols * 45) - 100 ;				
+					document.getElementById("scrollWindow").style.width=width + "px"; 
+			
+			}
+		
+			$('#next-column').click(function(event){
+				event.preventDefault();
+				$('.scrollTableContainer').animate({scrollLeft:'+=150'}, 'fast');
+			});
+			
+			
+			$('#previous-column').click(function(event){
+				event.preventDefault();
+				$('.scrollTableContainer').animate({scrollLeft:'-=150'}, 'fast');
+			});
+						
+			//Code for accordion
+			$("#accordion").accordion({
+				header:"h3.mainAccordion",
+				collapsible: true, 		
+				heightStyle: "content" 
+			});
+			
+			$("#generateReport").click(function(){
+				var include = $('#accessTypeInclude').is(':checked')?'Y':'N';
+				var exclude = $('#accessTypeEcclude').is(':checked')?'Y':'N';
+				var copyFrom = $('#copyFrom').val();
+				var copyTo = $('#copyTo').val();
+				var param = {
+						"includeFlag"			:include,
+						"excludeFlag"			:exclude,
+						"fromSite"			:copyFrom,
+						"toSite"			:copyTo
+						};
+				if(copyFrom.trim()==''){
+	                $.fn.showCustomMsg(['Please enter copy from store number.'],error,'Pilot Strategy');
+	            }else if(copyTo.trim()==''){
+	                $.fn.showCustomMsg(['Please enter copy to store number.'],error,'Pilot Strategy');
+	            }else if(include=='N' && exclude=='N'){
+	                $.fn.showCustomMsg(['Please select any of the access types.'],error,'Pilot Strategy');
+	            }else{
+	            	searchedParam=param;
+					callAccessService(param);	
+	            }
+			});
+			
+			$("#backupTable").click(function(){
+				backupTable();	
+			});
+			
+			$("#menu").menu({ position: { my: "right top", at: "right top+20" } });			
+				
+			// code for table sorter 
+			$(".actionRows").tablesorter();
+			
+			$(".actionRows th").click(function(){
+				$('.actionRows tr td').each(function(){				
+					$(this).removeClass("sorted");				
+				});
+				
+				col=$(this).parent().children().index($(this));		
+				
+				$('.actionRows tr').each(function(){				
+					$(this).find('td').eq(col).addClass("sorted");				
+				});			
+			
+			});
+			
+			// Code for calendar			
+			$("#dateFrom").datepicker({
+				dateFormat: "dd/mm/yy",
+				zIndex:50,
+				onClose: function( selectedDate ) {
+					$( "#dateTo" ).focus();
+				}				
+			});
+			
+			$("#dateTo").datepicker({
+				dateFormat: "dd/mm/yy",
+				zIndex:50
+				
+			});
+			//Close Button
+			$("#closeLink").click(function(){
+				$('#accordion').accordion({active : true });	
+			});
+			
+			$("#export").click(function(){
+				$('#dialog-editFunctions .ContentTable tbody').html('');
+				exportSql();
+			});
+			
+			$("#replicate").click(function(){
+				$('#dialog-editFunctions .ContentTable tbody').html('');
+				replicateSettings();
+			});
+			
+			$("#multipleStore").click(function(){
+				multipleStore();
+			});
+			$("#dialog-editFunctions")
+		    .dialog({
+		      autoOpen: false,
+		      modal: true,
+		      resizable: false,
+		      minHeight: 200,
+		      width: 400
+		    });
+			
+			$("#dialog-editFunctions").parent().addClass("popupWrapper");
+			$('.verifyStore').click(function(){
+				verifyAndAdd();
+			});
+			$("#checkpoint").click(function(){
+				checkpoint();
+			});
+			
+		});
+function checkpoint(){
+	var exportQueryURL="backupCheckpoint.htm";
+	$.ajax({
+	    type: "GET",
+	    url: exportQueryURL,
+	    contentType:"application/json",
+	    beforeSend: function() {
+	    	  startLoading();
+	      }
+	  }).done(function(response) {
+		  responseO = $.parseJSON(response);
+			//console.log(JSON.stringify(responseO));	
+			if(responseO != undefined && responseO.type=='Y' ){
+				var qryListObj=[];
+				for(var i in responseO.queryList){
+					qryListObj.push({"insertQry":responseO.queryList[i]+";"});
+				}
+				downloadCSV({"filename":"app_checkpoint.sql","columnDelimiter":";","lineDelimiter":";\n"},qryListObj);
+			}else{
+				if(responseO != undefined && responseO.length <= 0 ){
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}else{
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}
+			}	
+	  }).fail(function() {		  
+		  $.fn.showCustomMsg(['Sorry, Some technical issue occured '],error,'Pilot Strategy');
+	  }).always(function() {
+		  stopLoading();
+	  });
+}
+function verifyAndAdd(){
+	var storeslist=$(".verifyNm").val();
+	if(storeslist.trim()!='' && storeslist.split(',').length>0){
+		searchParam.storeslist=storeslist;
+		callVerifyService(searchParam);
+		$(".verifyNm").val('');
+		$("#dialog-editFunctions .errorDiv ").addClass('hideBlock');
+	}else{
+		$("#dialog-editFunctions .errorDiv ").removeClass('hideBlock');
+	}
+};
+
+function multipleStore() {
+	$('#dialog-editFunctions .ContentTable tbody').html('');
+	$("#dialog-editFunctions").dialog('open');
+	$("#dialog-editFunctions .ContentTableWrapper").removeClass('hideBlock');
+	$("#dialog-editFunctions .ContentTable").addClass('hideBlock');
+	$("#dialog-editFunctions #createOrderButton,#exportmultistoreButton").addClass('hideBlock');
+	$("#dialog-editFunctions .errorDiv ").addClass(
+	'hideBlock');
+	$('#createOrderButton').unbind('click');
+	$('#createOrderButton')
+			.click(
+					function() {
+						$("#dialog-editFunctions .errorDiv ").addClass('hideBlock');
+						if ($('#dialog-editFunctions .ContentTable tbody tr').length > 1) {
+							saveStore();
+						} else {
+							$("#addActionBtn").trigger('click');
+							$("#dialog-editFunctions .errorDiv ").removeClass(
+									'hideBlock');
+							$("#dialog-editFunctions .errorDiv label").text(
+									'Please add a store to save.');
+						}
+					});
+	$('#exportmultistoreButton').unbind('click');
+	$('#exportmultistoreButton')
+			.click(
+					function() {
+						$("#dialog-editFunctions .errorDiv ").addClass('hideBlock');
+						if ($('#dialog-editFunctions .ContentTable tbody tr').length > 1) {
+							exportSql();
+						} else {
+							$("#addActionBtn").trigger('click');
+							$("#dialog-editFunctions .errorDiv ").removeClass(
+									'hideBlock');
+							$("#dialog-editFunctions .errorDiv label").text(
+									'Please add a store to save.');
+						}
+					});
+	$('#addstore-popup-cancel-btn').unbind('click');
+	$('#addstore-popup-cancel-btn')
+			.click(
+					function() {
+						$("#dialog-editFunctions").dialog('close');
+					});
+}
+function saveStore(){
+	replicateSettings();
+};
+		
+function backupTable(){
+	var backupTableURL='backup.htm';
+	$.ajax({
+	    type: "get",
+	    url: backupTableURL,
+	    beforeSend: function() {
+	    	  startLoading();
+	      }
+	  }).done(function(response) {
+		  responseO = $.parseJSON(response);
+			//console.log(JSON.stringify(responseO));	
+			var dt=new Date();
+			var tableName='BACKUP_FUNCTION_EXCLUDE'/*+dt.getDate()+'_'+(dt.getMonth()+1)*/;
+			if(responseO != undefined && responseO.type=='Y' ){
+				$.fn.showCustomMsg(['NGBO_FUNCTION_EXCLUDE table has been copied to '+tableName.toUpperCase()+' table.'],success,'Pilot Strategy');
+			}else if(responseO != undefined && responseO.type=='AE' ){
+				$.fn.showCustomMsg(['Backup has been already taken today.'],information,'Pilot Strategy');
+			}else{
+				if(responseO != undefined && responseO.length <= 0 ){
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}else{
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}
+			}	
+	  }).fail(function() {		  
+		  $.fn.showCustomMsg(['Sorry, Some technical issue occured '],error,'Pilot Strategy');
+	  }).always(function() {
+		  stopLoading();
+	  });
+}
+
+function exportSql(){
+	var list=[];
+	$('#searchResultsHold input[type="checkbox"]:checked').each(function(){
+		var data=$(this).attr('data');
+		list.push($.parseJSON(data));
+	});
+	searchParam.results=list;
+	
+	var verifiedStores=[];
+	$('#dialog-editFunctions .ContentTable tbody tr').each(function(){
+		verifiedStores.push($(this).data('storeinfo'));
+	});
+	searchParam.verifiedStores=verifiedStores;
+	var exportQueryURL="exportQuery.htm";
+	$.ajax({
+	    type: "POST",
+	    url: exportQueryURL,
+	    data: JSON.stringify(searchParam),
+	    contentType:"application/json",
+	    beforeSend: function() {
+	    	  startLoading();
+	      }
+	  }).done(function(response) {
+		  responseO = $.parseJSON(response);
+			//console.log(JSON.stringify(responseO));	
+			if(responseO != undefined && responseO.type=='Y' ){
+				var qryListObj=[];
+				for(var i in responseO.queryList){
+					qryListObj.push({"insertQry":responseO.queryList[i]+";"});
+				}
+				downloadCSV({"filename":"app_settings.sql","columnDelimiter":";","lineDelimiter":";\n"},qryListObj);
+			}else{
+				if(responseO != undefined && responseO.length <= 0 ){
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}else{
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}
+			}	
+	  }).fail(function() {		  
+		  $.fn.showCustomMsg(['Sorry, Some technical issue occured '],error,'Pilot Strategy');
+	  }).always(function() {
+		  stopLoading();
+	  });
+}
+
+
+function convertArrayOfObjectsToCSV(args) {
+    var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+
+    data = args.data || null;
+    if (data == null || !data.length) {
+        return null;
+    }
+
+    columnDelimiter = args.columnDelimiter || ';';
+    lineDelimiter = args.lineDelimiter || '\n';
+
+    keys = Object.keys(data[0]);
+
+    result = '';
+    //result += keys.join(columnDelimiter);
+    //result += lineDelimiter;
+
+    data.forEach(function(item) {
+        ctr = 0;
+        keys.forEach(function(key) {
+            if (ctr > 0) result += columnDelimiter;
+
+            result += item[key];
+            ctr++;
+        });
+        result += lineDelimiter;
+    });
+
+    return result;
+}
+
+function downloadCSV(args,qry) {
+    var data, filename, link;
+
+    var csv = convertArrayOfObjectsToCSV({
+        data: qry
+    });
+    if (csv == null) return;
+
+    filename = args.filename || 'export.csv';
+
+    if (!csv.match(/^data:text\/csv/i)) {
+        csv = 'data:text/csv;charset=utf-8,' + csv;
+    }
+    data = encodeURI(csv);
+
+    link = document.createElement('a');
+    link.setAttribute('href', data);
+    link.setAttribute('download', filename);
+    link.click();
+}
+
+function replicateSettings(flag){
+	var list=[];
+	$('#searchResultsHold input[type="checkbox"]:checked').each(function(){
+		var data=$(this).attr('data');
+		list.push($.parseJSON(data));
+	});
+	searchParam.results=list;
+	
+	var verifiedStores=[];
+	$('#dialog-editFunctions .ContentTable tbody tr').each(function(){
+		verifiedStores.push($(this).data('storeinfo'));
+	});
+	searchParam.verifiedStores=verifiedStores;
+	
+	var replicateSettingsURL="replicateSettingsPilot.htm";
+	$.ajax({
+	    type: "POST",
+	    url: replicateSettingsURL,
+	    data: JSON.stringify(searchParam),
+	    contentType:'application/json',
+	    beforeSend: function() {
+	    	  startLoading();
+	      }
+	  }).done(function(response) {
+		  responseO = $.parseJSON(response);
+			//console.log(JSON.stringify(responseO));	
+			if(responseO != undefined && responseO.type=='Y' ){
+				$.fn.showCustomMsg(['Settings has been replicated to Store('+(responseO.verifiedStores.length>0?toListString(responseO.verifiedStores):responseO.toSite)+') successfully.'],success,'Pilot Strategy');
+				$("#dialog-editFunctions").dialog('close');
+			}else{
+				if(responseO != undefined && responseO.length <= 0 ){
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}else{
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}
+			}	
+	  }).fail(function() {		  
+		  $.fn.showCustomMsg(['Sorry, Some technical issue occured '],error,'Pilot Strategy');
+	  }).always(function() {
+		  stopLoading();
+	  });
+}
+
+function toListString(list){
+	var response=[];
+	for(var x in list){
+		response.push(list[x].siteNo);
+	}
+	return response.toString();
+}
+
+/**
+ * Invokes Report Device Log service
+ * @param recvParam
+ */
+var searchParam;
+function callAccessService(recvParam){
+	var getAllAccessURL="accessAllAppCodes.htm";
+	console.log(getAllAccessURL + ' ' + JSON.stringify(recvParam));
+	searchParam=recvParam;
+	$(".ContentTableWrapper").addClass('hideBlock'); 
+	$.ajax({
+	    type: "POST",
+	    url: getAllAccessURL,
+	    data: recvParam,
+	    beforeSend: function() {
+	    	  startLoading();
+	      }
+	  }).done(function(response) {
+		  responseO = $.parseJSON(response);
+			//console.log(JSON.stringify(responseO));	
+			if(responseO != undefined && responseO.type=='Y' ){
+				$("#searchResultsHold").removeClass('hideBlock'); 
+				$('#accordion').accordion({active : true });	
+				var $tblhold = $("#searchResultsHold");
+				$tblhold.html(buildContents(responseO.results));
+				totalRecords = responseO.length;
+				$("#noRecords").html(totalRecords);
+				$('.pageActions').removeClass('hideBlock');
+				searchParam=responseO;
+			}else{
+				$('.pageActions').addClass('hideBlock');
+				if(responseO != undefined && responseO.length <= 0 ){
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}else{
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+					$("#noRecFoundDiv").addClass("hideBlock");
+				}
+			}	
+	  }).fail(function() {		  
+		  $.fn.showCustomMsg(['Sorry, Some technical issue occured '],error,'Pilot Strategy');
+	  }).always(function() {
+		  stopLoading();
+	  });
+}
+
+function callVerifyService(recvParam){
+	var getAllAccessURL="verifyStores.htm";
+	console.log(getAllAccessURL + ' ' + JSON.stringify(recvParam));
+	searchParam=recvParam;
+	recvParam.results=[];
+	recvParam.verifiedStores=[];
+	$.ajax({
+	    type: "POST",
+	    url: getAllAccessURL,
+	    data: recvParam,
+	    beforeSend: function() {
+	    	  startLoading();
+	      }
+	  }).done(function(response) {
+		  responseO = $.parseJSON(response);
+		  console.log(JSON.stringify(responseO));	
+		  if(responseO != undefined){
+				if(responseO.verifiedStores.length>0){
+					buildVerifiedStoresList(responseO.verifiedStores);
+				}else{
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}
+			}else{
+				$('.pageActions').addClass('hideBlock');
+				if(responseO != undefined && responseO.length <= 0 ){
+					$.fn.showCustomMsg([responseO.msg],error,'Pilot Strategy');
+				}else{
+					$.fn.showCustomMsg('Falied to verify store(s)',error,'Pilot Strategy');
+					$("#noRecFoundDiv").addClass("hideBlock");
+				}
+			}	
+	  }).fail(function() {		  
+		  $.fn.showCustomMsg(['Sorry, Some technical issue occured '],error,'Pilot Strategy');
+	  }).always(function() {
+		  stopLoading();
+	  });
+}
+
+function buildVerifiedStoresList(verifiedStoresList){
+	for(var i in verifiedStoresList){
+		if($('#dialog-editFunctions .ContentTable tbody #'+verifiedStoresList[i].siteNo).length==0){
+			$("#dialog-editFunctions .ContentTable tbody").append('<tr id="'+verifiedStoresList[i].siteNo+'"> <td>'+verifiedStoresList[i].siteNo+' - '+verifiedStoresList[i].siteName+'</td> <td class="centerValue"><label class="linkBtn" id="DeleteExpiryRecord-1"> <label class="deleteRecord" site='+verifiedStoresList[i].siteNo+'>Delete</label> </label></td> </tr>');
+			$('#dialog-editFunctions .ContentTable tbody #'+verifiedStoresList[i].siteNo).data('storeinfo',verifiedStoresList[i]);
+			$('#dialog-editFunctions .ContentTable tbody #'+verifiedStoresList[i].siteNo+' .deleteRecord').unbind('click');
+			$('#dialog-editFunctions .ContentTable tbody #'+verifiedStoresList[i].siteNo+' .deleteRecord').click(function(){
+				$('#dialog-editFunctions .ContentTable tbody #'+$(this).attr('site')).remove();
+				if($("#dialog-editFunctions .ContentTable tbody tr").length<=0){
+					$('#dialog-editFunctions .ContentTable').addClass('hideBlock');
+					$("#dialog-editFunctions #createOrderButton,#exportmultistoreButton").addClass('hideBlock');
+				}else{
+					$('#dialog-editFunctions .ContentTable').removeClass('hideBlock');
+					$("#dialog-editFunctions #createOrderButton,#exportmultistoreButton").removeClass('hideBlock');
+				}
+			});
+		}
+	}
+	
+	if($("#dialog-editFunctions .ContentTable tbody tr").length<=0){
+		$('#dialog-editFunctions .ContentTable').addClass('hideBlock');
+		$("#dialog-editFunctions #createOrderButton,#exportmultistoreButton").addClass('hideBlock');
+	}else{
+		$('#dialog-editFunctions .ContentTable').removeClass('hideBlock');
+		$("#dialog-editFunctions #createOrderButton,#exportmultistoreButton").removeClass('hideBlock');
+	}
+}
+/**
+ * @param data
+ * @param $tblhold
+ */
+function loadReportContentTbl(data,$tblhold){
+	$tblhold = ($tblhold == undefined || $tblhold == '') ? $('#'+$selectedTab.attr('aria-controls')) : $tblhold;
+	var  confObj= new tblReport(data);	
+	$tblhold.loadtbl(confObj);
+}
+
+function buildContents(result){
+	var results=$groupBy(result, function(obj) {
+		return obj.includeExcludeFlag;
+	});
+	
+	content='';
+	for(var key in results){
+		if(key=='I')
+			content+='<div class="tableInfo tempPadding" style="overflow: auto;padding-top: 25px!important;"><div class="tableTitle"><h4 class="sectionTitle adTitle">Access to various <b>included</b> functions</h4></div></div>';
+		else
+			content+='<div class="tableInfo tempPadding" style="overflow: auto;padding-top: 25px!important;"><div class="tableTitle"><h4 class="sectionTitle adTitle">Access to various <b>excluded</b> functions</h4></div></div>';
+			content+='<div class="hierarchyWrapper settingsWrapper" style="background: #F9F9F3; border: solid 1px #E3E2E1; border-radius: 4px;overflow: auto;padding: 8px;">';
+			var listItems=$groupBy(results[key], function(obj) {
+				return obj.roleDesc;
+			});
+			for(var k in listItems){
+				content+='<div class="hierarchyContent noProcess"><div class="hierarchyTitle"><h3>'+k+'</h3></div><div class="hierarchyList"><ul>';
+				for(var code in listItems[k]){
+					var readOrFull='';
+					if(listItems[k][code].accessFlag=='R'){
+						readOrFull='(Read)';
+					}else{
+						readOrFull='(Full)';
+					}
+					content+='<li><input type="checkbox" checked="true" data=\''+JSON.stringify(listItems[k][code])+'\'><label>'+listItems[k][code].description+readOrFull+'</label></li>';
+				}
+				content+='</ul></div><!--<div class="heirachyBottom"><span class="totalCount"> <label>Total:<strong>0</strong> selected</label></span></div>--></div>';
+			}
+		
+		content+='</div>';
+	}
+	return content;
+}
+
+/**
+ * Generate Report's table configuration
+ * @param table_name
+ * @param table_title
+ * @param data
+ * @returns {tblReport}
+ */
+function tblReport(data){
+	this.option = 'build';
+	this.key = ['roleId','code','description'];
+	this.table_name = report_deviceLog_name;
+	this.table_title = report_deviceLog_title;
+	this.table_class = ' ContentTable actionRows cursor-def';
+	this.header_name = {roleId:'Role',code:'Function Code',description:'Function Description'},
+	this.header_data_type = {roleId:'char',code:'char',description:'char'},
+	this.header_row_type = {roleId:'main',code:'main',description:'main'},
+	this.header_title = {},
+	this.content_title = {},
+	this.content =  data;
+	this.pagination = true;
+	this.groupby= false;
+	this.recordPerPage= 10;
+	this.groupbyColumn =[];
+	this.filter= false;
+	this.curr_page= 1;
+	this.sort=true;
+	this.content_bind_event = {click: ''};
+	this.content_tr_addon = {click: ''};
+	this.content_td_addon = {click: ''};
+	this.content_label = {};
+}
+var showSessionDuration = function(obj){
+	return convertSECtoHHMMSS(obj.duration);
+};
+/**
+ * Time format
+ * @returns {String}
+ */
+function timeformat()
+{
+	var date=new Date();
+	if(date.getHours()>12)
+	{
+		hours=(date.getHours())-12;
+		ampm="pm";
+	}
+else
+	{
+	hours=(date.getHours());
+		ampm="am";
+	}
+return (hours<10?("0"+hours):hours)+":"+(date.getMinutes()<10?"0"+date.getMinutes():date.getMinutes())+" "+ampm;
+}
+
+/**
+ * Date Format
+ * @returns {String}
+ */
+function dateformat()
+{
+	var date=new Date();
+	day=date.getDate();
+	month=date.getMonth()+1;
+	year=date.getFullYear();
+	return (day<10?("0"+day):day)+"/"+(month<10?("0"+month):month)+"/"+(year<10?("0"+year):year);
+}
+/**
+ * Displays error message
+ * @param msg
+ * @param title
+ */
+function showReportErrorMsg(msg, title) {
+	var errorContent = '<li><ol><li>' + msg + '</li></ol></li>';
+	$('#reportErrorWrapper').find('#titleContent').html(title);
+	$('#reportErrorWrapper').find('#errorContent').html(errorContent);
+	$('#reportErrorWrapper').removeClass('hideBlock');
+}	

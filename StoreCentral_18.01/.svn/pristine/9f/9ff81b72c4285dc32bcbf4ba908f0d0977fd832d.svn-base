@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LTO BarCode" language="groovy" columnCount="2" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f131db2a-ec3d-4d24-8c20-cfbf70fca150">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.callouts" value="##Fri Feb 05 20:24:53 EST 2016"/>
+	<parameter name="banner" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="barcode" class="java.lang.String"/>
+	<field name="generateBarcode" class="java.awt.image.BufferedImage"/>
+	<field name="fixture_type" class="java.lang.String"/>
+	<field name="locationDesc" class="java.lang.String"/>
+	<field name="loc_name_to_sort" class="java.lang.String"/>
+	<field name="barcodeText" class="java.lang.String"/>
+	<field name="aisle_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="96" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="26" y="10" width="94" height="45" uuid="6ee9222e-04fc-41de-8e29-0cb00e8d2c3c"/>
+				<imageExpression><![CDATA[$F{generateBarcode}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="140" y="10" width="100" height="18" uuid="643193ea-cd18-484a-a2e9-8c1ffc435cdb"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{locationDesc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="29" width="151" height="16" uuid="d13f2ceb-89a3-4480-b3d6-9fa44e8015f3"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Location "+$F{loc_name_to_sort}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="59" width="127" height="20" uuid="e1990ba4-c25b-4508-a8f1-763ed1e60cb9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{barcodeText}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="142" y="45" width="150" height="24" isPrintWhenDetailOverflows="true" uuid="3453de2f-510f-4008-8717-15ce7c68c104"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aisle_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

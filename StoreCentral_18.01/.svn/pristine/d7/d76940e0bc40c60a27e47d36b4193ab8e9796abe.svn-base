@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VoidReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="d14da4fb-199e-411e-8352-2954cac61b93">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<scriptlet name="MYSCRIPTLET" class="au.com.woolworths.portal.reports.ScriptletUtil"/>
+	<parameter name="FromDate" class="java.lang.String"/>
+	<parameter name="ToDate" class="java.lang.String"/>
+	<parameter name="StoreNo" class="java.lang.String"/>
+	<parameter name="StoreName" class="java.lang.String"/>
+	<parameter name="voidDate" class="java.lang.String"/>
+	<parameter name="voidTime" class="java.lang.String"/>
+	<parameter name="voidTran" class="java.lang.String"/>
+	<parameter name="voidPoso" class="java.lang.String"/>
+	<parameter name="voidAuth" class="java.lang.String"/>
+	<parameter name="voidArti" class="java.lang.String"/>
+	<parameter name="voidDesc" class="java.lang.String"/>
+	<parameter name="voidType" class="java.lang.String"/>
+	<parameter name="voidReas" class="java.lang.String"/>
+	<parameter name="voidDepa" class="java.lang.String"/>
+	<parameter name="voidTota" class="java.lang.String"/>
+	<parameter name="voidTblSortAttr" class="java.lang.String"/>
+	<parameter name="filterRadio" class="java.lang.String"/>
+	<parameter name="msg" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="article" class="java.lang.String">
+		<fieldDescription><![CDATA[article]]></fieldDescription>
+	</field>
+	<field name="article_T" class="java.lang.String">
+		<fieldDescription><![CDATA[article_T]]></fieldDescription>
+	</field>
+	<field name="calendarDayFrom" class="java.lang.String">
+		<fieldDescription><![CDATA[calendarDayFrom]]></fieldDescription>
+	</field>
+	<field name="calendarDayTo" class="java.lang.String">
+		<fieldDescription><![CDATA[calendarDayTo]]></fieldDescription>
+	</field>
+	<field name="cashName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashName]]></fieldDescription>
+	</field>
+	<field name="cashierFirstName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierFirstName]]></fieldDescription>
+	</field>
+	<field name="cashierLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierLastName]]></fieldDescription>
+	</field>
+	<field name="cashierNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierNumber]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="department" class="java.lang.String">
+		<fieldDescription><![CDATA[department]]></fieldDescription>
+	</field>
+	<field name="ean_upc" class="java.lang.String">
+		<fieldDescription><![CDATA[ean_upc]]></fieldDescription>
+	</field>
+	<field name="noDataFound" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFound]]></fieldDescription>
+	</field>
+	<field name="posAuthoriser" class="java.lang.String">
+		<fieldDescription><![CDATA[posAuthoriser]]></fieldDescription>
+	</field>
+	<field name="posNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[posNumber]]></fieldDescription>
+	</field>
+	<field name="posTransactionTime" class="java.lang.String">
+		<fieldDescription><![CDATA[posTransactionTime]]></fieldDescription>
+	</field>
+	<field name="reason" class="java.lang.String">
+		<fieldDescription><![CDATA[reason]]></fieldDescription>
+	</field>
+	<field name="salesItemType" class="java.lang.String">
+		<fieldDescription><![CDATA[salesItemType]]></fieldDescription>
+	</field>
+	<field name="salesRetailIncT" class="java.lang.String">
+		<fieldDescription><![CDATA[salesRetailIncT]]></fieldDescription>
+	</field>
+	<field name="tValue" class="java.lang.String">
+		<fieldDescription><![CDATA[tValue]]></fieldDescription>
+	</field>
+	<field name="transItemLine" class="java.lang.String">
+		<fieldDescription><![CDATA[transItemLine]]></fieldDescription>
+	</field>
+	<field name="transactionNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[transactionNumber]]></fieldDescription>
+	</field>
+	<field name="transactionRecType" class="java.lang.String">
+		<fieldDescription><![CDATA[transactionRecType]]></fieldDescription>
+	</field>
+	<field name="transactionType" class="java.lang.String">
+		<fieldDescription><![CDATA[transactionType]]></fieldDescription>
+	</field>
+	<variable name="FromDate" class="java.lang.String"/>
+	<variable name="ToDate" class="java.lang.String"/>
+	<variable name="date" class="java.lang.String">
+		<variableExpression><![CDATA[$F{calendarDayTo}!=null?new SimpleDateFormat("dd/MM/yyyy").format(new Date(Long.parseLong($F{calendarDayTo}.replaceAll("\\D+","")))):""]]></variableExpression>
+	</variable>
+	<variable name="timeFormat" class="java.lang.String"/>
+	<variable name="time" class="java.lang.String">
+		<variableExpression><![CDATA[$F{posTransactionTime}==null||"".equals($F{posTransactionTime}.trim())==true?"":new DecimalFormat("000000").format(Long.parseLong($F{posTransactionTime})).substring(0,2)+":"+new DecimalFormat("000000").format(Long.parseLong($F{posTransactionTime})).substring(2,4)]]></variableExpression>
+	</variable>
+	<variable name="total" class="java.lang.String">
+		<variableExpression><![CDATA[new DecimalFormat("#0.00").format($F{salesRetailIncT}==null?0.0:Double.parseDouble($F{salesRetailIncT}))]]></variableExpression>
+	</variable>
+	<variable name="voidType" class="java.lang.String">
+		<variableExpression><![CDATA["1000".equals($F{transactionRecType})?(($F{transactionType}!=null && ("S102".equalsIgnoreCase($F{transactionType}) || "RT01".equalsIgnoreCase($F{transactionType})))?"Transaction":""):("1100".equals($F{transactionRecType})?(("S101".equalsIgnoreCase($F{transactionType}) && "S203".equalsIgnoreCase($F{salesItemType}))?"ITEM/LINE":""):(""))]]></variableExpression>
+	</variable>
+	<variable name="article" class="java.lang.String">
+		<variableExpression><![CDATA["Transaction".equals($V{voidType})?"":$F{article}]]></variableExpression>
+	</variable>
+	<variable name="articleDesc" class="java.lang.String">
+		<variableExpression><![CDATA["Transaction".equals($V{voidType})?"":$F{article_T}]]></variableExpression>
+	</variable>
+	<variable name="department" class="java.lang.String">
+		<variableExpression><![CDATA["Transaction".equals($V{voidType})?"":$F{department}]]></variableExpression>
+	</variable>
+	<variable name="cashierName" class="java.lang.String">
+		<variableExpression><![CDATA[($F{cashierFirstName}==null?"":$F{cashierFirstName}+" ")+($F{cashierLastName}==null?"":$F{cashierLastName})]]></variableExpression>
+	</variable>
+	<variable name="filterRadio" class="java.lang.String"/>
+	<variable name="evalFilterVars" class="java.lang.Boolean">
+		<variableExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.containsCaseInsensitiveVarArgs($V{date}, $P{voidDate},
+$V{time}, $P{voidTime},
+$F{transactionNumber}, $P{voidTran},
+$V{cashierName}, $P{voidPoso},
+$F{posAuthoriser}, $P{voidAuth},
+$F{article}, $P{voidArti},
+$F{article_T}, $P{voidDesc},
+$V{voidType}, $P{voidType},
+$F{reason}, $P{voidReas},
+$F{department}, $P{voidDepa},
+$V{total}, $P{voidTota}) &&
+(("all".equals($P{filterRadio}) && (("1000".equals($F{transactionRecType}) && ("S102".equalsIgnoreCase($F{transactionType}) || "RT01".equalsIgnoreCase($F{transactionType})))
+||
+("1100".equals($F{transactionRecType}) && "S101".equalsIgnoreCase($F{transactionType}) && "S203".equalsIgnoreCase($F{salesItemType}))))
+    || ("tra".equals($P{filterRadio}) && $F{transactionRecType}!=null && "1000".equals($F{transactionRecType}.trim()) && $F{transactionType}!=null && ("S102".equalsIgnoreCase($F{transactionType}.trim())||"RT01".equalsIgnoreCase($F{transactionType}.trim())))
+    || ("art".equals($P{filterRadio}) && $F{transactionRecType}!=null && "1100".equals($F{transactionRecType}.trim()) && $F{transactionType}!=null && "S101".equalsIgnoreCase($F{transactionType}.trim()) && $F{salesItemType}!=null && "S203".equalsIgnoreCase($F{salesItemType}.trim())))]]></variableExpression>
+	</variable>
+	<variable name="StoreTotal" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$V{evalFilterVars}?($F{salesRetailIncT}==null?0.0:Double.parseDouble($F{salesRetailIncT})):0.0]]></variableExpression>
+	</variable>
+	<variable name="GrandStoreTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{evalFilterVars}?($F{salesRetailIncT}==null?0.0:Double.parseDouble($F{salesRetailIncT})):0.0]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="75" splitType="Prevent">
+			<textField>
+				<reportElement x="452" y="0" width="350" height="20" uuid="3e4c5cd2-32fb-45c0-b530-0cf4fb095cf4"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="21" width="353" height="15" uuid="f450aeb3-3fd5-49cd-8d9d-8d8fb3be3d27"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="353" height="20" uuid="fe849072-d762-4162-bbb6-2ea5133bb551"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Articles Void Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="37" width="353" height="15" uuid="3982fbfe-8931-4428-ba46-f1b71ffd1177"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reported for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="53" width="353" height="15" uuid="15a13cd1-4002-4a3c-8615-6f4dbfc444af"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["From Date: "+$P{FromDate}+"  |  To Date: "+ $P{ToDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Prevent">
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="802" height="26" isRemoveLineWhenBlank="true" uuid="f369d81f-f7ae-4046-a02b-669144a53c06"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="26" uuid="14aec77c-c9b8-4de6-ac5b-546554f62fac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="0" width="30" height="26" uuid="2f92795e-4734-45cd-9e1a-9ba0cca27987"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="0" width="40" height="26" uuid="4310c06a-0b42-451b-b963-931293e3ed3b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Trans. #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="0" width="106" height="26" uuid="af3d7655-7ae1-4fe9-8ea8-33d2f10ed4c8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[POS Operator Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="0" width="106" height="26" uuid="07331540-ac42-42b8-8a91-3b6950aa946e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Authorised By]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="0" width="40" height="26" uuid="de5114a8-7b0f-4f1b-bf83-f2d230916700"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Article #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="0" width="130" height="26" uuid="207c7e13-7901-4213-b5a4-e1dc80267160"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Article Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="603" y="0" width="80" height="26" uuid="8cb5753a-c1fa-4eb1-b3fa-0c1bc6295ff9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reason]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="686" y="0" width="77" height="26" uuid="3359a8a3-4a4e-468b-ae00-a1e4e1806187"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="767" y="0" width="35" height="26" uuid="4bc13b20-2427-44f9-96b4-39a21be4171b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="539" y="0" width="60" height="26" uuid="c83d410b-1203-41d2-a60f-54ede0a2c944"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Void Type]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{evalFilterVars}]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="45" height="20" isPrintWhenDetailOverflows="true" uuid="05e99c6f-3452-4682-9d43-228f9da74094"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="52" y="0" width="30" height="20" isPrintWhenDetailOverflows="true" uuid="85a7aa22-7164-4596-ad0b-b29a9ac9c344"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{time}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="86" y="0" width="40" height="20" isPrintWhenDetailOverflows="true" uuid="c423c28f-3529-4f06-8f92-dc5e4882ff43"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transactionNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="137" y="0" width="106" height="20" isPrintWhenDetailOverflows="true" uuid="d603a81e-f81d-4113-a05c-21a2415bf9a1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cashierName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="247" y="0" width="106" height="20" isPrintWhenDetailOverflows="true" uuid="3d471daf-481c-42e2-bf4c-bfc4dfefb55e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{posAuthoriser}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="359" y="0" width="40" height="20" isPrintWhenDetailOverflows="true" uuid="3c21f075-1ea6-461d-b88c-3ac4690235d7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{article}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="406" y="0" width="130" height="20" isPrintWhenDetailOverflows="true" uuid="ecf9a490-c74a-466c-8860-22a595e50590"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{articleDesc}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="603" y="0" width="80" height="20" isPrintWhenDetailOverflows="true" uuid="33db4681-7ab3-4d49-bab8-9cf39f7d6db5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reason}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="686" y="0" width="77" height="20" isPrintWhenDetailOverflows="true" uuid="330b8fa2-8af7-4765-b15d-2f3d414e32a6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{department}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="767" y="0" width="35" height="20" isPrintWhenDetailOverflows="true" uuid="9893403a-263f-4b6b-a30d-50b9f3b9e912"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="539" y="0" width="60" height="20" isPrintWhenDetailOverflows="true" uuid="f95deb59-c216-4e1a-b2fc-c2d113948de6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{voidType}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="18" width="47" height="12" uuid="46acc77c-c0bf-4f5b-965b-51225cfd34a3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="47" y="18" width="289" height="12" uuid="51eae880-3bb7-4899-9e12-0eb43c3dfd09"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="18" width="16" height="12" uuid="bc2aad1f-1fcd-4220-9628-ed867a8883d0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="a9a430e6-ed76-43ce-b0dd-870b919581df"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="30" splitType="Prevent">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="12" uuid="d802aa85-eb61-4b91-84ca-f87f3f57455f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="0" width="104" height="12" uuid="47f58703-39ec-4f8a-93f6-82bc0e34a4f9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Store Total]]></text>
+			</staticText>
+			<textField pattern="###0.00">
+				<reportElement x="643" y="0" width="159" height="12" uuid="ad284952-119e-462a-95d1-060f32702203"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{GrandStoreTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="18" width="45" height="12" uuid="cfc8631e-162e-4531-9aa8-20b3593b4648"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="45" y="18" width="289" height="12" uuid="4533ca2d-3591-4e52-aeca-c6049d0e8e43"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="18" width="16" height="12" uuid="6d6e89d3-8e63-42ea-b7a3-d504144be23d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="aeff4382-963f-4bc8-b508-9f5f4a06ae89"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<noData>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="50" uuid="ca66fab9-54d8-4f73-a5e7-25dfa268b047"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.isNotNullNotEmptyNotWhiteSpace($P{msg})?$P{msg}:"Either no data found or Techincal Problem"]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

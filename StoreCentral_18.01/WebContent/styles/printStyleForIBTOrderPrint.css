@@ -1,0 +1,149 @@
+@page {
+
+size: A4 portrait;
+
+	/* margin-top: 60px;
+	margin-bottom: 30px;
+	margin-right: 70px;
+	margin-left: 70px;
+	size: portrait; */
+}
+/* @media screen {
+        div.divFooter {
+            display: none;
+        }
+    }*/
+@media screen {
+        div.divFooter {
+            display: none;
+        }
+    } 
+@media print {
+	/* make a 10-inch high block that sits on top of the page content */
+	.page-break {
+		page-break-before: always;
+		display: block;
+		position: absolute;
+		width: 100%;
+	}
+	.pageBreak {
+		page-break-before: always;
+	}
+
+	/* stick the contents of .page-break to the bottom of the 10 inch block */
+	.page-break .copyright {
+		position: absolute;
+		bottom: 0px;
+		/* width:100% */
+	}
+}
+
+.printbody table {
+	border: 0px;
+	border-radius: 3px;
+	border-collapse: collapse;
+	clear: both;
+	width: 100%;
+}
+
+.firstTable
+{
+	border: solid 1px gray !important;
+	border-radius: 3px !important;
+	clear: both !important;
+	font-size: 20px !important;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 1000px !important;
+	padding: 35px !important;
+}
+
+.rightBorderCell
+{
+border-right: solid 1px gray !important;
+}
+.printbody {
+	border: /* solid 1px gray */ 0px;
+	border-radius: 3px;
+	clear: both;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 1000px;
+	padding: 35px;
+}
+
+.firstTable tr th {
+	background: #c0c5ca;
+	min-height: 35px !important;
+	border-right: solid 1px !important;
+	border-left: solid 1px !important;
+	border-top: solid 1px !important;
+	padding: 8px 10px;
+	vertical-align: top;
+	white-space: nowrap
+}
+
+
+.firstTable tr td {
+	border-bottom: 0px !important;
+	border-right: 0px !important;
+	padding: 8px 10px;
+	vertical-align: top;
+	height: 10px !important
+}
+
+.secondTable
+{
+	border: solid 1px gray !important;
+	border-radius: 3px !important;
+	clear: both !important;
+	font-size: 20px !important;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 1000px !important;
+	padding: 35px !important;
+}
+
+.secondTable tr th {
+	background: #c0c5ca;
+	min-height: 35px !important;
+	border-right: solid 1px !important;
+	border-left: solid 1px !important;
+	border-top: solid 1px !important;
+	padding: 8px 10px;
+	vertical-align: top;
+	white-space: nowrap
+}
+
+
+.secondTable tr td {
+	border-bottom: 1px !important;
+	border-right: 1px !important;
+	padding: 8px 10px;
+	vertical-align: top;
+	height: 10px !important
+}
+
+.thirdTable  {
+	border: solid 1px gray !important;
+	border-radius: 3px !important;
+	clear: both !important;
+	font-size: 15px !important;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 1000px !important;
+	padding: 35px !important;
+}
+
+.thirdTable tr td {
+	padding: 8px 10px 5px 5px;
+	vertical-align: top;
+	height: 10px !important
+}
+
+.leftValue
+{
+	 text-align: left;
+}
+
+.centerValue
+{
+	text-align: center;
+}

@@ -1,0 +1,143 @@
+/**
+ * 
+ */
+package au.com.woolworths.portal.model;
+
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
+
+import au.com.woolworths.portal.util.PortalUtil;
+
+/**
+ * @author xrca4
+ * 
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class PostResponseHelper {
+
+	@JsonProperty("IV_MSG")
+	private String error;
+
+	@JsonProperty("IV_PR_NO")
+	private String purReqNo;
+
+	@JsonProperty("IV_ORDER_NO")
+	private String generatedOrderNo;
+
+	@JsonProperty("IV_TYP")
+	private String type;
+
+	@JsonProperty("IV_UOM")
+	private String uom;
+
+	@JsonProperty("IV_TEST")
+	private String test;
+
+	@JsonProperty("IV_QTY")
+	private String qty;
+
+	@JsonProperty("IV_MVMT_TYPE")
+	private String mvmtType;
+
+	@JsonProperty("IV_DOC_DATE")
+	private String docDate;
+
+	@JsonProperty("IV_ARTICLE")
+	private String article;
+
+	@JsonProperty("IV_SITE")
+	private String site;
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getUom() {
+		return uom;
+	}
+
+	public void setUom(String uom) {
+		this.uom = uom;
+	}
+
+	public String getTest() {
+		return test;
+	}
+
+	public void setTest(String test) {
+		this.test = test;
+	}
+
+	public String getQty() {
+		return qty;
+	}
+
+	public void setQty(String qty) {
+		this.qty = qty;
+	}
+
+	public String getMvmtType() {
+		return mvmtType;
+	}
+
+	public void setMvmtType(String mvmtType) {
+		this.mvmtType = mvmtType;
+	}
+
+	public String getDocDate() {
+		if (this.docDate != null) {
+			String result = PortalUtil.convertToStandard(docDate);
+			if (result != null && result != "")
+				return result;
+		}
+		return docDate;
+	}
+
+	public void setDocDate(String docDate) {
+		this.docDate = docDate;
+	}
+
+	public String getArticle() {
+		return article;
+	}
+
+	public void setArticle(String article) {
+		this.article = article;
+	}
+
+	public String getSite() {
+		return site;
+	}
+
+	public void setSite(String site) {
+		this.site = site;
+	}
+
+	public String getGeneratedOrderNo() {
+		return generatedOrderNo;
+	}
+
+	public void setGeneratedOrderNo(String generatedOrderNo) {
+		this.generatedOrderNo = generatedOrderNo;
+	}
+
+	public String getPurReqNo() {
+		return purReqNo;
+	}
+
+	public void setPurReqNo(String purReqNo) {
+		this.purReqNo = purReqNo;
+	}
+}

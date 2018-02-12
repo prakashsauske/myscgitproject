@@ -1,0 +1,7553 @@
+html {
+    /*background:#fff url(../images/verticalBg.png) center top repeat-y; */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 75%;
+    height: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 0;
+}
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+li,
+form,
+button {
+    margin: 0;
+    padding: 0;
+}
+label.refresh {
+	background: url(../images/icon-Refresh.png) left -7px no-repeat;
+    padding-left: 23px;
+    background-size: 27px;
+}
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover,
+a:visited {
+    text-decoration: none;
+}
+label.actionBtn a,
+label.secondaryActionBtn a {
+    color: #fff;
+}
+.tempPadding {
+    padding-top: 0!important;
+}
+input[type="radio"] {
+    vertical-align: sub;
+}
+label:focus {
+    border: dotted 1px #1889f7;
+}
+label.instructions {
+    color: #6d6d6d !important;
+}
+ul li {
+    list-style: none;
+}
+ul.orderList {
+    margin-top: 5px;
+    padding-left: 15px;
+}
+ul.orderList li {
+    list-style: disc;
+    margin-top: 2px;
+}
+h2 {
+    font-size: 1.333em;
+}
+h3 {
+    display: inline-block;
+    font-size: 1.083em;
+    font-weight: normal;
+}
+h4 {
+    font-size: 1.167em;
+    font-weight: normal;
+}
+.sectionTitle.multiple {
+    margin-top: 15px;
+}
+h5 {
+    font-size: 1.1em;
+    font-weight: normal;
+}
+button {
+    line-height: 16px!important;
+}
+hr.sectionDivider {
+    border: none;
+    border-top: 2px dotted #CCCCCC;
+    clear: both;
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    width: 100%;
+}
+.popupWrapper hr.sectionDivider {
+    margin-bottom: 0
+}
+.popupWrapper h2.wizardTitle + hr.sectionDivider {
+    margin-bottom: 10px;
+}
+.wizardContent .ContentTableWrapper hr.sectionDivider {
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+a.tableRowAction label {
+    cursor: pointer;
+    padding-left: 0!important;
+}
+.centreAlign {
+    text-align: center;
+}
+.floatRight {
+    float: right;
+}
+.iframeBlocker {
+    left: 0;
+    min-height: 89%;
+    position: absolute;
+    top: 0;
+    width: 96%;
+}
+.subtleHighlight {
+    background-color: #fafafa;
+    border-radius: 5px;
+}
+.subtleHighlight p.notes {
+    background-color: #f1f1f1;
+}
+.actionStatusMessage {
+    background: #fffdb9;
+    /* color change*/
+    /* Safari 4-5, Chrome 1-9 */
+    
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fffdb9), to(#faf278));
+    /* color change*/
+    /* Safari 5.1, Chrome 10+ */
+    
+    background: -webkit-linear-gradient(top, #fffdb9, #faf278);
+    /* color change*/
+    /* Firefox 3.6+ */
+    
+    background: -moz-linear-gradient(top, #fffdb9, #faf278);
+    /* color change*/
+    
+    border: solid 1px #e8e36a;
+    /* color change*/
+    
+    border-radius: 5px;
+    margin: 0 35%;
+    padding: 10px 15px;
+    position: absolute;
+    top: 18px;
+    width: 30%;
+}
+.actionStatusMessage .messageText {
+    color: #686868;
+    float: left;
+    width: 90%;
+}
+.actionStatusMessage .messageClose {
+    float: right;
+    text-align: right;
+    width: 10%;
+}
+.actionStatusMessage .messageClose a {
+    background: url(../images/iconCrossCircle.png) right top no-repeat;
+    padding-bottom: 3px;
+    padding-left: 18px;
+}
+.mainWrapper {
+    margin: 0 auto -45px;
+    min-height: 100%;
+    min-width: 980px;
+}
+.systemWarningWrapper {
+    background: #d71920;
+}
+.systemWarningWrapper .systemWarningContent {
+    padding: 10px 10px 10px 60px;
+    width: 1004px;
+    margin: 0 auto;
+}
+.systemWarningWrapper .systemWarningContent p {
+    color: white;
+    font-size: 1.2em;
+}
+.headWrapper {
+    background: #fff;
+}
+.headWrapper .header {
+    height: 75px;
+    /* width: 1004px; */
+    margin: 0 auto;
+    max-width:980px;
+}
+.headWrapper .header .logoWrapper {
+    float: left;
+}
+.userProfile .ui-menu {
+    border: 0;
+    float: right;
+    text-align: right;
+    z-index: 500;
+}
+.userProfile .ui-menu ul li {
+    text-align: left;
+}
+.userProfile .ui-menu a,
+.userProfile .ui-menu a:hover {
+    border: 0;
+}
+.userProfile .ui-menu .ui-menu-item a {
+    display: inline;
+}
+.userProfile .ui-menu .ui-menu-item {
+    width: auto;
+}
+.userProfile .ui-menu .ui-menu-item a.ui-state-focus,
+.userProfile .ui-menu .ui-menu-item a.ui-state-active {
+    margin: 0;
+}
+.userProfile .ui-menu a.globalLinkAccountName {
+    padding: 0;
+}
+.headWrapper .header .globalLinksWrapper .ui-state-active {
+    background: none;
+}
+.userProfile .ui-menu ul {
+    background: #fff;
+    border-radius: 3px 0 3px 3px;
+    min-width: 150px;
+    padding: 0;
+}
+.userProfile .ui-menu ul.ui-menu li.lastMenuItem {
+    border-bottom: 0;
+}
+.userProfile .ui-menu ul.ui-menu li a {
+    display: block;
+    font-size: .917em;
+    line-height: 30px;
+    padding-left: 8px;
+    width: 100%;
+}
+.headWrapper .header .globalLinksWrapper {
+    float: right;
+    font-size: 1.083em;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+.headWrapper .header .globalLinksWrapper .globalLinkLabel {
+    font-size: 1em;
+}
+.headWrapper .header .globalLinksWrapper .globalLinkLabel.ui-state-focus {
+    border: none;
+}
+.headWrapper .header .globalLinksWrapper .userProfile {
+    padding-left: 5px;
+}
+.headWrapper .header .globalLinksWrapper .globalLinkAccountName {
+    background-position: 94% 44%;
+    background-repeat: no-repeat;
+    font-weight: bold;
+    padding: 5px 22px 10px 7px;
+}
+.headWrapper .header .globalLinksWrapper .userProfile .ui-widget-content .ui-icon {
+    display: none;
+}
+.headWrapper .header .globalLinksWrapper .store {
+    border-radius: 5px;
+    clear: both;
+    font-size: 1em;
+    margin-right: 2px;
+    padding: 3px 1px 3px 7px;
+}
+.headWrapper .header .globalLinksWrapper .store .ui-menu {
+    border: none;
+    padding: 0;
+}
+.headWrapper .header .globalLinksWrapper .store .globalLinkLabel {
+    font-size: 1em;
+}
+.headWrapper .header .globalLinksWrapper .store .globalLinkLabel a {
+    background: url(../images/tableArrowDown.png) 100% 6px no-repeat;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.headWrapper .header .globalLinksWrapper .store .globalLinkLabel a:hover {
+    margin: 0;
+}
+.headWrapper .header .globalLinksWrapper .store .globalLinkLabel a span.ui-menu-icon {
+    display: none;
+}
+.headWrapper .navWrapper {
+    clear: both;
+    height: 59px;
+    padding-top: 1px;
+    /* width: 1004px; */
+    margin: 0 auto;
+    max-width: 980px;
+}
+.headWrapper .breadcrumbWrapper {
+    height: 40px;
+    /* width: 1004px; */
+    margin: 0 auto;
+    max-width: 980px;
+}
+.headWrapper .breadcrumbWrapper .breadcrumbs {
+    float: left;
+    padding: 11px 0 0 10px;
+}
+.breadcrumbWrapper .breadcrumbs ul {
+    display: inline;
+}
+.breadcrumbWrapper .breadcrumbs ul li {
+    display: inline;
+    list-style-type: none;
+    padding: 0 15px 0 7px;
+}
+.breadcrumbWrapper .breadcrumbs .breadcrumbLabel {
+    font-weight: bold;
+    padding-right: 0;
+}
+.breadcrumbWrapper .breadcrumbs ul li.currentPage {
+    background: none;
+}
+.headWrapper .breadcrumbWrapper .statusWrapper {
+    float: right;
+    padding-right: 10px;
+    padding-top: 6px;
+}
+.headWrapper .breadcrumbWrapper .statusWrapper label.loading {
+    background: url(../images/loading.gif) left top no-repeat;
+    color: #00501f;
+    padding-left: 23px;
+}
+.headWrapper .breadcrumbWrapper .statusWrapper .secondaryActionBtn {
+    line-height: 26px;
+    margin-left: 10px;
+}
+.headWrapper .breadcrumbWrapper .statusWrapper label.secondaryActionBtn {} .contentWrapper {
+    clear: both;
+    padding: 15px 20px 65px 20px;
+    overflow: auto;
+    /*background:red url(../images/verticalBg.png) center top repeat-y;	*/
+    
+    height: auto;
+}
+.mainWrapper > .contentWrapper {
+   /*  width: 1004px; */
+    margin: 0 auto;
+    max-width: 980px;
+}
+.mainWrapper > form .contentWrapper {
+    /* width: 1004px; */
+    margin: 0 auto;
+    max-width: 980px;
+}
+.articleHead {
+    /* width:920px;  commented for full screen  */
+    
+    width: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 4px 4px 10px 10px;
+    overflow: auto;
+}
+.articleHead .articleHeaderWrapper {
+    clear: both;
+    float: left;
+}
+.articleHead .articleHeaderWrapper .articleTitle {
+    font-size: 1.333em;
+    padding-top: 6px;
+}
+.articleHead .articleHeaderWrapper .articleTitle label.divider {
+    font-weight: normal;
+    padding: 0 5px;
+}
+.articleHead .articleHeaderWrapper p,
+.articleHead .articleInfoWrapper p.secondaryInfo {
+    font-size: 1.083em;
+    line-height: 15px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+.articleHead .articleHeaderWrapper p label.articlePriceLabel {
+    padding-right: 6px;
+}
+.articleHead .articleHeaderWrapper p label.articlePriceLabel label.negativeValue {
+    background: url("../images/iconArrowDown_red.png") no-repeat right center;
+    color: red;
+    font-size: 0.9em;
+    padding-left: 5px;
+    padding-right: 12px;
+}
+.articleHead .articleHeaderWrapper p label.articlePriceLabel label.positiveValue {
+    background: url("../images/iconArrowUp_green.png") no-repeat right center;
+    color: green;
+    font-size: 0.9em;
+    padding-left: 5px;
+    padding-right: 12px;
+}
+.articleHead .articleInfoSecondary {
+    clear: both;
+    opacity: 0.3;
+}
+.articleHead .articleInfoSecondary .hierarchy .title {} .articleHead .articleInfoSecondary .hierarchy ul,
+.articleHead .articleInfoSecondary .hierarchy ul li {
+    display: inline;
+}
+.articleHead .articleInfoSecondary .hierarchy ul li {
+    background: url("../images/menuRightArrow.png") no-repeat right center;
+    padding-right: 20px;
+}
+.articleHead .articleInfoSecondary .hierarchy ul li:last-child {
+    background: none;
+}
+.articleHead .articleActionBtns {
+    float: right;
+    height: 28px;
+}
+.articleHead .articleActionBtns label.actionBtn,
+.articleHead .articleActionBtns label.secondaryActionBtn {
+    line-height: 28px;
+}
+.articleHead label.fyi {
+    float: right;
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: right;
+}
+.articleHead .articleInfoWrapper {
+    clear: both;
+}
+.settings .articleHead {
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.pageTitleWrapper {
+    clear: both;
+}
+.pageTitleWrapper h2.pageTitle {
+    font-size: 1.333em;
+}
+.pageTitleWrapper h2.homeTitle {
+    text-align: center;
+}
+.articleRangedValue {} .articleRangedLabel {} .actionBtn,
+.secondaryActionBtn,
+.formWrapper .parameter .selectDropdown label.actionBtn,
+.formWrapper .parameter .selectDropdown label.secondaryActionBtn {
+    color: white;
+    border-radius: 3px;
+    padding: 5px 9px;
+    font-family: arial;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    /* 12px */
+    
+    margin-left: 5px;
+}
+button.actionBtn,
+button.secondaryActionBtn,
+.tableActionsWrapper .formWrapper .parameter .selectDropdown button.actionBtn,
+.tableActionsWrapper .formWrapper .parameter .selectDropdown button.secondaryActionBtn {
+    font-family: arial;
+    padding: 4px 8px 6px;
+}
+.actionBtn label,
+.actionBtn a,
+.secondaryActionBtn,
+.secondaryActionBtn a {
+    cursor: pointer;
+    color: white !important;
+}
+.secondaryActionBtn,
+.tableActionsWrapper .formWrapper .parameter .selectDropdown label.secondaryActionBtn,
+.tableActionsWrapper .formWrapper .parameter .selectDropdown button.secondaryActionBtn {
+    font-weight: normal;
+}
+.actionBtn.disabled,
+.actionBtn.disabled:hover {
+    background: #e0e0e0;
+    /* Safari 4-5, Chrome 1-9 */
+    
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e0e0e0), to(#d1d1d1));
+    /* Safari 5.1, Chrome 10+ */
+    
+    background: -webkit-linear-gradient(top, #e0e0e0, #d1d1d1);
+    /* Firefox 3.6+ */
+    
+    background: -moz-linear-gradient(top, #e0e0e0, #d1d1d1);
+    border: solid 1px #d1d1d1;
+    cursor: default !important;
+}
+.actionBtn.disabled label,
+.actionBtn.disabled a,
+.actionBtn.disabled a label,
+.secondaryActionBtn.disabled,
+.secondaryActionBtn.disabled a,
+.secondaryActionBtn.disabled a label {
+    cursor: default !important;
+}
+/* Style for buttons with icons */
+
+label.nearbyBtn {
+    background: url(../images/iconNearby.png) left 1px no-repeat;
+    padding-left: 19px;
+}
+label.editBtn {
+    background: url(../images/iconEdit.png) 1px 3px no-repeat;
+    padding-left: 19px;
+}
+label.addItem:after {
+    background: url("../images/iconArrowDown_white.png") no-repeat;
+    content: "";
+    float: right;
+    height: 17px;
+    margin: 0;
+    -webkit-transform: rotate(90deg);
+    width: 9px;
+}
+label.removeItem:before {
+    background: url("../images/iconArrowDown_white.png") no-repeat;
+    content: "";
+    float: left;
+    height: 16px;
+    margin: 0;
+    -webkit-transform: rotate(270deg);
+    width: 8px;
+}
+label.upItem:after {
+    background: url("../images/iconArrowDown_white.png") 0 4px no-repeat;
+    content: "";
+    float: right;
+    height: 15px;
+    margin: 0;
+    margin-left: 5px;
+    -webkit-transform: rotate(0deg);
+    width: 10px;
+}
+label.downItem:after {
+    background: url("../images/iconArrowDown_white.png") 0 4px no-repeat;
+    content: "";
+    float: right;
+    height: 15px;
+    margin: 0;
+    margin-left: 5px;
+    -webkit-transform: rotate(180deg);
+    width: 10px;
+}
+label.notepad {
+    background: url(../images/iconPadTick.png) left 1px no-repeat;
+    padding-left: 18px;
+}
+label.notepadCross {
+    background: url(../images/iconPadCross.png) left 1px no-repeat;
+    padding-left: 18px;
+}
+label.thumbUp {
+    background: url(../images/iconThumbUp.png) left 1px no-repeat;
+    padding-left: 18px;
+}
+label.print {
+    background: url(../images/iconPrint.png) left 2px no-repeat;
+    padding-left: 22px;
+}
+label.positiveStatus {
+    padding-left: 20px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    background: url(../images/iconTickCircle.png) left -1px no-repeat;
+    /*img change*/
+    
+    color: #222222;
+    margin-left: 3px;
+}
+label.negativeStatus {
+    background: url(../images/iconDeleteCircle.png) left 2px no-repeat;
+    color: #df0b0b;
+    margin-left: 3px;
+    padding-bottom: 2px;
+    padding-left: 16px;
+    padding-right: 7px;
+}
+label.positiveFlag {
+    background: url(../images/iconTick.png) left 3px no-repeat;
+    margin-right: 4px;
+    padding-left: 17px;
+    padding-right: 7px;
+}
+label.negativeFlag {
+    padding-left: 15px;
+    padding-right: 7px;
+    margin-right: 5px;
+    background: url(../images/iconCross.png) left 4px no-repeat;
+}
+.disabled label.negativeFlag {
+    padding-left: 15px;
+    padding-right: 7px;
+    margin-right: 5px;
+    background: url(../images/iconCross.png) left 4px no-repeat;
+}
+.actionBtn label.negativeFlag {
+    margin-right: 0;
+    padding-right: 0;
+}
+label.orderStatus {
+    background-color: #77c250;
+    border-radius: 3px 3px 3px 3px;
+    color: #fff;
+    display: inline-block;
+    margin-left: 3px;
+    padding: 3px 6px;
+}
+label.highlightStatus {
+    background-color: #ff6766;
+    border: solid 1px #ff4c4b;
+    border-radius: 3px 3px 3px 3px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 3px;
+    padding: 3px 6px;
+}
+label.createBtn {
+    background: url(../images/iconCreate.png) 1px 4px no-repeat;
+    padding-left: 16px;
+}
+label.standard {
+    padding-left: 20px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    margin-left: 3px;
+    background: url(../images/iconStandard.png) left top no-repeat;
+    /*img change*/
+    
+    color: #222222;
+}
+label.promotion {
+    padding-left: 20px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    background: url(../images/iconPromotion.png) left top no-repeat;
+    /*img change*/
+    
+    color: #df0b0b;
+    margin-left: 3px;
+}
+label.GLindicator {
+    padding-left: 18px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    background: url(../images/iconGindicator.png) left top no-repeat;
+    /*img change*/
+    
+    margin-left: 3px;
+}
+label.advert {
+    font-size: 0.9em !important;
+    background-color: gray !important;
+    color: white !important;
+    border-radius: 15px !important;
+    padding: 1px 4px !important;
+    margin-right: 3px !important;
+}
+label.restricted {
+    font-size: 0.9em !important;
+    background-color: gray !important;
+    color: white !important;
+    border-radius: 15px !important;
+    padding: 1px 4px !important;
+    margin-right: 3px !important;
+}
+label.plannerPromo {
+    padding-left: 20px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    background: url(../images/iconP.png) left top no-repeat;
+    /*img change*/
+    
+    color: #00501F;
+    margin-left: 3px;
+}
+label.plannerLastPromo {
+    padding-left: 12px;
+    padding-right: 9px;
+    padding-bottom: 2px;
+    background: url(../images/iconGreyDot.png) left center no-repeat;
+    /*img change*/
+    
+    color: #00501F;
+    margin-left: 3px;
+}
+label.plannerThisPromo {
+    background: url(../images/iconGreenDot.png) left center no-repeat;
+    color: #00501F;
+    margin-left: 3px;
+    padding-bottom: 2px;
+    padding-left: 12px;
+    padding-right: 9px;
+}
+label.pb {
+    padding-left: 20px;
+    padding-right: 9px;
+    padding-bottom: 2px;
+    background: url(../images/iconPB.png) left center no-repeat;
+    /*img change*/
+    
+    color: #00501F;
+    margin-left: 3px;
+}
+label.d {
+    padding-left: 20px;
+    padding-right: 9px;
+    padding-bottom: 2px;
+    background: url(../images/iconD.png) left center no-repeat;
+    /*img change*/
+    
+    color: #00501F;
+    margin-left: 3px;
+}
+label.linked {
+  padding-left: 20px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  background: url(../images/iconLink.png) left top no-repeat;
+  color: #00501F;
+  margin-left: 3px;
+}
+label.style {
+  padding-left: 20px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+ /*  background-image: url(../images/iconStandard.png); */
+  background: url(../images/iconStandard.png) left top no-repeat;
+  color: #00501F;
+  margin-left: 3px;
+}
+label.productRecalled {
+  padding-left: 20px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  background: url(../images/iconPR.png) left top no-repeat;
+  color: #00501F;
+  margin-left: 3px;
+}
+.ContentTableWrapper .ContentTable tr td.linked{
+				background-image:url(../images/iconLink.png);
+				background-position:10% 23%;
+				background-repeat:no-repeat;
+				
+}
+.ContentTableWrapper .ContentTable tr td.productRecalled{
+				background-image:url(../images/iconPR.png);
+				background-position:10% 23%;
+				background-repeat:no-repeat;
+				
+}
+.ContentTableWrapper .ContentTable tr td div.productRecalled{
+			background-image:url(../images/iconPR.png);		
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+    width: 15px;
+    height:15px;
+    float: right;
+    margin: 0 1% 1% 0;
+    position: relative;
+    left: 4px;
+    top: -4px;
+				
+}
+.ContentTableWrapper .ContentTable tr td div.linked {
+   background-image:url(../images/iconLink.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+    width: 15px;
+    height:15px;
+    float: right;
+    margin: 0 1% 1% 0;
+    position: relative;
+    left: 4px;
+    top: -4px; 
+}
+label.shape label.square {
+    background: red;
+    display: inline-block;
+    height: 10px;
+    margin-right: 5px;
+    vertical-align: sub;
+    width: 10px;
+    m
+}
+label.key {
+    background: url(../images/iconKey.png) left 1px no-repeat;
+    padding-left: 18px;
+}
+label.validate {
+    background: url(../images/iconTickCircleWhite.png) left center no-repeat;
+    background-size: 1em;
+    padding-left: 17px;
+}
+label.thumbUp {
+    background: url(../images/iconThumbUp.png) left 1px no-repeat;
+    padding-left: 18px;
+}
+label.deactivate {
+    background: url(../images/iconDeactivate.png) left center no-repeat;
+    background-size: 1em;
+    padding-left: 16px;
+}
+label.email {
+    background: url(../images/iconEmail_white.png) left center no-repeat;
+    padding-left: 21px;
+}
+label.valueUp:after {
+    background: url(../images/iconArrowPointer.png) right center no-repeat;
+    content: "";
+    float: right;
+    height: 16px;
+    margin: 0;
+    transform: rotate(270deg);
+    width: 16px;
+}
+label.valueDown:after {
+    background: url(../images/iconArrowPointer.png) right center no-repeat;
+    content: "";
+    float: right;
+    height: 16px;
+    margin: 0;
+    transform: rotate(90deg);
+    width: 16px;
+}
+.stepper a.stepDown,
+.stepper a.stepUp {
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    padding-left: 15px;
+    padding: 1px 9px;
+}
+.stepper a.stepDown {
+    background: url(../images/iconMinusBlue.png) 7px center no-repeat;
+}
+.stepper a.stepUp {
+    background: url(../images/iconPlusBlue.png) center center no-repeat;
+}
+.stepper input.numberBox {
+    text-align: center;
+}
+label.nomenu {
+    background: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.contentWrapper .articleContent {
+    border-radius: 0 0 4px 4px;
+    clear: both;
+    margin-bottom: 20px;
+    padding: 8px 8px 9px 8px;
+    overflow: auto;
+    border-top: 0;
+}
+.contentWrapper .wizardContent .articleContent {
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+}
+.contentWrapper .detailsSections .articleContent {
+    margin-bottom: 20px;
+}
+.reportWrapper .articleContent.orderDetails {
+    margin-bottom: 0;
+}
+.articleContentInner {
+    background: url(../images/contentDivider.gif) right top repeat-y;
+    float: left;
+    padding-right: 9px;
+    margin-right: 6px;
+    overflow: auto;
+    position: relative;
+    width: 23.5%;
+}
+.articleContentInner .articleDetails {
+    border-radius: 4px;
+    background: #FFFFFF;
+    overflow: auto;
+}
+.articleContentInner .articleImg {
+    background: #fff;
+    overflow: auto;
+    text-align: left;
+}
+.articleContentInner .articleImg img {
+    display: block;
+    height: 151px;
+    margin: 20px auto auto;
+    position: relative;
+}
+.articleContentInner .articleInfoTop {
+    border-radius: 4px 4px 0 0;
+    height: auto;
+    opacity: 0.7;
+    padding: 6px 6px 6px 5px;
+}
+.articleContentInner .articleInfoBottom {
+    border-radius: 0 4px;
+    bottom: 0;
+    height: auto;
+    opacity: 0.7;
+    padding: 6px;
+    position: absolute;
+}
+.articleContentInner .articleInfoBottom .articleLocation {} .articleContentInner .articleInfoTop .articleName {
+    color: white;
+    display: block;
+}
+.articleContentInner .articleInfoTop .articleName {
+    color: white;
+}
+.articleContentInner .articleInfoBottom .articleLocation {
+    color: white;
+}
+.articleContentInner .articleInfo {
+    padding: 6px 0;
+    background: #464d57;
+    border-radius: 0 0 4px 4px;
+}
+.articleContentInner .articleInfo .articleLocation {
+    display: none;
+}
+.articleContentInner .articleInfo .articleName {
+    color: white;
+    padding-left: 3px;
+}
+.articleContentInner .articleDetails .ContentTable {
+    width: 100%;
+}
+.articleContentInner .articleDetails tr th {
+    padding: 8px 0 8px 10px;
+    text-align: left;
+}
+.articleContentInner .articleDetails tr td {
+    font-size: 1em;
+    padding: 8px 3px 8px 10px;
+}
+.articleContentInner .articleDetails tr td.keyInfo {
+    white-space: nowrap;
+    vertical-align: top;
+}
+.articleContentInner .articleDetails tr td.valueInfo {
+    font-weight: bold;
+}
+.articleContentInner .articleDetails tr th label.history {
+    float: right;
+    font-size: 1em;
+    font-weight: normal;
+    margin-right: 10px;
+}
+.articleContentInner .articleDetails tr:last-child td {
+    border-bottom: none;
+}
+.articleContentInnerLast {
+    padding-right: 0;
+    margin-right: 0;
+}
+.contentWrapper .articleAdditionalInfo {
+    /*padding-top:30px;*/
+}
+span.summaryInfo {
+    font-size: 1em;
+    /* 12px */
+    
+    float: right;
+    padding-right: 8px;
+}
+.contentWrapper .articleAdditionalInfo .ui-widget-content {
+    border-top: 0;
+}
+.contentWrapper .articleAdditionalInfo .ui-widget-content .ui-widget-content,
+.reportWrapper .ui-tabs {
+    border: 0;
+    background: white;
+}
+.ui-tabs .tabContent {
+    padding-top: 15px;
+}
+.contentWrapper .ui-tabs .tabContent .ui-tabs {
+    padding-top: 0;
+}
+.contentWrapper .ui-widget-content .ui-tabs {
+    padding-top: 8px;
+}
+.contentWrapper .ui-widget-content.ui-tabs {
+    border: none;
+}
+.contentWrapper .ui-widget-content li.ui-tabs-active,
+.contentWrapper .ui-widget-content li.ui-tabs-active:hover {
+    color: white;
+}
+.contentWrapper .ui-widget-content .ui-tabs-nav li a {
+    padding: 5px 7px 5px 9px;
+    margin-right: 4px;
+}
+.contentWrapper .ui-widget-content .ui-tabs-nav li.ui-tabs-active a,
+.popupWrapper .ui-widget-content .ui-tabs-nav li.ui-tabs-active a {
+    color: white;
+}
+.contentWrapper .ui-widget-content .ui-tabs-nav li.ui-tabs-active.highlightTab a,
+.popupWrapper .ui-widget-content .ui-tabs-nav li.ui-tabs-active.highlightTab a {
+    color: white !important;
+}
+.contentWrapper .ui-tabs .ui-tabs-nav,
+.reportWrapper .ui-tabs .ui-widget-content .ui-tabs .ui-tabs-nav {
+    border-radius: 0;
+}
+/* style for order details page */
+
+.contentWrapper .detailsSections .orderDetails {
+    margin-bottom: 10px;
+}
+.contentWrapper .orderDetails .articleContentInner {
+    background: none;
+    float: none;
+    margin-right: 0;
+    padding-right: 0;
+    width: 100%;
+}
+.reportWrapper.contentWrapper .articleContent .articleContentInner {
+    width: 100%;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails {
+    margin-top: 8px;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails:nth-of-type(1) {
+    margin-top: 0;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails .ContentTable {
+    width: 100%;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td {
+    border-right: 1px solid #F5F5F0;
+    vertical-align: top;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.valueInfo {
+    border-right: 5px solid #F5F5F0
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.lastColumn,
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.noDivider,
+.contentWrapper tr td.noDivider {
+    border-right: none !important;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.valueInfo label.history {
+    float: right;
+    font-weight: normal;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.numberColumn,
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr th.numberColumn {
+    padding-right: 10px;
+    text-align: right;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.subTitle {
+    font-weight: bold;
+    border: none;
+    opacity: 0.6;
+    color: #000 !important;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails.multiple tr td.keyInfo {
+    width: 10%;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails.multiple tr td.valueInfo {
+    width: 20%;
+}
+/* styles for full page forms */
+
+.formWrapper.twoColumn {} .formWrapper.twoColumn.seventyThirty .formWrapperLeft,
+.formWrapper.twoColumn.seventyThirty .formWrapperRight,
+.formWrapper.twoColumn.sixtyFourty .formWrapperLeft,
+.formWrapper.twoColumn.sixtyFourty .formWrapperRight,
+.formWrapper.twoColumn.fiftyFifty .formWrapperLeft,
+.formWrapper.twoColumn.fiftyFifty .formWrapperRight {
+    float: left;
+}
+.formWrapper.twoColumn.seventyThirty .formWrapperLeft {
+    width: 70%;
+}
+.formWrapper.twoColumn.seventyThirty .formWrapperRight {
+    width: 30%;
+}
+.formWrapper.twoColumn.sixtyFourty .formWrapperLeft {
+    width: 60%;
+}
+.formWrapper.twoColumn.sixtyFourty .formWrapperRight {
+    width: 40%;
+}
+.formWrapper.twoColumn.fiftyFifty .formWrapperLeft {
+    width: 60%;
+}
+.formWrapper.twoColumn.fiftyFifty .formWrapperRight {
+    width: 40%;
+}
+.formWrapper.twoColumn.seventyThirty .twoColumnContent,
+.formWrapper.twoColumn.sixtyFourty .twoColumnContent,
+.formWrapper.twoColumn.fiftyFifty .twoColumnContent {
+    padding: 8px;
+}
+.formWrapper.twoColumn .parameter > label {
+    /*width:16%; commented because causinf issue for smaller resolution */
+    
+    width: 16%;
+    min-width: 125px;
+}
+.formWrapper.twoColumn .parameter > label.linkBtn,
+.formWrapper.twoColumn .parameter > label.linkBtn label {
+    width: auto;
+}
+.formWrapper.twoColumn input.textbox.searchbox,
+.formWrapper input.textbox.searchbox {
+    width: 340px !important;
+}
+.formWrapper .parameter span.radioOptions label {
+    width: auto;
+}
+.ContentTableWrapper .ContentTable tr.editRow td span.radioOptions {
+    display: inline-block;
+    margin-top: 7px;
+    white-space: nowrap;
+}
+.formWrapper .parameter.parameterTitle label {
+    width: auto;
+}
+.contentWrapper .ui-widget-content .ui-tabs-nav li.ui-tabs-active a,
+.popupWrapper .ui-widget-content .ui-tabs-nav li.ui-tabs-active a {
+    color: white;
+}
+.order {
+    padding-top: 0;
+}
+.order .lookupWrapper .lookupParamWrapper .advancedParam .parameter input.textbox {
+    width: 205px;
+}
+.order .lookupWrapper .lookupParamWrapper .advancedParam .parameter input.inputDate {
+    width: 88px;
+}
+/* style for scetions */
+
+.contentWrapper .detailsSections {
+    margin-top: -3px;
+}
+.contentWrapper .detailsSections .sectionTabs > ul.ui-tabs-nav {
+    background-color: #e3e2e1;
+}
+.contentWrapper .detailsSections .sectionTabs > ul.ui-tabs-nav li {
+    border-radius: 0;
+}
+.contentWrapper .detailsSections .articleHead {
+    border-radius: 0;
+    background: #fff;
+}
+.contentWrapper .sectionTabs > .ui-tabs-nav {
+    padding-right: 8px;
+}
+.contentWrapper .sectionTabs > .ui-tabs-nav li {
+    /*float:right;*/
+}
+.contentWrapper .detailsSections .sectionTabs .ui-tabs {
+    padding-top: 0;
+}
+.contentWrapper .detailsSections .sectionTabs > .ui-tabs-nav li:hover {
+    background: #fff;
+}
+.contentWrapper .sectionTabs > .ui-tabs-nav li a label.sectionTitle {
+    font-size: 1.3em;
+}
+.contentWrapper .sectionTabs > .ui-tabs-nav li a label.sectionInfo {
+    display: block;
+}
+.contentWrapper .sectionTabs > .ui-tabs-nav li a label:hover {
+    cursor: pointer;
+}
+.contentWrapper .sectionTabs > .ui-tabs-panel {
+    padding-top: 0;
+}
+.contentWrapper .detailsSections .articleHead .articleHeaderWrapper p,
+.contentWrapper .detailsSections .articleHead .articleHeaderWrapper .articleTitle {
+    color: #222222;
+}
+.contentWrapper .detailsSections .articleHead .articleHeaderWrapper .articleTitle {
+    font-weight: normal;
+}
+/* ---------------------- */
+/* Styles for Footer */
+
+.footerWrapper {
+    background-color: #d3d3d3;
+    color: #494949;
+    overflow: hidden;
+    /*position:fixed;
+	bottom:0;*/
+    /*width:980px; commented for full screen */
+    
+    min-width: 980px;
+    height: 45px;
+    margin: 0 auto;
+}
+.footer {
+    padding: 15px 10px;
+    overflow: visible;
+    /* width: 1004px; */
+    margin: 0 auto;
+    max-width: 980px;
+}
+.footer .copyrightsInfo {
+    float: left;
+}
+.footer .policyInfo {
+    float: right;
+}
+.footer .policyInfo a {
+    color: #494949;
+}
+.footer .policyInfo a:hover {
+    color: #619d1c;
+}
+.footer .policyInfo label.divider {
+    padding: 0 5px;
+}
+/* Style for Home page */
+
+.homeLinksWrapper {
+    display: none;
+}
+.homeLinkBoxes {
+    margin-top: 10px;
+    overflow: auto;
+}
+.homeLinkBoxesNew {
+    margin-top: 10px;
+    overflow: auto;
+}
+.homeLinkBox {
+    background: url("../images/home_Vertical_divider.png") no-repeat scroll right top transparent;
+    cursor: pointer;
+    float: left;
+    height: 165px;
+    margin: 0;
+    padding: 0;
+    width: 308px;
+}
+.borderBottom {
+    background: url("../images/home_Vertical_divider.png") no-repeat scroll right bottom transparent;
+}
+.borderLast {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+}
+.homeLinkTextWrapper {
+    padding-top: 30px;
+}
+.homeLinkText {
+    font-size: 1.333em;
+    /* 16px */
+    
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.homeContentWelcomeTitle {
+    font-size: 1.333em;
+    padding-bottom: 25px;
+    text-align: center;
+}
+.homeBorderHorz {
+    clear: both;
+    height: 2px;
+    margin: -11px auto auto;
+    width: auto;
+}
+.homeImgSize {
+    display: block;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
+.lookup {
+    padding-top: 0;
+}
+.lookupWrapper {
+    border-top: 0;
+    border-radius: 0 0 4px 4px;
+    clear: both;
+    overflow: auto;
+    padding: 20px 20px 15px 20px;
+    width: 600px;
+    margin: 0 auto;
+}
+.lookupWrapper .lookupTitleWrapper {
+    float: left;
+    padding-right: 15px;
+    padding-top: 3px;
+    width: 55px;
+}
+.lookupWrapper .lookupParamWrapper {
+    float: left;
+}
+.lookupWrapper .lookupParamWrapper .searchByOptions {
+    padding-top: 5px;
+    padding-left: 7px;
+}
+.lookupWrapper .lookupParamWrapper .searchByOptions label.labelText {
+    font-size: 1em;
+    color: #898989;
+}
+.lookupWrapper .lookupParamWrapper .searchBox {
+    background: #fff;
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    height: 24px;
+    /*width:290px;*/
+    
+    margin-bottom: 1px;
+    vertical-align: middle;
+}
+.lookupWrapper .lookupParamWrapper .searchBox span {
+    /*padding-left:3px;*/
+}
+.lookupWrapper .lookupParamWrapper .searchBox input.textbox {
+    border: solid 1px #fff;
+    width: 330px;
+    padding: 2px 6px 4px 6px;
+}
+.lookupWrapper .lookupParamWrapper .searchBox select.selectOptions {
+    background: none;
+    width: 241px;
+    border: solid 1px #fff;
+    padding: 2px 4px;
+}
+.lookupWrapper .lookupParamWrapper .searchBox input.inputDate {
+    border-radius: 0;
+    padding-left: 8px;
+    width: 80px;
+    padding-bottom: 3px;
+    padding-right: 10px;
+    background-position: 95% center !important;
+}
+/* style for promotion and AQM screens */
+
+.lookupWrapper .lookupParamWrapper .promotionSearch input.textbox,
+.lookupWrapper .lookupParamWrapper .AQMquery input.textbox {
+    width: 145px;
+    border-right: 1px dotted #C0C5CA;
+    border-radius: 3px 0 0 3px;
+    height: 16px;
+}
+.lookupWrapper .lookupParamWrapper .promotionSearch select.selectOptions {
+    width: 125px;
+}
+.lookupWrapper .lookupParamWrapper .AQMquery input.secondCriteria {
+    width: 114px;
+    border-right: none;
+}
+.lookupWrapper .lookupParamWrapper .searchByOptions label {
+    cursor: pointer;
+    padding-right: 5px;
+}
+.lookupWrapper .lookupParamWrapper .searchByOptions input[type="radio"],
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter input[type="radio"] {
+    vertical-align: sub;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam {
+    padding-top: 10px;
+    padding-left: 6px;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter {
+    padding-bottom: 10px;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter.hasOptions {
+    padding-bottom: 0;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter h3 {
+    width: 107px;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter span {
+    line-height: 32px;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter input.textbox {
+    width: 204px;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter input.inputDate {
+    background-position: 96% 5px;
+    width: 93px;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter label {
+    line-height: 22px;
+    cursor: pointer;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter .options label {
+    padding-left: 8px;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam .parameter .searchByOptions.onlyCheckbox {
+    margin-left: 99px;
+}
+.lookupWrapper .lookupParamWrapper .advancedParam .actionBtn {
+    display: inline;
+    margin-left: 0;
+}
+.lookupWrapper .lookupActionWrapper {
+    float: right;
+    padding-top: 6px;
+}
+.advancedSearchFormat {
+    z-index: 100;
+    position: fixed;
+    display: block;
+    /*height: 150px;*/
+}
+.advancedSearchFormatWrapper {
+    /*z-index:18;*/
+    
+    position: fixed;
+    display: block;
+    height: 150px;
+    float: left;
+    border-top: 0;
+    border-radius: 0 0 4px 4px;
+    overflow: auto;
+    margin-top: 60px;
+    margin-left: -21px;
+    width: 640px;
+    z-index: 99;
+}
+.advancedSearchFormat .parameter h3 {
+    font-size: 1em;
+    font-weight: bold;
+}
+.lookupParamWrapper .parameter .supplyDrop {
+    min-width: 219px;
+}
+/* -------------------- */
+/* style for reports */
+
+.reports {
+    padding-top: 0;
+}
+.reportWrapper {} .reportWrapper .ContentTableWrapper {
+    overflow-y: auto;
+}
+.reportWrapper .ui-accordion .ui-accordion-header {
+    font-size: 1.167em;
+    margin-top: 0;
+}
+.reportWrapper .formWrapper .parameter,
+.contentWrapper.wizardPage .formWrapper .parameter,
+.subSectionWrapper.formWrapper .parameter {
+    float: left;
+    width: 48%;
+}
+.reportWrapper .formWrapper .parameterRow {
+    overflow: visible;
+    white-space: nowrap;
+}
+.reportWrapper .formWrapper .parameter .reportRadio {
+    /*padding-left: 25%;*/
+    
+    padding-top: 5px;
+}
+.reportWrapper .formWrapper .parameter label {
+    width: 25%;
+}
+.reportWrapper .formWrapper .parameter label + label {
+    width: auto;
+}
+.reportWrapper .formWrapper .parameter .reportRadio label,
+.contentWrapper.wizardPage .formWrapper .parameter .reportRadio label {
+    width: auto;
+}
+.reportWrapper .formWrapper .onlyCheckbox label {
+    width: auto !important;
+}
+.reportWrapper .formWrapper .parameter span.onlyCheckbox {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.reportWrapper .formWrapper .parameterRow,
+.tableActionsWrapper .formWrapper .parameterRow,
+.popupWrapper .formWrapper .parameterRow {
+    overflow: visible;
+    white-space: nowrap;
+}
+.reportWrapper .formWrapper .parameter.parameterRow span label,
+.reportWrapper .formWrapper .parameter.parameterOptions span label,
+.tableActionsWrapper .formWrapper .parameter.parameterRow span label,
+.tableActionsWrapper .formWrapper .parameter.parameterOptions span label,
+.popupWrapper .formWrapper .parameter.parameterRow span label,
+.popupWrapper .formWrapper .parameter.parameterOptions span label {
+    width: auto;
+}
+.reportWrapper .formWrapper .parameter.parameterOptions,
+.reportWrapper .formWrapper .parameter.parameterOptions .parameter,
+.tableActionsWrapper .formWrapper .parameter.parameterOptions,
+.tableActionsWrapper .formWrapper .parameter.parameterOptions .parameter,
+.popupWrapper .formWrapper .parameter.parameterOptions,
+.popupWrapper .formWrapper .parameter.parameterOptions .parameter {
+    padding-top: 5px;
+    height: auto;
+}
+.reportWrapper .formWrapper .parameterOptions .parameterOptionsInputBox,
+.tableActionsWrapper .formWrapper .parameterOptions .parameterOptionsInputBox {
+    margin-left: 25%;
+}
+.popupWrapper .formWrapper .parameterOptions .parameterOptionsInputBox {
+    margin-left: 42%;
+}
+.popupWrapper .formWrapper.alignParameter .parameterOptions .parameterOptionsInputBox {
+    margin-left: 27%;
+    width: auto !important;
+}
+.popupWrapper .formWrapper.twoColumn .parameterOptions .parameterOptionsInputBox {
+    margin-left: 17%;
+}
+.popupWrapper .formWrapper .parameterOptions .parameterOptionsInputBox input.textbox {
+    width: auto;
+}
+.reportWrapper .formWrapper .parameterOptions ul.parameterOptionsListInline,
+.reportWrapper .formWrapper .parameterOptions ul.parameterOptionsListBlock,
+.tableActionsWrapper .formWrapper .parameterOptions ul.parameterOptionsListInline,
+.tableActionsWrapper .formWrapper .parameterOptions ul.parameterOptionsListBlock,
+.popupWrapper .formWrapper .parameterOptions ul.parameterOptionsListInline,
+.popupWrapper .formWrapper .parameterOptions ul.parameterOptionsListBlock {
+    padding-top: 5px;
+}
+.formWrapper .parameterOptions ul.parameterOptionsListInline li {
+    background: none repeat scroll 0 0 #F6F6F6;
+    border: 1px solid #DDDDDC;
+    border-radius: 3px;
+    padding: 4px 5px;
+    margin: 0 3px 3px 0;
+}
+.formWrapper .parameterOptions ul.parameterOptionsListBlock li label:nth-of-type(1) {
+    background: none repeat scroll 0 0 #F6F6F6;
+    border: 1px solid #DDDDDC;
+    border-radius: 3px;
+    padding: 4px 5px;
+}
+.formWrapper .parameterOptions ul.parameterOptionsListInline li {
+    display: inline-block;
+}
+.formWrapper .parameterOptions ul.parameterOptionsListBlock li {
+    display: block;
+    margin-bottom: 3px;
+    white-space: nowrap;
+}
+.reportWrapper .formWrapper .parameterOptions ul.parameterOptionsListInline li label.closeMessage,
+.reportWrapper .formWrapper .parameterOptions ul.parameterOptionsListBlock li label.closeMessage,
+.tableActionsWrapper .formWrapper .parameterOptions ul.parameterOptionsListInline li label.closeMessage,
+.tableActionsWrapper .formWrapper .parameterOptions ul.parameterOptionsListBlock li label.closeMessage,
+.popupWrapper .formWrapper .parameterOptions ul.parameterOptionsListInline li label.closeMessage,
+.popupWrapper .formWrapper .parameterOptions ul.parameterOptionsListBlock li label.closeMessage {
+    padding-left: 10px;
+    width: 5px;
+}
+.tableActionsWrapper .formWrapper .parameterOptions ul.parameterOptionsListInline li label.closeMessage {
+    padding-left: 5px;
+}
+.tableActionsWrapper .formWrapper .parameterOptions ul.parameterOptionsListBlock li label.closeMessage,
+.popupWrapper .formWrapper .parameterOptions ul.parameterOptionsListBlock li label.closeMessage {
+    padding-left: 9px;
+}
+.reportWrapper .formWrapper .parameter.parameterAlign {
+    margin-top: -30px;
+}
+.reportWrapper .formWrapper .parameter input.textbox {
+    width: 50%;
+}
+.reportWrapper .formWrapper .supplierSource input.textbox {
+    width: 150px;
+}
+.reportWrapper .formWrapper .parameter select.selectOptions {
+    width: 53%;
+}
+.reportWrapper .formWrapper .parameter input.inputDate {
+    width: 85px;
+}
+.formWrapper .parameter input.inputTime {
+    width: 55px !important;
+}
+.reportWrapper .formWrapper .parameter input.numberBox {
+    width: 120px;
+}
+.reportWrapper .formWrapper .formActions {
+    clear: both;
+    float: right;
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+.reportWrapper .formWrapper .parameter .searchByOptions,
+.contentWrapper.wizardPage .formWrapper .parameter .searchByOptions {
+    padding-left: 25.7%;
+    padding-top: 3px;
+    padding-bottom: 10px;
+}
+.reportWrapper .formWrapper .parameter .searchByOptions label,
+.contentWrapper.wizardPage .formWrapper .parameter .searchByOptions label {
+    padding-right: 5px;
+    width: auto;
+}
+.reportWrapper .formWrapper .parameter .multipleOptions .option,
+.tableActionsWrapper .formWrapper .parameter .multipleOptions .option {
+    margin-right: 12px;
+}
+.reportWrapper .formWrapper .parameter .multipleOptions label,
+.reportWrapper .formWrapper .parameter .multipleOptions select {
+    width: auto;
+}
+.reportWrapper .formWrapper .parameter .multipleOptions label {
+    padding-right: 5px;
+}
+.reportWrapper .formWrapper .multipleOptions input.numberBox {
+    text-align: right;
+    width: 25px;
+}
+.reportWrapper .articleHead {
+    margin-top: 25px;
+}
+.contentWrapper.wizardPage .articleHead {
+    background-color: #f9f9f3;
+    margin-top: 0;
+}
+.reportWrapper .ui-tabs-panel .articleHead {
+    margin-top: 0px;
+}
+.reportWrapper h4.innerTitle {
+    margin-top: 15px;
+}
+.reportWrapper .ui-tabs-panel .articleHead .articleHeaderWrapper .articleTitle {
+    font-size: 1.1em;
+}
+.DGMSDepartmentOptions {
+    width: 40%;
+}
+/* -------------------- */
+/* Generic style */
+
+.hideBlock {
+    display: none !important;
+}
+.clearfix {
+    clear: both;
+}
+.lastRight {
+    padding-right: 0px;
+    margin-right: 0px;
+}
+input.textbox {
+    border: 1px solid #d9d9d9;
+    color: #000;
+    font-size: 1em;
+    /* 12px */
+    
+    border-radius: 3px;
+    height: 16px;
+    padding: 2px 6px 5px;
+    vertical-align: middle;
+}
+input.textbox.xsmallbox {
+    width: 40px !important;
+}
+input.textbox.smallbox {
+    width: 80px !important;
+}
+input.textbox.mediumbox {
+    width: 150px !important;
+}
+input.textbox.largebox {
+    width: 250px !important;
+}
+input.numberBox {
+    text-align: right;
+}
+input.bold {
+    font-weight: bold;
+}
+textarea {
+    border: 1px solid #d9d9d9;
+    color: #000;
+    font-family: arial;
+    font-size: 1em;
+    /* 12px */
+    
+    border-radius: 3px;
+    padding: 2px 6px 5px;
+    vertical-align: middle;
+    width: 90%;
+}
+textarea.largebox {
+    width: 350px !important;
+}
+.formWrapper .parameter textarea {
+    vertical-align: top;
+}
+input.textboxDefaultText {
+    /*color:#858585; Commented as tech team is using placeholders for input boxes */
+}
+input.inputDate {
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    vertical-align: middle;
+    width: 105px;
+}
+input.editTextCell {
+    text-align: left;
+    width: 150px;
+    height: 16px;
+    margin: -8px -6px -6px -5px;
+}
+.popupWrapper .formWrapper .ContentTable tr td input.editTextCell.textbox {
+    margin-top: 1px;
+    width: 80%;
+}
+.editRow .custom-combobox .custom-combobox-input.textbox {
+    height: 16px;
+    margin: -7px -6px -6px -5px;
+}
+.editRow .custom-combobox a .ui-icon {
+    margin-left: -14px;
+}
+input.editNumCell {
+    text-align: right;
+    width: 30px;
+    height: 16px;
+    margin: -4px -6px -4px -5px;
+}
+.drillsOpenDefault input.editNumCell,
+.ContentTableWrapper .ContentTable .drillsOpenDefault.filterRow input.numberBox {
+    width: 30px;
+}
+input.editDateCell {
+    border-radius: 3px;
+    vertical-align: middle;
+    margin: -4px -6px -4px -5px;
+    width: 80px;
+}
+select.editSelectCell {
+    margin: -4px -6px -4px -5px;
+}
+.popupWrapper .formWrapper .ContentTable tr td select.editSelectCell {
+    margin-top: 0;
+}
+span.editRadioCell {
+    display: inline-block;
+    margin: -10px auto -8px 10px;
+}
+select.selectOptions {
+    background: #fff;
+    border-radius: 3px;
+    color: #000000;
+    font-size: 1em;
+    /* 12px */
+    /*height: 22px;*/
+    
+    padding: 4px;
+    border: 1px solid #D9D9D9;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+}
+select.selectOptions.selectFix {
+    background: #fff;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+    color: #000;
+    font-size: 1em;
+    padding: 4px;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    min-width: 180px!important;
+}
+
+select.selectOptions option {
+    padding-right: 4px;
+}
+/* setting style for focus */
+
+input.textbox:focus,
+select.selectOptions:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus,
+textarea:focus {
+    border: solid 1px #1889f7 !important;
+}
+input:disabled {
+    border: solid 1px #fff;
+    background-color: #fff;
+}
+select:disabled {
+    color: #adadad;
+}
+optgroup[label] {
+    font-style: normal;
+    padding: 5px;
+}
+a.more {
+    color: inherit;
+    font-weight: normal;
+}
+.lookupWrapper a.more {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.heirachyAction a.more {
+    margin-right: 5px;
+}
+a.moreNumber {
+    background-color: #EAEAEA;
+    border-radius: 2px;
+    padding: 2px 4px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+a.bookmark {
+    color: inherit;
+    font-weight: normal;
+    padding-left: 15px;
+}
+.helpWrapper {
+    float: right;
+    margin-right: 15px;
+    margin-top: 18px;
+}
+a.help {
+    display: block;
+    background: url(../images/iconPageHelp.png) left top no-repeat;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    opacity: .4;
+}
+label.linkBtn {
+    cursor: pointer;
+    font-size: 1em;
+    /* font-weight:bold; */
+}
+.editDateCell + label.linkBtn,
+.editNumCell + label.linkBtn,
+.editTextCell + label.linkBtn,
+.editSelectCell + label.linkBtn,
+.editDateCell + .editDateCell,
+.editNumCell + .editNumCell,
+.editTextCell + .editNumCell,
+.editSelectCell + .editNumCell {
+    display: inline-block;
+    margin-top: 7px;
+}
+.editDateCell ~ span.more,
+.editNumCell ~ span.more,
+.editTextCell ~ span.more,
+.editSelectCell ~ span.more {
+    display: inline-block;
+    margin-top: 11px;
+}
+label.linkBtn label {
+    cursor: pointer;
+}
+label.linkBtn1 label {
+    cursor: pointer;
+}
+label.linkBtn .advancedSearch {
+    padding-left: 15px;
+}
+label.linkBtn1 .advancedSearch {
+    padding-left: 15px;
+}
+.popupWrapper .parameter label.linkBtn .advancedSearch {
+    margin-left: 5px;
+    font-weight: normal;
+}
+label.linkBtn .newWindow {
+    padding-left: 20px;
+}
+.lookupWrapper label.linkBtn .newWindow {
+    margin-left: 5px;
+}
+.newWindowAfter {
+    padding-right: 20px;
+}
+.newWindowDisPre {
+    padding-right: 20px;
+}
+label.linkBtn .closeWindow {
+    padding-left: 12px;
+}
+label.linkBtn1 .closeWindow {
+    padding-left: 12px;
+}
+label.linkBtn .unselect {
+    padding-left: 22px;
+}
+label.selectItem {
+    padding-right: 12px;
+}
+label.addRow {
+    padding-left: 13px;
+}
+label.filter {
+    padding-left: 15px;
+}
+label.group {
+    padding-left: 22px;
+}
+label.editRecord {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-indent: -999999px;
+    cursor: pointer;
+    padding-bottom: 1px;
+    text-align: left;
+}
+label.deleteRecord {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-indent: -999999px;
+    cursor: pointer;
+    padding-bottom: 1px;
+    text-align: left;
+}
+label.saveRecord {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-indent: -999999px;
+    cursor: pointer;
+    padding-bottom: 1px;
+    text-align: left;
+}
+label.printRecord {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-indent: -999999px;
+    cursor: pointer;
+    padding-bottom: 1px;
+    text-align: left;
+}
+label.linkBtn a label.deleteRecord,
+label.linkBtn a label.saveRecord,
+label.linkBtn a label.editRecord,
+label.linkBtn a label.printRecord {
+    text-indent: 0;
+}
+label.changePassword,
+label.deactivateUser,
+label.deactivateRecord {
+    display: inline-block;
+    width: 20px;
+    text-indent: -999999px;
+    cursor: pointer;
+    padding-bottom: 5px;
+    text-align: left;
+}
+label.deactivateRecord {
+    background: url(../images/iconDeactivate.png) left 2px no-repeat;
+}
+label.linkBtn .tableSettings {
+    background: url(../images/iconCog.png) left 2px no-repeat;
+    padding-left: 15px;
+    padding-bottom: 3px;
+    margin-right: 5px;
+}
+label.verified {
+    background: url(../images/iconTickCircleDisabled.png) left top no-repeat;
+    padding-left: 20px;
+    padding-bottom: 3px;
+    margin-right: 5px;
+}
+.formWrapper .parameter label.verified {
+    color: #D3D3D3;
+    cursor: default;
+}
+label.moreActions {
+    padding-left: 5px;
+    padding-right: 15px;
+}
+/*
+label.mandatory{
+	background: url(../images/iconMandatory.png) 2px top  no-repeat;
+	color:#626161;
+	font-size: 0.917em;  11px 
+	text-indent:10px;
+}*/
+
+label.mandatory:after {
+    color: red;
+    content: " *";
+    font-size: 12px;
+}
+label.hoverTitle {
+    cursor: pointer;
+}
+label.loading {
+    background: url(../images/ajax-loader.gif) left top no-repeat;
+    color: #00501f;
+    padding-left: 23px;
+}
+.loaderImage {
+    border-radius: 5px;
+    border: solid 1px #686868;
+    background-color: #5b5b5b;
+    color: #fff;
+    font-size: 13px;
+    background-image: url(../images/ajax-loader-window.gif);
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    padding: 20px 15px 20px 42px;
+}
+.new-loader {
+    width: 21%;
+    margin: 0 auto;
+    z-index: 1000;
+    margin-top: 22%;
+    opacity: 1;
+}
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    position: fixed;
+    display: none;
+    top: 0;
+}
+label.history {
+    cursor: pointer;
+    padding-left: 18px;
+}
+label.notpadLink {
+    cursor: pointer;
+    padding-left: 18px;
+}
+label.notes {
+    cursor: pointer;
+    padding-left: 18px;
+}
+label.offers {
+    cursor: pointer;
+    padding-left: 18px;
+}
+label.urgent {
+    background: url(../images/iconUrgent.png) left center no-repeat;
+    cursor: pointer;
+    padding-left: 16px;
+}
+label.warning {
+    background: url(../images/iconWarning.png) left center no-repeat;
+    cursor: pointer;
+    padding-left: 20px;
+}
+label.multi {
+    display: block;
+    padding-bottom: 3px;
+}
+label.markSeen,
+.instructionalText label.markSeen {
+    background: url(../images/iconSeen.png) right top no-repeat;
+    padding-left: 0;
+    padding-right: 14px;
+}
+input.errorField,
+div input.errorField,
+select.errorField,
+div select.errorField {
+    border: solid 1px red !important;
+}
+.instructionalText label,
+label.toolTip {
+    background: url(../images/iconInfo.gif) 0 1px no-repeat;
+    color: #0e36a9;
+    padding-left: 15px;
+}
+label.toolTip {
+    cursor: hand;
+}
+.errorDiv {
+    font-size: 1em;
+    color: red;
+}
+.errorDiv h4 {
+    background: url(../images/iconError.png) 0 3px no-repeat;
+    padding-left: 18px;
+    color: red;
+    padding-bottom: 3px;
+}
+.errorDiv label,
+.formWrapper div.errorDiv label {
+    background: url(../images/iconError.png) 0 2px no-repeat;
+    padding-left: 18px;
+    color: red;
+}
+.errorDiv .closeMessage,
+span label.closeMessage {
+    background: url(../images/ui-icons_888888_256x240.png) -32px -193px no-repeat;
+    cursor: pointer;
+    padding-left: 15px;
+    opacity: 0.3;
+}
+.errorDiv .closeMessage:hover {
+    background: url(../images/ui-icons_888888_256x240.png) -32px -193px no-repeat;
+    cursor: pointer;
+    padding-left: 15px;
+    opacity: 1;
+}
+label.linkBtn .unselect {
+    padding-left: 22px;
+}
+.completionStatus {} .completionStatus .allOk {
+    background: url(../images/iconTickCircle.png) 0 0 no-repeat;
+    padding-left: 15px;
+}
+.completionStatus .errors {
+    background: url(../images/iconError.png) 0 3px no-repeat;
+    padding-left: 15px;
+}
+.ContentTableWrapper {
+    background: #fff;
+    overflow-y: visible;
+}
+.settings .ContentTableWrapper {
+    overflow: visible;
+}
+.ContentTableWrapper .ContentTable {
+    border: solid 1px #c0c5ca;
+    border-radius: 3px;
+    clear: both;
+    width: 100%;
+}
+.ContentTableWrapper .ContentTable2 {
+    border: solid 1px #c0c5ca;
+    border-radius: 3px;
+    clear: both;
+    width: 100%;
+    /* margin-left: 20px; */
+}
+.simpleMargin {
+    margin-left: 20px;
+}
+table.ContentTable tr td:last-child {
+    border-right: none;
+}
+table.ContentTable2 tr td:last-child {
+    border-right: none;
+}
+
+table.ContentTable tr:last-child td {
+    /* border-bottom:none; */
+}
+table.ContentTable tr.updateRow td {
+    background-color: #faf9cd!important;
+}
+table.ContentTable2 tr.updateRow td {
+    background-color: #faf9cd!important;
+}
+table.ContentTable tr.updateRow td:nth-child(1) {
+    border-left: solid 4px #f00!important;
+}
+table.ContentTable2 tr.updateRow td:nth-child(1) {
+    border-left: solid 4px #f00!important;
+}
+
+table.ContentTable tr td:last-child {
+    border-right-width: 0;
+}
+.ContentTableWrapper .ContentTable tr th {
+    background: #c0c5ca;
+    border-bottom: solid 1px #e4e4e4;
+    border-right: solid 1px #d2d2d2;
+    color: #2d2d2d;
+    font-size: 1em;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+    white-space: nowrap;
+}
+.ContentTableWrapper .ContentTable2 tr th {
+    background: #c0c5ca;
+    border-bottom: solid 1px #e4e4e4;
+    border-right: solid 1px #d2d2d2;
+    color: #2d2d2d;
+    font-size: 1em;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+    white-space: nowrap;
+}
+.ContentTableWrapper .ContentTable tr.subHeader th {
+    background-color: #d3d5d8;
+    border-right: solid 1px #e4e4e4;
+}
+.ContentTableWrapper .ContentTable2 tr.subHeader th {
+    background-color: #d3d5d8;
+    border-right: solid 1px #e4e4e4;
+}
+.ContentTableWrapper .compactTable tr th {
+    padding: 8px;
+}
+.ContentTableWrapper .ContentTable tr td {
+    border-bottom: solid 1px #dddddc;
+    border-right: solid 1px #eee;
+    color: #222;
+    font-size: 1em;
+    padding: 8px 10px;
+    vertical-align: top;
+}
+.ContentTableWrapper .ContentTable2 tr td {
+    border-bottom: solid 1px #dddddc;
+    border-right: solid 1px #eee;
+    color: #222;
+    font-size: 1em;
+    padding: 8px 10px;
+    vertical-align: top;
+}
+.ContentTableWrapper .compactTable tr td {
+    padding: 8px;
+}
+.ContentTableWrapper .ContentTable tr.disabled td {
+    background-color: #f6f6f6 !important;
+}
+.ContentTableWrapper .actionRows tr td,
+.ContentTableWrapper .actionRows tr th,
+.ContentTableWrapper .tableSorter tr th {
+    cursor: pointer;
+}
+.ContentTableWrapper .actionRows tr th,
+.ContentTableWrapper .tableSorter tr th {
+    background-image: url(../images/tableArrows.png);
+    background-position: 100% 10px;
+    background-repeat: no-repeat;
+    padding-right: 20px;
+}
+.ContentTableWrapper .actionRows tr td,
+.ContentTableWrapper .tableSorter tr td {
+    padding-right: 20px;
+}
+.ContentTableWrapper .actionRows tr td.expander,
+.ContentTableWrapper .tableSorter tr td.expander {
+    padding-right: 0px;
+}
+.ContentTableWrapper tr.noSort th,
+.ContentTableWrapper .actionRows tr.noSort th {
+    background-image: none !important;
+    cursor: default !important;
+    padding-right: 10px !important;
+}
+.ContentTableWrapper .actionRows tr th.noSort,
+.ContentTableWrapper .tableSorter tr th.noSort {
+    background-image: none !important;
+    padding-right: 10px !important;
+    cursor: default !important;
+}
+.ContentTableWrapper .actionRows tr.expandedRow td,
+.ContentTableWrapper .actionRows tr.expandedRow th {
+    cursor: default;
+}
+.ContentTableWrapper .actionRows tr.expandedRow:hover td {
+    background-color: #F9F9F3;
+}
+.ContentTableWrapper .actionRows tr.expandedRow:hover td table tr td {
+    background-color: #fff;
+}
+.ContentTableWrapper .ContentTable tr.lastRow td {
+    border-bottom: 0;
+}
+.ContentTableWrapper .ContentTable2 tr.lastRow td {
+    border-bottom: 0;
+}
+.ContentTableWrapper .ContentTable tr td.lastColumn,
+.ContentTableWrapper .ContentTable tr th.lastColumn {
+    border-right: 0;
+}
+.ContentTableWrapper .ContentTable2 tr td.lastColumn,
+.ContentTableWrapper .ContentTable tr th.lastColumn {
+    border-right: 0;
+}
+.ContentTableWrapper .ContentTable tr td.valueInfo {
+    font-weight: bold;
+}
+.ContentTableWrapper .ContentTable2 tr td.valueInfo {
+    font-weight: bold;
+}
+.ContentTableWrapper .ContentTable tr td.numberColumn,
+.ContentTableWrapper .ContentTable tr th.numberColumn {
+    text-align: right;
+}
+.ContentTableWrapper .ContentTable2 tr td.numberColumn,
+.ContentTableWrapper .ContentTable tr th.numberColumn {
+    text-align: right;
+}
+.ContentTableWrapper .ContentTable tr td.centerValue,
+.ContentTableWrapper .ContentTable tr th.centerValue {
+    text-align: center;
+}
+.ContentTableWrapper .ContentTable tr td.columnDivider,
+.ContentTableWrapper .ContentTable tr th.columnDivider {
+    border-right-width: 3px;
+}
+.ContentTableWrapper .ContentTable2 tr td.columnDivider,
+.ContentTableWrapper .ContentTable tr th.columnDivider {
+    border-right-width: 3px;
+}
+.ContentTableWrapper .ContentTable tr td.rightAligned,
+.ContentTableWrapper .ContentTable tr th.rightAligned {
+    text-align: right;
+}
+.ContentTableWrapper .ContentTable2 tr td.rightAligned,
+.ContentTableWrapper .ContentTable tr th.rightAligned {
+    text-align: right;
+}
+.ContentTableWrapper .ContentTable tr td.cellHighlight {
+    font-weight: bold;
+}
+.ContentTableWrapper .ContentTable2 tr td.cellHighlight {
+    font-weight: bold;
+}
+.ContentTableWrapper .ContentTable tr td.negativeValue {
+    color: #f00;
+}
+.ContentTableWrapper .ContentTable2 tr td.negativeValue {
+    color: #f00;
+}
+.ContentTableWrapper .ContentTable tr.total td {
+    background-color: #D3D5D8;
+    border-right-color: #E4E4E4;
+    font-weight: bold;
+}
+.ContentTableWrapper .ContentTable2 tr.total td {
+    background-color: #D3D5D8;
+    border-right-color: #E4E4E4;
+    font-weight: bold;
+}
+.ContentTableWrapper .actionRows tr th.sorted,
+.ContentTableWrapper .tableSorter tr th.sorted,
+.ContentTableWrapper .tableSorter tr th.tablesorter-headerAsc,
+.ContentTableWrapper .tableSorter tr th.tablesorter-headerDesc {
+    background-color: #acb0b4;
+    color: #292929;
+    padding-right: 20px;
+}
+.ContentTableWrapper .actionRows tr th.ascending,
+.ContentTableWrapper .tableSorter tr th.ascending,
+.ContentTableWrapper .tableSorter tr th.tablesorter-headerAsc {
+    background-color: #acb0b4;
+    background-image: url(../images/tableArrowDown.png);
+    background-position: 100% 12px;
+    background-repeat: no-repeat;
+}
+.ContentTableWrapper .actionRows tr th.descending,
+.ContentTableWrapper .tableSorter tr th.descending,
+.ContentTableWrapper .tableSorter tr th.tablesorter-headerDesc {
+    background-color: #acb0b4;
+    background-image: url(../images/tableArrowUp.png);
+    background-position: 100% 12px;
+    background-repeat: no-repeat;
+}
+.ContentTableWrapper .actionRows tr td.sorted,
+.popupWrapper .ContentTableWrapper .ContentTable tr td.sorted,
+.ContentTableWrapper .tableSorter tr td.sorted {
+    background-color: #f6f6f6;
+    color: #292929;
+}
+.ContentTableWrapper .ContentTable tr td label.positiveStatus,
+.ContentTableWrapper .ContentTable tr td label.negativeStatus {
+    padding-right: 0;
+}
+.ContentTableWrapper .ContentTable2 tr td label.positiveStatus,
+.ContentTableWrapper .ContentTable tr td label.negativeStatus {
+    padding-right: 0;
+}
+.ContentTableWrapper .ContentTable tr td label.positiveStatus {
+    background-position: center -1px;
+    color: white;
+    font-size: 1px;
+    padding-left: 20px;
+    padding-top: 12px;
+}
+.ContentTableWrapper .ContentTable tr td label.negativeStatus {
+    background-position: center 2px;
+    color: white;
+    font-size: 1px;
+    padding-left: 20px;
+    padding-top: 12px;
+}
+.ContentTableWrapper .ContentTable tr td label.success {
+    background: #d6efa1;
+    border-radius: 3px;
+    padding: 2px 5px;
+    white-space: nowrap;
+}
+.ContentTableWrapper .ContentTable tr td label.failed {
+    background: #efa1a1;
+    border-radius: 3px;
+    padding: 2px 5px;
+    white-space: nowrap;
+}
+.ContentTableWrapper .ContentTable tr td label.deactive {
+    background: #f2f2f2;
+    border-radius: 3px;
+    color: #999999;
+    padding: 2px 5px;
+    white-space: nowrap;
+}
+.ContentTableWrapper .ContentTable tr td label.progress {
+    background: #ffc467;
+    border-radius: 3px;
+    padding: 2px 5px;
+    white-space: nowrap;
+}
+.ContentTableWrapper .ContentTable tr td label.new {
+    background: #ff0000;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: normal;
+    padding: 1px 3px;
+}
+.ContentTableWrapper .ContentTable tr td label.promotion,
+.ContentTableWrapper .ContentTable tr td label.standard,
+.ContentTableWrapper .ContentTable tr td label.GLindicator {
+    padding-left: 13px;
+    color: white;
+    padding-top: 12px;
+    font-size: 1px;
+}
+.ContentTableWrapper .ContentTable tr td label.toolTip,
+.ContentTableWrapper .ContentTable tr th label.toolTip {
+    background: url("../images/iconTooltip.png") no-repeat scroll top right;
+    cursor: pointer;
+    /* display: none;
+    float: right; */
+    background-position: 3px;
+}
+.ContentTableWrapper .ContentTable tr td.markSeen {
+    background-image: url(../images/iconSeen.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+.ContentTableWrapper .ContentTable tr td.plannerPromo {
+    background-image: url(../images/iconP.png);
+    background-position: 95% 23%;
+    background-repeat: no-repeat;
+}
+.ContentTableWrapper .ContentTable tr td.plannerLastPromo {
+    background-image: url(../images/iconGreyDot.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+}
+.ContentTableWrapper .ContentTable tr td.pb {
+    background-image: url(../images/iconPB.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+}
+.ContentTableWrapper .ContentTable tr td div.pb {
+    background-image: url(../images/iconPB.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+    width: 15px;
+    height:15px;
+    float: right;
+    margin: 0 1% 1% 0; 
+        position: relative;
+    left: 4px;
+    top: -4px;
+}
+.ContentTableWrapper .ContentTable tr td div.pi {
+    background-image: url(../images/iconPI.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+    width: 15px;
+    height:15px;
+    float: right;
+    margin: 0 1% 1% 0; 
+        position: relative;
+    left: 4px;
+    top: -4px;
+}
+.ContentTableWrapper .ContentTable tr td.style {
+    background-image: url(../images/iconStandard.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+}
+.ContentTableWrapper .ContentTable tr td div.style {
+    background-image: url(../images/iconStandard.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+    width: 15px;
+    height:15px;
+    float: right;
+    margin: 0 1% 1% 0;
+    position: relative;
+    left: 4px;
+    top: -4px;
+}
+.ContentTableWrapper .ContentTable tr td.right {
+    background-position: 93% 23% !important;
+}
+.ContentTableWrapper .ContentTable tr td.plannerThisPromo {
+    background-image: url(../images/iconGreenDot.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+}
+.ContentTableWrapper .ContentTable tr td.plannerThisPromo.plannerRight {
+    background-position: 93% 23%;
+}
+.ContentTableWrapper .ContentTable tr td.d {
+    background-image: url(../images/iconD.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+}
+.ContentTableWrapper .ContentTable tr td div.d {
+    background-image: url(../images/iconD.png);
+    background-position: 10% 23%;
+    background-repeat: no-repeat;
+    width: 15px;
+    height:15px;
+    float: right;
+    margin: 0 1% 1% 0; 
+    position: relative;
+    left: 4px;
+    top: -4px;
+}
+.ContentTableWrapper .ContentTable tr td.plannerPromo.rowSection {
+    background-position: 99% 10px;
+}
+.ContentTableWrapper .ContentTable tr td label.moreInput {
+    display: block;
+    padding: 10px 0;
+}
+/* Style for filter within the table */
+
+.ContentTableWrapper .ContentTable .filterRow td,
+.ContentTableWrapper .ContentTable .filterRow:hover td {
+    background-color: #caf1ff;
+}
+.ContentTableWrapper .ContentTable .filterRow td input.textbox {
+    width: 85%;
+}
+.ContentTableWrapper .ContentTable .filterRow td input.inputDate {
+    margin: 0 -6px 0 -5px;
+    width: 95%;
+}
+/* no hover for row */
+
+.ContentTableWrapper .ContentTable tr.noAction:hover td {
+    background-color: #fff !important;
+    cursor: default !important;
+}
+.ContentTableWrapper .ContentTable tr.defaultExpanded td {
+    cursor: default !important;
+}
+/* Style for blank cell */
+
+.ContentTableWrapper .ContentTable tr td.blankCell,
+.ContentTableWrapper .ContentTable tr th.blankCell {
+    background: none;
+    border-bottom: none;
+}
+/* Style for non sortable tables */
+
+.ContentTableWrapper .noTableSort tr th {
+    background-image: none;
+    padding-right: 10px;
+    cursor: default;
+}
+.ContentTableWrapper .noTableSort tr th.sorted {
+    background: #C0C5CA;
+}
+.ContentTableWrapper .noTableSort tr td.sorted {
+    background: #fff;
+}
+/* Style for table which has editable columns */
+
+.ContentTableWrapper .ContentTable tr.GLindicator td,
+.ContentTableWrapper .ContentTable tr td.GLindicator {
+    border-bottom: solid 3px #009A3D;
+}
+.ContentTableWrapper .ContentTable tr.advert td,
+.ContentTableWrapper .ContentTable tr td.advert {
+    border-bottom: solid 3px #009A3D;
+}
+.ContentTableWrapper>.tableInfo {
+    padding-top:25px;
+}
+.ContentTableWrapper .ContentTable tr.restricted td,
+.ContentTableWrapper .ContentTable tr td.restricted {
+    border-bottom: solid 3px #009A3D;
+}
+.ContentTableWrapper .tableInfo {
+    overflow: auto;
+}
+.lookup .ContentTableWrapper > .tableInfo:nth-of-type(1) {
+    padding-top: 35px;
+}
+.reportWrapper .ContentTableWrapper > .tableInfo,
+.articleHead + .ContentTableWrapper > .tableInfo {
+    padding-top: 25px;
+}
+.popupContent .ContentTableWrapper > .tableInfo {
+    padding-top: 5px;
+}
+.ui-tabs .ContentTableWrapper > .tableInfo,
+.lookup .ui-tabs .ContentTableWrapper > .tableInfo {
+    padding-top: 1px;
+}
+.ContentTableWrapper .tableInfo .tableTitle {
+    float: left;
+    padding-bottom: 10px;
+}
+.ContentTableWrapper .tableInfo .tableTitle h4 a {
+    margin-left: 15px;
+    font-size: 0.911em;
+}
+.ContentTableWrapper .tableInfo .nodataMessage h4,
+.warningMessage h4,
+.warningMessage label {
+    background: url(../images/iconWarning.png) 0 1px no-repeat;
+    padding-left: 22px;
+    /* padding-bottom: 10px; */
+}
+.errorWarn label,
+.formWrapper div.errorWarn label {
+    background: url(../images/iconWarning.png) 0 1px no-repeat;
+    padding-left: 18px;
+    color: #292929;
+}
+
+.warningMessage label {
+    width: auto !important;
+}
+.ContentTableWrapper .tableInfo .nodataMessage h4 .searchString {
+    color: #292929;
+}
+.ContentTableWrapper .tableInfo h4.sectionTitle {
+    font-weight: bold;
+}
+.ContentTableWrapper .tableInfo h4.sectionTitle span {
+    margin-left: 15px;
+}
+.ContentTableWrapper .tableInfo h4.sectionTitle span label {
+    font-weight: normal;
+    font-size: 0.911em;
+}
+.ContentTableWrapper .tableInfo .instructionalText {
+    float: right;
+    margin-top: 6px;
+}
+.ContentTableWrapper .tableInfo .tableActionBtns + .instructionalText {
+    margin-right: 10px;
+}
+.ContentTableWrapper .tableInfo .instructionalTextLong {
+    clear: both;
+    float: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.ContentTableWrapper .tableInfo .instructionalText label {
+    background: url(../images/iconInfo.gif) 0 1px no-repeat;
+    color: #0e36a9;
+    padding-left: 15px;
+}
+.subSectionWrapper .subSectionTitle .subSection {
+    font-size: 1.167em;
+    margin: 15px 0 5px 0;
+}
+.subSectionWrapper .subSectionContent textarea.aqmComment {
+    font-family: Arial;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+    width: 98.5%;
+    font-size: 1em;
+    padding: 0.5em;
+}
+.ContentTableWrapper .tableInfo .tableTitle h4 > select {
+    margin-left: 5px;
+}
+.ContentTableWrapper .tableInfo .tableTitle h4 label.secondaryText {
+    font-size: 0.85em;
+    color: #777;
+    padding-left: 5px;
+}
+.reportWrapper .formWrapper .parameter label.secondaryText {
+    font-size: 1em;
+    color: #777;
+    padding-left: 27%;
+    padding-top: 7px;
+    width: auto;
+}
+.accordionWrapper .ContentTableWrapper .tableInfo {
+    padding-top: 0;
+    color: #00501F;
+}
+.accordionWrapper .ContentTableWrapper .firstSection {
+    padding-top: 0;
+}
+.accordionWrapper .ContentTableWrapper .tableInfo h4.sectionTitle,
+.ui-widget-content .ContentTableWrapper .tableInfo h4.sectionTitle {
+    font-size: 1.1em;
+    padding-top: 15px;
+}
+.reportWrapper .ContentTableWrapper .tableInfo:nth-child(1) h4.sectionTitle {
+    padding-top: 0;
+}
+.ContentTableWrapper .ContentTable tr td label.moreInput {
+    display: block;
+    padding: 10px 0;
+}
+.accordionWrapper .ContentTableWrapper .tableInfo .tableActionBtns {
+    padding-top: 15px;
+}
+.contentWrapper .articleAdditionalInfo .ContentTableWrapper .ContentTable tr td.valueInfo {
+    background-color: #F6F6F6;
+}
+.ContentTableWrapper .ContentTable tr.urgent td {
+    background-color: #fff2f2;
+}
+/* Style changed for Order Details page */
+
+.orderDetails .ContentTableWrapper .tableInfo,
+.adminWrapper .ContentTableWrapper .tableInfo,
+.directContent .ContentTableWrapper .tableInfo {
+    padding-top: 0px;
+}
+/* Style table filter */
+
+.ContentTableWrapper .tableInfo .tableFilter {
+    background: #EFEFEF;
+    border-radius: 3px;
+    float: right;
+    padding: 4px 8px 5px;
+    margin-bottom: 8px;
+}
+.ContentTableWrapper .tableInfo .tableFilter .filterTitle {
+    font-weight: bold;
+}
+.ContentTableWrapper .tableInfo .tableFilter input {
+    vertical-align: sub;
+}
+.ContentTableWrapper .innerTable {
+    width: auto;
+    border: 0;
+}
+.ContentTableWrapper .innerTable tr td {
+    border: 0;
+    padding: 2px 5px;
+}
+.ContentTableWrapper .secondaryTable {
+    border: 1px solid #dcdcdc;
+    border-radius: 3px;
+    background-color: #fff;
+}
+.ContentTableWrapper .secondaryTable tr th {
+    background: #eaeaea;
+    border-bottom: 1px solid #e8e8e8;
+    padding-right: 10px;
+}
+.ContentTableWrapper .secondaryTable tr.subHeader th {
+    background: #f2f2f2;
+    border-right: 1px solid #E4E4E4;
+}
+.ContentTableWrapper .secondaryTable tr td.columnDivider,
+.ContentTableWrapper .secondaryTable tr th.columnDivider {
+    border-color: #dcdcdc;
+    border-right-width: 3px;
+}
+table.drilldownTable tr td table.secondaryTable tr td {
+    border-bottom-color: #E4E4E4;
+    background: #fff;
+}
+.tableTitle .secondaryTableTitle {
+    color: #575757;
+    font-size: 1em;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.innerSection {
+    background: #F2F2F2;
+    border-radius: 5px;
+    padding: 13px 12px 15px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+.innerSection .sectionTitle {
+    /*font-weight:bold;*/
+}
+.innerSection .sectionTitle label {
+    vertical-align: sub;
+}
+.innerSection .sectionTitle label.labelText {
+    cursor: pointer;
+    vertical-align: sub;
+}
+.popupContent .innerSection .sectionTitle label.labelText {
+    margin-right: 7px;
+}
+.innerSection .sectionTitle input[type="radio"] {
+    vertical-align: middle;
+}
+.innerSection .innerSectionActions {
+    float: right;
+    margin-top: -16px;
+}
+.innerSectionContent {
+    padding-left: 12px;
+    padding-top: 15px;
+}
+.popupContent .innerSectionContent.formWrapper .plainTable {
+    width: auto;
+}
+.innerSectionContent .parameter label {
+    width: 35%;
+}
+.innerSectionContent .ContentTableWrapper {
+    padding-right: 12px;
+}
+.innerSectionContent .ContentTableWrapper .ContentTable,
+.popupWrapper .innerSectionContent.formWrapper .ContentTable {
+    border-radius: 3px;
+    border-width: 1px;
+}
+.innerSectionContent .ContentTableWrapper .ContentTable tr td,
+.popupWrapper .innerSectionContent.formWrapper .ContentTable tr td {
+    border-width: 1px;
+}
+.innerSectionContent .ContentTableWrapper .ContentTable tr td input.editNumCell,
+.innerSectionContent .ContentTableWrapper .ContentTable tr td input.editDateCell,
+.popupWrapper .innerSectionContent.formWrapper .ContentTable tr td input.editNumCell,
+.popupWrapper .innerSectionContent.formWrapper .ContentTable tr td input.editDateCell {
+    height: 18px;
+    margin: 0;
+}
+.innerSectionContent .ContentTableWrapper .ContentTable tr td input.editNumCell,
+.popupWrapper .innerSectionContent.formWrapper .ContentTable tr td input.editNumCell {
+    width: 30px;
+}
+.innerSectionContent .ContentTableWrapper .ContentTable tr td input.editDateCell,
+.popupWrapper .innerSectionContent.formWrapper .ContentTable tr td input.editDateCell {
+    width: 80px;
+}
+.innerSectionContent .tableActionsWrapper .formWrapper .parameter {
+    padding-right: 20px;
+}
+.innerSectionContent .tableActionsWrapper .formWrapper .parameter {} .innerSectionContent .tableActionsWrapper .formWrapper .parameter input.numberBox {
+    width: 30px;
+}
+.contentWrapper .hierarchyWrapper,
+.hierarchyWrapper {
+    background: #F9F9F3;
+    border: solid 1px #E3E2E1;
+    border-radius: 4px;
+    overflow: auto;
+    padding: 8px;
+}
+.contentWrapper .hierarchyWrapper_tmp {
+    background: #F9F9F3;
+    border: none;
+    border-radius: 4px;
+    overflow: auto;
+    padding: 8px;
+}
+
+.contentWrapper.reportWrapper .hierarchyWrapper,
+.contentWrapper .formWrapper .hierarchyWrapper {
+    background: none;
+    border: none;
+    padding: 0 0 5px 0;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent {
+    background: #fff;
+    border: solid 1px #e0e0e0;
+    border-radius: 4px;
+    float: left;
+    margin-right: 0.63%;
+    width: 24.3%;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent_tmp {
+    width: auto!important;
+    min-width: 200px;
+    border: solid 1px #E3E2E1;
+}
+.contentWrapper .hierarchySingle_tmp {
+    width: auto!important;
+    padding-left: 24.5%;
+    padding-top: 5px;
+}
+.contentWrapper .hierarchyWrapper .lastContent {
+    margin-right: 0;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyTitle {
+    background: #c5cad1 url(../images/iconArrowPointer.png) 97% center no-repeat;
+    padding: 6px 10px;
+}
+.contentWrapper .hierarchyWrapper .lastContent .hierarchyTitle,
+.contentWrapper .hierarchyWrapper .noProcess .hierarchyTitle {
+    background-image: none;
+}
+.contentWrapper .hierarchyWrapper .noProcess {
+    width: 23.3%;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyTitle h3 {
+    color: #2d2d2d;
+    font-weight: bold;
+}
+.contentWrapper .accordionWrapper .hierarchyWrapper.settingsWrapper .hierarchyContent .hierarchyTitle h3 {
+    background: none;
+}
+.contentWrapper.reportWrapper .hierarchyWrapper .hierarchyContent .hierarchyTitle h3 {
+    background: none;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList {
+    padding: 6px;
+    height: 220px;
+    overflow: auto;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyListTmp,
+.hierarchyListTmp {
+    height: 220px;
+    overflow: auto;
+    padding: 6px;
+}
+.contentWrapper .settingsWrapper .hierarchyContent .hierarchyList {
+    height: 150px;
+}
+.contentWrapper .settingsWrapper .hierarchyContent {
+    margin-top: 7px;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li {
+    border-radius: 3px;
+    clear: both;
+    margin-bottom: 5px;
+    overflow: auto;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li.parent {
+    background: none repeat scroll 0 0 #f2f2f2;
+    border-bottom: 1px solid #e4e4e4;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li.child {
+    padding-left: 8px;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li:hover {
+    background-color: #fafafa;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li input[type="radio"],
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li input[type="checkbox"] {
+    float: left;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li label {
+    padding-left: 4px;
+    padding-top: 2px;
+    cursor: pointer;
+    /*float:left;*/
+    
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 87%;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.contentWrapper .hierarchyWrapper.hierarchySingle .hierarchyContent .hierarchyList ul li input + label {
+    display: inline;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li label strong.number {
+    background: #1097ff none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 10px;
+    padding: 0 3px;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li label.titleText {
+    background: #F2F2F2;
+    border-bottom: 1px solid #E4E4E4;
+    border-radius: 3px;
+    cursor: default;
+    display: block;
+    float: none;
+    font-weight: bold;
+    margin-top: 8px;
+    padding: 8px 9px;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li:nth-of-type(1) label.titleText {
+    margin-top: 0;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList .noSelection {
+    padding-left: 5px;
+    padding-top: 5px;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .heirachyBottom {
+    background: #f2f2f2;
+    clear: both;
+    overflow: hidden;
+    padding: 2px 4px 2px 8px;
+    height: 30px;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .heirachyBottom span.totalCount {
+    float: left;
+    padding-top: 7px;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .heirachyBottom span.heirachyAction {
+    float: right;
+    line-height: 31px;
+}
+.contentWrapper .hierarchyWrapper .hierarchyContent .heirachyBottom span.totalCount strong {
+    padding-left: 3px;
+}
+.contentWrapper .formWrapper.alignParameter .hierarchyWrapper.hierarchySingle {
+    width: auto !important;
+    padding-left: 24.5%;
+    padding-top: 5px;
+}
+.popupData.contentWrapper .formWrapper .hierarchyWrapper.hierarchySingle {
+    width: auto !important;
+    padding-left: 35%;
+    padding-top: 5px;
+}
+.contentWrapper .formWrapper.alignParameter .hierarchyWrapper .hierarchyTitle h3 {
+    background: none;
+    font-size: 1em;
+    font-weight: normal;
+}
+.hierarchyWrapper .hierarchyTitle h3 input {
+    margin: 0 8px 0 0;
+    vertical-align: sub;
+}
+.contentWrapper .hierarchyWrapper.hierarchySingle .hierarchyContent {
+    width: auto !important;
+    min-width: 200px;
+}
+/* style for report home page */
+/* style for herarchy in wizard view */
+
+.wizardContent .hierarchyWrapper {
+    clear: left;
+    margin-top: 10px;
+    float: left;
+    width: 98%;
+    margin-bottom: 20px;
+}
+.wizardContent .hierarchyWrapper .tableInfo .tableTitle {
+    padding-bottom: 0;
+}
+.wizardContent .hierarchyWrapper .tableInfo .parameter {
+    padding-bottom: 0;
+}
+/* Style for accummulator wrapper */
+
+.contentWrapper .accumulatorWrapper .hierarchyContent {
+    width: 39%;
+    margin-right: 0;
+}
+.contentWrapper .accumulatorWrapper .hierarchyContent .hierarchyList ul li {
+    border-radius: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.contentWrapper .accumulatorWrapper .hierarchyContent .hierarchyList ul li.rowHighlight {
+    background: #1097ff;
+}
+.contentWrapper .accumulatorWrapper .hierarchyContent .hierarchyList ul li.rowHighlight label.labelText {
+    color: #fff;
+}
+.contentWrapper .hierarchyContent .hierarchyList ul li.alreadyAddedRow label.labelText {
+    cursor: default;
+    color: #8d8d8d;
+}
+.contentWrapper .accumulatorWrapper .accumulatorActions {
+    float: left;
+    padding: 10px 15px 10px 10px;
+}
+.contentWrapper .accumulatorWrapper .accumulatorActions ul {
+    margin-top: 70px;
+}
+.contentWrapper .accumulatorWrapper .accumulatorActions ul li {
+    margin-bottom: 8px;
+}
+.contentWrapper .accumulatorWrapper .accumulatorActions ul li button {
+    width: 100%;
+}
+.contentWrapper .accumulatorWrapper .hierarchyContent .hierarchyList ul li label {
+    float: none;
+    display: block;
+    width: auto;
+}
+.contentWrapper .accumulatorWrapper .lastRight {
+    padding-right: 0;
+}
+/* style for heirarchy in popup */
+
+.popupWrapper .contentWrapper {
+    padding: 0;
+}
+.popupWrapper .contentWrapper .hierarchyWrapper .hierarchyContent {
+    width: 24.2%;
+}
+.popupWrapper .contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li label {
+    width: auto;
+}
+/* style for replishment screens */
+
+.directContent .ContentTableWrapper > .tableInfo {
+    padding-top: 0;
+}
+.directContent .articleAdditionalInfo .ui-widget-content {
+    border: none;
+}
+/* style for Admin screens */
+
+.tableActionsWrapper .formWrapper .parameter .storeSource span {
+    padding-left: 55px;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter .storeSource span {
+    padding-left: 23%;
+}
+.tableActionsWrapper .formWrapper .parameter .storeSource .multipleStore ul.storeList {
+    padding-left: 55px;
+    padding-top: 7px;
+}
+.tableActionsWrapper .formWrapper .parameter .storeSource .multipleStore ul.storeList li {
+    margin-bottom: 3px;
+}
+.tableActionsWrapper .formWrapper .parameter .storeSource .multipleStore ul.storeList li label {
+    padding-right: 0;
+}
+.tableActionsWrapper .formWrapper .parameter .storeSource .multipleStore ul.storeList li label:nth-of-type(1) {
+    padding: 3px;
+    background: #F6F6F6;
+    border-radius: 3px;
+    border: 1px solid #DDDDDC;
+}
+.tableActionsWrapper .formWrapper .parameter .storeSource .multipleStore ul.storeList li label.closeMessage {
+    background: url("../images/ui-icons_888888_256x240.png") no-repeat scroll -32px -192px;
+    cursor: pointer;
+    opacity: 0.3;
+    padding-left: 10px;
+}
+/* style for table action for entire table */
+
+.ContentTableWrapper .tableActionBtns {
+    float: right;
+}
+.ContentTableWrapper .tableInfo .tableActionBtns {
+    line-height: 26px;
+    padding-bottom: 5px;
+}
+.ContentTableWrapper .ui-widget-content .tableActionBtns {
+    margin-top: 5px;
+}
+.ContentTableWrapper .tableActionBtns label {
+    font-size: 0.98em;
+}
+.ContentTableWrapper .tableActionBtns label.actionBtn {
+    margin-left: 5px;
+}
+.ui-tabs .filterTabs .ContentTableWrapper .tableInfo .tableActionBtns {
+    margin-top: 12px;
+}
+.ContentTableWrapper .tableActionBtns>label.linkBtn {
+    display: inline-block;
+    margin-top: 12px;
+}
+/*table actions for receive order*/
+
+.tableActionsBtnsWrapper {
+    background: #f6f6f6;
+    border: solid #dddddc 1px;
+    padding: 7px 10px;
+    border-radius: 4px 4px 0 0;
+}
+.tableActionsBtnsWrapper .lookupActionWrapper label.linkBtn {
+    margin-right: 10px;
+}
+.tableActionsBtnsWrapper .lookupActionWrapper label.linkBtn label.negativeFlag {
+    padding-right: 0;
+    margin-right: 0;
+}
+.tableActionsWrapper {
+    background: #ffffee;
+    border: solid #dddddc 1px;
+    padding: 10px;
+    overflow: auto;
+}
+.articleContent .tableActionsWrapper {
+    background: none;
+    border: none;
+}
+.tableActionsWrapper .formWrapper .parameter,
+.popupWrapper .formWrapper.alignParameter .parameter {
+    float: left;
+    padding-right: 30px;
+    width: auto !important;
+}
+.tableActionsWrapper .formWrapper .parameter.parameterLast {
+    padding-right: 5px;
+}
+.tableActionsWrapper .formWrapper .parameter label,
+.popupWrapper .formWrapper.alignParameter .parameter label {
+    width: auto !important;
+    padding-right: 5px;
+}
+.tableActionsWrapper .formWrapper .parameter input[type="radio"] + label {
+    vertical-align: middle;
+}
+.tableActionsWrapper .formWrapper .parameter label.advancedSearch {
+    font-size: 1em;
+}
+.tableActionsWrapper .formWrapper .parameter input.textbox {
+    width: auto;
+}
+.tableActionsWrapper .formWrapper .parameter input.articleSearchText {
+    width: 205px;
+}
+.tableActionsWrapper .formWrapper .parameter input.textbox.inputDate {
+    width: 85px;
+}
+.tableActionsWrapper .formWrapper .parameter input.numberBox,
+.tableActionsWrapper .formWrapper .parameterOptionsInputBox input.numberBox {
+    width: 35px;
+}
+.tableActionsWrapper .formWrapper .parameter .searchByOptions {
+    padding-left: 50px;
+    padding-top: 5px;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter .searchByOptions {
+    padding-left: 24%;
+}
+.filterTabs .tableActionsWrapper .formWrapper.alignParameter .parameter .searchByOptions {
+    padding-left: 24%;
+}
+.tableActionsWrapper .formWrapper .parameter .userOptions {
+    padding-left: 40px;
+    padding-top: 5px;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter .userOptions {
+    padding-left: 23%;
+}
+.tableActionsWrapper .formWrapper .parameter .supplierSource input.textbox {
+    /*margin-left: 55px;*/
+}
+.tableActionsWrapper .formWrapper .parameter .parameter,
+.reportWrapper .formWrapper .parameter .parameter {
+    clear: both;
+    float: none;
+    padding-top: 5px;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+.reportWrapper .formWrapper .parameter .parameter {
+    width: 100%;
+    height: 30px;
+}
+.reportWrapper .formWrapper .parameter .parameter label {
+    width: auto;
+}
+.reportWrapper .formWrapper .parameter .supplierSource input.textbox {
+    width: 150px;
+}
+.tableActionsWrapper .formWrapper .parameter .IBTSource {
+    /*width:270px;*/
+}
+.tableActionsWrapper .formWrapper .parameter .parameter.supplierSource span.options {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding-top: 3px;
+    padding-left: 6px;
+}
+.tableActionsWrapper .formWrapper .parameter .IBTSource span {
+    padding-left: 65px;
+    float: left;
+    height: 28px;
+}
+.tableActionsWrapper .formWrapper .parameter .IBTSource select {
+    min-width: 200px;
+}
+.tableActionsWrapper .formWrapper .parameter .IBTSource input.textbox {
+    min-width: 150px;
+}
+.tableActionsWrapper .formWrapper .parameter .supplierSource span,
+.reportWrapper .formWrapper .parameter .supplierSource span {
+    padding-left: 25%;
+}
+.tableActionsWrapper .formWrapper .parameter .parameter.supplierSource {
+    padding-left: 110px;
+}
+.tableActionsWrapper .formWrapper .parameter .supplierSource span input.textbox,
+.tableActionsWrapper .formWrapper .parameter .IBTSource span input.textbox,
+.reportWrapper .formWrapper .parameter .supplierSource span input.textbox,
+.reportWrapper .formWrapper .parameter .IBTSource span input.textbox {
+    margin-top: 2px;
+}
+@ -moz-document url-prefix () {
+    .tableActionsWrapper .formWrapper .parameter .supplierSource span input.textbox, .tableActionsWrapper .formWrapper .parameter .IBTSource span input.textbox, .reportWrapper .formWrapper .parameter .supplierSource span input.textbox, .reportWrapper .formWrapper .parameter .IBTSource span input.textbox {
+        margin-top: 0;
+    }
+}
+.articleContent .tableActionsWrapper .formWrapper h4.sectionTitle {
+    clear: both;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px dotted #D9D9D9;
+    padding-top: 10px;
+    /*background-color:#F6F6F6;*/
+}
+.articleContent .tableActionsWrapper .formWrapper h4.sectionTitle:nth-of-type(1) {
+    padding-top: 3px;
+}
+.articleContent .tableActionsWrapper .formWrapper .staticInfo {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter,
+.popupWrapper .formWrapper.alignParameter .parameter {
+    width: 46% !important;
+}
+.popupWrapper .ui-tabs-vertical .formWrapper.alignParameter .parameter {
+    width: 44% !important;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter.parameterSingle {
+    width: 92% !important;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter.parameterOptions > label:first-child,
+.popupWrapper .formWrapper.alignParameter .parameter.parameterOptions > label:first-child,
+.tableActionsWrapper .formWrapper.alignParameter .parameterOptions > label:first-child,
+.popupWrapper .formWrapper.alignParameter .parameterOptions > label:first-child {
+    width: 22% ;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter > label:first-child,
+.popupWrapper .formWrapper.alignParameter .parameter > label:first-child {
+    white-space: nowrap;
+    width: 23% !important;
+}
+.formWrapper.alignParameter .parameter + .parameterOptionsInputBox {
+    padding-left: 11.5%;
+}
+.formWrapper .parameterOptionsInputBox .parameterOptions {
+    padding-bottom: 10px;
+}
+.reportWrapper .formWrapper .parameter + .parameterOptionsInputBox,
+.reportWrapper .formWrapper .parameterOptionsInputBox + .parameterOptionsInputBox {
+    /* //padding-bottom: 5px; */
+    padding-left: 12.3%;
+}
+.reportWrapper .formWrapper .parameterOptionsInputBox .parameterOptionsListInline label {
+    padding-right: 0;
+}
+.popupWrapper .ui-tabs-vertical .formWrapper.alignParameter .parameter > label:first-child {
+    width: 25% !important;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter.parameterSingle > label:first-child {
+    width: 12% !important;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter .parameter {
+    width: 46%;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter.parameterAlign {
+    margin-top: -20px;
+}
+.tableActionsWrapper .formWrapper .formActions {
+    clear: both;
+    float: right;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.tableActionsWrapper .formWrapper .hierarchyWrapper + .formActions {
+    margin-top: 3px;
+}
+.tableActionsBtnsWrapper .errorDiv,
+.reportWrapper h3 .errorDiv,
+.tableActionsBtnsWrapper .tableActionsExtra {
+    float: right;
+}
+.tableActionsBtnsWrapper .tableActionsExtra {
+    margin-top: -2px;
+}
+
+.tableActionsBtnsWrapper .errorWarn,
+.reportWrapper h3 .errorWarn {
+    float: right;
+}
+.reportWrapper h3 .errorDiv label {
+    font-size: 12px;
+}
+.rowHighlight {
+    background-color: #ffffee;
+}
+.rowSection {
+    font-weight: bold;
+}
+.paginationWrapper {
+    float: right;
+}
+.ContentTableWrapper .bottomPagination {
+    margin-top: 5px;
+}
+/* Style for tree table */
+
+table.treetable {
+    /* margin: 0.6em 0 1.8em;    */
+}
+table.treetable caption {
+    font-weight: bold;
+    margin-bottom: 0.2em;
+}
+table.treetable span {
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding: 0.2em 0 0.2em 1.5em;
+}
+table.treetable tr.collapsed span.indenter a {
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 10px;
+}
+table.treetable tr.expanded span.indenter a {
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 10px;
+}
+table.treetable tr.selected {
+    color: #FFFFFF;
+}
+table.treetable tr.collapsed.selected span.indenter a {
+    padding-left: 20px;
+}
+table.treetable tr.expanded.selected span.indenter a {
+    padding-left: 20px;
+}
+table.treetable tr.accept {
+    color: #FFFFFF;
+}
+.ContentTableWrapper .treetable tr td {
+    font-weight: bold;
+}
+.ContentTableWrapper .treetable tr.expanded>td {
+    border-top: solid 3px #c1c2c2;
+}
+/* Extra highligh row */
+
+.ContentTableWrapper .treetable.extraHighlightRow tr.expanded:hover+tr td,
+.ContentTableWrapper .treetable.extraHighlightRow tr.expanded+tr:hover td {
+    background: #fff9a0;
+}
+.ContentTableWrapper .treetable.extraHighlightRow tr.expanded:hover+tr td tr td,
+.ContentTableWrapper .treetable.extraHighlightRow tr.expanded+tr:hover td tr td {
+    background: #fff;
+}
+/* Style for drill down table */
+
+table.drilldownTable {
+    border-spacing: 0px;
+}
+table.drilldownTable caption {
+    font-weight: bold;
+    margin-bottom: 0.2em;
+}
+table.drilldownTable span {
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding: 0;
+}
+/* stocktake Pagination issue Fix */
+/* table .noChildNew .tableFooter .current {
+    width: 16px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+table .noChildNew .tableFooter .next {
+    width: 26px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+table .noChildNew .tableFooter .prev {
+    width: 26px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+table .noChildNew_missed .tableFooter .current {
+    width: 16px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+table .noChildNew_missed .tableFooter .next {
+    width: 26px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+table .noChildNew_missed .tableFooter .prev {
+    width: 26px;
+    padding-left: 5px;
+    padding-right: 5px;
+} */
+
+
+table.drilldownTable tr.expanded td,
+table.drilldownTable tr.defaultExpanded td {
+    border-bottom-color: #EEEEEE;
+}
+table.drilldownTable tr.rowHighlight td {
+    background-color: #FFFFEE;
+}
+table.drilldownTable tr.expanded + tr,
+table.drilldownTable tr.expanded + tr.noChild,
+table.drilldownTable tr.expanded + tr.collapsed,
+table.drilldownTable tr.additionalPromos {
+    background: #fff url(../images/rowExpandedBg.gif) left bottom repeat-x;
+    border-bottom-color: #C0C5CA;
+}
+table.drilldownTable tr.noChildHighlight {
+    background: none !important;
+}
+table.drilldownTable tr.defaultExpanded + tr.collapsed,
+table.drilldownTable tr.defaultExpanded + tr.noChild {
+    background: #fff;
+}
+table.drilldownTable tr.expanded + tr.collapsed:hover > td,
+table.drilldownTable tr.expanded + tr.noChild:hover > td {
+    background: url(../images/rowExpandedBg.gif) left bottom repeat-x;
+    cursor: default;
+}
+table.drilldownTable tr.expanded + tr.collapsed:hover > td tr td,
+table.drilldownTable tr.expanded + tr.noChild:hover > td tr td {
+    background: #fff;
+    cursor: default;
+}
+table.drilldownTable tr.expanded+tr.expanded:hover>td tr td,
+table.drilldownTable tr.expanded+tr.noChild:hover>td tr td {
+    background: #fff !important;
+    cursor: default;
+}
+table.drilldownTable td.allTimeExpand {
+    background: #fff !important;
+    cursor: default;
+    border-top: 0px !important;
+}
+table.ContentTable.allTimeExpand tr td {
+    background: #fff !important;
+    cursor: default;
+}
+table.drilldownTable tr.expanded + tr.collapsed td tr th {
+    cursor: default;
+}
+table.drilldownTable tr.defaultExpanded + tr.collapsed:hover > td {
+    background: #fff;
+    cursor: default;
+}
+table.drilldownTable tr.noChildHighlight:hover,
+table.drilldownTable tr.noChildHighlight:hover > td {
+    background: none !important;
+}
+table.drillsOpenDefault tr.expanded td.rowSection,
+table.drillsOpenDefault tr.defaultExpanded td.rowSection {
+    font-weight: bold;
+}
+table.drillsOpenDefault tr.expanded td.rowSection label.rowSubTitle,
+table.drillsOpenDefault tr.defaultExpanded td.rowSection label.rowSubTitle {
+    color: #63676B;
+    display: block;
+    font-weight: normal;
+    padding-left: 25px;
+    padding-top: 3px;
+}
+table tr td label.rowSubTitle {
+    color: #63676B;
+    display: block;
+    font-weight: normal;
+    padding-top: 3px;
+    padding-left: 3px;
+}
+table tr td label.rowSubTitle.inlineTitle {
+    display: inline;
+}
+table.drillsOpenDefault tr.expanded td.rowSection span.indenter,
+table.drillsOpenDefault tr.defaultExpanded td.rowSection span.indenter {
+    margin-right: 5px;
+}
+table.drillsOpenDefault tr.defaultExpanded.errorRow > td {
+    border-top-color: #e63936;
+}
+table.ContentTable tr.updateRow {} table.ContentTable tr.updateRow td {
+    background-color: #faf9cd !important;
+}
+table.ContentTable tr.updateRow td:nth-child(1) {
+    border-left: solid 4px #ff0000 !important;
+}
+table.ContentTable tr.rowIndicator td:nth-child(1) {
+    border-left: solid 4px #51c8f9 !important;
+}
+table.ContentTable tr.warningIndicator td:nth-child(1) {
+    border-left: solid 4px #ff0000 !important;
+}
+table.ContentTable tr.urgentIndicator td:nth-child(1) {
+    /*border-left:solid 4px #ff0000 !important; */
+}
+table.ContentTable tr.urgentIndicator td {
+    background-color: #ffeff4 !important;
+}
+table.drilldownTable tr.expanded + tr td,
+table.drilldownTable tr.defaultExpanded + tr td {
+    border-bottom-color: #C0C5CA;
+}
+table.drilldownTable tr.expanded + tr.noChild td,
+table.drilldownTable tr.defaultExpanded + tr.noChild td {
+    border-bottom-color: #DDDDDC !important;
+}
+table.drilldownTable tr.collapsed span.indenter a,
+table.drilldownTable th span.indenter a {
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 14px;
+}
+table.drilldownTable tr.expanded span.indenter a {
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 14px;
+}
+table.drilldownTable table.ContentTable {
+    background-color: #fff;
+    margin-top: -15px;
+}
+table.drilldownTable .tableActionsWrapper + table.ContentTable,
+table.drilldownTable .tableActionsWrapper + table.ContentTable table.ContentTable {
+    margin-top: 0;
+}
+table.drilldownTable table.ContentTable tr td.valueInfo {
+    /*background-color: #F6F6F6;*/
+}
+table.drilldownTable tr.noChild span.indenter {
+    display: none;
+}
+table.drilldownTable tr.expanded + .noBackground {
+    background-color: #fff;
+}
+.contentWrapper .articleAdditionalInfo .ContentTableWrapper,
+.contentWrapper .articleAdditionalInfo .ContentTableWrapper .treetable .noChild .ui-widget-content {
+    background: none;
+}
+.ContentTableWrapper .drilldownTable tr td {
+    font-weight: normal;
+    color: #222222;
+}
+.rowSection {
+    font-weight: bold !important;
+}
+.ContentTableWrapper .ContentTable tr td span.rowActions {
+    float: right;
+}
+.ContentTableWrapper .ContentTable tr td span.rowActions label {
+    font-weight: normal !important;
+}
+.ContentTableWrapper .ContentTable tr td span.rowActions .selectDropdown {
+    background: #fff;
+    border: none;
+    margin-right: 5px;
+    width: auto;
+}
+.ContentTableWrapper .ContentTable tr td span.rowActions .selectDropdown .dropdown {
+    width: auto;
+    display: none;
+    margin-left: 0;
+}
+.ContentTableWrapper .ContentTable tr td span.rowActions .selectDropdown.active .dropdown {
+    display: block;
+}
+.ContentTableWrapper .ContentTable tr td span.rowActions .selectDropdown label.actionBtn {
+    padding: 2px 5px;
+    margin: 0;
+}
+.ContentTableWrapper .ContentTable tr td span.rowActions .selectDropdown label.actionBtn .createBtn {
+    background: url("../images/iconArrowDown_white.png") no-repeat right 6px;
+    padding-left: 0;
+    padding-right: 16px;
+}
+/* End of drill down table */
+/* Style for page actions */
+
+.contentWrapper .pageActions {
+    clear: both;
+    text-align: right;
+    padding-top: 15px;
+}
+.contentWrapper .drilldownTable tr td .pageActions {
+    margin-bottom: 10px;
+}
+.contentWrapper .pageActions .instructionalText,
+.contentWrapper .tableFooter .instructionalText {
+    float: left;
+}
+.contentWrapper .tableFooter .instructionalText {
+    padding-top: 8px;
+}
+.contentWrapper .tableFooter .pageActions {
+    clear: none;
+    min-height: 22px;
+}
+.contentWrapper .tableFooter .bottomPagination + .pageActions {
+    clear: both;
+}
+.contentWrapper .ContentTable .treetable .pageActions {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.wizardPage .wizardContent .jw-steps-wrap {} .wizardPage .wizardContent .pageActions {
+    padding-top: 5px;
+}
+.wizardContent .tableTitle h4 {
+    font-size: 1.1em;
+}
+/* Style for Forms */
+
+.formWrapper {} .formWrapper .parameter {
+    padding-bottom: 10px;
+}
+.formWrapper .parameter label {
+    display: inline-block;
+    font-size: 1.083em;
+    width: 35%;
+}
+.formWrapper .parameterOptionsListBlock label,
+.formWrapper .parameterOptionsListInline label {
+    display: inline-block;
+    font-size: 1.083em;
+}
+.formWrapper .parameterOptionsListInline label {
+    padding-right: 5px;
+}
+.popupWrapper .formWrapper .parameterOptionsListInline label {
+    padding-right: 0;
+}
+.formWrapper .parameter label.valueInfo {
+    color: #222222;
+    /*font-weight:bold;*/
+}
+.formWrapper .parameter input.textbox {
+    width: 50%;
+}
+.formWrapper .parameter input.textbox {
+    width: 88px;
+}
+.formWrapper .parameter input.numberBox {
+    width: 30px;
+}
+.formWrapper .parameter input.longTextbox {
+    width: 175px;
+}
+.formWrapper .parameter label.mandatory {
+    /*background-position:top right;
+				padding-left:0;
+				padding-right: 10px;*/
+}
+.ContentTable tr td .formWrapper {
+    display: block;
+    padding-top: 10px;
+}
+.ContentTable tr td .formWrapper .parameter {
+    margin-right: 15px;
+}
+.ContentTable tr td .formWrapper .parameter label {
+    width: auto;
+    margin-right: 5px;
+}
+/* Style for multi select option menu */
+/*CheckBox dropdown*/
+
+.selectDropdown {
+    /* Size and position */
+    /* position: absolute;*/
+    
+    display: inline-block;
+    width: 170px;
+    margin: 0 auto;
+    padding: 2px 2px 2px 5px;
+    /* Styles */
+    
+    cursor: pointer;
+    outline: none;
+    background: #fff url(../images/iconSelectDropdown.gif) 97% no-repeat;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px 3px 3px 3px;
+    color: #000000;
+    font-size: 1em;
+    padding: 4px;
+    vertical-align: middle;
+}
+
+.selectDropdownFix {   
+    width: 217px !important;
+}
+.selectDepDropdownFix{
+	 width: 225px !important;
+}
+
+.ui-dialog .selectDropdown,
+.popupWrapper .selectDropdown {
+    position: relative;
+}
+.selectDropdown .selectLabel {
+    display: block !important;
+    cursor: pointer;
+    width: auto !important;
+}
+.tableActionsBtnsWrapper .selectDropdown {
+    background: none;
+    border: none;
+    padding: 0;
+    width: auto;
+}
+.tableActionsBtnsWrapper .selectDropdown .dropdown {
+    margin-left: 4px;
+    min-width: 110px;
+    width: auto;
+}
+.selectDropdown .dropdown {
+    display: none;
+    /* Size & position */
+    
+    position: absolute;
+    /*top: 100%;*/
+    
+    margin-left: -5px;
+    margin-top: 3px;
+    /* border of wrapper */
+    /* left: -1px;
+    right: -1px;*/
+    /* Styles */
+    
+    background: white;
+    border: 1px solid silver;
+    list-style: none;
+    /*transition: all 0.3s ease-out;*/
+    /* Hiding */
+    
+    opacity: 0;
+    width: 178px;
+}
+.selectDropdown .dropdown li {
+    position: relative;
+    /* Enable absolute positioning for checkboxes */
+}
+.selectDropdown .dropdown li label {
+    cursor: pointer;
+    color: #222;
+    display: block;
+    padding: 10px;
+    /* Same padding as the button */
+}
+.selectDropdown .dropdown li label.rowDivider {
+    border-bottom-width: 5px;
+}
+.tableActionsWrapper .formWrapper .parameter .selectDropdown .dropdown li label.dropdownLabel,
+.selectDropdown .dropdown li label.dropdownLabel {
+    padding-left: 22px;
+    width: auto !important;
+}
+.selectDropdown .dropdown li label.actionBtn,
+.selectDropdown .dropdown li label.secondaryActionBtn {
+    display: inline;
+    width: auto;
+}
+.selectDropdown .dropdown li.selectDropdownActions {
+    padding: 10px;
+    text-align: right;
+}
+.selectDropdown .dropdown li:last-of-type input + label {
+    border: none;
+}
+.selectDropdown .dropdown li input
+/* Checkboxes */
+
+{
+    position: absolute;
+    display: block;
+    top: 50%;
+    margin-top: -8px;
+}
+.selectDropdown .dropdown li input.checkbox {
+    cursor: pointer;
+}
+.articleHead .selectDropdown {
+    background: none;
+    border: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    /*position:inherit;*/
+}
+.articleHead .selectDropdown .dropdown {
+    z-index: 100;
+    width: auto;
+    margin-left: 3px;
+    margin-top: 5px;
+    -webkit-box-shadow: 0 2px 2px -2px #5e5e5e;
+    -moz-box-shadow: 0 2px 2px -2px #5e5e5e;
+    box-shadow: 0 2px 2px -2px #5e5e5e;
+}
+.articleHead .selectDropdown label.actionBtn label {
+    /*background-image: url("../images/iconButtonActions.png");
+    background-position: 100% center;
+    padding-left: 5px;
+    padding-right: 23px;*/
+}
+.selectDropdown.buttonMenu label.actionBtn label {}
+/* Checked state */
+
+.selectDropdown .dropdown li input:checked ~ label {
+    color: grey;
+}
+/* Active state */
+
+.selectDropdown.active:after {
+    color: 0 6px 6px 6px;
+}
+.selectDropdown.active .dropdown {
+    opacity: 1;
+    display: block;
+}
+.dropdownAlign {
+    width: 250px;
+}
+.dropdownAlign > label {
+    padding-top: 4px;
+}
+.selectDropdown .dropdownActions {
+    margin: 4px;
+    width: 15px;
+}
+.tableActionsWrapper .formWrapper .parameter .selectDropdown label.selectLabel {
+    cursor: pointer;
+    display: block;
+    height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 170px;
+}
+.selectDropdown label.selectLabel a {
+    color: #222;
+}
+.stickyForm {
+    /* Size & position */
+    
+    position: absolute;
+    /*top: 100%;*/
+    
+    margin-left: -1px;
+    margin-top: 3px;
+    /* border of wrapper */
+    /* left: -1px;
+    right: -1px;*/
+    /* Styles */
+    
+    background: white;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+    list-style: none;
+    transition: all 0.3s ease-out;
+    text-align: left;
+    padding-bottom: 5px;
+    /* Hiding */
+    
+    opacity: 0;
+    width: 145px;
+    display: none;
+    z-index: 400;
+}
+.stickyForm.active {
+    opacity: 1;
+    display: block;
+}
+.stickyForm ul.formElements li {
+    padding: 5px 8px 0 8px;
+}
+.stickyForm ul.formElements li.formTitle {
+    font-weight: bold;
+    background: #D3D5D8;
+    padding: 7px 8px;
+}
+.stickyForm ul.formElements li label {
+    display: inline-block;
+    width: 70px;
+}
+.stickyForm ul.formElements li label.key {
+    padding-left: 0;
+}
+.stickyForm ul.formElements li input.numberBox {
+    width: 40px;
+    text-align: right;
+}
+/* Style common for page erros, status, and help */
+
+.quickHelpWrapper,
+.suggestionWrapper,
+.pageErrorsWrapper,
+.pageStatusWrapper {
+    position: absolute;
+    bottom: 0;
+    min-height: 120px;
+    min-width: 980px;
+    width: 100%;
+}
+.quickHelpWrapper .quickHelpContent, .suggestionWrapper .suggestionContent {
+    background-image: url(../images/iconTips.png);
+}
+.pageErrorsWrapper .pageErrorsContent {
+    background-image: url(../images/iconPageErrors.png)
+}
+.pageStatusWrapper .pageStatusContent {
+    background-image: url(../images/iconPageTick.png)
+}
+.quickHelpWrapper .quickHelpContent,
+.suggestionWrapper .suggestionContent,
+.pageErrorsWrapper .pageErrorsContent,
+.pageStatusWrapper .pageStatusContent {
+    /*background: url(../images/iconTips.png) 2% center no-repeat;	*/
+    /*background-size:8em;*/
+    
+    padding: 1em 2em 1em 9em;
+    background-repeat: no-repeat;
+    background-position: 2% 10px;
+    background-size: 7% auto;
+    overflow: auto;
+    width: 900px;
+    margin: 0 auto;
+}
+.quickHelpWrapper .quickHelpContent .quickHelpTitle .title,
+.suggestionWrapper .suggestionContent .suggestionTitle .title,
+.pageErrorsWrapper .pageErrorsContent .pageErrorsTitle .title,
+.pageStatusWrapper .pageStatusContent .pageStatusTitle .title {
+    float: left;
+    font-size: 1.6em;
+    width: 95%;
+}
+.quickHelpWrapper .quickHelpContent .quickHelpTitle .description,
+.suggestionWrapper .suggestionContent .suggestionTitle .description,
+.pageErrorsWrapper .pageErrorsContent .pageErrorsTitle .description,
+.pageStatusWrapper .pageStatusContent .pageStatusTitle .description {
+    float: left;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+.quickHelpWrapper .quickHelpContent .quickHelpTitle .close,
+.suggestionWrapper .suggestionContent .suggestionTitle .close,
+.pageErrorsWrapper .pageErrorsContent .pageErrorsTitle .close,
+.pageStatusWrapper .pageStatusContent .pageStatusTitle .close {
+    background: url(../images/iconTipsClose.png) top center no-repeat;
+    display: inline-block;
+    float: right;
+    margin-top: 5px;
+    text-indent: -99999px;
+    width: 23px;
+    height: 23px;
+}
+.quickHelpWrapper .quickHelpContent .content,
+.pageErrorsWrapper .pageErrorsContent .content,
+.pageStatusWrapper .pageStatusContent .content {
+    clear: both;
+    max-height: 250px;
+    overflow-y: auto;
+}
+.quickHelpWrapper .quickHelpContent .content .title,
+.pageErrorsWrapper .pageErrorsContent .content .title,
+.pageStatusWrapper .pageStatusContent .content .title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+.quickHelpWrapper .quickHelpContent .content ul li,
+.pageStatusWrapper .pageStatusContent .content ul li {
+    list-style-type: disc;
+    margin-bottom: 3px;
+    margin-left: 12px;
+}
+/* style for quick help */
+
+.quickHelpWrapper, .suggestionWrapper{
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#e9f7ff), to(#ffffff));
+    /* Saf4+, Chrome */
+    
+    background-image: -webkit-linear-gradient(top, #e9f7ff, #ffffff);
+    /* Chrome 10+, Saf5.1+ */
+    
+    background-image: -moz-linear-gradient(top, #e9f7ff, #ffffff);
+    /* FF3.6+ */
+    
+    background-image: -ms-linear-gradient(top, #e9f7ff, #ffffff);
+    /* IE10 */
+    
+    background-image: -o-linear-gradient(top, #6cab26, #ffffff);
+    /* Opera 11.10+ */
+    
+    background-image: linear-gradient(top bottom, #e9f7ff, #ffffff);
+    /* W3C */
+    
+    border-top: 3px solid #057bea;
+}
+/* style for page errors */
+
+.pageErrorsWrapper {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ffeff4), to(#ffffff));
+    /* Saf4+, Chrome */
+    
+    background-image: -webkit-linear-gradient(top, #ffeff4, #ffffff);
+    /* Chrome 10+, Saf5.1+ */
+    
+    background-image: -moz-linear-gradient(top, #ffeff4, #ffffff);
+    /* FF3.6+ */
+    
+    background-image: -ms-linear-gradient(top, #ffeff4, #ffffff);
+    /* IE10 */
+    
+    background-image: -o-linear-gradient(top, #ffeff4, #ffffff);
+    /* Opera 11.10+ */
+    
+    background-image: linear-gradient(top bottom, #ffeff4, #ffffff);
+    /* W3C */
+    
+    border-top: 3px solid #ffc3d6;
+}
+.pageErrorsWrapper .pageErrorsContent {
+    background: url(../images/iconPageErrors.png) 2% center no-repeat;
+    background-size: 8em;
+    padding: 1em 2em 1em 12em;
+}
+.pageErrorsWrapper .pageErrorsContent .pageErrorsTitle .title {
+    float: left;
+    font-size: 1.6em;
+    width: 95%;
+}
+.pageErrorsWrapper .pageErrorsContent .pageErrorsTitle .description {
+    float: left;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+.pageErrorsWrapper .pageErrorsContent .pageErrorsTitle .close {
+    background: url(../images/iconTipsClose.png) top center no-repeat;
+    display: inline-block;
+    float: right;
+    margin-top: 5px;
+    text-indent: -99999px;
+    width: 23px;
+    height: 23px;
+}
+.pageErrorsWrapper .pageErrorsContent .content {
+    clear: both;
+}
+.pageErrorsWrapper .pageErrorsContent .content .title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+.pageErrorsWrapper .pageErrorsContent .content ol {
+    margin: 0 0 0 12px;
+    padding: 0;
+}
+.pageErrorsWrapper .pageErrorsContent .content ol li {
+    margin-bottom: 3px;
+    ` margin-left: 12px;
+}
+/* style for page status */
+
+.pageStatusWrapper {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f6ffed), to(#ffffff));
+    /* Saf4+, Chrome */
+    
+    background-image: -webkit-linear-gradient(top, #f6ffed, #ffffff);
+    /* Chrome 10+, Saf5.1+ */
+    
+    background-image: -moz-linear-gradient(top, #f6ffed, #ffffff);
+    /* FF3.6+ */
+    
+    background-image: -ms-linear-gradient(top, #f6ffed, #ffffff);
+    /* IE10 */
+    
+    background-image: -o-linear-gradient(top, #f6ffed, #ffffff);
+    /* Opera 11.10+ */
+    
+    background-image: linear-gradient(top bottom, #f6ffed, #ffffff);
+    /* W3C */
+    
+    border-top: 3px solid #d0ffa3;
+}
+/* Style for popups */
+
+.popupWrapper {
+    background: #fff;
+    padding: 0;
+    box-shadow: 1px 1px 5px #888;
+}
+.popupWrapper .ui-dialog-titlebar {
+    border: 0;
+    border-radius: 3px 3px 0 0;
+    color: #fff;
+    font-size: 1.083em;
+    /* 13px */
+    
+    padding-bottom: 7px;
+}
+.popupWrapper .ui-dialog-titlebar .ui-dialog-title {
+    font-size: 1.083em;
+    /* 13px */
+}
+.popupWrapper .ui-dialog-titlebar .ui-button {
+    background: none;
+    border: none;
+}
+.popupWrapper .ui-dialog-titlebar .ui-button .ui-icon-closethick {
+    background: url(../images/iconPopupClose.png) center 3px no-repeat;
+}
+.popupWrapper .ui-dialog-titlebar .ui-button .ui-button-text {
+    text-indent: -999999px;
+}
+.popupWrapper .ui-dialog-content .popupContent .alertText {
+    padding-bottom: 15px;
+}
+.popupWrapper .ui-dialog-content .popupContent h4 {
+    font-size: 1.1em;
+}
+.popupWrapper .ui-dialog-content .popupContent .information {
+    line-height: 22px;
+}
+.popupWrapper .ui-dialog-content .popupContent .tableTitle {
+    padding: 10px 0 10px;
+}
+.popupWrapper .ui-dialog-content .popupContent .tableTitle.topTitle {
+    padding-top: 5px;
+}
+.popupWrapper .ui-dialog-content {
+    padding: 12px;
+}
+.popupWrapper .ui-dialog-content .popupSearchWrapper input.textbox {
+    width: 250px;
+}
+.popupWrapper .ui-dialog-content .popupSearchWrapper h3 {
+    margin-left: 15px;
+}
+.popupWrapper .ui-dialog-content .popupSearchWrapper h3:nth-of-type(1) {
+    margin-left: 0;
+}
+.popupWrapper .ui-dialog-content .popupContent .popupTitle h4 {
+    padding-bottom: 10px;
+}
+.popupWrapper .ui-dialog-content .popupContent .popupTitle label.linkBtn {
+    margin-top: -25px;
+    position: absolute;
+    right: 15px;
+}
+.popupWrapper .ui-dialog-content .popupContent .ContentTableWrapper {
+    clear: both;
+    max-height: 600px;
+    overflow: auto;
+}
+.popupWrapper .ui-dialog-content .popupContent .popupActionsWrapper {
+    padding: 14px 10px;
+    margin-top: 5px;
+    overflow: auto;
+}
+.popupWrapper .ui-dialog-content .popupContent .popupActions {
+    text-align: right;
+    float: right;
+}
+.popupWrapper .ui-dialog-content .popupContent .popupActionsWrapper label.mandatory {
+    display: inline-block;
+}
+.popupWrapper .formWrapper {
+    overflow: visible;
+}
+.popupWrapper .formWrapper .ContentTable {
+    border-width: 0;
+}
+.popupWrapper .formWrapper .ContentTable tr td {
+    border-width: 0;
+    padding: 5px;
+}
+.popupWrapper .formWrapper .ContentTable tr td input.textbox {
+    width: 95%;
+}
+.popupWrapper .formWrapper .ContentTable tr td input.textbox {} .popupWrapper .formWrapper .ContentTable tr.formActions td {
+    padding-top: 15px;
+    padding-left: 3px;
+}
+.popupWrapper .formWrapper .ContentTable tr.formActions td.valueInfo {
+    padding-right: 0;
+}
+.selectDropdown .dropdown li label.rowDivider {
+    border-bottom-width: 5px;
+}
+.popMessage {
+    font-size: 1.083em;
+    font-weight: Bold;
+    text-align: center;
+    padding: 30px;
+}
+.popMessageBtnWrapper {
+    display: block;
+    text-align: center;
+}
+.popMessageBtn {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.popupWrapper .formWrapper .formQuestion {
+    padding-top: 10px;
+}
+.popupWrapper .formWrapper .formQuestion p.question,
+.popupWrapper .formWrapper p.notes,
+p.notes {
+    background: #F5F6F6;
+    border-radius: 3px;
+    padding: 5px 7px;
+    margin-bottom: 10px;
+}
+.popupWrapper .formWrapper .formQuestion label {
+    width: auto;
+}
+.popupWrapper .popupSearchWrapper {
+    padding: 0 0 10px 0;
+    overflow: auto;
+}
+.popupWrapper .warningMessage + .popupSearchWrapper {
+    margin-top: 10px;
+}
+.popupWrapper .popupSearchWrapper .searchWrapper {
+    float: left;
+}
+.popupWrapper .hasFilter .tableTitle {
+    float: left;
+}
+.popupWrapper .hasFilter .filterWrapper {
+    float: right;
+}
+.popupWrapper .popupSearchWrapper .searchWrapper input.textbox {
+    width: 150px;
+}
+.popupWrapper .plainTable {
+    width: 100%;
+}
+.popupWrapper .plainTable tr td {
+    vertical-align: text-top;
+    padding-bottom: 5px;
+}
+.popupWrapper .parameter .plainTable tr td label {
+    width: auto;
+    padding-right: 5px;
+}
+/* Style for iframe inside popup */
+
+.popupWrapper iframe {
+    border: 1px solid #E3E2E1;
+    border-radius: 3px;
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+}
+/* -------------------- */
+/* Style for Date picker */
+
+.ui-datepicker,
+.ui-timepicker {
+    background: #fff;
+    z-index: 50;
+}
+.ui-datepicker .ui-datepicker-header,
+.ui-timepicker .ui-timepicker-title {
+    color: white;
+}
+.ui-timepicker .ui-timepicker-title {
+    padding: 0.4em;
+}
+.ui-timepicker td a {
+    display: block;
+    padding: 0.2em;
+    text-align: right;
+    text-decoration: none;
+}
+.ui-datepicker a:hover,
+.ui-timepicker a:hover {
+    background-color: #e9f7ff;
+    ;
+}
+/* -------------------- */
+/* Styles to override jQuery UI css */
+
+.ui-widget {
+    font-size: 1em;
+}
+.ui-tabs-nav li.highlightTab {
+    float: right;
+    margin-right: 0;
+    margin-left: 3px;
+    /* Safari 4-5, Chrome 1-9 */
+    
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fffaa8), to(#ffc467)) !important;
+    /* Safari 5.1, Chrome 10+ */
+    
+    background: -webkit-linear-gradient(top, #fffaa8, #ffc467) !important;
+    /* Firefox 3.6+ */
+    
+    background: -moz-linear-gradient(top, #fffaa8, #ffc467) !important;
+    border: solid 1px #ffd584 !important;
+}
+.ui-tabs-nav li.highlightTab a {
+    color: #9f670c !important;
+}
+.ui-tooltip {
+    background: #f8f6b6;
+    border-color: #1889f7;
+}
+body .ui-tooltip {
+    border-width: 1px;
+}
+.mainWrapper .numericTabs ul.ui-tabs-nav {
+    background-color: #eaeaea !important;
+    border-radius: 20px;
+    padding: 3px 4px 5px;
+}
+.mainWrapper .numericTabs ul li.ui-state-default {
+    border-radius: 20px;
+    background-color: #d3d5d8 !important;
+    border: solid 1px #d3d5d8 !important;
+    height: 30px;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-active {
+    background: #fff !important;
+    border: solid 1px #399bfe !important;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-active a {
+    background-color: #399bfe !important;
+    color: #fff;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-allOk {
+    background-color: #77C250 !important;
+    border: solid 1px #77C250 !important;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-allOk a {
+    background: #77C250 url("../images/iconTick.png") no-repeat 10px 20px !important;
+    color: #fff;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-errors {
+    background-color: #fe1b36 !important;
+    border: solid 1px #fe1b36 !important;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-errors a {
+    background-attachment: scroll !important;
+    background-color: #FE1B36 !important;
+    background-image: url("../images/iconPopupClose.png") !important;
+    background-position: 11px 20px !important;
+    background-repeat: no-repeat !important;
+    background-size: 7px 7px;
+    color: #FFFFFF;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-active.ui-tabs-allOk {
+    background-color: #fff !important;
+    border: solid 1px #77C250 !important;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-active.ui-tabs-allOk label.tabTitle {
+    color: #00501F;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-errors.ui-tabs-active {
+    background-color: #fff !important;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-errors.ui-tabs-active label.tabTitle {
+    color: #fe1b36 !important;
+}
+.mainWrapper .numericTabs ul li label.tabTitle {
+    display: none;
+}
+.mainWrapper .numericTabs ul li.ui-tabs-active label.tabTitle {
+    color: #399bfe;
+    display: block;
+    float: left;
+    font-weight: bold;
+    padding: 7px 10px 0 5px;
+    outline: none;
+}
+.mainWrapper .numericTabs ul li.ui-state-default a {
+    background: #d3d5d8;
+    border: none !important;
+    border-radius: 50%;
+    color: #2D2D2D;
+    font-weight: bold;
+    height: 24px;
+    padding: 7px 0 0;
+    text-align: center;
+    width: 30px;
+    outline: none;
+    margin: 0;
+}
+.mainWrapper .ui-tabs ul.ui-tabs-nav li.ui-tabs-status-default {} .mainWrapper .ui-tabs ul.ui-tabs-nav li.ui-tabs-status-default label.tabStatus {
+    /*background:url(../images/iconTickCircleDisabled.png) left center no-repeat;
+			padding-left:14px;
+			margin-left:8px;*/
+    
+    display: none;
+}
+.mainWrapper .ui-tabs ul.ui-tabs-nav li.ui-tabs-status-allOk label.tabStatus {
+    background: url(../images/iconTickCircle.png) left center no-repeat;
+    display: inline-block;
+    padding-left: 14px;
+    margin-left: 8px;
+}
+.mainWrapper .ui-tabs ul.ui-tabs-nav li.ui-tabs-status-allOk.ui-tabs-active label.tabStatus {
+    background: url(../images/iconTickCircleWhite.png) left center no-repeat;
+}
+.mainWrapper .ui-tabs ul.ui-tabs-nav li.ui-tabs-status-errors label.tabStatus {
+    background: url(../images/iconCrossCircle.png) left center no-repeat;
+    padding-left: 14px;
+    margin-left: 8px;
+    display: inline-block;
+}
+.mainWrapper .ui-tabs ul.ui-tabs-nav li.ui-tabs-status-allOk a,
+.mainWrapper .ui-tabs ul.ui-tabs-nav li.ui-tabs-status-errors a {
+    padding-right: 3px;
+}
+/* tabs variations */
+
+.filterTabs .ui-tabs-nav {
+    border: none;
+}
+.filterTabs .ui-tabs-nav li {
+    border-radius: 4px;
+    margin-right: 5px;
+}
+.filterTabs .ui-tabs-nav li.ui-tabs-active {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.filterTabs .ui-tabs-nav li.filterMenu {
+    background: url(../images/divider.gif) left center no-repeat !important;
+    padding-left: 20px;
+    margin-left: 10px;
+    border: none !important;
+}
+.filterTabs .ui-tabs-nav li.filterMenu:hover {
+    background: url(../images/divider.gif) left center no-repeat;
+    border: none;
+}
+.filterTabs .ui-tabs-nav li.filterMenu label.filterTitle {
+    font-weight: normal;
+    padding-right: 8px;
+}
+.filterTabs .ui-tabs-nav li.filterMenu .filterMenuOptions select {
+    padding: 4px 4px 5px;
+}
+/* style for inner accordion */
+
+.innerAccordion h3.ui-accordion-header {
+    background: #fff !important;
+    border-bottom: 1px dotted #B2B2B2 !important;
+    border-radius: 3px 3px 0 0;
+}
+.innerAccordion .ui-state-default .ui-icon {
+    background-image: url("../images/woolworths/iconArrowRight.png");
+    background-position: 6px 2px;
+}
+.innerAccordion .ui-state-active .ui-icon {
+    background-image: url("../images/woolworths/iconArrowRight.png");
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    background-position: 5px 2px;
+}
+.innerAccordion .ui-state-active span.summaryInfo {
+    display: none;
+}
+.innerAccordion .ui-state-active {
+    font-weight: bold;
+}
+.innerAccordion .ui-accordion-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 18px;
+    border-bottom: 1px dotted #B2B2B2 !important;
+    border-radius: 3px 3px 0 0;
+}
+/* Style to override jquery wizard */
+
+.jw-widget .jw-header {
+    display: none;
+}
+.jw-widget.jw-hasmenu .jw-menu-wrap {
+    float: none;
+    margin: 0;
+    width: auto;
+}
+.articleHead + .wizardContent .jw-widget.jw-hasmenu .jw-menu-wrap {
+    border-left: 1px solid #c8f369;
+    border-right: 1px solid #c8f369;
+}
+.jw-menu li {
+    display: inline-block;
+}
+.jw-widget.jw-hasmenu .jw-steps-wrap {
+    margin-left: 0;
+}
+.wizardContent .jw-widget.jw-hasmenu .jw-steps-wrap {
+    height: auto;
+    min-height: 20em;
+    /*padding-bottom: 10px;*/
+}
+.jw-widget .jw-steps-wrap {
+    overflow: visible;
+    padding: 0;
+}
+.directContent .jw-widget .jw-steps-wrap {
+    overflow: auto;
+}
+.jw-widget .jw-content {
+    padding: 0;
+    border: 0;
+}
+.wizardContent .ui-widget-content {
+    border: none;
+}
+.wizardContent .ui-widget-content .ui-menu .ui-menu-item {
+    width: auto;
+    display: inline-block;
+    /*white-space: nowrap;*/
+}
+.wizardContent .ui-widget-content .ui-menu .ui-menu-item.ui-state-focus,
+.wizardContent .ui-widget-content .ui-menu .ui-menu-item.ui-state-highlight {
+    border: none;
+}
+.wizardContent .jw-widget .jw-footer .jw-buttons .jw-button-next,
+.wizardContent .jw-widget .jw-footer .jw-buttons .jw-button-finish {
+    float: none;
+}
+.wizardContent .jw-widget .jw-footer {
+    padding: 0;
+    text-align: right;
+}
+.wizardContent .ui-widget-header {
+    border: none;
+}
+.wizardContent .ui-widget-header.ui-tabs-nav {
+    border-bottom: solid 1px;
+}
+.wizardContent .ui-button-text-only .ui-button-text {
+    padding: 0;
+}
+.wizardContent .jw-buttons .actionBtn {
+    font-weight: bold;
+}
+.wizardContent .jw-widget .jw-steps-wrap {} .wizardContent .jw-menu,
+.wizardContent .jw-widget.jw-hasmenu .jw-menu-wrap .jw-menu {
+    padding: 0;
+}
+.wizardContent .ui-menu .ui-menu-item {
+    /*border-radius: 3px;  wizard with title*/
+    
+    font-size: 1.08em;
+    padding: 5px 3px;
+}
+.articleHead + .wizardContent .ui-menu .ui-menu-item {
+    border-radius: 0;
+}
+.wizardContent .ui-menu .ui-menu-item a {
+    color: #828282;
+    font-weight: bold;
+}
+.wizardContent .ui-menu .ui-menu-item a:hover,
+.wizardContent .ui-menu .ui-menu-item a:focus,
+.wizardContent .ui-menu .ui-menu-item a:visited {
+    text-decoration: none;
+}
+.wizardContent .ui-widget-content .ui-state-disabled {
+    opacity: 1;
+    margin: 0;
+}
+.wizardContent .ui-widget-content .ui-state-disabled a {
+    color: #c0c0c0;
+}
+.wizardContent .ui-widget-content .ui-tabs-nav .ui-state-disabled {
+    background: #fdfdfd;
+    border: 1px solid #f6f6f6;
+    margin: 1px 0.2em 0 0;
+}
+.wizardContent .ui-widget-content .ui-tabs-nav .ui-state-disabled:hover {
+    background: #fdfdfd;
+    border: 1px solid #f6f6f6;
+}
+.wizardContent .ui-widget-content .ui-tabs-nav .ui-state-disabled a {
+    color: #e4e4e4;
+}
+.wizardContent .formWrapper {
+    /*padding:10px 7px;  wizard with title */
+    
+    padding-bottom: 10px;
+}
+.wizardContent .formWrapper > .ContentTableWrapper {
+    padding: 10px 8px 0 8px;
+}
+.wizardContent .formWrapper > .parameter {
+    margin-left: 8px;
+}
+.wizardContent .formWrapper h2.wizardTitle {
+    font-size: 1.15em;
+    font-weight: bold;
+    /*padding-bottom:15px;
+			padding-top:5px;  wizard with title */
+    
+    padding: 10px 8px;
+}
+.wizardContent .formWrapper h2.wizardTitle label {
+    font-weight: normal;
+}
+.wizardContent .formWrapper .warningMessage h4 {
+    font-size: 1.1em;
+}
+.wizardContent .formWrapper .parameter .selectOptions {
+    display: inline;
+    line-height: 25px;
+    padding-left: 7px;
+}
+.wizardContent .formWrapper .parameter .selectOptions label {
+    width: auto;
+}
+.popupWrapper .ui-dialog-content .wizardContent .popupActionsWrapper {
+    padding: 7px 10px;
+}
+/* Full page wizard view */
+
+.wizardPage .hierarchyWrapper {
+    background: none;
+}
+.wizardPage .wizardContent .jw-widget .jw-steps-wrap {
+    border-bottom: solid 5px #E4E4E4;
+    background: #fdfdfd;
+    margin-bottom: 10px;
+}
+.wizardPage .wizardContent .formWrapper.jw-step {
+    overflow: auto;
+}
+.ContentTableWrapper .tableFooter {
+    min-height: 45px;
+}
+.popupWrapper .ContentTableWrapper .tableFooter {
+    min-height: 15px;
+}
+.tableFooter .legend {
+    float: left;
+    padding-top: 5px;
+}
+.formWrapper .parameter .linkBtn label {
+    font-size: 0.9em;
+    color:#009A3D;
+    
+}
+/* Style for scroll to top */
+
+.scrollup {
+    background: #494848;
+    color: white;
+    font-weight: bold;
+    padding: 3px 8px;
+    position: fixed;
+    bottom: 45px;
+    right: 0;
+    display: none;
+}
+.brudcrumHide {
+    display: none !important;
+}
+.contentWrapper.reportWrapper .hierarchyWrapper .hierarchyContent .hierarchyTitle h3 {
+    background: none;
+}
+.errorDivPromo {
+    background: url(../images/iconError.png) 0 2px no-repeat;
+    padding-left: 18px;
+    color: red;
+    float: right;
+    font-weight: normal;
+}
+.add-info-img {
+    padding-right: 5px;
+    cursor: pointer;
+}
+.errorPromotion {
+    display: inline-block;
+    position: relative;
+    bottom: 22px;
+}
+.floatRight {
+    float: right;
+}
+.width100 {
+    width: 100%
+}
+.inlineBlock {
+    display: inline-block;
+}
+h2.wizardTitle {
+    font-size: 1.15em;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+.wizardContent .ui-widget-content .ui-state-disabled {
+    opacity: 1;
+    margin: 0;
+}
+.wizardContent .ui-widget-content .ui-tabs-nav .ui-state-disabled,
+.wizardContent .ui-widget-content .ui-tabs-nav .ui-state-disabled:hover {
+    background: #fdfdfd;
+    border: 1px solid #f6f6f6;
+    margin: 1px 0.2em 0 0;
+}
+.wizardContent .ui-widget-content .ui-tabs-nav .ui-state-disabled a {
+    color: #e4e4e4;
+}
+#sections .pageActions {
+    display: inline-block;
+    float: right;
+    padding-top: 0px;
+}
+#sections .errorDivProm {
+    display: inline-block;
+    float: left;
+    margin-top: 20px
+}
+.directContent .wizardContent #errorMsg {
+    position: absolute;
+}
+.directContent.reportWrapper.wizardPage #errorMsgText {
+    position: absolute;
+    margin-top: -22px;
+}
+.contentWrapper.reportWrapper .hierarchyWrapper {
+    background: none;
+    border: none;
+    padding: 0 0 5px 0;
+}
+.barcode-area {
+    overflow: auto;
+    width: 115px;
+    height: 30px;
+    padding-top: 12px !important;
+}
+.errorAlign {
+    display: inline-block;
+    padding-top: 15px !important;
+}
+.tableDataMob>tbody>tr:nth-child(1)>th:nth-child(1) {
+    padding: 8px 50px;
+}
+.barcode-area {
+    padding-left: 15px !important;
+}
+.secretQuestPopup select {
+    width: 200px;
+}
+.secretQuestPopup .formWrapper label {
+    width: 30%;
+}
+.popupWarning {
+    background: url(../images/iconWarning.png) 0 1px no-repeat;
+    padding-left: 22px;
+    color: #222222;
+}
+.popupError {
+    background: url(../images/iconError.png) 0 3px no-repeat;
+    padding-left: 18px;
+    color: red;
+    padding-bottom: 3px;
+}
+#popupSearch>div.searchWrapper {
+    float: left;
+}
+#popupSearch>div.filterWrapper {
+    float: right;
+}
+.popupWrapper .popupSearchWrapper {
+    padding: 20px 0 10px 0;
+    overflow: auto;
+}
+.formWrapper.jw-step {
+    overflow: hidden;
+}
+.warnDiv label.warnin,
+.formWrapper div.warnDiv label {
+    background: url(../images/iconWarning.png) 0 2px no-repeat;
+    padding-left: 21px;
+    color: red;
+    color: #222222;
+}
+.tableActionsBtnsWrapper .warnDiv,
+.reportWrapper h3 .warnDiv {
+    float: right;
+}
+.warnDiv .closeMessage {
+    background: url(../images/ui-icons_888888_256x240.png) -32px -193px no-repeat;
+    cursor: pointer;
+    padding-left: 15px;
+    opacity: 1;
+}
+.errorWarn .closeMessage {
+    background: url(../images/ui-icons_888888_256x240.png) -32px -193px no-repeat;
+    cursor: pointer;
+    padding-left: 15px;
+    opacity: 1;
+}
+.lable-disable {
+    cursor: default;
+    color: #8d8d8d;
+}
+.omHeader,
+.uomHeader {
+    vertical-align: middle !important;
+}
+.wizardContent #promotionsPlanning .formWrapper {
+    padding: 0px !important
+}
+.contentTr.actionRows:hover {
+    background-color: #f6fde7;
+    cursor: pointer;
+}
+.siteNoField {
+    width: 125px !important;
+}
+.produce .articleHead .articleActionBtns {
+    margin-top: 60px;
+    float: right;
+}
+.graph-bar span {
+    width: 70%;
+    display: inline-block;
+    background: #d9d9d9;
+    padding-left: 7px;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+.bar-heads {
+    font-weight: bold;
+    margin: 15px 0px 0px 0px;
+    position: relative;
+    display: inline-block;
+}
+.graph-bar {
+    width: 100%;
+    height: 25px;
+    display: inline-block;
+    line-height: 25px;
+    margin-top: 5px
+}
+.graph-layout .left {
+    float: left;
+    width: 650px;
+    color: #787878;
+}
+.graph-layout .right {
+    float: right;
+    width: 240px;
+    background: #ededed;
+    margin-top: 15px;
+    padding: 0px 14px 14px 14px;
+    color: #787878;
+}
+.avg,
+.high,
+.low {
+    display: inline-block;
+    width: 30%
+}
+.head {
+    display: block;
+    font-size: 14px;
+    margin-top: 14px;
+    margin-bottom: 5px;
+}
+.right span {
+    font-size: 16px
+}
+.graph-bar .count {
+    font-size: 18px;
+    padding-right: 10px;
+}
+.graph-bar .qty {
+    font-size: 14px;
+}
+.graph-bar .per {
+    /* background: url(../images/graph-up.jpg); */
+    
+    display: inline-block;
+    background-repeat: no-repeat;
+    padding-right: 20px;
+    background-position: 24px;
+    background-size: 22px;
+    margin-right: 10px;
+}
+.display-graph,
+.display-table {
+    width: 35px;
+    height: 30px;
+    background: #efefef;
+    display: inline-block;
+}
+label.display-graph {
+    margin-right: -2px;
+    border-radius: 2px 0px 0px 2px;
+    background-image: url(../images/graph-selected.jpg);
+    background-position: 6px 2px;
+    background-repeat: no-repeat;
+    background-color: #efefef;
+    border-right: 1px solid #d9d9d9;
+    cursor: pointer
+}
+label.display-table {
+    border-radius: 0px 2px 2px 0px;
+    background-image: url(../images/tab-unselected.jpg);
+    background-position: 5px 1px;
+    background-repeat: no-repeat;
+    background-color: #efefef;
+    cursor: pointer
+}
+.star-pos-title h4 {
+    margin: 0px 0px 10px;
+    color: #51B848;
+}
+.ContentTableWrapper.star-report {
+    overflow-y: hidden;
+}
+.visible-hide {
+    visibility: hidden;
+}
+.visible-show {
+    visibility: visible;
+}
+.ContentTableWrapper .ContentTable tr td.leftValue {
+    text-align: left;
+}
+.ContentTableWrapper .ContentTable tr td.rightValue {
+    text-align: right;
+}
+.green_dot_image {
+    background-image: url(../images/iconGreenDot.png);
+    background-position: 100% 1%;
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-right: 4px;
+    color: #FFFDFD
+}
+.aqm-input input {
+    margin: 0px !important;
+}
+.ptop5 {
+    padding-top: 5px !important;
+}
+.void-type-radio {
+    display: inline-block;
+    margin-left: 10px;
+}
+.float-rig {
+    float: right;
+}
+.pad-bot18 {
+    padding-bottom: 18px;
+}
+td.rightValue.descrip.minusRed {
+    color: red;
+}
+span.right {
+    display: inline-block;
+    float: right;
+    text-align: right;
+    ;
+}
+.pad-bottom10 {
+    padding-bottom: 10px;
+}
+.display-inline-block {
+    display: inline-block;
+}
+.week {
+    width: 35% !important;
+    padding-left: 10PX;
+}
+.upward-lock {
+    background-image: url('../images/icon_small_up_arrow.gif');
+    background-position-x: 0px;
+    background-repeat: no-repeat;
+    background-position-y: 8px;
+    /* padding-left: 5px; */
+    
+    padding-right: 3px;
+}
+.fixedHeader {
+    position: fixed;
+    top: 0px;
+    z-index: 2;
+    background: transparent;
+}
+.rightAlign {
+    float: right !important;
+}
+.center-align {
+    text-align: center !important;
+}
+.ContentTableWrapper .tableInfo .instructionalTextLong {
+    clear: both;
+    float: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.loading {
+    display: block;
+}
+.headingFix {
+    padding-top: 35px !important;
+}
+.bold {
+    font-weight: bold;
+}
+.ContentTableWrapper .ContentTable tr td.plannerThisPromo.plannerLeft {
+    background-position: 10% 25%;
+}
+.ContentTableWrapper .ContentTable tr td.plannerThisPromo.plannerLeftDaily {
+    background-position: 4% 8%;
+}
+.ContentTableWrapper .ContentTable tr td.emptyRow {
+    color: #222222;
+    font-size: 1em;
+    /* 12px */
+    
+    padding: 8px 10px;
+    vertical-align: top;
+}
+.ContentTableWrapper .tableInfo .instructionalText {
+    float: right;
+}
+label.notes {
+    cursor: pointer;
+    padding-left: 18px;
+}
+/* Custome combo box --added for instore promotion display*/
+/* Code for auto-complete */
+
+.ui-autocomplete {
+    background: white;
+    border-radius: 0 0 5px 5px;
+}
+.ui-autocomplete .ui-menu-item {
+    color: #5a5a5a;
+    padding: 3px 5px !important;
+    width: auto;
+}
+.ui-autocomplete .ui-menu-item.ui-state-focus {
+    background: #dff0ff;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    list-style-image: none;
+}
+/* Code for button with menu */
+
+.buttonMenu.ui-menu.selectDropdown {
+    vertical-align: baseline;
+}
+.buttonMenu.ui-menu.selectDropdown .ui-menu-item,
+.buttonMenu.ui-menu.selectDropdown .ui-menu-item.ui-state-focus {
+    list-style-image: none;
+    border: none;
+}
+.buttonMenu.ui-menu.selectDropdown .dropdown {
+    opacity: 1;
+}
+.buttonMenu.ui-menu .ui-menu-item label.actionBtn a {
+    color: #fff;
+    display: inline;
+    font-weight: bold;
+    padding: 0;
+}
+.buttonMenu.ui-menu.selectDropdown .dropdown.ui-menu li a {
+    padding: 0;
+}
+.buttonMenu.ui-menu .ui-menu-item .ui-menu-icon {
+    display: none;
+}
+.ui-menu .ui-menu-item {
+    list-style-image: none;
+}
+/* tab for vertical tabs */
+
+.ui-tabs-vertical.ui-widget-content {
+    border: none;
+}
+.ui-tabs-vertical .ui-tabs-nav {
+    float: left;
+    width: 20%;
+    border-bottom: none;
+    margin-top: -1px;
+}
+.ui-tabs-vertical .ui-tabs-nav li {
+    clear: left;
+    width: 100%;
+    border-right-width: 0 !important;
+    margin-bottom: 3px;
+}
+.ui-tabs-vertical .ui-tabs-nav li a {
+    display: block;
+    padding: 5px 7px 5px 9px;
+    width: 90%;
+}
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+    border-right-width: 1px;
+    border-right-width: 1px;
+    margin-bottom: 5px;
+}
+.ui-tabs-vertical .ui-tabs-panel,
+.ui-vertical-tabs .ui-tabs-panel {
+    border: 1px solid;
+    border-radius: 0 3px 3px 3px;
+    float: left;
+    margin-left: 1px;
+    min-height: 200px;
+    padding: 0 0 12px 0;
+    width: 79%;
+}
+.ui-tabs-vertical .ui-tabs-panel .sectionTitle {
+    padding-left: 10px;
+    padding-top: 6px;
+    font-weight: bold;
+}
+/* Custome combo box */
+
+.custom-combobox {
+    white-space: nowrap !important;
+}
+.custom-combobox a {
+    background: none;
+    border: none;
+    width: auto;
+}
+.custom-combobox a .ui-icon {
+    background: url(../images/iconSelectDropdown.gif) center top no-repeat;
+    margin-left: -21px;
+}
+.custom-combobox a .ui-button-text {
+    display: none;
+}
+.total-claim-amount {
+    border: 1px solid #dddddc;
+    border-top: 0;
+    float: right;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 20px;
+    text-align: right;
+    width: 190px;
+}
+.articleContentInner .articleInfoTop {
+    border-radius: 4px 4px 0 0;
+    height: auto;
+    opacity: .7;
+    padding: 8px 6px 8px 5px;
+}
+.articleInfoTop span {
+    color: #fff;
+    display: inline-block;
+}
+.articleInfoTop span.articleInfoSC {
+    float: right;
+}
+.parameter.edit-shelf-capacity,
+.parameter.edit-mpl {
+    display: inline-block;
+    width: 49%;
+}
+.popupContent .innerSectionContent.formWrapper .plainTable {
+    min-width: 225px;
+    width: auto;
+}
+.notes span.check-mpl-sc {
+    display: inline-block;
+    float: right;
+}
+.parameter.edit-mpl .plainTable {
+    float: right;
+}
+table.ContentTable.sc-mpl-edit {
+    border: solid 1px #c0c5ca;
+    border-radius: 3px;
+    clear: both;
+    margin-bottom: 15px;
+    width: 97%;
+}
+table.ContentTable.sc-mpl-edit tr td {
+    border-bottom: solid 1px #dddddc;
+    border-right: solid 1px #eee;
+    color: #222;
+    font-size: 1em;
+    height: 28px;
+    line-height: 28px;
+    padding: 8px 10px;
+    vertical-align: top;
+}
+table.ContentTable.sc-mpl-edit tr td.valueInfo {
+    background: #f6f6f6;
+}
+#dialog-priceHistory .price-type-select {
+    display: inline-block;
+    float: right;
+    font-size: 1.1em;
+    position: absolute;
+    right: 15px;
+    top: 12px;
+}
+#dialog-priceHistory .price-type-select select {
+    font-size: 1em;
+    width: 100px;
+}
+.quickHelpWrapper, .suggestionWrapper{
+    background: -moz-linear-gradient(top, #e9f7ff, #fff);
+    background: -webkit-gradient(linear, 0% 0, 0% 100%, from(#e9f7ff), to(#fff));
+    background: -webkit-linear-gradient(top, #e9f7ff, #fff);
+    background: white;
+    border-top: 3px solid #057bea;
+    bottom: 0;
+    min-width: 980px;
+    position: fixed;
+    width: 100%;
+}
+.quickHelpWrapper .quickHelpContent {
+    background: url(../images/iconTips.png) 2% center no-repeat;
+    background-size: 8em;
+    padding: 1em 2em 1em 12em;
+}
+.suggestionWrapper .suggestionContent {
+	{
+    background: url(../images/iconTips.png) 2% center no-repeat;
+    background-size: 6em;
+    padding: 1em 2em 1em 12em;
+}
+}
+.quickHelpWrapper .quickHelpContent .quickHelpTitle .title, .suggestionWrapper .suggestionContent .suggestionTitle .title {
+    float: left;
+    font-size: 1.6em;
+    width: 95%;
+}
+.quickHelpWrapper .quickHelpContent .quickHelpTitle .description, .suggestionWrapper .suggestionContent .suggestionTitle .description {
+    float: left;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+.quickHelpWrapper .quickHelpContent .quickHelpTitle .close, .suggestionWrapper .suggestionContent .suggestionTitle .close {
+    background: url(../images/iconTipsClose.png) top center no-repeat;
+    display: inline-block;
+    float: right;
+    height: 23px;
+    margin-top: 5px;
+    text-indent: -99999px;
+    width: 23px;
+}
+.quickHelpWrapper .quickHelpContent .content {
+    clear: both;
+}
+.quickHelpWrapper .quickHelpContent .content .title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.quickHelpWrapper .quickHelpContent .content ul li {
+    list-style-type: disc;
+    margin-bottom: 3px;
+    margin-left: 12px;
+}
+.pageErrorsWrapper {
+    background: -moz-linear-gradient(top, #ffeff4, #fff);
+    background: -webkit-gradient(linear, 0% 0, 0% 100%, from(#ffeff4), to(#fff));
+    background: -webkit-linear-gradient(top, #ffeff4, #fff);
+    background: white;
+    border-top: 3px solid #ffc3d6;
+    bottom: 0;
+    min-width: 980px;
+    position: fixed;
+    width: 100%;
+}
+.pageErrorsWrapper .pageErrorsContent {
+    background: url(../images/iconPageErrors.png) 2% center no-repeat;
+    background-size: 8em;
+    min-height: 80px;
+    padding: 1em 2em 1em 12em;
+    max-width: 856px!important;
+}
+.pageErrorsWrapper .pageErrorsContent .pageErrorsTitle .title {
+    float: left;
+    font-size: 1.6em;
+    width: 95%;
+}
+.pageErrorsWrapper .pageErrorsContent .pageErrorsTitle .description {
+    float: left;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+.pageErrorsWrapper .pageErrorsContent .pageErrorsTitle .close {
+    background: url(../images/iconTipsClose.png) top center no-repeat;
+    display: inline-block;
+    float: right;
+    height: 23px;
+    margin-top: 5px;
+    text-indent: -99999px;
+    width: 23px;
+}
+.pageErrorsWrapper .pageErrorsContent .content {
+    clear: both;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.pageErrorsWrapper .pageErrorsContent .content .title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.pageErrorsWrapper .pageErrorsContent .content ol {
+    margin: 0 0 0 12px;
+    margin-left: 30px;
+    padding: 0;
+}
+.pageErrorsWrapper .pageErrorsContent .content ol li {
+    margin-bottom: 3px;
+    margin-left: 12px;
+    margin-right: 72px;
+}
+label.validate {
+    background: url(../images/iconTickCircleWhite.png) left center no-repeat;
+    background-size: 1em;
+    padding-left: 17px;
+}
+label.thumbUp {
+    background: url(../images/iconThumbUp.png) left 1px no-repeat;
+    padding-left: 18px;
+}
+label.deactivate {
+    background: url(../images/iconDeactivate.png) left center no-repeat;
+    background-size: 1em;
+    padding-left: 16px;
+}
+.actionBtn label,
+.actionBtn a,
+.secondaryActionBtn,
+.secondaryActionBtn a {
+    color: white!important;
+    cursor: pointer;
+}
+.actionBtn.disabled {
+    background: #e0e0e0;
+    background: -moz-linear-gradient(top, #e0e0e0, #d1d1d1);
+    background: -webkit-gradient(linear, 0% 0, 0% 100%, from(#e0e0e0), to(#d1d1d1));
+    background: -webkit-linear-gradient(top, #e0e0e0, #d1d1d1);
+    border: solid 1px #d1d1d1;
+}
+.ContentTableWrapper .ContentTable tr td label.success {
+    background: #d6efa1;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+.ContentTableWrapper .ContentTable tr td label.failed {
+    background: #efa1a1;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+input.toolTip {
+    background: url("../images/iconTooltip.png") no-repeat scroll top right;
+    cursor: pointer;
+    display: none;
+    float: right;
+}
+/* Application Settings */
+
+.app-settings-tabs .step-count {
+    margin-right: 5px;
+    background: #6B6B6B;
+    color: #FFF;
+    border-radius: 18px;
+    height: 18px;
+    display: inline-block;
+    width: 18px;
+    line-height: 18px;
+    text-align: center;
+    font-size: 12px;
+}
+.app-settings-tabs .sales-org-tabs {
+    border: 1px solid #119A49;
+}
+.ui-tabs-role li {
+    clear: left;
+    width: 100%;
+    border-right-width: 0 !important;
+    margin-bottom: 3px;
+}
+.ui-tabs-horizontal .ui-tabs-menus li {
+    float: left;
+    border-bottom: none;
+    margin-top: -1px;
+}
+.ui-vertical-tabs .ui-tabs-nav {
+    float: left;
+    width: 28%;
+    border-bottom: none;
+    margin-top: -1px;
+}
+.ui-tabs-role.ui-tabs-nav {
+    max-width: 250px
+}
+.roleTabs> ul{
+	min-width: 19%;
+}
+.ui-vertical-tabs .ui-tabs-nav li.full-width {
+    clear: left;
+    width: 100%;
+    border-right-width: 0 !important;
+    margin-bottom: 3px;
+}
+.ui-tabs-horizontal .ui-tabs-menus {
+    width: 100%
+}
+.ui-vertical-tabs .ui-tabs-panel {
+    border: 1px solid #119A49;
+    padding: 15px;
+    width: 67%;
+}
+.ui-vertical-tabs .ui-tabs-panel.ui-menus-panel {
+    margin-top: -35px;
+    border-radius: 5px;
+    min-height: 400px;
+}
+.app-settings-tabs .sales-org-tabs {
+    border-radius: 5px;
+    padding: 25px 1% 15px 1%;
+    margin-top: 1px
+}
+.ui-tabs-horizontal .ui-menus.ui-tabs-panel {
+    padding: 0px;
+    border: 0px;
+    width: 100%
+}
+.app-settings-tabs.ui-tabs-horizontal label.help-text {
+    display: inline-block;
+    margin: 30px 0px 8px 3px;
+}
+.app-settings-tabs.ui-tabs-horizontal label.legend-text {
+    display: inline-block;
+    margin: 5px 0px;
+}
+.app-settings-tabs .ui-tabs-nav {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    border-bottom: 0px !important;
+}
+.app-settings-tabs .tableTitle {
+    display: inline-block;
+    margin-left: 1%
+}
+.app-settings-tabs .tableTitle h4 {
+    /* color: #119A49; */
+}
+.ui-vertical-tabs .full-width a {
+    width: 90%;
+}
+.app-settings-tabs .tableTitle div {
+    background: url(../images/iconArrow_grey.png) no-repeat;
+    display: inline-block;
+    width: 18px;
+    margin: 5px;
+    top: 2px;
+    position: relative;
+}
+.app-settings-tabs .tableTitle div.icon-arrow-down {
+    top: 3px;
+    -webkit-transform: rotate(90deg);
+}
+.app-settings-tabs .popupActions {
+    text-align: right;
+    float: right;
+    margin-top: 15px;
+}
+div.ui-vertical-tabs.ui-tabs {
+    padding-top: 0px !important;
+    ;
+}
+.app-settings-tabs .tableTitle.banner-title {
+    margin-left: 2%
+}
+.actionBtn .replicate {
+    background: url(../images/iconGroupBy_white.png) left 1px no-repeat;
+    padding-left: 25px;
+}
+/* Navbar Animate CSS  */
+
+.active-bar,
+.selected-menu {
+    /*background: #6bbc53;*/
+    
+    height: 5px;
+    position: absolute;
+    top: 1px;
+    width: 10px;
+    display: none;
+    z-index: 10
+}
+.selected-menu {
+    display: inline;
+}
+a {
+    outline: 0px
+}
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 105;
+    position: fixed;
+    display: none;
+    top: 0;
+}
+.new-loader {
+    width: 21%;
+    margin: 0 auto;
+    z-index: 1000;
+    margin-top: 22%;
+    opacity: 1;
+}
+.loading {
+    display: block;
+}
+.actionBtn.disabled:hover {
+    background: #e0e0e0 !important;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e0e0e0), to(#d1d1d1)) !important;
+    background: -webkit-linear-gradient(top, #e0e0e0, #d1d1d1) !important;
+    background: -moz-linear-gradient(top, #e0e0e0, #d1d1d1) !important;
+    border: solid 1px #d1d1d1 !important;
+    cursor: default !important;
+}
+#dialog-replicate .errorDiv label {
+    width: 90%
+}
+.grey {
+    -webkit-filter: grayscale(100%);
+    cursor: default;
+}
+.disable.grey label {
+    cursor: default
+}
+.storeCntPadding {
+    padding: 10px
+}
+label.deactivateRecord {
+    display: inline-block;
+    width: 20px;
+    text-indent: -999999px;
+    cursor: pointer;
+    padding-bottom: 5px;
+    text-align: left;
+}
+label.deactivateRecord {
+    background: url(../images/iconDeactivate.png) left 2px no-repeat;
+}
+.ContentTableWrapper .ContentTable tr td label.deactive {
+    background: #f2f2f2;
+    border-radius: 3px;
+    color: #999999;
+    padding: 2px 5px;
+}
+/*Article Details bR1.2*/
+
+.article-details-wrapper {
+    margin-top: 20px;
+}
+.articleContentInner .articleDetails .ContentTable {
+    width: 100%;
+}
+.article-details-wrapper .articleAdditionalInfo {
+    margin-top: 15px;
+}
+.articleContentInner .articleImg {
+    background: #fff;
+    margin-top: 25px;
+    text-align: center;
+    overflow: auto;
+    width: 100%;
+}
+.scrollup {
+    background: #494848;
+    color: white;
+    font-weight: bold;
+    padding: 3px 8px;
+    position: fixed;
+    bottom: 45px;
+    right: 0;
+    display: none;
+    z-index: 2;
+}
+.deactivatedLabel {
+    padding: 2px 5px;
+    margin: 0px;
+    float: right;
+    margin-right: 10px;
+}
+.deactivatedLabel {
+    float: right;
+    margin: 0px;
+    margin-right: 10px;
+    padding: 2px 5px;
+}
+.deactivatedLabel label {
+    font-weight: normal;
+}
+.headRow td {
+    background-color: #F6FDE7 !important;
+    color: #00501F !important;
+    font-weight: bold !important;
+}
+/*need to remove this */
+
+.temp-fix-pop-up {
+    margin-left: 0 !important;
+    width: 100% !important;
+    margin-bottom: 0px;
+    position: fixed;
+    z-index: 1000;
+}
+.deactive-icon {
+    background: url(../images/iconDeactivate.png) left center no-repeat !important;
+    background-size: 1em !important;
+    background-position-x: 4px !important;
+    cursor: pointer !important;
+}
+.width2 {
+    width: 2px !important;
+}
+#instoreReport.ContentTableWrapper .ContentTable tr.defaultExpanded td {
+    cursor: default!important;
+    width: 1%;
+    white-space: nowrap;
+}
+#instoreReport .scrollTableContainer .scrollWindow {
+    width: 2000px;
+    overflow: visible;
+}
+.ContentTableWrapper .tableInfo.repairTitle {
+    padding-top: 0;
+}
+/*.pageStatusWrapper {
+    background-image: url(../images/iconPageTick.png), -webkit-gradient(linear, left top, left bottom, from(#f6ffed), to(#fff));
+    background-image: url(../images/iconPageTick.png), -webkit-linear-gradient(top, #f6ffed, #fff);
+    background-image: url(../images/iconPageTick.png), -moz-linear-gradient(top, #f6ffed, #fff);
+    background-image: url(../images/iconPageTick.png), -ms-linear-gradient(top, #f6ffed, #fff);
+    background-image: url(../images/iconPageTick.png), -o-linear-gradient(top, #f6ffed, #fff);
+    background-image: url(../images/iconPageTick.png), linear-gradient(top bottom, #f6ffed, #fff);
+    border-top: 3px solid #d0ffa3;
+}*/
+.innerSection .sectionTitle label.serviceOrderNo {
+    vertical-align: middle;
+}
+.articleHead .articleHeaderWrapper .articleTitle {
+    color: #00501f;
+}
+.articleHead .articleActionBtns label.actionBtn label.#printBtn important {
+    line-height: 21px!important;
+}
+label#printBtn {
+    float: right!important;
+    margin-top: 5px!important;
+}
+.plus {
+    background-image: url("../images/woolworths/iconOpenAccordion.png")!important;
+    display: inline-block;
+    margin-right: 10px;
+}
+.minus {
+    background-image: url("../images/woolworths/iconCloseAccordion.png")!important;
+    display: inline-block;
+    margin-right: 10px;
+}
+.warehouseTablecss {
+    border-radius: 3px;
+    width: 285px!important;
+}
+.warehouseTablecss tr td {
+    border-bottom: solid 1px #dddddc;
+    border-right: solid 1px #eee;
+    border-top: solid 1px #dddddc;
+    border-left: solid 1px #eee;
+}
+#warehouseSection {
+    margin-left: 30px;
+    height: 130px!important;
+    border: solid 1px #c0c5ca;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+    width: 303px;
+    background: #F6FDE7;
+    border-color: #C8F369;
+    border-radius: 4px;
+}
+.articleHead .articleHeaderWrapper p,
+.articleHead .articleInfoWrapper p.secondaryInfo {
+    font-size: 1.083em;
+    /* 13px */
+    
+    line-height: 15px;
+    /*padding-top:5px;*/
+    
+    margin-bottom: 5px;
+}
+.articleHead .articleInfoSecondary {
+    clear: both;
+    opacity: 0.3;
+}
+.articleHead .articleInfoSecondary .hierarchy .title {} .articleHead .articleInfoSecondary .hierarchy ul,
+.articleHead .articleInfoSecondary .hierarchy ul li {
+    display: inline;
+}
+.articleHead .articleInfoSecondary .hierarchy ul li {
+    background: url("../images/menuRightArrow.png") no-repeat right center;
+    padding-right: 20px;
+}
+.articleHead .articleInfoSecondary .hierarchy ul li:last-child {
+    background: none;
+}
+.articleHead .articleActionBtns label.actionBtn,
+.articleHead .articleActionBtns label.secondaryActionBtn {
+    line-height: 28px;
+}
+.articleHead label.fyi {
+    float: right;
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: right;
+}
+.articleHead .articleInfoWrapper {
+    clear: both;
+}
+.settings .articleHead {
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+/* Page title */
+
+.pageTitleWrapper {
+    clear: both;
+}
+.pageTitleWrapper h2.pageTitle {
+    font-size: 1.333em;
+    /* 16px */
+}
+.pageTitleWrapper h2.homeTitle {
+    text-align: center;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails.multiple tr td.keyInfo {
+    width: 10%;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails.multiple tr td.valueInfo {
+    width: 20%;
+}
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.subTitle {
+    font-weight: bold;
+    border: none;
+}
+.articleContentInner .articleDetails tr th,
+.contentWrapper .orderDetails .articleContentInner .articleDetails tr td.subTitle {
+    background: #c0c5ca;
+    color: #2d2d2d;
+}
+.temp-min-width {
+    min-width: 940px !important;
+}
+/*RTV & Claims - Duraivel*/
+
+.total-claim-amount {
+    text-align: right;
+    height: 35px;
+    line-height: 35px;
+    width: 190px;
+    float: right;
+    padding: 0px 20px;
+    border: 1px solid #dddddc;
+    border-top: 0px;
+}
+.dialog-promptFinalize .inputDate {
+    margin: 0px
+}
+.defaultExpanded:hover {
+    background: #ffffee;
+}
+#promoList .innerRow:hover,
+#promoList .innerRow:hover td {
+    background: #fff;
+}
+.promoError {
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.warningImage {
+    background: url(../images/iconWarning.png) 0 1px no-repeat;
+    padding-left: 22px;
+}
+.redLabel {
+    background-color: red;
+    color: white;
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    float: right;
+}
+.articleHead.orderHead {
+    /* width:920px;  commented for full screen  */
+    
+    width: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 4px 4px 10px 10px;
+    overflow: auto;
+}
+.alignFix {
+    height: 18px;
+    width: 127px;
+}
+/*Changes - Durai*/
+
+.articleContentInner .articleInfoTop {
+    border-radius: 4px 4px 0 0;
+    height: auto;
+    opacity: 0.7;
+    padding: 8px 6px 8px 5px;
+}
+.articleInfoTop span {
+    color: #fff;
+    display: inline-block;
+}
+.articleInfoTop span.articleInfoSC {
+    float: right;
+}
+.parameter.edit-shelf-capacity,
+.parameter.edit-mpl {
+    width: 49%;
+    display: inline-block;
+}
+.popupContent .innerSectionContent.formWrapper .plainTable {
+    width: auto;
+    min-width: 225px;
+}
+.notes span.check-mpl-sc {
+    display: inline-block;
+    float: right;
+}
+.parameter.edit-mpl .plainTable {
+    float: right;
+}
+table.ContentTable.sc-mpl-edit {
+    border: solid 1px #c0c5ca;
+    border-radius: 3px;
+    clear: both;
+    width: 97%;
+    margin-bottom: 15px
+}
+table.ContentTable.sc-mpl-edit tr td {
+    border-bottom: solid 1px #dddddc;
+    border-right: solid 1px #eee;
+    color: #222222;
+    font-size: 1em;
+    padding: 8px 10px;
+    vertical-align: top;
+    height: 28px;
+    line-height: 28px;
+}
+table.ContentTable.sc-mpl-edit tr td.valueInfo {
+    background: #f6f6f6
+}
+#dialog-priceHistory .price-type-select {
+    display: inline-block;
+    position: absolute;
+    float: right;
+    right: 15px;
+    top: 12px;
+    font-size: 1.1em;
+}
+#dialog-priceHistory .price-type-select select {
+    width: 100px;
+    font-size: 1em;
+}
+/*Notification CSS - Duraivel - 24Aug*/
+
+.mainWrapper .broadcastWrapper {
+    /* height: 30px; */
+    
+    background-color: yellow;
+    /* width: 1004px; */
+    
+    padding: 0 auto;
+    font-size: 1em;
+}
+.mainWrapper .broadcastWrapper .broadcastContent {
+    /* width: 1004px; */
+    max-width: 980px;
+    margin: 0 auto;
+    /* min-height: 30px; */
+    
+    padding: 10px 0px;
+    color: #333;
+    position: relative;
+}
+.mainWrapper .broadcastWrapper .broadcastContent .broadcastText {
+    width: 90%;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.mainWrapper .broadcastWrapper .broadcastContent .broadcastAction {
+    padding: 4px 10px;
+    float: right;
+    text-align: center;
+    border-radius: 2px;
+    top: 5px;
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
+    font-size: 1em;
+}
+.mainWrapper .broadcastDetails {
+    position: absolute;
+    float: right;
+    right: 30px;
+    width: 350px;
+    max-height: 500px;
+    min-height: 100px;
+    top: 100px;
+    background-color: #fdfdfd;
+    border-radius: 3px;
+    border: 1px solid #d4d4d4;
+    box-shadow: 0px 0px 4px 0px #d4d4d4;
+    z-index: 1;
+}
+.mainWrapper .broadcastDetails span.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #f4f4f4;
+    position: absolute;
+    right: 20px;
+    top: -7px;
+}
+.mainWrapper .broadcastDetails .broadcastItem {
+    padding: 15px 10px;
+    border-bottom: 1px solid #d4d4d4;
+    position: relative;
+    min-height: 35px;
+}
+.mainWrapper .broadcastDetails .broadcastItem,
+.mainWrapper .broadcastDetails .broadcastItem div,
+.mainWrapper .broadcastDetails .broadcastItem label {
+    cursor: pointer;
+}
+.mainWrapper .broadcastDetails .broadcastItem > div {
+    padding-left: 5px;
+    background-size: 30px;
+    background-position: left;
+    min-height: 30px;
+}
+.mainWrapper .broadcastDetails .broadcastItem.viewed label,
+.mainWrapper .broadcastDetails .broadcastItem.viewed div {
+    opacity: 0.8;
+}
+.mainWrapper .broadcastDetails .broadcastItem.lastItem {
+    border-bottom: 0px;
+}
+.mainWrapper .broadcastDetails .broadcastItem label.title {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    padding: 0px;
+    font-weight: normal;
+}
+.mainWrapper .broadcastDetails .broadcastItem label.message {
+    display: block;
+    /* margin-bottom: 9px; */
+    
+    color: #333;
+}
+.mainWrapper .broadcastDetails .broadcastItem label.actionButton {
+    display: inline-block;
+    padding: 2px 10px;
+    color: #333;
+    background-color: #009a3d;
+    border-radius: 2px;
+    /* float: right; */
+    
+    margin-right: 10px;
+    /* margin-bottom: 10px; */
+    
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+}
+.mainWrapper .broadcastDetails .broadcastItem label.dismiss {
+    display: inline-block;
+    position: absolute;
+    float: right;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+    color: #333;
+    background: url(../images/iconTipsClose.png) no-repeat;
+    width: 10px;
+    height: 10px;
+    background-size: 10px;
+}
+.mainWrapper .broadcastDetails .broadcastTitle {
+    height: 40px;
+    line-height: 40px;
+    color: #333;
+    text-align: center;
+    font-size: 1.2em;
+    background-color: #f4f4f4;
+}
+.mainWrapper .broadcastDetails .broadcastTitle.actioned {
+    margin-top: 10px;
+    cursor: pointer;
+}
+.mainWrapper .broadcastDetails .broadcastTitle.actioned:hover {
+    background-color: #f7f7f7;
+}
+.mainWrapper .broadcastDetails label.settings {
+    position: absolute;
+    display: inline-block;
+    float: left;
+    left: 12px;
+    height: 20px;
+    width: 20px;
+    background: url(../images/iconCog.png) no-repeat;
+    top: 12px;
+    cursor: pointer;
+    opacity: 0.4;
+}
+.mainWrapper .broadcastDetails .broadcastItem label.timestamp {
+    color: #808080;
+    /* float: right; */
+    /* right: 10px; */
+    
+    display: inline-block;
+    /* position: absolute; */
+    /* bottom: 15px; */
+    
+    font-size: 0.9em;
+    margin-top: 8px;
+}
+.mainWrapper .broadcastDetails .broadcastItem.settings-radio {
+    border-bottom: 0px !important;
+    min-height: 10px !important;
+    color: #333;
+    padding: 15px 15px 5px 15px !important;
+}
+.mainWrapper .broadcastDetails label.backBtn {
+    position: absolute;
+    display: inline-block;
+    float: left;
+    left: 6px;
+    height: 20px;
+    width: 20px;
+    background: url(../images/iconArrow_grey.png) no-repeat;
+    top: 7px;
+    cursor: pointer;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.mainWrapper .headWrapper .globalLinksWrapper.alertsWrapper {
+    height: 35px;
+    /* width: 180px; */
+    
+    padding: 20px 20px !important;
+}
+.mainWrapper .headWrapper .alertsIcon {
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+    border-radius: 35px;
+    background-color: #9ACA41;
+    margin-right: 10px;
+    background-image: url(../images/alerts.png);
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position: 10px;
+    position: relative;
+    cursor: pointer;
+}
+.mainWrapper .headWrapper .alertsIcon label {
+    position: absolute;
+    float: right;
+    /* right: -5px;*/
+    
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    color: #fff;
+    border-radius: 35px;
+    line-height: 35px;
+    /*font-size: 0.8em;*/
+    
+    cursor: pointer;
+}
+.mainWrapper .headWrapper .alertsIcon.priorityOne label {
+    background-color: red;
+}
+.mainWrapper .headWrapper .alertsIcon.priorityTwo label {
+    background-color: orange;
+}
+.mainWrapper .headWrapper .alertsIcon.priorityThree label {
+    background-color: green;
+}
+.mainWrapper .broadcastDetails label.notification-close {
+    position: absolute;
+    display: inline-block;
+    float: right;
+    right: 20px;
+    height: 20px;
+    width: 20px;
+    top: 14px;
+    cursor: pointer;
+    background-size: 12px;
+    color: #808080;
+}
+.detailedBroadcastContent.lookupWrapper {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    padding: 0;
+    background-color: yellow;
+    border: 0px;
+    border-radius: 0px;
+}
+.detailedBroadcastContent.lookupWrapper .broadcastContent {
+    width: 1004px;
+    margin: 0 auto;
+    /* min-height: 30px; */
+    
+    padding: 10px 0px;
+    color: #333;
+    position: relative;
+}
+.detailedBroadcastContent.lookupWrapper .broadcastContent .broadcastLineItem {
+    min-height: 30px;
+    line-height: 30px;
+    font-size: 1.1em;
+    color: #333;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    word-wrap: break-word;
+}
+.detailedBroadcastContent.lookupWrapper .broadcastTitleText {
+    color: #333;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.detailedBroadcastContent.lookupWrapper .broadcastTitleText .linkBtn {
+    margin-top: 0;
+    font-size: 1em;
+}
+.detailedBroadcastContent.lookupWrapper .broadcastTitleText label,
+.detailedBroadcastContent.lookupWrapper .broadcastLineItem label {
+    float: right;
+    margin-right: 10px;
+    font-weight: normal;
+    cursor: pointer;
+    height: 10px;
+    font-size: 0.9em;
+    line-height: 10px;
+    margin-top: 4px;
+    background-position-y: 0px;
+}
+#broadcastTable.ContentTable tr td .formWrapper .parameter {
+    margin-right: 0px !important;
+}
+#broadcastTable.ContentTable tr.editable td {
+    padding: 0px !important;
+}
+#broadcastTable.ContentTable tr.editable td span.indenter {
+    display: none;
+}
+#broadcastTable.ContentTable tr.editable td .tableActionsWrapper {
+    border: 0px;
+}
+/* Application Settings */
+
+.app-settings-tabs .step-count {
+    margin-right: 5px;
+    background: #6B6B6B;
+    color: #FFF;
+    border-radius: 18px;
+    height: 18px;
+    display: inline-block;
+    width: 18px;
+    line-height: 18px;
+    text-align: center;
+    font-size: 12px;
+}
+/* .app-settings-tabs .sales-org-tabs {
+    border: 1px solid #cd002b;
+} */
+.ui-tabs-role li {
+    clear: left;
+    width: 100%;
+    border-right-width: 0 !important;
+    margin-bottom: 3px;
+}
+.ui-tabs-horizontal .ui-tabs-menus li {
+    float: left;
+    border-bottom: none;
+    margin-top: -1px;
+}
+.ui-vertical-tabs .ui-tabs-nav {
+    float: left;
+    width: 15.5%;
+    border-bottom: none;
+    margin-top: -1px;
+}
+.ui-vertical-tabs .ui-tabs-nav li.full-width {
+    clear: left;
+    width: 100%;
+    border-right-width: 0 !important;
+    margin-bottom: 3px;
+}
+.ui-tabs-horizontal .ui-tabs-menus {
+    width: 100%
+}
+.ui-vertical-tabs .ui-tabs-panel {
+    /* border: 1px solid #cd002b; */
+    padding: 15px;
+    width: 81%;
+}
+.ui-vertical-tabs .ui-tabs-panel.ui-menus-panel {
+    margin-top: -35px;
+    border-radius: 5px;
+    min-height: 400px;
+}
+.app-settings-tabs .sales-org-tabs {
+    border-radius: 5px;
+    padding: 25px 10px 15px 10px;
+}
+.ui-tabs-horizontal .ui-menus.ui-tabs-panel {
+    padding: 0px;
+    border: 0px;
+    width: 100%
+}
+.app-settings-tabs.ui-tabs-horizontal label.help-text {
+    display: inline-block;
+    margin: 30px 0px 8px 3px;
+}
+.app-settings-tabs.ui-tabs-horizontal label.legend-text {
+    display: inline-block;
+    margin: 5px 0px;
+}
+.app-settings-tabs .ui-tabs-nav {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    border-bottom: 0px;
+}
+.app-settings-tabs .tableTitle {
+    display: inline-block;
+    margin-left: 10px
+}
+.app-settings-tabs .tableTitle h4 {
+    /*color: #cb1744;*/
+}
+.ui-vertical-tabs .full-width a {
+    width: 90%;
+}
+.app-settings-tabs .tableTitle div {
+    background: url(../images/iconArrow_grey.png) no-repeat;
+    display: inline-block;
+    width: 18px;
+    margin: 5px;
+    top: 2px;
+    position: relative;
+}
+.app-settings-tabs .tableTitle div.icon-arrow-down {
+    top: 3px;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.app-settings-tabs .popupActions {
+    text-align: right;
+    float: right;
+    margin-top: 15px;
+}
+div.ui-vertical-tabs.ui-tabs {
+    padding-top: 0px !important;
+    ;
+}
+.app-settings-tabs .tableTitle.banner-title {
+    margin-left: 25px
+}
+/* Style for notifications */
+
+.notificationWrapper {
+    float: right;
+    padding-right: 60px;
+    padding-top: 30px;
+    position: relative;
+    z-index: 100000;
+}
+#notification_li {
+    position: relative;
+}
+#notificationContainer {
+    background-color: #fff;
+    border: 1px solid rgba(100, 100, 100, .4);
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    overflow: visible;
+    position: absolute;
+    top: 30px;
+    margin-left: -200px;
+    width: 400px;
+    display: none;
+}
+#notificationContainer:before {
+    content: '';
+    display: block;
+    position: absolute;
+    margin-top: -10px;
+    margin-left: 300px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid black;
+    border-color: transparent transparent #fff;
+    border-style: dashed dashed solid;
+    border-width: 0 8.5px 8.5px;
+    border-bottom-color: #e5e5e5
+}
+#notificationTitle {
+    font-weight: bold;
+    padding: 8px;
+    font-size: 13px;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 1000;
+    width: 384px;
+    border-bottom: 1px solid #dddddd;
+}
+#notificationsBody {
+    padding: 33px 0px 0px 0px !important;
+    min-height: 300px;
+}
+#notificationFooter {
+    background-color: #e9eaed;
+    text-align: center;
+    font-weight: bold;
+    padding: 8px;
+    font-size: 12px;
+    border-top: 1px solid #dddddd;
+}
+#notification_count {
+    background: #cc0000 none repeat scroll 0 0;
+    border-radius: 37px;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: -11px;
+    padding: 12px 16px;
+    position: absolute;
+}
+
+
+
+
+.nearby-store-search-btn {
+    float: right;
+}
+.userPreferenceAlignFix {
+    width: 1300px !important;
+    height: 296px !important;
+    background: #F9F9F3 !important;
+    border: solid 1px #E3E2E1 !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    padding: 8px !important;
+}
+.no-of-copy {
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.wizardContent .ContentTableWrapper hr.sectionDivider {
+    margin-top: 8px !important;
+    margin-bottom: 10px !important;
+}
+.orderReceive .wizardContent .formWrapper .ContentTableWrapper {
+    padding: 10px 8px 0 8px;
+}
+h2.recvTabTitle {
+    font-size: 1.1em;
+    font-weight: normal;
+    padding: 10px 0 8px 8px;
+    background: #c8f369;
+    color: #00501F;
+}
+.wizardContent .receiveDiv.formWrapper {
+    padding: 0px 0px !important;
+    padding-bottom: 10px !important;
+}
+.wizardContent .receiveStep.formWrapper {
+    padding: 0px 0px !important;
+    padding-bottom: 10px !important;
+}
+.wizardContent .receiveDiv.formWrapper .parameter label {
+    width: 20% !important;
+}
+.wizardContent .uldWrapper.formWrapper .parameter {
+    float: left !important;
+    width: 48% !important;
+}
+.contentWrapper.wizardPage .formWrapper .parameter .reportRadio label {
+    width: auto !important;
+}
+.wizardContent .ui-widget-content .ui-state-highlight a {
+    font-weight: bold;
+}
+table.ContentTable tr.warningIndicator td:nth-child(1) {
+    border-left: solid 4px #ff0000 !important;
+}
+.lookupWrapper .lookupParamWrapper .searchByOptions.tempFix {
+    padding-left: 0!important;
+    padding-top: 5px!important;
+}
+.articleHead.tempFix {
+    border-top-left-radius: 5px!important;
+    border-top-right-radius: 5px!important;
+    overflow: hidden!important;
+    padding: 4px 4px 10px 10px!important;
+    width: 920px!important;
+}
+.ContentTableWrapper>.tableInfo.tempFix {
+    padding-top: 0!important;
+}
+.hideButtons {
+    display: none!important;
+}
+.ContentTableWrapper .ContentTable tr th.rightValue {
+    text-align: right;
+}
+.ContentTableWrapper .ContentTable tr th.leftValue {
+    text-align: left;
+}
+#instoreReport.ContentTableWrapper .ContentTable tr.articleEnqNew td {
+    cursor: pointer!important;
+}
+.lookupWrapper .lookupParamWrapper .searchBox input.textbox.focusFix {
+    border: solid 1px #fff;
+    padding: 2px 9px 4px 6px;
+    width: 276px;
+}
+.tooltip {
+    max-width: 350px;
+}
+.tmptooltipClass {
+    max-width: 250px;
+}
+.pageStatusWrapper .pageStatusContentFix {
+    background: none!important;
+    background-size: 8em!important;
+    padding: 1em 2em 1em 12em!important;
+}
+.pageStatusWrapperFix {
+    background-image: url(../images/iconPageTick.png), -webkit-gradient(linear, left top, left bottom, from(#f6ffed), to(#fff));
+    background-image: url(../images/iconPageTick.png), -webkit-linear-gradient(top, #f6ffed, #fff)!important;
+    background-image: url(../images/iconPageTick.png), -moz-linear-gradient(top, #f6ffed, #fff);
+    background-image: url(../images/iconPageTick.png), -ms-linear-gradient(top, #f6ffed, #fff);
+    background-image: url(../images/iconPageTick.png), -o-linear-gradient(top, #f6ffed, #fff);
+    background-image: url(../images/iconPageTick.png), linear-gradient(top bottom, #f6ffed, #fff);
+    border-top: 3px solid #d0ffa3!important;
+    background: -moz-linear-gradient(top, #ffeff4, #fff);
+    background: -webkit-gradient(linear, 0% 0, 0% 100%, from(#ffeff4), to(#fff));
+    background: -webkit-linear-gradient(top, #ffeff4, #fff);
+    background: white;
+    bottom: 0!important;
+    min-width: 980px!important;
+    position: fixed!important;
+    width: 100%;
+}
+label.linkBtnFix {
+    cursor: pointer!important;
+    font-size: 1em!important;
+    font-weight: normal!important;
+}
+label.mandatoryFix:after {
+    color: red!important;
+    content: " *"!important;
+    font-size: 12px!important;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter .parameter {
+    width: 46%;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter.parameterAlign {
+    margin-top: -20px;
+}
+.tableActionsWrapper .formWrapper.alignParameter .parameter.parameterAlignFix {
+    margin-top: 0!important;
+}
+.selectDropdown .dropdown li label.pointerFix {
+    color: #222;
+    cursor: default!important;
+    display: block;
+    padding: 10px;
+}
+.selectDropdown .dropdown li input.pointerFix {
+    color: #222;
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+}
+.notesPaddingFix {
+    margin-bottom: 0!important;
+}
+
+table.ContentTable tr.urgentIndicator td:nth-child(1) {
+    border-left: solid 4px #ff0000 !important;
+}
+table.ContentTable tr.urgentIndicator td {
+    background-color: #ffeff4 !important;
+}
+.orderReceive .errorDiv label {
+    background: url(../images/iconError.png) 0 2px no-repeat;
+    padding-left: 18px;
+    color: red;
+}
+.orderReceive .errorDiv .closeMessage {
+    background: url(../images/ui-icons_888888_256x240.png) -32px -193px no-repeat;
+    cursor: pointer;
+    padding-left: 15px;
+    opacity: 0.3;
+}
+.orderReceive .errorDiv .closeMessage:hover {
+    background: url(../images/ui-icons_888888_256x240.png) -32px -193px no-repeat;
+    cursor: pointer;
+    padding-left: 15px;
+    opacity: 1;
+}
+.updateRecvdQty .articleDtlDiv.ContentTableWrapper>.tableInfo {
+    padding-top: 25px;
+}
+.tableActionsBtnsWrapper .tableActionsExtra {
+    margin-top: -4px;
+}
+.orderReceive input:disabled {
+    border: solid 1px #c0c5ca;
+    background-color: #c0c5ca;
+}
+#cmpnt_order_tbl_table input:disabled{
+	 border: solid 1px #c0c5ca;
+    background-color: #c0c5ca;
+}
+
+.orderWrappers input:disabled {
+    border: solid 1px #c0c5ca;
+    background-color: #c0c5ca;
+}
+
+.display-flex {
+    display: inline-flex;
+}
+.wrap-text {
+    white-space: pre-line !important;
+    min-width: 70px;
+}
+.min-width13 {
+    min-width: 13px;
+}
+.order #advWrapper {
+    z-index: 2;
+}
+.order #advDiv {
+    z-index: 12;
+}
+#dialog-hierarchy .hierarchyList li {
+    display: inline-flex;
+}
+#dialog-hierarchy .hierarchyList li.titleText {
+    display: block;
+}
+#dialog-hierarchy .hierarchyList input {
+    min-width: 13px;
+}
+#dialog-hierarchy .hierarchyList li label {
+    white-space: normal;
+    min-width: 130px;
+}
+#error-warn-wrapper,
+#success-wrapper,
+#info-wrapper,
+#information-wrapper,
+#nodata-error-warn-wrapper,
+#suggestionWrapper-instore,
+#submit-info-wrapper {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1000000;
+    clear: both;
+    padding: 0px;
+    top: 0px;
+}
+.float-left {
+    float: left !important;
+}
+.margin-left0 {
+    margin-left: 0px !important;
+}
+.padding0 {
+    padding: 0px !important;
+}
+.padding-top35 {
+    padding-top: 35px !important;
+}
+.detailsSections #sections #over-all li {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    float: right;
+    
+}
+.detailsSections #sections ul {
+    background-color: transparent;
+    
+}
+.contentAlignment{
+	margin-left:90% !important;
+}
+
+
+.tabbedOrderDetail .detailsSections {
+    margin-top: -51px;
+}
+.tabbedOrderDetail .articleHead {
+    padding: 10px 8px 10px 10px;
+    overflow: auto;
+}
+th.actionrows {
+    background-image: url(../images/tableArrows.png)!important;
+    background-position: 100% 10px !important;
+    background-repeat: no-repeat !important;
+    padding-right: 20px !important;
+}
+th.ascending {
+    background-image: url(../images/tableArrowDown.png) !important;
+    background-position: 100% 12px !important;
+    background-repeat: no-repeat !important;
+    background-color: #acb0b4 !important;
+    color: #292929 !important;
+    cursor: pointer !important;
+}
+th.descending {
+    background-image: url(../images/tableArrowUp.png) !important;
+    background-position: 100% 12px !important;
+    background-repeat: no-repeat !important;
+    background-color: #acb0b4 !important;
+    color: #292929 !important;
+    cursor: pointer !important;
+}
+th.sorting-asc {
+    background-image: url(../images/tableArrowDown.png)!important;
+    background-position: 100% 12px!important;
+    background-repeat: no-repeat!important;
+    background-color: #acb0b4!important;
+    color: #292929!important;
+    cursor: pointer!important;
+}
+th.sorting-desc {
+    background-image: url(../images/tableArrowUp.png)!important;
+    background-position: 100% 12px!important;
+    background-repeat: no-repeat!important;
+    background-color: #acb0b4!important;
+    color: #292929!important;
+    cursor: pointer!important;
+}
+.locedStatusClass {
+    border-left: solid 10px #C25050!important;
+}
+th.tableSortHeader {
+    background-image: url(../images/tableArrows.png);
+    background-position: 100% 10px!important;
+    background-repeat: no-repeat!important;
+    padding-right: 20px!important;
+}
+.combo-size {
+    max-height: 134px;
+    overflow-y: auto;
+}
+input:read-only {
+    background: #d9d9d9!important;
+}
+.starRptHyperLink {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: right;
+    float: right;
+}
+.replicate-error {
+    display: inline-block;
+    padding-top: 5px;
+    float: left;
+    font-weight: normal;
+}
+.visible-hide1 {
+    visibility: hidden!important;
+}
+
+.width100 {
+    width: 100%;
+}
+table.drilldownTable tr.expanded + tr,
+table.drilldownTable tr.expanded + tr.noChild,
+table.drilldownTable tr.expanded + tr.collapsed,
+table.drilldownTable tr.additionalPromos {
+    background: #fff url(../images/rowExpandedBg.gif) left bottom repeat-x;
+    border-bottom-color: #C0C5CA;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.cursor-pointer:hover {
+    cursor: pointer;
+}
+.paddingRight10 {
+    padding-right: 10px;
+}
+/* .stockTransferDiv .tableActionsWrapper .formWrapper.alignParameter .parameter {
+    width: 54% !important;
+} */
+.tableActionsWrapper .formWrapper.alignParameter .parameter.parameterSingle {
+    width: 92% !important;
+}
+.notes .warningMessage label {
+    background: url(../images/iconWarning.png) 0 1px no-repeat;
+    padding-left: 22px;
+    padding-bottom: 10px;
+}
+.stockTransferDiv .ContentTableWrapper .tableSorter tr td {
+    padding-right: 10px;
+}
+label.mandatoryNew:after {
+    color: red;
+    content: " *";
+    font-size: 12px;
+}
+.stockTransferDiv .parameter input.textbox.sitebox {
+    width: 340px;
+}
+.stockContactPopup .warningMessage label {
+    background: url(../images/iconWarning.png) 0 1px no-repeat;
+    padding-left: 22px;
+    padding-bottom: 10px;
+}
+.padd-top10 {
+    padding-top: 10px !important;
+}
+.margni-top30 {
+    margin-top: 30px !important;
+}
+.paddingRight {
+    padding-right: 10px;
+}
+.margin-top0{
+	margin-top: 0px !important;
+}
+.uom-col{
+	min-width: 25px;
+  	display: inline-block;
+}
+.padright0{
+	padding-right: 0px !important;
+	  padding-left: 0px !important;
+}
+.padright8 {
+  padding-right: 8px !important;
+}
+.paddingtop10{
+    padding: 10px 5px 5px 0px !important;
+}
+.date-pic-col{
+	max-width: 93px;
+}
+.remove-sort{
+	background-image: none !important;
+}
+.fontWeightFix {
+    font-weight: normal !important;
+}
+.padtop25{
+	padding-top: 25px;
+}
+.margin-top40{
+	  margin-top: 40px !important;
+}
+.ContentTableWrapper .ContentTable tr td.pi{
+				background-image:url(../images/iconPI.png);
+				background-position:10% 23%;
+				background-repeat:no-repeat;
+}
+label.pi{
+		padding-left: 20px;
+		padding-right: 5px;
+		padding-bottom:2px;
+		background:url(../images/iconPI.png) left top no-repeat;/*img change*/
+		color:#00501F;
+		margin-left: 3px;
+	}
+.padtop10{
+	padding-top: 10px !important;
+}
+label.hideRow{
+	background-image: url("../images/iconSub.png");
+    padding-left: 13px;
+    background-repeat: no-repeat;
+    background-position-y: 2px;
+}
+
+.contentWrapper .hierarchyWrapper .hierarchyContent .hierarchyList ul li label strong.number{
+						background: #1097ff none repeat scroll 0 0; !important
+						border-radius: 3px; !important
+						color: #fff; 
+						font-size: 10px; 
+						padding: 0 3px; 
+					}
+					
+					
+.cursor-def td,th{
+	cursor: default !important;
+}				
+
+/*Notification CSS - Duraivel - 24Aug*/
+.mainWrapper .broadcastWrapper { /* height: 30px; */
+	background-color: yellow;
+	/* width: 1004px; */
+	padding: 0 auto;
+	font-size: 1em;
+}
+
+.mainWrapper .broadcastWrapper .broadcastContent {
+	max-width: 980px;
+	margin: 0 auto;
+	/* min-height: 30px; */
+	padding: 10px 0px;
+	color: #333;
+	position: relative;
+}
+
+.mainWrapper .broadcastWrapper .broadcastContent .broadcastText {
+	width: 90%;
+	font-size: 1.1em;
+	cursor: pointer;
+}
+
+.mainWrapper .broadcastWrapper .broadcastContent .broadcastAction {
+	padding: 4px 10px;
+	float: right;
+	text-align: center;
+	border-radius: 2px;
+	top: 5px;
+	position: absolute;
+	right: 0px;
+	cursor: pointer;
+	font-size: 1em;
+}
+
+.mainWrapper .broadcastDetails {
+	position: absolute;
+	float: right;
+	right: 30px;
+	width: 350px;
+	max-height: 500px;
+	min-height: 100px;
+	top: 100px;
+	background-color: #fdfdfd;
+	border-radius: 3px;
+	border: 1px solid #d4d4d4;
+	box-shadow: 0px 0px 4px 0px #d4d4d4;
+	z-index: 1;
+}
+
+.mainWrapper .broadcastDetails span.arrow-up {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #f4f4f4;
+	position: absolute;
+	right: 20px;
+	top: -7px;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem {
+	padding: 15px 10px;
+	border-bottom: 1px solid #d4d4d4;
+	position: relative;
+	min-height: 35px;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem,.mainWrapper .broadcastDetails .broadcastItem div,.mainWrapper .broadcastDetails .broadcastItem label
+	{
+	cursor: pointer;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem>div {
+	padding-left: 5px;
+	background-size: 30px;
+	background-position: left;
+	min-height: 30px;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem.viewed label,.mainWrapper .broadcastDetails .broadcastItem.viewed div
+	{
+	opacity: 0.8;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem.lastItem {
+	border-bottom: 0px;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem label.title {
+	display: block;
+	font-size: 1.2em;
+	margin-bottom: 5px;
+	padding: 0px;
+	font-weight: normal;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem label.message {
+	display: block;
+	/* margin-bottom: 9px; */
+	color: #333;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem label.actionButton {
+	display: inline-block;
+	padding: 2px 10px;
+	color: #333;
+	background-color: #009a3d;
+	border-radius: 2px;
+	/* float: right; */
+	margin-right: 10px;
+	/* margin-bottom: 10px; */
+	cursor: pointer;
+	position: relative;
+	margin-top: 10px;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem label.dismiss {
+	display: inline-block;
+	position: absolute;
+	float: right;
+	top: 15px;
+	right: 10px;
+	cursor: pointer;
+	color: #333;
+	background: url(../images/iconTipsClose.png) no-repeat;
+	width: 10px;
+	height: 10px;
+	background-size: 10px;
+}
+
+.mainWrapper .broadcastDetails .broadcastTitle {
+	height: 40px;
+	line-height: 40px;
+	color: #333;
+	text-align: center;
+	font-size: 1.2em;
+	background-color: #f4f4f4;
+}
+
+.mainWrapper .broadcastDetails .broadcastTitle.actioned {
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.mainWrapper .broadcastDetails .broadcastTitle.actioned:hover {
+	background-color: #f7f7f7;
+}
+
+.mainWrapper .broadcastDetails label.settings {
+	position: absolute;
+	display: inline-block;
+	float: left;
+	left: 12px;
+	height: 20px;
+	width: 20px;
+	background: url(../images/iconCog.png) no-repeat;
+	top: 12px;
+	cursor: pointer;
+	opacity: 0.4;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem label.timestamp {
+	color: #808080;
+	/* float: right; */
+	/* right: 10px; */
+	display: inline-block;
+	/* position: absolute; */
+	/* bottom: 15px; */
+	font-size: 0.9em;
+	margin-top: 8px;
+}
+
+.mainWrapper .broadcastDetails .broadcastItem.settings-radio {
+	border-bottom: 0px !important;
+	min-height: 10px !important;
+	color: #333;
+	padding: 15px 15px 5px 15px !important;
+}
+
+.mainWrapper .broadcastDetails label.backBtn {
+	position: absolute;
+	display: inline-block;
+	float: left;
+	left: 6px;
+	height: 20px;
+	width: 20px;
+	background: url(../images/iconArrow_grey.png) no-repeat;
+	top: 7px;
+	cursor: pointer;
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.mainWrapper .headWrapper .globalLinksWrapper.alertsWrapper {
+	height: 35px;
+	/* width: 180px; */
+	padding: 20px 20px !important;
+}
+
+.mainWrapper .headWrapper  .alertsIcon {
+	display: inline-block;
+	height: 35px;
+	width: 35px;
+	border-radius: 35px;
+	background-color: #9ACA41;
+	margin-right: 10px;
+	background-image: url(../images/alerts.png);
+	background-repeat: no-repeat;
+	background-size: 14px;
+	background-position: 10px;
+	position: relative;
+	cursor: pointer;
+}
+
+.mainWrapper .headWrapper  .alertsIcon label {
+	position: absolute;
+	float: right;
+	/* right: -5px;*/
+	display: inline-block;
+	height: 35px;
+	width: 35px;
+	text-align: center;
+	color: #fff;
+	border-radius: 35px;
+	line-height: 35px;
+	/*font-size: 0.8em;*/
+	cursor: pointer;
+}
+
+.mainWrapper .headWrapper  .alertsIcon.priorityOne label {
+	background-color: red;
+}
+
+.mainWrapper .headWrapper  .alertsIcon.priorityTwo label {
+	background-color: orange;
+}
+
+.mainWrapper .headWrapper  .alertsIcon.priorityThree label {
+	background-color: green;
+}
+
+.mainWrapper .broadcastDetails  label.notification-close {
+	position: absolute;
+	display: inline-block;
+	float: right;
+	right: 20px;
+	height: 20px;
+	width: 20px;
+	top: 14px;
+	cursor: pointer;
+	background-size: 12px;
+	color: #808080;
+}
+
+.detailedBroadcastContent.lookupWrapper {
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+	padding: 0;
+	background-color: yellow;
+	border: 0px;
+	border-radius: 0px;
+}
+
+.detailedBroadcastContent.lookupWrapper .broadcastContent {
+	width: 1004px;
+	margin: 0 auto;
+	/* min-height: 30px; */
+	padding: 10px 0px;
+	color: #333;
+	position: relative;
+}
+
+.detailedBroadcastContent.lookupWrapper .broadcastContent .broadcastLineItem
+	{
+	min-height: 30px;
+	line-height: 30px;
+	font-size: 1.1em;
+	color: #333;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	word-wrap: break-word;
+}
+
+.detailedBroadcastContent.lookupWrapper  .broadcastTitleText {
+	color: #333;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.detailedBroadcastContent.lookupWrapper  .broadcastTitleText .linkBtn {
+	margin-top: 0;
+	font-size: 1em;
+}
+
+.detailedBroadcastContent.lookupWrapper .broadcastTitleText label,.detailedBroadcastContent.lookupWrapper .broadcastLineItem label
+	{
+	float: right;
+	margin-right: 10px;
+	font-weight: normal;
+	cursor: pointer;
+	height: 10px;
+	font-size: 0.9em;
+	line-height: 10px;
+	margin-top: 4px;
+	background-position-y: 0px;
+}
+
+#broadcastTable.ContentTable tr td .formWrapper .parameter {
+	margin-right: 0px !important;
+}
+
+#broadcastTable.ContentTable tr.editable td {
+	padding: 0px !important;
+}
+
+#broadcastTable.ContentTable tr.editable td  span.indenter {
+	display: none;
+}
+
+#broadcastTable.ContentTable tr.editable td  .tableActionsWrapper {
+	border: 0px;
+}	
+input.editNumCell.wtTextBoxFix {
+    text-align: right;
+    width: 51px !important;
+    height: 16px;
+    margin: -4px -6px -4px -5px;
+}
+
+input.textbox.smallboxFix {
+    width: 73px !important;
+}
+
+div.varianceFooter {
+	min-height: 5px !important;
+}
+
+.tableActionsWrapper .formWrapper .parameter.spaceIssueFix,
+.popupWrapper .formWrapper.alignParameter .parameter.spaceIssueFix {
+    float: left !important;
+    padding-right: 20px !important;
+    width: auto !important;
+}
+label.plannerThisPromo {
+					padding-left: 20px;
+					padding-right: 5px;
+					padding-bottom:2px;
+					background:url(../images/iconP.png) left top no-repeat;/*img change*/
+					color:#00501F;
+					margin-left: 3px;
+}
+.ContentTableWrapper .ContentTable tr td.plannerThisPromo{
+				background-image:url(../images/iconP.png);
+				background-position:10% 23%;
+				background-repeat:no-repeat;
+}
+.ContentTableWrapper .ContentTable tr td.plannerThisPromo.plannerRight,
+				.ContentTableWrapper .ContentTable tr td.plannerLastPromo.plannerRight{
+					background-position:93% 23%;
+					
+}
+label.printRecord{
+		display: inline-block;
+		padding-left: 10px;
+		padding-right:10px;
+		text-indent: -999999px;
+		cursor:pointer;
+		padding-bottom: 1px;
+		text-align:left;
+	}
+	
+label.linkBtn.uldSweepLink {
+    font-weight:normal; !important
+}
+
+.printButtonFix
+{
+float: right;
+margin-bottom: 5px;	
+}
+
+.popupWrapper .ibtPopupBtns {
+    padding: 7px 10px !important; 
+}
+
+.ContentTableWrapper .ContentTable tr td.ibtUldColumn {
+    border-bottom: solid 1px #dddddc !important;
+    border-right: solid 1px #eee !important;
+}
+
+.reportWrapper .ContentTableWrapper > .uldSweepHeader{
+	padding-top: 0px !important;
+}
+
+input.greyedText:disabled {
+    border: solid 1px #d9d9d9 !important;
+    background-color: #d9d9d9 !important;
+}
+
+.reportWrapper .formWrapper .parameter .regLblNotBigW {
+    width: 32% !important;
+}
+.muliple-checkbox{
+	max-height: 250px;
+    overflow-y: auto;
+}
+.inner-drop-down {
+    max-height: 130px;
+    overflow-y: auto;
+}
+.inner-drop-down-ooc {
+    max-height: 68px; /* defect_11028 */
+    overflow-y: auto;
+}
+.weight-box{
+	width: 80px !important;
+	text-align: right !important;
+}
+.ticket-btn{
+    padding: 5px!important;
+    float: right;
+    border-radius: 3px;
+    background: #d8d8d8;
+    background: -moz-linear-gradient(top, #d8d8d8 0%, #c6c6c6 100%);
+    background: -webkit-linear-gradient(top, #d8d8d8 0%,#c6c6c6 100%);
+    background: linear-gradient(to bottom, #d8d8d8 0%,#c6c6c6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d8d8d8', endColorstr='#c6c6c6',GradientType=0 );
+    background: #fdfdfd;
+    background: -moz-linear-gradient(top, #fdfdfd 0%, #c6c6c6 100%);
+    background: -webkit-linear-gradient(top, #fdfdfd 0%,#c6c6c6 100%);
+    background: linear-gradient(to bottom, #fdfdfd 0%,#c6c6c6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#c6c6c6',GradientType=0 );
+    font-weight: bold;
+    font-size: 1em;
+    color: #333;
+    border: solid 1px #9FA2A0;
+}
+.ticket-btn:hover{
+    background: #D8D8D8;
+}
+.print-all-width{
+	max-height: 390px;
+    overflow-y: auto;
+}
+/* Fix for defect no 14637*/
+.promArticleReview 
+#scrollTable 
+.resultContent tr td {
+    border-bottom: solid 1px #dddddc;
+    border-right: solid 1px #eee;
+    color: #222;
+    font-size: 1em;
+    padding: 8px 6px;
+    vertical-align: top;
+}
+.dialogbox-scroll{
+    max-height: 400px;
+    overflow-y: scroll;
+}
+/* fix for defect 6990*/
+.popupContent .popupData.contentWrapper  .formWrapper.alignParameter .parameter .searchByOptions {
+    padding-left: 24%;
+}
+/*All ticket templte grouping fix*/
+table.drilldownTable.plainTable tr.collapsed td, table.drilldownTable.plainTable tr.expanded td {
+    padding: 8px;
+}
+table.drilldownTable.plainTable tr td, table.drilldownTable.plainTable tr.collapsed.noChild td {
+    padding: 5px;
+}
+table.drilldownTable.plainTable tr.expanded + tr, table.drilldownTable.plainTable tr.expanded + tr.noChild, table.drilldownTable.plainTable tr.expanded + tr.collapsed, table.drilldownTable.plainTable tr.expanded + tr:hover td, table.drilldownTable.plainTable tr.expanded + tr.noChild:hover td, table.drilldownTable.plainTable tr.expanded + tr.collapsed:hover td {
+    background: none !important;
+}
+/* demand field length increased due to increased demand limit variation*/
+.drillsOpenDefault input.demandEdit,
+.ContentTableWrapper .ContentTable .drillsOpenDefault.filterRow input.numberBox {
+    width: 40px;
+}
+.grnLifeLabel{
+	padding: 5px 5px 5px 650px!important;
+	line-height: 18px!important;
+}
+.grnLifeSpan{
+	padding: 3px 3px 3px 3px!important;
+	float: right;
+    height: 10px;
+    width: 10px;
+    background: url(../images/iconTickCircle.png) no-repeat;
+}
+td.positiveFlag {
+    background: url(../images/iconTick.png) right 11px no-repeat;
+    margin-right: 4px;
+    padding-left: 17px;
+    padding-right: 7px;
+}
+
+.validationStatusDraft{
+   /* color: #FF0000 !important;*/    
+}
+.validationStatusVerified{
+	 /*
+   	background-color: #f6ffed !important;    
+    font-weight: bold !important;*/
+    background: #d6efa1 !important; 
+    border-radius: 3px !important; 
+    padding: 2px 5px !important; 
+}
+.validateAll{
+    /* background: url(../images/iconTickCircleWhite.png) left center no-repeat;
+    background-size: 1em;
+    padding-left: 17px;*/
+}
+.validateRoaster{
+    /*background: url(../images/iconTickCircleWhite.png) left center no-repeat;
+    background-size: 1em;
+    padding-left: 17px;*/
+}
+.delMsgInfo{
+	padding-bottom : 10px;
+}
+.ddSelectDateLabel{
+	padding-right: 5px;
+}
+.planner-inner-drop-down {
+    max-height: 200px;
+    overflow-y: auto;
+}
+#stLocTable tr th{
+	font-size: small;
+	font-family: sans-serif;
+}
+
+#stLocTable tr td{	
+	font-family: sans-serif;
+}
+.m-date-pick{
+    display: inline-block;
+    position: absolute;
+    margin-left: 20px;
+    margin-top: -40px;
+}
+label.receiveingInfoFlag {
+	background: url(../images/iconInfo.gif) left 3px no-repeat;
+    color: #0e36a9;
+    margin-left: 5px;
+    padding-left: 13px;
+    padding-right: 7px;
+    padding-bottom : 7px;  
+    padding-top : 2px;  
+}
+.varAddList{
+	/*  padding-left: 11.4% !important; */
+}
+.venrefLabel{
+	font-size: 1.083em !important;
+	padding-top: 0px !important;
+}
+.combobox-pos{
+	max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+a.navigateClosed {/* 
+	background: url(../images/woolworths/iconArrowRight.png) right center
+		no-repeat;
+	padding-right: 10px; */
+	color: #FA2600 !important;
+}
+
+label.navigateClosedMain {
+	color: #FA2600;
+}
+.editSupplier{
+    padding-right: 20px;
+    background: url(../images/woolworths/iconEditRow.png) right center no-repeat;
+}
+.editSupplierOOR{
+    padding-right: 20px;
+    background: url(../images/woolworths/iconEditRow.png) right center no-repeat;
+}
+.margin-bottom10px{
+	margin-bottom: 10px;
+}
+.margin-top15{
+	margin-bottom: 15px;
+}
+.totalSSCCCartonsReceived{
+	float: left;
+	width: 16.6% !important;
+}
+.totalSSCCCartonsOrdered{
+	 float: left;
+	 width: 13% !important;
+}
+.ssccCartonDisLabel{
+	 float: left;
+	 width: 23% !important;
+}

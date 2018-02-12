@@ -1,0 +1,32 @@
+package au.com.woolworths.portal.util;
+
+import java.io.IOException;
+import java.text.DecimalFormat;
+
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.JsonProcessingException;
+import org.codehaus.jackson.map.DeserializationContext;
+import org.codehaus.jackson.map.JsonDeserializer;
+
+/**
+ * @author xsvm1
+ * 
+ */
+
+public class JsonTimeDeserializer extends JsonDeserializer<String> {
+
+	@Override
+	public String deserialize(JsonParser jsonparser, DeserializationContext arg1)
+			throws IOException, JsonProcessingException {
+        String strVal = jsonparser.getText();
+        if(strVal!=null && strVal.matches("\\d{1,6}")) {
+			int d = Integer.parseInt(strVal);
+			strVal = new DecimalFormat("000000").format(d);
+			strVal = strVal.substring(0, 2)+":"+strVal.substring(2, 4)+":"+strVal.substring(4, 6);
+        }
+        else {
+        	strVal = "00:00:00";
+        }
+		return strVal;
+	}
+}

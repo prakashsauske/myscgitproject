@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SavedTransaction" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="dfdda4af-5bc6-460b-80dd-b75ae4458048">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<scriptlet name="MYSCRIPTLET" class="au.com.woolworths.portal.reports.ScriptletUtil"/>
+	<parameter name="FromDate" class="java.lang.String"/>
+	<parameter name="ToDate" class="java.lang.String"/>
+	<parameter name="StoreNo" class="java.lang.String"/>
+	<parameter name="StoreName" class="java.lang.String"/>
+	<parameter name="saveTraDate" class="java.lang.String"/>
+	<parameter name="saveTraTime" class="java.lang.String"/>
+	<parameter name="saveTraTran" class="java.lang.String"/>
+	<parameter name="saveTraPosi" class="java.lang.String"/>
+	<parameter name="saveTraPoso" class="java.lang.String"/>
+	<parameter name="saveTraAmou" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="cahierNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[cahierNumber]]></fieldDescription>
+	</field>
+	<field name="calendarDayFrom" class="java.lang.String">
+		<fieldDescription><![CDATA[calendarDayFrom]]></fieldDescription>
+	</field>
+	<field name="calendarDayTo" class="java.lang.String">
+		<fieldDescription><![CDATA[calendarDayTo]]></fieldDescription>
+	</field>
+	<field name="cashierFirstName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierFirstName]]></fieldDescription>
+	</field>
+	<field name="cashierLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierLastName]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="department" class="java.lang.String">
+		<fieldDescription><![CDATA[department]]></fieldDescription>
+	</field>
+	<field name="departmentSaleIndicator" class="java.lang.String">
+		<fieldDescription><![CDATA[departmentSaleIndicator]]></fieldDescription>
+	</field>
+	<field name="noDataFound" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFound]]></fieldDescription>
+	</field>
+	<field name="noDataFoundFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFoundFormatted]]></fieldDescription>
+	</field>
+	<field name="posAuthoriser" class="java.lang.String">
+		<fieldDescription><![CDATA[posAuthoriser]]></fieldDescription>
+	</field>
+	<field name="posNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[posNumber]]></fieldDescription>
+	</field>
+	<field name="posTransactionTime" class="java.lang.String">
+		<fieldDescription><![CDATA[posTransactionTime]]></fieldDescription>
+	</field>
+	<field name="salesQuantity" class="java.lang.String">
+		<fieldDescription><![CDATA[salesQuantity]]></fieldDescription>
+	</field>
+	<field name="savedTransAmount" class="java.lang.String">
+		<fieldDescription><![CDATA[savedTransAmount]]></fieldDescription>
+	</field>
+	<field name="siteNo" class="java.lang.String">
+		<fieldDescription><![CDATA[siteNo]]></fieldDescription>
+	</field>
+	<field name="siteNoT" class="java.lang.String">
+		<fieldDescription><![CDATA[siteNoT]]></fieldDescription>
+	</field>
+	<field name="transactionNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[transactionNumber]]></fieldDescription>
+	</field>
+	<variable name="date" class="java.lang.String">
+		<variableExpression><![CDATA[$F{calendarDayTo}!=null?new SimpleDateFormat("dd/MM/yyyy").format(new Date(Long.parseLong($F{calendarDayTo}.replaceAll("\\D+","")))):""]]></variableExpression>
+	</variable>
+	<variable name="time" class="java.lang.String">
+		<variableExpression><![CDATA[$F{posTransactionTime}==null||"".equals($F{posTransactionTime}.trim())==true?"":new DecimalFormat("000000").format(Long.parseLong($F{posTransactionTime})).substring(0,2)+":"+new DecimalFormat("000000").format(Long.parseLong($F{posTransactionTime})).substring(2,4)]]></variableExpression>
+	</variable>
+	<variable name="trans" class="java.lang.String">
+		<variableExpression><![CDATA[$F{transactionNumber}]]></variableExpression>
+	</variable>
+	<variable name="posid" class="java.lang.String">
+		<variableExpression><![CDATA[$F{posNumber}]]></variableExpression>
+	</variable>
+	<variable name="cashierName" class="java.lang.String">
+		<variableExpression><![CDATA[($F{cashierFirstName}==null?"":$F{cashierFirstName}+" ")+($F{cashierLastName}==null?"":$F{cashierLastName})]]></variableExpression>
+	</variable>
+	<variable name="total" class="java.lang.String">
+		<variableExpression><![CDATA[new DecimalFormat("#,##0.00").format(new Double($F{savedTransAmount}))]]></variableExpression>
+	</variable>
+	<variable name="evalFilter" class="java.lang.Boolean">
+		<variableExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.containsCaseInsensitiveVarArgs($V{date}, $P{saveTraDate},
+    $V{time}, $P{saveTraTime},
+    $V{trans}, $P{saveTraTran},
+    $V{posid}, $P{saveTraPosi},
+    $V{cashierName},$P{saveTraPoso},
+    $V{total}, $P{saveTraAmou})]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="73" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="0" width="374" height="20" uuid="0fce97a6-5571-4b6e-b280-b4089dc50c40"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Unrecalled Saved Transaction Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="520" y="0" width="282" height="20" uuid="cdbea8aa-1107-4a0f-9729-4374edbc5eb9"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="21" width="374" height="15" uuid="a9c66b70-4158-4e22-9dc5-a9943bb396f6"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="37" width="374" height="15" uuid="b0907a32-70bf-4fc0-94cb-b1d291563228"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reported for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="53" width="374" height="15" uuid="a90e7158-9554-4358-9774-0d353693b4c6"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["From Date: "+$P{FromDate}+"  |  To Date: "+ $P{ToDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Prevent">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="25" uuid="34ce7e0f-9b3f-44f4-b8aa-c9f9e4902f9f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="25" uuid="73ab2234-f8cd-4d87-82fb-92ead894a8a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="0" width="30" height="25" uuid="ec081379-a258-4b26-b821-ea8a6b8d2939"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="0" width="60" height="25" uuid="20360c74-4835-4774-a6a8-ce349dc8806b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Trans. #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="0" width="60" height="25" uuid="f6eb8cef-6f8c-48b5-b7b0-39a6f414da35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[POS ID #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="0" width="201" height="25" uuid="ffc6cfc6-1149-4efa-8959-f5c8c64eb07b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[POS Operator Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="0" width="102" height="25" uuid="e9941400-fd88-49f7-8fea-7eb93fd0a2ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{evalFilter}]]></printWhenExpression>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="45" height="20" uuid="a27853ae-e3c2-48fc-b466-a6081cd10ae7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{date}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="105" y="0" width="30" height="20" uuid="e1319343-0de2-45bc-91c5-b5417e2d52df"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{time}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="435" y="0" width="201" height="20" isPrintWhenDetailOverflows="true" uuid="9aa40c47-d97c-42e8-8a74-1b1e5e331f18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cashierName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="315" y="0" width="60" height="20" uuid="0f7609d4-06c2-49c2-987e-b3a77a94d0cb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{posid}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="195" y="0" width="60" height="20" uuid="3ab57ffb-5d4e-4c54-a460-e7d967bf196c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{trans}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="700" y="0" width="102" height="20" uuid="3b74562e-af5b-4a02-b6a5-f27523cba898"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="8" width="45" height="12" uuid="3f2fd668-b14c-4a61-aaa1-3fcd7aa002a2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="45" y="8" width="226" height="12" uuid="c7d7b17d-fd1e-41ec-a046-e14340beb203"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="8" width="80" height="12" uuid="9803fb19-55d4-4d31-b908-823f3ab59d62"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="8" width="16" height="12" uuid="6c52cf26-f080-48fa-aa39-7d73f10b3621"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,16 @@
+CachedCssAndJsFilesVersion=19
+POSUserName=TT_1POS
+POSPassword=welcome123
+
+#configure the host and port of the service in 'hostname:portnumber' format
+posServiceHostAndPort=clsapa123.woolworths.com.au:8021
+#posServiceHostAndPort=clsapa123.woolworths.com.au:8021
+
+# for adhoc jasper report compile
+jaspCompUser=jasper
+jaspCompPwd=5c!p0s
+
+
+#added for store host config
+storehostdefined=Y
+environment=U

@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MarkdownDetails" language="groovy" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="04aa4db1-4376-4777-90ac-7e8768acc8a1">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="535"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.wrap.text" value="true"/>
+	<scriptlet name="MYSCRIPTLET" class="au.com.woolworths.portal.reports.ScriptletUtil"/>
+	<parameter name="FromDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["01/12/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ToDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["02/02/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="StoreNo" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="StoreName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Test Store 1786"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="deptName" class="java.lang.String"/>
+	<parameter name="category" class="java.lang.String"/>
+	<parameter name="subCategory" class="java.lang.String"/>
+	<parameter name="segment" class="java.lang.String"/>
+	<parameter name="marticleNo" class="java.lang.String"/>
+	<parameter name="supplierNo" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="article" class="java.lang.String">
+		<fieldDescription><![CDATA[article]]></fieldDescription>
+	</field>
+	<field name="articleT" class="java.lang.String">
+		<fieldDescription><![CDATA[articleT]]></fieldDescription>
+	</field>
+	<field name="category" class="java.lang.String">
+		<fieldDescription><![CDATA[category]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="clearTransSet" class="java.util.Set">
+		<fieldDescription><![CDATA[clearTransSet]]></fieldDescription>
+	</field>
+	<field name="clearance" class="java.lang.String">
+		<fieldDescription><![CDATA[clearance]]></fieldDescription>
+	</field>
+	<field name="clearanceFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[clearanceFormatted]]></fieldDescription>
+	</field>
+	<field name="deferedLoyalty" class="java.lang.String">
+		<fieldDescription><![CDATA[deferedLoyalty]]></fieldDescription>
+	</field>
+	<field name="deferedLoyaltySet" class="java.util.Set">
+		<fieldDescription><![CDATA[deferedLoyaltySet]]></fieldDescription>
+	</field>
+	<field name="department" class="java.lang.String">
+		<fieldDescription><![CDATA[department]]></fieldDescription>
+	</field>
+	<field name="departmentNo" class="java.lang.String">
+		<fieldDescription><![CDATA[departmentNo]]></fieldDescription>
+	</field>
+	<field name="loyalty" class="java.lang.String">
+		<fieldDescription><![CDATA[loyalty]]></fieldDescription>
+	</field>
+	<field name="loyaltyFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[loyaltyFormatted]]></fieldDescription>
+	</field>
+	<field name="loyaltyTransSet" class="java.util.Set">
+		<fieldDescription><![CDATA[loyaltyTransSet]]></fieldDescription>
+	</field>
+	<field name="mapKey" class="java.lang.String">
+		<fieldDescription><![CDATA[mapKey]]></fieldDescription>
+	</field>
+	<field name="noDataFound" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFound]]></fieldDescription>
+	</field>
+	<field name="priceOverrideQty" class="java.lang.String">
+		<fieldDescription><![CDATA[priceOverrideQty]]></fieldDescription>
+	</field>
+	<field name="priceOverrideRTC" class="java.lang.String">
+		<fieldDescription><![CDATA[priceOverrideRTC]]></fieldDescription>
+	</field>
+	<field name="priceOverrideRTCFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[priceOverrideRTCFormatted]]></fieldDescription>
+	</field>
+	<field name="priceTransSet" class="java.util.Set">
+		<fieldDescription><![CDATA[priceTransSet]]></fieldDescription>
+	</field>
+	<field name="promotions" class="java.lang.String">
+		<fieldDescription><![CDATA[promotions]]></fieldDescription>
+	</field>
+	<field name="promotionsFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[promotionsFormatted]]></fieldDescription>
+	</field>
+	<field name="promotionsTransSet" class="java.util.Set">
+		<fieldDescription><![CDATA[promotionsTransSet]]></fieldDescription>
+	</field>
+	<field name="segment" class="java.lang.String">
+		<fieldDescription><![CDATA[segment]]></fieldDescription>
+	</field>
+	<field name="staffDiscount" class="java.lang.String">
+		<fieldDescription><![CDATA[staffDiscount]]></fieldDescription>
+	</field>
+	<field name="staffDiscountFormatted" class="java.lang.String">
+		<fieldDescription><![CDATA[staffDiscountFormatted]]></fieldDescription>
+	</field>
+	<field name="staffTransSet" class="java.util.Set">
+		<fieldDescription><![CDATA[staffTransSet]]></fieldDescription>
+	</field>
+	<field name="subCategory" class="java.lang.String">
+		<fieldDescription><![CDATA[subCategory]]></fieldDescription>
+	</field>
+	<field name="transactionNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[transactionNumber]]></fieldDescription>
+	</field>
+	<field name="advertisements" class="java.lang.String">
+		<fieldDescription><![CDATA[advertisements]]></fieldDescription>
+	</field>
+	<field name="adverTransSet" class="java.util.Set">
+		<fieldDescription><![CDATA[adverTransSet]]></fieldDescription>
+	</field>
+	<field name="scanningPolicy" class="java.lang.String"/>
+	<field name="scanPTransSet" class="java.util.Set">
+		<fieldDescription><![CDATA[scanPTransSet]]></fieldDescription>
+	</field>
+	<field name="comp" class="java.lang.String"/>
+	<field name="splActivity" class="java.lang.String"/>
+	<field name="splActivityTransSet" class="java.util.Set">
+		<fieldDescription><![CDATA[splActivityTransSet]]></fieldDescription>
+	</field>
+	<field name="compTransSet" class="java.util.Set">
+		<fieldDescription><![CDATA[compTransSet]]></fieldDescription>
+	</field>
+	<variable name="priceOverride" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double((($F{priceOverrideRTC} != null || !$F{priceOverrideRTC}.isEmpty()) ? $F{priceOverrideRTC} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="clearance" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double((($F{clearance} != null || !$F{clearance}.isEmpty()) ? $F{clearance} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="staffDiscount" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double((($F{staffDiscount} != null || !$F{staffDiscount}.isEmpty()) ? $F{staffDiscount} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="loyalty" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double((($F{loyalty} != null || !$F{loyalty}.isEmpty()) ? $F{loyalty} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="promotions" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double((($F{promotions} != null || !$F{promotions}.isEmpty()) ? $F{promotions} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="deferedLoyalty" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double((($F{deferedLoyalty} != null || !$F{deferedLoyalty}.isEmpty()) ? $F{deferedLoyalty} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="priceOverrideSum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double((($F{priceOverrideRTC} != null || !$F{priceOverrideRTC}.isEmpty()) ? $F{priceOverrideRTC} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="clearanceSum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double((($F{clearance} != null || !$F{clearance}.isEmpty()) ? $F{clearance} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="loyaltySum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double((($F{loyalty} != null || !$F{loyalty}.isEmpty()) ? $F{loyalty} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="staffDiscountSum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double((($F{staffDiscount} != null || !$F{staffDiscount}.isEmpty()) ? $F{staffDiscount} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="promotionsSum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double((($F{promotions} != null || !$F{promotions}.isEmpty()) ? $F{promotions} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="deferedLoyaltySum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double((($F{deferedLoyalty} != null || !$F{deferedLoyalty}.isEmpty()) ? $F{deferedLoyalty} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="advertisements" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double((($F{advertisements} != null || !$F{advertisements}.isEmpty()) ? $F{advertisements} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="advertisementsSum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double((($F{advertisements} != null || !$F{advertisements}.isEmpty()) ? $F{advertisements} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="scanningPolicy" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double((($F{scanningPolicy} != null || !$F{scanningPolicy}.isEmpty()) ? $F{scanningPolicy} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="scanningPolicySum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double(($F{scanningPolicy} != null ? $F{scanningPolicy} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="comp" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double((($F{comp} != null || !$F{comp}.isEmpty()) ? $F{comp} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="compSum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double((($F{comp} != null || !$F{comp}.isEmpty()) ? $F{comp} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="splActivity" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double((($F{splActivity} != null || !$F{splActivity}.isEmpty()) ? $F{splActivity} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="splActivitySum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double((($F{splActivity} != null || !$F{splActivity}.isEmpty()) ? $F{splActivity} : "0.00"))]]></variableExpression>
+	</variable>
+	<variable name="priceSetCount" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{priceTransSet}.size()]]></variableExpression>
+	</variable>
+	<variable name="clearSetCount" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{clearTransSet}.size()]]></variableExpression>
+	</variable>
+	<variable name="advertSetCount" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{adverTransSet}.size()]]></variableExpression>
+	</variable>
+	<variable name="scanPolicySetCount" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{scanPTransSet}.size()]]></variableExpression>
+	</variable>
+	<variable name="teamDisSetCount" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{staffTransSet}.size()]]></variableExpression>
+	</variable>
+	<variable name="loyaltySetCout" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{loyaltyTransSet}.size()]]></variableExpression>
+	</variable>
+	<variable name="promoSetCount" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{promotionsTransSet}.size()]]></variableExpression>
+	</variable>
+	<variable name="compSetCount" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{compTransSet}.size()]]></variableExpression>
+	</variable>
+	<variable name="splActvtySetCount" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{splActivityTransSet}.size()]]></variableExpression>
+	</variable>
+	<variable name="totalMarkdSetCount" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{priceTransSet}.size()+$F{clearTransSet}.size()+$F{staffTransSet}.size()+$F{loyaltyTransSet}.size()+$F{promotionsTransSet}.size()+$F{scanPTransSet}.size()+$F{compTransSet}.size()+$F{splActivityTransSet}.size()+$F{adverTransSet}.size()]]></variableExpression>
+	</variable>
+	<variable name="totalMarkdown" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($V{priceOverride})+new Double($V{clearance})+
+new Double($V{staffDiscount})+new Double($V{loyalty})+
+new Double($V{promotions})+
+new Double($V{advertisements})+new Double($V{comp})+
+new Double($V{splActivity})+new Double($V{scanningPolicy})]]></variableExpression>
+	</variable>
+	<variable name="totAftrdeferedLoyaltySum" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($V{priceOverride})+new Double($V{clearance})+
+new Double($V{staffDiscount})+new Double($V{loyalty})+
+new Double($V{promotions})+new Double($V{deferedLoyalty})+
+new Double($V{advertisements})+new Double($V{comp})+
+new Double($V{splActivity})+new Double($V{scanningPolicy})]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="86" splitType="Stretch">
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="286" height="20" isPrintWhenDetailOverflows="true" uuid="a2445476-f141-4e3f-ba35-d6237e92614c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Markdown Details Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="21" width="286" height="16" uuid="b53c94ac-2851-4dd6-b64a-46b585f4cbf4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="53" width="286" height="15" uuid="e6f4a9e2-cc8b-4d22-aaf6-e9b0b0bbd1a9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["From Date: "+$P{FromDate}+"  |  To Date: "+ $P{ToDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="351" height="15" uuid="8973c37e-be46-4fbf-ac3a-dfd5117f11ab"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+			<elementGroup>
+				<staticText>
+					<reportElement x="0" y="37" width="286" height="15" uuid="60de1451-8b21-45ed-9e4d-29ad24a12eda"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reported for:]]></text>
+				</staticText>
+			</elementGroup>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="69" width="625" height="15" uuid="5111d084-e587-4f6d-a0e6-711887471ef5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Department : "+($P{MYSCRIPTLET_SCRIPTLET}.isNullEmptyWhiteSpace( $P{deptName} )?"All":$P{deptName})+"  |  Category : "+($P{MYSCRIPTLET_SCRIPTLET}.isNullEmptyWhiteSpace( $P{category} )?"All":$P{category})+"  |  Sub-Category : "+($P{MYSCRIPTLET_SCRIPTLET}.isNullEmptyWhiteSpace( $P{subCategory} )?"All":$P{subCategory})+"  |  Segment : "+($P{MYSCRIPTLET_SCRIPTLET}.isNullEmptyWhiteSpace( $P{segment} )?"All":$P{segment})+"  |  Article No : "+($P{MYSCRIPTLET_SCRIPTLET}.isNullEmptyWhiteSpace( $P{marticleNo} )?"All":$P{marticleNo})+"  |  Supplier No : "+($P{MYSCRIPTLET_SCRIPTLET}.isNullEmptyWhiteSpace( $P{supplierNo} )?"All":$P{supplierNo})]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="228" y="1" width="42" height="19" uuid="d814cb25-8eb1-4a66-bd58-2f939a407b28"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advert]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="296" y="1" width="37" height="19" uuid="35dd55af-de8e-41d5-9b5d-44ebe3643e38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Scanning Policy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="608" y="1" width="32" height="19" uuid="c89c25d5-d3e5-4a5a-ae63-5cec98484e8b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Special Activity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="558" y="0" width="27" height="19" uuid="96fd2a8b-1637-4306-86dd-0fee9a9b1b92"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="138" y="1" width="21" height="19" uuid="3ee55f50-fdb4-4118-aa59-08d7d9046a19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="204" y="2" width="21" height="18" uuid="bdb2df5a-7721-4298-bc88-e1a7db1fc5dc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="272" y="1" width="24" height="18" uuid="5abff0b7-0091-4dc2-8bb7-3bcd22cd6ba8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="1" width="66" height="19" uuid="663d49bf-ae0f-4d7a-b1a7-6ee0b9ecea23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department & Articles]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="87" y="1" width="52" height="19" uuid="7189928c-a577-4f18-b7f4-f7d9f73b181d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Price Override/RTC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="162" y="0" width="39" height="19" uuid="df72196f-9d0a-4729-94a3-93268afe7f81"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clearance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="358" y="1" width="36" height="19" uuid="09626e9f-1f1d-49a9-a14d-8e862e3f58f0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Team Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="421" y="1" width="42" height="19" uuid="2a3e5657-4ff0-4c5a-a1d8-b493376cb8bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Loyalty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="489" y="1" width="45" height="19" uuid="a59d2d3e-a7c4-49db-aba3-90d82a4c289c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Promotions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="702" y="1" width="42" height="19" uuid="13d08d26-7d2b-47b0-a0da-d25dd06600ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Deferred
+Loyalty ($)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="745" y="2" width="56" height="19" uuid="5d52bace-51c6-47a1-9b12-042578b6f83d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total afterDeferred
+ Loyalty ($)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="66" y="1" width="21" height="19" uuid="9382e76c-27bf-4517-9f06-1170b677d9e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="584" y="1" width="24" height="18" uuid="4fc54af7-3aed-4ac8-9357-767ebd64cd39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="534" y="2" width="24" height="18" uuid="48317211-be62-4d8a-9882-e09a56468cea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="465" y="2" width="24" height="18" uuid="2d093899-9ad9-4de2-8949-218f30725138"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="397" y="2" width="24" height="18" uuid="2f92c4ff-42fe-49de-a15a-52ae9e0fb5a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="333" y="3" width="24" height="16" uuid="6c975de6-b432-4b6e-bd32-2d5b66d80f89"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="661" y="1" width="41" height="19" uuid="1b057871-bcbd-4cc8-9de1-c2ec8cff54be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Markdown]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="642" y="4" width="20" height="16" uuid="6cfbc1f8-8d02-4b12-8195-0c144c17b27e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="1" y="0" width="802" height="22" isPrintInFirstWholeBand="true" uuid="3229abc4-85a3-4328-82e5-74aa73253e57"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="69" height="20" isPrintWhenDetailOverflows="true" uuid="7230317f-32d7-4f0e-a8c7-0e07395e8b3d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mapKey}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="66" y="0" width="19" height="20" isPrintWhenDetailOverflows="true" uuid="cd24e4cc-bbb0-42c5-9a40-fa7fb2eb66cb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{priceTransSet}.size()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="100" y="0" width="36" height="20" isPrintWhenDetailOverflows="true" uuid="f818485e-73e0-4718-a1e7-4a442296e0ce"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{priceOverride}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="136" y="0" width="20" height="20" isPrintWhenDetailOverflows="true" uuid="3451891b-4113-4442-ab13-f073e5110e8f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clearTransSet}.size()]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="160" y="-1" width="38" height="20" isPrintWhenDetailOverflows="true" uuid="306001e9-78b3-4a8c-848b-15f244ab0600"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{clearance}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="337" y="0" width="20" height="20" isPrintWhenDetailOverflows="true" uuid="81e77da0-0daf-4918-b2b5-5df1404b8f55"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{staffTransSet}.size()]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="358" y="0" width="36" height="20" isPrintWhenDetailOverflows="true" uuid="81d5c19b-86a4-49f9-bf5e-02d4affc2178"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{staffDiscount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="399" y="0" width="18" height="20" isPrintWhenDetailOverflows="true" uuid="981f08d9-ef09-4eec-bbe6-474342ccdb92"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{loyaltyTransSet}.size()]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="424" y="0" width="39" height="20" isPrintWhenDetailOverflows="true" uuid="30f99207-2402-4a39-84bd-e00a8ab88791"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{loyalty}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="465" y="0" width="20" height="20" isPrintWhenDetailOverflows="true" uuid="dbdfd3c9-e36c-4cd5-9a52-742ac2e6502b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{promotionsTransSet}.size()]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="496" y="0" width="37" height="20" isPrintWhenDetailOverflows="true" uuid="61c7c814-0cb9-4b2d-99f8-d3690834d0de"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{promotions}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement x="641" y="0" width="18" height="20" isPrintWhenDetailOverflows="true" uuid="f74c058c-c1ba-40a9-a8fa-4ca1dd046917"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{priceTransSet}.size()+$F{clearTransSet}.size()+$F{staffTransSet}.size()+$F{loyaltyTransSet}.size()+$F{promotionsTransSet}.size()+$F{scanPTransSet}.size()+$F{compTransSet}.size()+$F{splActivityTransSet}.size()+$F{adverTransSet}.size()]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="666" y="0" width="36" height="20" uuid="9412c5d2-a7d6-456d-ae64-86062327bf4f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{priceOverride}+$V{clearance}+$V{staffDiscount}+$V{loyalty}+$V{promotions}+$V{scanningPolicy}+$V{advertisements}+$V{comp}+$V{splActivity}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="706" y="0" width="36" height="20" isPrintWhenDetailOverflows="true" uuid="14942c0c-7414-4b7f-9d18-bd781e1b357a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{deferedLoyalty}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="748" y="0" width="54" height="20" isPrintWhenDetailOverflows="true" uuid="38241565-647a-4713-bc77-23666ae1cf65"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{priceOverride}+$V{clearance}+$V{staffDiscount}+$V{loyalty}+$V{promotions}+$V{deferedLoyalty}+$V{scanningPolicy}+$V{advertisements}+$V{comp}+$V{splActivity}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="201" y="1" width="22" height="19" isPrintWhenDetailOverflows="true" uuid="ee24d50e-248a-48aa-8463-9b1d7c651fd8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adverTransSet}.size()]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="225" y="0" width="39" height="20" isPrintWhenDetailOverflows="true" uuid="7811af10-06d7-47a9-87b7-afea268a3e91"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{advertisements} != null ? $V{advertisements} : 0.00]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="299" y="0" width="32" height="20" uuid="3f54f855-4db9-40d8-8333-aa0b6c0e552e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{scanningPolicy}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="274" y="0" width="19" height="20" uuid="4e016d53-5852-4b3d-81a0-f77266f85686"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{scanPTransSet}.size()]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="558" y="0" width="27" height="20" isPrintWhenDetailOverflows="true" uuid="8d7db5eb-b235-471c-bbc3-05086eb22af0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{comp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="539" y="0" width="14" height="20" isPrintWhenDetailOverflows="true" uuid="d5d0be72-0ca6-4777-8eae-395e217921c1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{compTransSet}.size()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="589" y="1" width="17" height="19" isPrintWhenDetailOverflows="true" uuid="cd1943e9-0832-4f94-94af-76adafa7d32b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{splActivityTransSet}.size()]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="612" y="0" width="25" height="20" isPrintWhenDetailOverflows="true" uuid="1a7a5dc0-e059-4b2d-8c6a-7425985ae848"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{splActivity}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="18" width="16" height="12" uuid="b201f8d1-7185-4379-a243-90a1b5fa28f7"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="18" width="226" height="12" uuid="00f66a3b-9e30-4c86-99a0-21dc1ebb0424"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="1612b8af-f017-4ffe-9a7d-5c87de4014ef"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="18" width="45" height="12" uuid="7d20a59a-62ff-49f5-9d74-f3f86882a3c8"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="30">
+			<textField>
+				<reportElement x="45" y="18" width="226" height="12" uuid="960d3a05-1e6a-49ee-be96-04863d7c137d"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="3c6c92f4-7ee9-4662-bc5d-18b3504d5270"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="18" width="45" height="12" uuid="b60d51aa-38ec-473c-80c8-8e67e63fa49d"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="18" width="16" height="12" uuid="6de4eae6-a486-4702-b0fe-c1f7cbc19263"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="100" y="1" width="36" height="12" isPrintWhenDetailOverflows="true" uuid="93cfdf21-656c-4f50-a2db-b718fcb3e089"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{priceOverrideSum}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="163" y="1" width="39" height="12" isPrintWhenDetailOverflows="true" uuid="d744052f-5bb4-445a-8eab-f38a7e737813"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{clearanceSum}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="424" y="1" width="39" height="12" isPrintWhenDetailOverflows="true" uuid="5470957d-1311-4a50-b0fd-5b68e6bd7629"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{loyaltySum}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="499" y="1" width="34" height="12" isPrintWhenDetailOverflows="true" uuid="6d68904c-7e44-49f6-9f43-b32277297bd3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{promotionsSum}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="706" y="1" width="36" height="12" isPrintWhenDetailOverflows="true" uuid="ef875f22-033c-4254-a474-bdab31204742"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{deferedLoyaltySum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="1" width="55" height="12" uuid="a6f9bda8-d13e-4184-a136-d66e4e69e420"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Store Total]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="201" y="1" width="21" height="11" uuid="2c53453f-3140-4e7f-8057-8a3399613f8c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{advertSetCount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="402" y="1" width="16" height="11" uuid="36252b95-3b50-4b88-826b-d92c6e79e318"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{loyaltySetCout}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="274" y="1" width="17" height="11" uuid="32127109-2cc9-4f1e-870b-ab1212f7d8dc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{scanPolicySetCount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="337" y="1" width="21" height="11" uuid="ce088972-f013-4ad2-bbb3-8987d79e5e38"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{teamDisSetCount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="469" y="1" width="17" height="11" uuid="4068b569-7f53-4e22-b43f-5da2f8e67fd3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{promoSetCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="224" y="1" width="41" height="12" isPrintWhenDetailOverflows="true" uuid="728ff022-d65f-4f00-98b3-14a0c4e5ae69"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{advertisementsSum}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="554" y="1" width="32" height="12" isPrintWhenDetailOverflows="true" uuid="3bfc59a7-e7f8-4b64-a3a7-341a47c71655"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{compSum}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement x="0" y="2" width="802" height="12" uuid="ef88586f-5900-4288-9a5c-b4caa3c4e013"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<textField pattern="###0">
+				<reportElement x="537" y="1" width="17" height="11" uuid="1966813f-a4ef-49ee-a4de-b3ac95f6dcf8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{compSetCount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="644" y="1" width="17" height="11" uuid="838b83c8-411b-463f-9b76-55563bb34ae0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalMarkdSetCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="666" y="4" width="35" height="8" uuid="124b6703-8814-4dc4-a025-aad6c792e5a1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalMarkdown} != null ? $V{totalMarkdown} : "0.00"]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="298" y="1" width="28" height="12" uuid="53fe3246-1a3f-449e-91c1-03cffb0a0aef"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{scanningPolicySum}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="608" y="1" width="32" height="12" isPrintWhenDetailOverflows="true" uuid="49895084-6caf-412a-85b1-db9d9677f414"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{splActivitySum}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="64" y="1" width="20" height="11" uuid="f97ac00b-37a7-48c1-aaa8-c9fc20f8ddea"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{priceSetCount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="136" y="1" width="19" height="11" uuid="45cb698f-7f43-4806-a105-823f5d5cac2f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{clearSetCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="364" y="1" width="29" height="12" isPrintWhenDetailOverflows="true" uuid="9a587560-e027-4cb7-aa36-a4753c404177"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{staffDiscountSum}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="590" y="1" width="17" height="11" uuid="301b52df-8a3f-48e3-b14e-09f979eb7e1c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{splActvtySetCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="748" y="4" width="53" height="8" uuid="60f827df-ddba-43db-b35e-246b0163ed98"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totAftrdeferedLoyaltySum} != null ? $V{totAftrdeferedLoyaltySum} :"0.00"]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.portal.woolworths.com.au"
+	xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.portal.woolworths.com.au"
+	xmlns:intf="http://service.portal.woolworths.com.au" xmlns:tns1="http://model.portal.woolworths.com.au"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--WSDL created by Apache Axis version: 1.4 Built on Apr 22, 2006 (06:55:48 
+		PDT) -->
+	<wsdl:types>
+		<schema elementFormDefault="qualified"
+			targetNamespace="http://service.portal.woolworths.com.au" xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://model.portal.woolworths.com.au" />
+			<element name="getOrderRefNo">
+				<complexType>
+					<sequence>
+						<element name="type" type="xsd:string" />
+						<element name="application" type="xsd:string" />
+						<element name="storeNo" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getOrderRefNoResponse">
+				<complexType>
+					<sequence>
+						<element name="getOrderRefNoReturn" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getUserInfo">
+				<complexType>
+					<sequence>
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getUserInfoResponse">
+				<complexType>
+					<sequence>
+						<element name="getUserInfoReturn" type="tns1:UserContext" />
+					</sequence>
+				</complexType>
+			</element>
+		</schema>
+		<schema elementFormDefault="qualified"
+			targetNamespace="http://model.portal.woolworths.com.au" xmlns="http://www.w3.org/2001/XMLSchema">
+			<complexType name="UserContext">
+				<sequence>
+					<element name="emailId" nillable="true" type="xsd:string" />
+					<element name="errorMessage" nillable="true" type="xsd:string" />
+					<element name="expiryDate" nillable="true" type="xsd:date" />
+					<element name="firstName" nillable="true" type="xsd:string" />
+					<element name="imgLocation" nillable="true" type="xsd:string" />
+					<element name="isWriteAuthorized" nillable="true" type="xsd:string" />
+					<element name="lastName" nillable="true" type="xsd:string" />
+					<element name="overrideSiteName" nillable="true" type="xsd:string" />
+					<element name="overrideSiteNo" nillable="true" type="xsd:string" />
+					<element name="password" nillable="true" type="xsd:string" />
+					<element name="role" nillable="true" type="xsd:string" />
+					<element name="roleID" nillable="true" type="xsd:string" />
+					<element name="salesOrg" nillable="true" type="xsd:int" />
+					<element name="siteName" nillable="true" type="xsd:string" />
+					<element name="siteNo" nillable="true" type="xsd:string" />
+					<element name="userId" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+		</schema>
+	</wsdl:types>
+
+	<wsdl:message name="getUserInfoResponse">
+
+		<wsdl:part element="impl:getUserInfoResponse" name="parameters">
+
+		</wsdl:part>
+
+	</wsdl:message>
+
+	<wsdl:message name="getOrderRefNoRequest">
+
+		<wsdl:part element="impl:getOrderRefNo" name="parameters">
+
+		</wsdl:part>
+
+	</wsdl:message>
+
+	<wsdl:message name="getUserInfoRequest">
+
+		<wsdl:part element="impl:getUserInfo" name="parameters">
+
+		</wsdl:part>
+
+	</wsdl:message>
+
+	<wsdl:message name="getOrderRefNoResponse">
+
+		<wsdl:part element="impl:getOrderRefNoResponse" name="parameters">
+
+		</wsdl:part>
+
+	</wsdl:message>
+
+	<wsdl:portType name="LoginServiceImpl">
+
+		<wsdl:operation name="getOrderRefNo">
+
+			<wsdl:input message="impl:getOrderRefNoRequest" name="getOrderRefNoRequest">
+
+			</wsdl:input>
+
+			<wsdl:output message="impl:getOrderRefNoResponse" name="getOrderRefNoResponse">
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="getUserInfo">
+
+			<wsdl:input message="impl:getUserInfoRequest" name="getUserInfoRequest">
+
+			</wsdl:input>
+
+			<wsdl:output message="impl:getUserInfoResponse" name="getUserInfoResponse">
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="LoginServiceImplSoapBinding" type="impl:LoginServiceImpl">
+
+		<wsdlsoap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="getOrderRefNo">
+
+			<wsdlsoap:operation soapAction="" />
+
+			<wsdl:input name="getOrderRefNoRequest">
+
+				<wsdlsoap:body use="literal" />
+
+			</wsdl:input>
+
+			<wsdl:output name="getOrderRefNoResponse">
+
+				<wsdlsoap:body use="literal" />
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="getUserInfo">
+
+			<wsdlsoap:operation soapAction="" />
+
+			<wsdl:input name="getUserInfoRequest">
+
+				<wsdlsoap:body use="literal" />
+
+			</wsdl:input>
+
+			<wsdl:output name="getUserInfoResponse">
+
+				<wsdlsoap:body use="literal" />
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="LoginServiceImplService">
+
+		<wsdl:port binding="impl:LoginServiceImplSoapBinding" name="LoginServiceImpl">
+
+			<wsdlsoap:address
+				location="http://localhost:8080/StorePortal/services/LoginServiceImpl" />
+
+		</wsdl:port>
+
+	</wsdl:service>
+
+</wsdl:definitions>

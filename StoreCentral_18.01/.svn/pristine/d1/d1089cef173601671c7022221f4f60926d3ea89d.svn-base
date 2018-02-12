@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RefundsReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="c606448f-acfb-4e8f-a3b3-d1c5e0624a94">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<scriptlet name="MYSCRIPTLET" class="au.com.woolworths.portal.reports.ScriptletUtil"/>
+	<parameter name="FromDate" class="java.lang.String"/>
+	<parameter name="ToDate" class="java.lang.String"/>
+	<parameter name="StoreNo" class="java.lang.String"/>
+	<parameter name="StoreName" class="java.lang.String"/>
+	<parameter name="refundDate" class="java.lang.String"/>
+	<parameter name="refundTime" class="java.lang.String"/>
+	<parameter name="refundTran" class="java.lang.String"/>
+	<parameter name="refundPosi" class="java.lang.String"/>
+	<parameter name="refundPoso" class="java.lang.String"/>
+	<parameter name="refundAuth" class="java.lang.String"/>
+	<parameter name="refundArti" class="java.lang.String"/>
+	<parameter name="refundDesc" class="java.lang.String"/>
+	<parameter name="refundType" class="java.lang.String"/>
+	<parameter name="refundReas" class="java.lang.String"/>
+	<parameter name="refundTota" class="java.lang.String"/>
+	<parameter name="refundTblSortAttr" class="java.lang.String"/>
+	<parameter name="msg" class="java.lang.String"/>
+	<parameter name="df" class="java.text.DateFormat">
+		<defaultValueExpression><![CDATA[$P{REPORT_FORMAT_FACTORY}.createDateFormat("dd/MM/yyyy | hh:mm a",$P{REPORT_LOCALE},$P{REPORT_TIME_ZONE})]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="article" class="java.lang.String">
+		<fieldDescription><![CDATA[article]]></fieldDescription>
+	</field>
+	<field name="article_T" class="java.lang.String">
+		<fieldDescription><![CDATA[article_T]]></fieldDescription>
+	</field>
+	<field name="calendarDayFrom" class="java.lang.String">
+		<fieldDescription><![CDATA[calendarDayFrom]]></fieldDescription>
+	</field>
+	<field name="calendarDayTo" class="java.lang.String">
+		<fieldDescription><![CDATA[calendarDayTo]]></fieldDescription>
+	</field>
+	<field name="cashName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashName]]></fieldDescription>
+	</field>
+	<field name="cashierFirstName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierFirstName]]></fieldDescription>
+	</field>
+	<field name="cashierLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierLastName]]></fieldDescription>
+	</field>
+	<field name="cashierNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[cashierNumber]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="ean_upc" class="java.lang.String">
+		<fieldDescription><![CDATA[ean_upc]]></fieldDescription>
+	</field>
+	<field name="noDataFound" class="java.lang.String">
+		<fieldDescription><![CDATA[noDataFound]]></fieldDescription>
+	</field>
+	<field name="posAuthoriser" class="java.lang.String">
+		<fieldDescription><![CDATA[posAuthoriser]]></fieldDescription>
+	</field>
+	<field name="posNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[posNumber]]></fieldDescription>
+	</field>
+	<field name="posTransactionTime" class="java.lang.String">
+		<fieldDescription><![CDATA[posTransactionTime]]></fieldDescription>
+	</field>
+	<field name="reason" class="java.lang.String">
+		<fieldDescription><![CDATA[reason]]></fieldDescription>
+	</field>
+	<field name="refundItem" class="java.lang.String">
+		<fieldDescription><![CDATA[refundItem]]></fieldDescription>
+	</field>
+	<field name="refundTransaction" class="java.lang.String">
+		<fieldDescription><![CDATA[refundTransaction]]></fieldDescription>
+	</field>
+	<field name="returnAll" class="java.lang.String">
+		<fieldDescription><![CDATA[returnAll]]></fieldDescription>
+	</field>
+	<field name="salesItemType" class="java.lang.String">
+		<fieldDescription><![CDATA[salesItemType]]></fieldDescription>
+	</field>
+	<field name="tValue" class="java.lang.String">
+		<fieldDescription><![CDATA[tValue]]></fieldDescription>
+	</field>
+	<field name="transactionNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[transactionNumber]]></fieldDescription>
+	</field>
+	<field name="transactionRecType" class="java.lang.String">
+		<fieldDescription><![CDATA[transactionRecType]]></fieldDescription>
+	</field>
+	<field name="transactionType" class="java.lang.String">
+		<fieldDescription><![CDATA[transactionType]]></fieldDescription>
+	</field>
+	<variable name="date" class="java.lang.String">
+		<variableExpression><![CDATA[$F{calendarDayTo}!=null?new SimpleDateFormat("dd/MM/yyyy").format(new Date(Long.parseLong($F{calendarDayTo}.replaceAll("\\D+","")))):""]]></variableExpression>
+	</variable>
+	<variable name="time" class="java.lang.String">
+		<variableExpression><![CDATA[$F{posTransactionTime}==null||"".equals($F{posTransactionTime}.trim())==true?"":new DecimalFormat("000000").format(Long.parseLong($F{posTransactionTime})).substring(0,2)+":"+new DecimalFormat("000000").format(Long.parseLong($F{posTransactionTime})).substring(2,4)]]></variableExpression>
+	</variable>
+	<variable name="refundType" class="java.lang.String">
+		<variableExpression><![CDATA[($F{refundTransaction}!=null && $F{refundTransaction}.trim().equals("")==false && Double.parseDouble($F{refundTransaction}.trim())!=0.0)?"Transaction":(($F{refundItem}!=null && $F{refundItem}.trim().equals("")==false && Double.parseDouble($F{refundItem}.trim())!=0.0)?"ITEM/LINE":"")]]></variableExpression>
+	</variable>
+	<variable name="total" class="java.lang.String">
+		<variableExpression><![CDATA[new DecimalFormat("#0.00").format(Math.abs(Double.parseDouble(($F{returnAll}!=null && "X".equals($F{returnAll}.trim()))?$F{refundTransaction}:$F{refundItem})))]]></variableExpression>
+	</variable>
+	<variable name="cashierName" class="java.lang.String">
+		<variableExpression><![CDATA[($F{cashierFirstName}==null?"":$F{cashierFirstName}+" ")+($F{cashierLastName}==null?"":$F{cashierLastName})]]></variableExpression>
+	</variable>
+	<variable name="evalFilterVars" class="java.lang.Boolean">
+		<variableExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.containsCaseInsensitiveVarArgs($V{date}, $P{refundDate},
+$V{time}, $P{refundTime},
+$F{transactionNumber}, $P{refundTran},
+$F{posNumber}, $P{refundPosi},
+$V{cashierName}, $P{refundPoso},
+$F{posAuthoriser}, $P{refundAuth},
+$F{article}, $P{refundArti},
+$F{article_T}, $P{refundDesc},
+$V{refundType}, $P{refundType},
+$F{reason}, $P{refundReas},
+$V{total},$P{refundTota})]]></variableExpression>
+	</variable>
+	<variable name="StoreTotal" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$V{evalFilterVars}?Math.abs(Double.parseDouble(($F{returnAll}!=null && "X".equals($F{returnAll}.trim()))?$F{refundTransaction}:$F{refundItem})):0.0]]></variableExpression>
+	</variable>
+	<variable name="GrandStoreTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{evalFilterVars}?Math.abs(Double.parseDouble(($F{returnAll}!=null && "X".equals($F{returnAll}.trim()))?$F{refundTransaction}:$F{refundItem})):0.0]]></variableExpression>
+	</variable>
+	<variable name="msg" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="73" splitType="Prevent">
+			<textField>
+				<reportElement x="425" y="0" width="377" height="20" uuid="89e85172-bb19-4266-ad60-466718e258e8"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StoreNo}+"  |  "+$P{StoreName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="21" width="334" height="15" uuid="0243b3f9-67b9-40f1-bb41-b53b3b5aa0ee"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Created on: "+(new SimpleDateFormat("dd/MM/yyyy")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="334" height="20" uuid="66dfe9bb-7426-4e62-be86-603141143945"/>
+				<textElement>
+					<font fontName="Arial" size="15" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Articles Refunds Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="37" width="334" height="15" uuid="e2689566-d760-469e-82b8-46f4c47fe503"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reported for:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="53" width="334" height="15" uuid="e3675baf-3902-407a-8bc8-b538e0425ec2"/>
+				<textElement>
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["From Date: "+$P{FromDate}+"  |  To Date: "+ $P{ToDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Prevent">
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="802" height="26" isRemoveLineWhenBlank="true" uuid="5ebfcd26-b63d-4c09-9ef5-1476ac1a1fb4"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="26" uuid="4d9b36aa-4642-4644-9d5c-1bd80fa84d84"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="0" width="40" height="26" uuid="99b69125-a360-4c05-9126-f390ec7656f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Trans. #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="0" width="30" height="26" uuid="162f3e16-1d6d-4100-9442-a814ed5d9838"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="0" width="35" height="26" uuid="d49ee70a-0c6d-476a-be90-7863819b6fa0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[POS ID #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="0" width="118" height="26" uuid="3d8cb3b2-702b-433f-8943-d5b077db688e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Authorised By]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="0" width="40" height="26" uuid="bffd22fd-ab1a-49a4-bbce-a0625ece9ffd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Article #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="0" width="118" height="26" uuid="8dea441d-39bf-44f6-9a0b-be65eff551cb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[POS Operator Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="471" y="0" width="140" height="26" uuid="550155b9-0adf-408b-86b8-1ab94f2283b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Article Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="617" y="0" width="60" height="26" uuid="1e3dcd9b-ad5f-4612-be7a-4f1c2fd710be"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Refund Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="682" y="0" width="80" height="26" uuid="225c46d8-5769-4eac-a381-83f5740dd851"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reason]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="767" y="0" width="35" height="26" uuid="8c784999-b3a9-4c0f-be71-852c82704f5b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{evalFilterVars}]]></printWhenExpression>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="45" height="20" isPrintWhenDetailOverflows="true" uuid="4696bde9-f60b-47c4-886a-3b75fe3dc662"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{date}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="0" width="30" height="20" isPrintWhenDetailOverflows="true" uuid="a2cab974-688b-4462-9136-8961828bbf7c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{time}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="86" y="0" width="40" height="20" isPrintWhenDetailOverflows="true" uuid="5fa5a819-5831-45c7-aac1-b1ab5c12a724"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transactionNumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="131" y="0" width="35" height="20" isPrintWhenDetailOverflows="true" uuid="d7c8519b-ae42-40eb-be96-349d756a6ac6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{posNumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="425" y="0" width="40" height="20" isPrintWhenDetailOverflows="true" uuid="4edecb73-912a-43ac-8ab9-52e880670f8e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{article}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="179" y="0" width="118" height="20" isPrintWhenDetailOverflows="true" uuid="604212fb-05ed-4cef-add3-b7c105459223"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cashierName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="471" y="0" width="140" height="20" isPrintWhenDetailOverflows="true" uuid="915c0c02-c7c9-4e9a-a0a4-4b3894491b81"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{article_T}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="302" y="0" width="118" height="20" isPrintWhenDetailOverflows="true" uuid="0d18f555-a5c3-478f-ab5b-930215918fe9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{posAuthoriser}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="617" y="0" width="60" height="20" isPrintWhenDetailOverflows="true" uuid="ff3930ae-48a7-4bda-a985-eab753a46d24"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{refundType}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="682" y="0" width="80" height="20" isPrintWhenDetailOverflows="true" uuid="ea036bfb-dbbd-476d-962d-fe9b0b9534ef"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reason}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="767" y="0" width="35" height="20" isPrintWhenDetailOverflows="true" uuid="b5e95efe-8fac-4f5f-a807-adcc736996c2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="18" width="45" height="12" uuid="e38f36ef-57a2-4f51-a2bd-983958e53931"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="45" y="18" width="289" height="12" uuid="29092831-a0c0-42bd-a099-6c4527c72ce1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="1c85bf2a-147a-469c-8eee-3938f981479f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="18" width="16" height="12" uuid="073370dd-0ee0-4b4b-b1c2-16bba0ab90fc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="30" splitType="Prevent">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="12" uuid="db78a3c9-81d3-4ef7-acb5-b20304153d61"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="0" width="104" height="12" uuid="45bf4e8a-a1ca-4b3a-ae08-9bb0233d6a24"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Store Total]]></text>
+			</staticText>
+			<textField pattern="###0.00">
+				<reportElement x="616" y="0" width="186" height="12" uuid="bf99c589-3d22-4ee4-b781-087f21d55ef3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{GrandStoreTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="18" width="45" height="12" uuid="d31f6e79-0be3-479d-a811-ee800c1e2bc5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="45" y="18" width="289" height="12" uuid="843c73df-3f4b-4db4-862e-8deba203bad9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{df}.format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="706" y="18" width="80" height="12" uuid="5eef19f0-117e-4481-a07f-65a3e2a33e39"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="786" y="18" width="16" height="12" uuid="b40d8547-6062-4408-b8a7-c070b3a812ca"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<noData>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="0" width="802" height="50" uuid="33cecc4f-d15d-4508-a549-fcbc65daf804"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MYSCRIPTLET_SCRIPTLET}.isNotNullNotEmptyNotWhiteSpace($P{msg})?$P{msg}:"Either no data found or Techincal Problem"]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StockTransferIn" pageWidth="810" pageHeight="595" orientation="Landscape" columnWidth="770" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="4ff33c1f-4dfb-4da7-b006-2265d483123b">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="16"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="article" class="java.lang.String"/>
+	<field name="articleDesc" class="java.lang.String"/>
+	<field name="rtcFrom" class="java.lang.String"/>
+	<field name="rtcTo" class="java.lang.String"/>
+	<field name="perc" class="java.lang.String"/>
+	<field name="tickets" class="java.lang.String"/>
+	<field name="val" class="java.lang.String"/>
+	<field name="reason" class="java.lang.String"/>
+	<field name="fromDate" class="java.lang.String"/>
+	<field name="userFinal" class="java.lang.String"/>
+	<field name="sellPrice" class="java.lang.String"/>
+	<variable name="valTot" class="java.lang.Double" resetType="Group" resetGroup="groupBy" calculation="Sum">
+		<variableExpression><![CDATA[java.lang.Double.parseDouble($F{val}!=null && !$F{val}.isEmpty() ? $F{val} : "0.0")]]></variableExpression>
+		<initialValueExpression><![CDATA[0.0]]></initialValueExpression>
+	</variable>
+	<group name="groupBy">
+		<groupExpression><![CDATA[$F{article}]]></groupExpression>
+		<groupHeader>
+			<band height="23">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="305" height="20" isPrintWhenDetailOverflows="true" uuid="38531201-5cb0-445f-b13e-2391342a3c79"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true" isPdfEmbedded="false"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{article}+" - "+$F{articleDesc}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="22" width="770" height="1" uuid="db5ec302-6815-4160-a075-6935e4b82e95"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="19">
+				<staticText>
+					<reportElement x="0" y="0" width="237" height="19" uuid="370ad150-7315-4b1e-b03c-6166e79b3eb0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Total markdown value by article:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="397" y="0" width="56" height="19" uuid="48ecd949-c30d-4fd7-8cd4-e7905bc0c62e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{valTot}!=null ? new java.text.DecimalFormat("0.00").format(($V{valTot})) : $V{valTot}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="45">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+			<staticText>
+				<reportElement x="288" y="20" width="36" height="25" uuid="e067c149-0802-4129-a2de-820191f27de2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  %]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="557" y="20" width="93" height="25" uuid="a5ada64a-95d3-4aca-83ca-caf069859514"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="20" width="94" height="25" uuid="2d5b1e0c-db1a-4794-8fae-a581220d6b89"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RTC Price
+From ($)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="1" width="560" height="20" uuid="0a58276c-380e-4fa1-9a0a-0d666110c99a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Markdown]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="78" height="45" uuid="55d0a0af-35f9-4c7b-9c15-eef1f676244f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Sell Price ($)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="453" y="20" width="104" height="25" uuid="fb044e87-70b8-49aa-8ae1-7d81377837b6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Reason]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="20" width="73" height="25" uuid="0d811540-1504-400a-a096-dcc9b8377dd2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tickets
+Printed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="20" width="93" height="25" uuid="3d032102-8007-4668-bce6-fe0cf1e69bda"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RTC Price
+To ($)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="20" width="56" height="25" uuid="89bbe007-de51-443b-9d39-cfb6897e6594"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Value
+($)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="20" width="120" height="25" uuid="260521d6-78e8-4cd0-9742-7bd10aa76e21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[User Name]]></text>
+			</staticText>
+			<line>
+				<reportElement x="90" y="20" width="560" height="1" uuid="c92f734f-93fb-4c4b-9366-0797f8a3bc96"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="90" y="0" width="94" height="20" uuid="cecbfd02-a6ec-4336-903f-5450209da936"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rtcFrom} != null ? new java.text.DecimalFormat("###0.00").format(Double.valueOf($F{rtcFrom})): ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="0" width="93" height="20" uuid="5b8fb200-5d90-4fee-9d16-05a8fd1f986d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rtcTo} != null ? new java.text.DecimalFormat("###0.00").format(Double.valueOf($F{rtcTo})): ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="0" width="36" height="20" uuid="7656a442-396a-4f58-a463-4c20a1574205"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{perc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="0" width="73" height="20" uuid="48d99f4f-eb9d-4291-863f-2cc220662261"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tickets}]]></textFieldExpression>
+			</textField>
+			<textField pattern="0.00">
+				<reportElement x="397" y="0" width="56" height="20" uuid="36bb253d-22fc-4d42-9004-e214494d91b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{val}!=null ? new java.text.DecimalFormat("0.00").format((Double.valueOf($F{val}))) : $F{val}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="453" y="0" width="104" height="20" uuid="8a65a336-ec18-4f55-837f-e16732ffefb4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reason}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="557" y="0" width="93" height="20" uuid="c4a689f1-c2b3-4ca6-a254-27bf6f8faf91"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="650" y="0" width="120" height="20" uuid="1576bb37-9cdd-447f-b834-44f4acd5bc3e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{userFinal}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="770" height="1" uuid="380edd5d-547b-48c8-943b-2c6e116a6c2a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="78" height="20" uuid="17b434fb-5ad8-4e12-972d-6993a2122ae8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sellPrice} != null ? new java.text.DecimalFormat("###0.00").format(Double.valueOf($F{sellPrice})): ""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
